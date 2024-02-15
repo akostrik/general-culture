@@ -58,8 +58,61 @@
     + `git pull origin master`
 * un truc comme la mlx tu utilises un gestionnaire de paquet (vcpkg, conan)
 
-# Dictionnary
-* snapshot : the state of a system at a particular point in time
+# Tools, applications, technical details
+* не запускается chrome или brave
+`
+rm -rf ~/.config/google-chrome/Singleton*
+rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
+`
+* не запускается vscode: `rm -rf ~/.cache // vscode` 
+* редакторы кода: VScode, subl
+* VS Code "editor.insertSpaces": true
+* https://account.jetbrains.com/licenses  
+* на студ компах Докер и веб сервер устанавливать в виртуалку, а саму виртуалку в Sgoinfre (не goinfre, которая привязана к конкретному компу, а Sgoinfre, которая работает на всех станциях и хранит файлы несколько месяцев)
+* Practice the exam just like you would in the real exam https://github.com/JCluzet/42_EXAM
+
+# AI for code
+* copilot 10€ в месяц, 1 месяц бесплатно, связан с github  
+* tabnine 3 месяца бесплатно, не связан с github
 
 # Verify a project
-* 
+   + условие
+   + evaluation
+   + valgrind
+   + warnings 
+   + каждая операция - а что, если не пройдёт
+   + аргументы, вводимые данные
+      - INT_MAX
+      - 0
+      - "\0"
+      - ""
+      - NULL
+      - EOF
+      - BUFSIZE > 0
+      - "-3"
+      - "03" "0"
+      - --3
+      - "21474833649"
+      - 2 5 6 + 3
+      - 2\ a\
+      - "2 5 6+3"
+      - "" ""
+      - "+" "++"
+      - буквы вместо чисел
+      - echo "*22" | ./a.out
+   + valgrind, особенно для ошибок
+   + norminette в тч libft
+   + header vscode ctrl alt H, vim fn+F1, Emacs ctrl + c -> ctrl + h
+   + libft не подмодуль
+   + убрать запрещённые функции (в т.ч. printf) в т.ч. из libft
+   + удалить gitignore, mlx, чекеры, libft/readme, скрытые файлы
+   + -Wall -Wextra -Werror
+   + клонировать и проверить 
+
+# 42 useful liens
+* **peer finder** https://find-peers.codam.nl/Paris
+* https://rphlr.github.io/42-Evals/ больше не работает
+* https://meta.intra.42.fr/articles/title-level-7
+
+# Dictionnary
+* snapshot : the state of a system at a particular point in time
