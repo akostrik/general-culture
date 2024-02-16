@@ -5,6 +5,7 @@
 * starkware  
 * starknet
 * onlyDust
+* https://www.youtube.com/channel/UCl6oyLa4CblZRurgwZwpgPQ 
 
 # Git
 * `git add` внести изменения в индекс (временное хранилище)
