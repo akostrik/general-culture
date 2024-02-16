@@ -11,6 +11,7 @@
 * https://www.youtube.com/channel/UCl6oyLa4CblZRurgwZwpgPQ 
 
 ## Starknet
+- secority scaling technologie
 - Starknet France: https://t.me/+LreNgBuiV2VmZjVk
 - Explorer Starknet: https://voyager.online/, https://starkscan.co/
 - Starknet docs: https://docs.starknet.io/documentation/
