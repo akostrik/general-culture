@@ -88,7 +88,8 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * Practice the exam just like you would in the real exam https://github.com/JCluzet/42_EXAM
 </details>
 
-# Regular expression
+<details open>
+<summary>Regular expression</summary>
 ## basic regular expressions (BRE)
 * Традиционные регулярные выражения UNIX
 * определён POSIX'ом как устаревший, но он до сих пор широко распространён из соображений обратной совместимости
@@ -116,6 +117,7 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 ...
 ##  Unicode regular expressions
 ...
+</details>
 
 
 # AI for code
