@@ -20,9 +20,8 @@
 * Only dust: https://onlydust.com
 * Quelques labo proposant des stages: KSS (https://github.com/keep-starknet-strange), Kasar (https://github.com/kasarlabs), LambdaClass (https://github.com/lambdaclass), Nethermind (https://github.com/nethermindeth), Carbonable (https://github.com/carbonable-labs) etc
 
-# Git
 <details open>
-  <summary>**Git**</summary>
+  <summary>Git</summary>
 * `git add` внести изменения в индекс (временное хранилище)
 * `git commit -a -m "message"` только для отслеживаемых файлов, Untracked files игнорируются
 * откатить (сместить указатель на один коммит назад)
