@@ -90,6 +90,7 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 
 <details open>
 <summary>Regular expression</summary>
+
 ## basic regular expressions (BRE)
 * Традиционные регулярные выражения UNIX
 * определён POSIX'ом как устаревший, но он до сих пор широко распространён из соображений обратной совместимости
