@@ -120,10 +120,10 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 ...
 </details>
 
-
-# AI for code
-* copilot 10€ в месяц, 1 месяц бесплатно, связан с github  
-* tabnine 3 месяца бесплатно, не связан с github
+# AI
+* Bard devient Gemini
+* for code: copilot 10€ в месяц, 1 месяц бесплатно, связан с github  
+* for code: tabnine 3 месяца бесплатно, не связан с github
 
 # Verify a project
    + условие
@@ -159,7 +159,7 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
    + -Wall -Wextra -Werror
    + клонировать и проверить 
 
-# 42 useful liens
+# 42 liens
 * **peer finder** https://find-peers.codam.nl/Paris
 * https://rphlr.github.io/42-Evals/ больше не работает
 * https://meta.intra.42.fr/articles/title-level-7
