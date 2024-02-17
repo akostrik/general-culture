@@ -21,7 +21,7 @@
 * Quelques labo proposant des stages: KSS (https://github.com/keep-starknet-strange), Kasar (https://github.com/kasarlabs), LambdaClass (https://github.com/lambdaclass), Nethermind (https://github.com/nethermindeth), Carbonable (https://github.com/carbonable-labs) etc
 
 <details open>
-  <summary>Git</summary>
+#  <summary>Git</summary>
 
   # Git
   
