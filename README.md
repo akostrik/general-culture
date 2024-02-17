@@ -21,6 +21,8 @@
 * Quelques labo proposant des stages: KSS (https://github.com/keep-starknet-strange), Kasar (https://github.com/kasarlabs), LambdaClass (https://github.com/lambdaclass), Nethermind (https://github.com/nethermindeth), Carbonable (https://github.com/carbonable-labs) etc
 
 # Git
+<details open>
+  <summary>**Git**</summary>
 * `git add` внести изменения в индекс (временное хранилище)
 * `git commit -a -m "message"` только для отслеживаемых файлов, Untracked files игнорируются
 * откатить (сместить указатель на один коммит назад)
@@ -84,6 +86,7 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * https://account.jetbrains.com/licenses  
 * на студ компах Докер и веб сервер устанавливать в виртуалку, а саму виртуалку в Sgoinfre (не goinfre, которая привязана к конкретному компу, а Sgoinfre, которая работает на всех станциях и хранит файлы несколько месяцев)
 * Practice the exam just like you would in the real exam https://github.com/JCluzet/42_EXAM
+</details>
 
 # Regular expression
 ## basic regular expressions (BRE)
