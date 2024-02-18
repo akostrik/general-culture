@@ -242,9 +242,6 @@ Represent numbers as fractions with integral numerator and denominator
 # Merge-insertion sort = Ford-Johnson algorithm 
 * modification of insertion sort
 * takes into account this property of binary search: the maximal number of comparisons to perform a binary search on a sorted sequence is the same for $2^n$ elements and $2^{n+1}−1$ elements (looking for an element in a sorted sequence of 8 or 15 elements requires the same number of comparisons), ensures that the size of the insertion area is $2^n−1$ as often as possible
-* Jacobsthal numbers
-   + a_1 = 0, a_2 = 1, a_n = 2 * a_{n-1} + a_{n}
-   + 0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845, 43691, 87381, 174763, 349525, …
 * the worst case: less comparaisons than insertion sort
 * the worst case: less comparaisons than merge sort
 * Ford, Lester R., and Selmer M. Johnson. “A Tournament Problem.” The American Mathematical Monthly, vol. 66, no. 5, 1959, pp. 387–389. JSTOR, www.jstor.org/stable/2308750
