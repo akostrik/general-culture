@@ -48,6 +48,7 @@
 * `gît commit "filename"` много информации
 * `git fsck --lost-found` Каждый найденный объект будет выложен в папку .git/lost-found/other/ в том же виде, в каком и был (т.е. не blob), но с sha1 соответствующего blob'a вместо имени - таким образом, содержимое файлов восстановить можно, имена - нельзя
 * alias in .gitconfig
+* файл `.gitkeep` чтобы пустые папки попали в индексацию git
 ## submodule
 * https://github.com/chaconinc/DbConnector
 * submodules are not downloaded when you git clone
