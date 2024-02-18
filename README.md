@@ -361,5 +361,6 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 
 # Linens
 * **'42 peer finder** https://find-peers.codam.nl/Paris
-* https://rphlr.github.io/42-Evals/ больше не работает
-* https://meta.intra.42.fr/articles/title-level-7
+* 42 https://42evaluators.com/rncp/
+* 42 https://rphlr.github.io/42-Evals/ больше не работает
+* 42 https://meta.intra.42.fr/articles/title-level-7
