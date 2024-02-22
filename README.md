@@ -357,10 +357,12 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * alias: `gcl`, etc par default
 ##
 * https://ohmybash.nntoan.com/
-  
+
 # Vocabulary
 * snapshot: the state of a system at a particular point in time
-* GCC = GNU Compiler Collection: a compiler supporting various programming languages, hardware architectures and operating systems 
+* GCC = GNU Compiler Collection: a compiler supporting various programming languages, hardware architectures and operating systems
+* `.mlt` Media Lovin' Toolkit мультимедийный фреймворк, набор средств для создания видеоредакторов, медиаплееров, перекодировщиков видео и других приложений, работающих с видео потоками. Является основой систем нелинейного монтажа Kdenlive, Flowblade, OpenShot, Shotcut
+
 
 # Linens
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
