@@ -358,6 +358,9 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 ##
 * https://ohmybash.nntoan.com/
 
+# Firewall, etc
+* **ufw** надстройка над файерволом iptables 
+
 # Vocabulary
 * snapshot: the state of a system at a particular point in time
 * GCC = GNU Compiler Collection: a compiler supporting various programming languages, hardware architectures and operating systems
