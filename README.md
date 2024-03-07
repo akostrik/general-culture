@@ -402,3 +402,4 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * discord staff pédago si un claster bruyant
 * discord staff gèrent les pcs et les serveurs de l'école, pas les gens
 * Pour les SFP: vous déclarez être" en formation" lors de l’actualisation PE, même quand vous êtes en stage
+* SFP & GEN Déclaration d'absence https://docs.google.com/forms/d/e/1FAIpQLSc6Rlu-rPcHkW04KNz43AOLBW-B3d1Hkhc-lbfnA5cTq3YwQg/viewform 
