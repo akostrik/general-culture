@@ -358,9 +358,11 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 ##
 * https://ohmybash.nntoan.com/
 
-# Firewall, etc
+# Virtualbox, Firewall, etc
 * **ufw** надстройка над файерволом iptables 
+* `shutdown now` выключить виртуальную машину 
 
+  
 # Vocabulary
 * snapshot: the state of a system at a particular point in time
 * GCC = GNU Compiler Collection: a compiler supporting various programming languages, hardware architectures and operating systems
@@ -399,3 +401,4 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * https://docs.google.com/spreadsheets/d/1aC5gSKkQkffmUdCiBm4GMsitl5r-zMKmD2Gwi1roxYY/edit#gid=2101605241
 * discord staff pédago si un claster bruyant
 * discord staff gèrent les pcs et les serveurs de l'école, pas les gens
+* Pour les SFP: vous déclarez être" en formation" lors de l’actualisation PE, même quand vous êtes en stage
