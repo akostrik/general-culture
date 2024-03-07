@@ -393,5 +393,6 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * [42 evals CVb3d2023](https://rphlr.github.io/42-Evals/) 
 * [42 subjects](https://github.com/rphlr/42-Subjects)
 * 42 https://meta.intra.42.fr/articles/title-level-7
+* https://docs.google.com/spreadsheets/d/1aC5gSKkQkffmUdCiBm4GMsitl5r-zMKmD2Gwi1roxYY/edit#gid=2101605241
 * discord staff pédago si un claster bruyant
 * discord staff gèrent les pcs et les serveurs de l'école, pas les gens
