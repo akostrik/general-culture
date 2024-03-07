@@ -362,6 +362,13 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * **ufw** надстройка над файерволом iptables 
 * `shutdown now` выключить виртуальную машину 
 
+# Virtualbox
+* snapshot:
+     1. Виртуальная машина должна быть выключена
+     2. Заходим в virtualbox и переходим к меню "снимки"
+* save file:
+     1. сжать большие файлы 
+      
 # ssh = Secure Shell
 * протокол прикладного уровня
 * обмен информацией между двумя устройствами
