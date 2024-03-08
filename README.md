@@ -554,7 +554,6 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
    + самодостаточный набор инструкций, который операционная система может запланировать для выполнения на ядре процессора
    + с точки зрения ОС это одно и то же, разница лишь в разделении адресного пространства
    + На 1 ядре одновременно может находиться только 1 процесс или поток. Процессы на ядре постоянно подменяют друг друга, из-за чего страдает производительность, когда процессов много. Это камень преткновения для web-приложений, которые открывают на каждое соединение свой поток
-
 </details>
 
 <details><summary>Vocabulary and little notes</summary>
@@ -591,6 +590,8 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 * `mkcert` генерация самоподписного сертификата, как правило используются для локальной разработки 
 </details>
 
+<details><summary>Linens</summary>
+
 # Linens
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
 * [42 peer finder](https://find-peers.codam.nl/Paris)
@@ -604,3 +605,4 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 * Pour les SFP: vous déclarez être" en formation" lors de l’actualisation PE, même quand vous êtes en stage
 * SFP & GEN Déclaration d'absence https://docs.google.com/forms/d/e/1FAIpQLSc6Rlu-rPcHkW04KNz43AOLBW-B3d1Hkhc-lbfnA5cTq3YwQg/viewform
 * https://stackexchange.com/sites
+</details>
