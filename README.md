@@ -73,73 +73,6 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * Practice the exam just like you would in the real exam https://github.com/JCluzet/42_EXAM
 </details>
 
-<details><summary>Regular expressions</summary>
-
- ## basic regular expressions (BRE)
-* Традиционные регулярные выражения UNIX
-* определён POSIX'ом как устаревший, но он до сих пор широко распространён из соображений обратной совместимости
-* `.`
-* `|[ ]`
-* `[^ ]`
-* `^` (действует только в начале выражения)
-* `$` (действует только в конце выражения)
-* `*`
-* `\{ \}` = { }
-* `\( \)` = ( )
-* `\n`
-* #include <regex.h> + the default regular expression type
- 
-## Extended regular expressions (ERE)
-* Отменено `\{ \}`* `\( \)`
-* Обратная косая черта перед метасимволом отменяет его специальное значение
-* Отвергнута теоретически нерегулярная конструкция \n
-* `+`
-* `?`
-* `|`
-* #include <regex.h> + regcomp(..., REG_EXTENDED)
-
-## Perl Compatible Regular Expressions (PCRE) 
-...
-##  Unicode regular expressions
-...
-</details>
-
-<details><summary>Verify a project</summary>
-
-   + условие
-   + evaluation
-   + valgrind
-   + warnings 
-   + каждая операция - а что, если не пройдёт
-   + аргументы, вводимые данные
-      - INT_MAX
-      - 0
-      - "\0"
-      - ""
-      - NULL
-      - EOF
-      - BUFSIZE > 0
-      - "-3"
-      - "03" "0"
-      - --3
-      - "21474833649"
-      - 2 5 6 + 3
-      - 2\ a\
-      - "2 5 6+3"
-      - "" ""
-      - "+" "++"
-      - буквы вместо чисел
-      - echo "*22" | ./a.out
-   + valgrind, особенно для ошибок
-   + norminette в тч libft
-   + header vscode ctrl alt H, vim fn+F1, Emacs ctrl + c -> ctrl + h
-   + libft не подмодуль
-   + убрать запрещённые функции (в т.ч. printf) в т.ч. из libft
-   + удалить gitignore, mlx, чекеры, libft/readme, скрытые файлы
-   + -Wall -Wextra -Werror
-   + клонировать и проверить 
-</details>
-
 <details><summary>Shell</summary>
 
 ## Bash
@@ -589,6 +522,73 @@ Represent numbers as fractions with integral numerator and denominator
         - Java Media Framework (JMF)
         - Microsoft Silverlight
 * `mkcert` генерация самоподписного сертификата, как правило используются для локальной разработки 
+</details>
+
+<details><summary>Regular expressions</summary>
+
+ ## basic regular expressions (BRE)
+* Традиционные регулярные выражения UNIX
+* определён POSIX'ом как устаревший, но он до сих пор широко распространён из соображений обратной совместимости
+* `.`
+* `|[ ]`
+* `[^ ]`
+* `^` (действует только в начале выражения)
+* `$` (действует только в конце выражения)
+* `*`
+* `\{ \}` = { }
+* `\( \)` = ( )
+* `\n`
+* #include <regex.h> + the default regular expression type
+ 
+## Extended regular expressions (ERE)
+* Отменено `\{ \}`* `\( \)`
+* Обратная косая черта перед метасимволом отменяет его специальное значение
+* Отвергнута теоретически нерегулярная конструкция \n
+* `+`
+* `?`
+* `|`
+* #include <regex.h> + regcomp(..., REG_EXTENDED)
+
+## Perl Compatible Regular Expressions (PCRE) 
+...
+##  Unicode regular expressions
+...
+</details>
+
+<details><summary>Verify a project</summary>
+
+   + условие
+   + evaluation
+   + valgrind
+   + warnings 
+   + каждая операция - а что, если не пройдёт
+   + аргументы, вводимые данные
+      - INT_MAX
+      - 0
+      - "\0"
+      - ""
+      - NULL
+      - EOF
+      - BUFSIZE > 0
+      - "-3"
+      - "03" "0"
+      - --3
+      - "21474833649"
+      - 2 5 6 + 3
+      - 2\ a\
+      - "2 5 6+3"
+      - "" ""
+      - "+" "++"
+      - буквы вместо чисел
+      - echo "*22" | ./a.out
+   + valgrind, особенно для ошибок
+   + norminette в тч libft
+   + header vscode ctrl alt H, vim fn+F1, Emacs ctrl + c -> ctrl + h
+   + libft не подмодуль
+   + убрать запрещённые функции (в т.ч. printf) в т.ч. из libft
+   + удалить gitignore, mlx, чекеры, libft/readme, скрытые файлы
+   + -Wall -Wextra -Werror
+   + клонировать и проверить 
 </details>
 
 <details><summary>Linens</summary>
