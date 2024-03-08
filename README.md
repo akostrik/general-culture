@@ -2,12 +2,21 @@
 * [C++](https://github.com/akostrik/CPP_modules_42)
 * [Python](https://github.com/akostrik/Python-for-Data-Science)
 
+<details><summary>A dropdown list for markdown</summary>
+
+   1. First item must be preceeded with an empty line.
+   1. Markdown renders **perfectly**.
+   1. Extra item.
+
+</details>
+
 <details open><summary>Blokchain</summary>
 
 * starkware  
 * starknet
 * onlyDust
 * https://www.youtube.com/channel/UCl6oyLa4CblZRurgwZwpgPQ 
+
 </details>
 
 <details open><summary>Starknet</summary>
@@ -21,6 +30,7 @@
 * OnlyDust: https://t.me/+n3C1mzmYORs5MDZk
 * Only dust: https://onlydust.com
 * Quelques labo proposant des stages: KSS (https://github.com/keep-starknet-strange), Kasar (https://github.com/kasarlabs), LambdaClass (https://github.com/lambdaclass), Nethermind (https://github.com/nethermindeth), Carbonable (https://github.com/carbonable-labs) etc
+
 </details>
 
 <details open><summary>GIT</summary>
@@ -589,14 +599,6 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
         - Java Media Framework (JMF)
         - Microsoft Silverlight
 * `mkcert` генерация самоподписного сертификата, как правило используются для локальной разработки 
-</details>
-
-<details><summary>A dropdown list for markdown</summary>
-
-   1. First item must be preceeded with an empty line.
-   1. Markdown renders **perfectly**.
-   1. Extra item.
-
 </details>
 
 # Linens
