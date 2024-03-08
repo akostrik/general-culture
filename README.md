@@ -10,7 +10,8 @@
 * https://www.youtube.com/channel/UCl6oyLa4CblZRurgwZwpgPQ 
 </details>
 
-<details open><summary>Starknet</summary>
+<details open>
+<summary>Starknet</summary>
 * secority scaling technologie
 * Starknet France: https://t.me/+LreNgBuiV2VmZjVk
 * Explorer Starknet: https://voyager.online/, https://starkscan.co/
@@ -22,7 +23,8 @@
 * Quelques labo proposant des stages: KSS (https://github.com/keep-starknet-strange), Kasar (https://github.com/kasarlabs), LambdaClass (https://github.com/lambdaclass), Nethermind (https://github.com/nethermindeth), Carbonable (https://github.com/carbonable-labs) etc
 </details>
 
-<details open><summary>GIT</summary>
+<details open>
+<summary>GIT</summary>
 * `git add` внести изменения в индекс (временное хранилище)
 * `git commit -a -m "message"` только для отслеживаемых файлов, Untracked files игнорируются
 * откатить (сместить указатель на один коммит назад)
@@ -77,7 +79,7 @@
 </details>
 
 <details open>
-#  <summary>Representation of real numbers</summary>
+<summary>Representation of real numbers</summary>
  
 **Accuracy** how close a measurement is to the true value  
 **Precision** how much information you have about a quantity  
