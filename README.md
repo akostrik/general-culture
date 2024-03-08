@@ -439,6 +439,37 @@ Represent numbers as fractions with integral numerator and denominator
 * Ex: computer algebra systems such as Mathematica, Maxima, Maple
 </details>
 
+<details><summary>Regular expressions</summary>
+
+ ## basic regular expressions (BRE)
+* Традиционные регулярные выражения UNIX
+* определён POSIX'ом как устаревший, но он до сих пор широко распространён из соображений обратной совместимости
+* `.`
+* `|[ ]`
+* `[^ ]`
+* `^` (действует только в начале выражения)
+* `$` (действует только в конце выражения)
+* `*`
+* `\{ \}` = { }
+* `\( \)` = ( )
+* `\n`
+* #include <regex.h> + the default regular expression type
+ 
+## Extended regular expressions (ERE)
+* Отменено `\{ \}`* `\( \)`
+* Обратная косая черта перед метасимволом отменяет его специальное значение
+* Отвергнута теоретически нерегулярная конструкция \n
+* `+`
+* `?`
+* `|`
+* #include <regex.h> + regcomp(..., REG_EXTENDED)
+
+## Perl Compatible Regular Expressions (PCRE) 
+...
+##  Unicode regular expressions
+...
+</details>
+
 <details><summary>Algo</summary>
 
 # Merge-insertion sort = Ford-Johnson algorithm 
@@ -488,37 +519,6 @@ Represent numbers as fractions with integral numerator and denominator
 * OnlyDust: https://t.me/+n3C1mzmYORs5MDZk
 * Only dust: https://onlydust.com
 * Quelques labo proposant des stages: KSS (https://github.com/keep-starknet-strange), Kasar (https://github.com/kasarlabs), LambdaClass (https://github.com/lambdaclass), Nethermind (https://github.com/nethermindeth), Carbonable (https://github.com/carbonable-labs) etc
-</details>
-
-<details><summary>Regular expressions</summary>
-
- ## basic regular expressions (BRE)
-* Традиционные регулярные выражения UNIX
-* определён POSIX'ом как устаревший, но он до сих пор широко распространён из соображений обратной совместимости
-* `.`
-* `|[ ]`
-* `[^ ]`
-* `^` (действует только в начале выражения)
-* `$` (действует только в конце выражения)
-* `*`
-* `\{ \}` = { }
-* `\( \)` = ( )
-* `\n`
-* #include <regex.h> + the default regular expression type
- 
-## Extended regular expressions (ERE)
-* Отменено `\{ \}`* `\( \)`
-* Обратная косая черта перед метасимволом отменяет его специальное значение
-* Отвергнута теоретически нерегулярная конструкция \n
-* `+`
-* `?`
-* `|`
-* #include <regex.h> + regcomp(..., REG_EXTENDED)
-
-## Perl Compatible Regular Expressions (PCRE) 
-...
-##  Unicode regular expressions
-...
 </details>
 
 <details><summary>Verify a project</summary>
