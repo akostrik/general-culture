@@ -1,15 +1,17 @@
-# Languages
 * Cairo, initiation https://github.com/shramee/starklings-cairo1, https://book.cairo-lang.org/
 * [C++](https://github.com/akostrik/CPP_modules_42)
 * [Python](https://github.com/akostrik/Python-for-Data-Science)
 
-# Blokchain
+<details open>
+# <summary>Blokchain</summary>
 * starkware  
 * starknet
 * onlyDust
 * https://www.youtube.com/channel/UCl6oyLa4CblZRurgwZwpgPQ 
+</details>
 
-## Starknet
+<details open>
+# <summary>Starknet</summary>
 * secority scaling technologie
 * Starknet France: https://t.me/+LreNgBuiV2VmZjVk
 * Explorer Starknet: https://voyager.online/, https://starkscan.co/
@@ -19,10 +21,10 @@
 * OnlyDust: https://t.me/+n3C1mzmYORs5MDZk
 * Only dust: https://onlydust.com
 * Quelques labo proposant des stages: KSS (https://github.com/keep-starknet-strange), Kasar (https://github.com/kasarlabs), LambdaClass (https://github.com/lambdaclass), Nethermind (https://github.com/nethermindeth), Carbonable (https://github.com/carbonable-labs) etc
+</details>
 
 <details open>
 #  <summary>GIT</summary>
- 
 * `git add` внести изменения в индекс (временное хранилище)
 * `git commit -a -m "message"` только для отслеживаемых файлов, Untracked files игнорируются
 * откатить (сместить указатель на один коммит назад)
@@ -74,9 +76,11 @@
     + `cd libft`
     + `git pull origin master`
 * un truc comme la mlx tu utilises un gestionnaire de paquet (vcpkg, conan)
+</details>
 
-
-# Representation of real numbers
+<details open>
+#  <summary>Representation of real numbers</summary>
+ 
 **Accuracy** how close a measurement is to the true value  
 **Precision** how much information you have about a quantity  
 
@@ -260,7 +264,8 @@ Represent numbers as fractions with integral numerator and denominator
 * [The Ford-Johnson Sorting Algorithm Is Not Optimal, Manacher, Glenn K. 1979](https://dl.acm.org/doi/10.1145/322139.322145)
 * https://www.youtube.com/watch?v=w1QXGe295sI
 
-# Tools, applications, technical details
+<details open>
+<summary>Tools, applications, technical details</summary>
 * не запускается chrome или brave
 `
 rm -rf ~/.config/google-chrome/Singleton*
@@ -277,7 +282,7 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 <details open>
 <summary>Regular expression</summary>
 
-## basic regular expressions (BRE)
+ ## basic regular expressions (BRE)
 * Традиционные регулярные выражения UNIX
 * определён POSIX'ом как устаревший, но он до сих пор широко распространён из соображений обратной совместимости
 * `.`
@@ -306,12 +311,15 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 ...
 </details>
 
-# AI
+<details open>
+<summary>AI</summary>
 * Bard devient Gemini
 * for code: copilot 10€ в месяц, 1 месяц бесплатно, связан с github  
 * for code: tabnine 3 месяца бесплатно, не связан с github
+</details>
 
-# Verify a project (42)
+<details open>
+<summary>Verify a project</summary>
    + условие
    + evaluation
    + valgrind
@@ -344,8 +352,11 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
    + удалить gitignore, mlx, чекеры, libft/readme, скрытые файлы
    + -Wall -Wextra -Werror
    + клонировать и проверить 
+</details>
 
-# Shell
+<details open>
+<summary>Shell</summary>
+
 ## Bash
 * le shell par défaut dans Ubuntu
 * a bien des avantages (notamment pour les scripts)
@@ -361,8 +372,10 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 # Firewall, etc
 * **ufw** надстройка над файерволом iptables 
 * `shutdown now` выключить виртуальную машину 
+</details>
 
-# Virtualbox
+<details open>
+<summary>Virtualbox</summary>
 * snapshot:
    + Виртуальная машина должна быть выключена
    + virtualbox, меню "снимки"
@@ -558,6 +571,14 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
         - Java Media Framework (JMF)
         - Microsoft Silverlight
 * `mkcert` генерация самоподписного сертификата, как правило используются для локальной разработки 
+
+<details><summary>A dropdown list for markdown</summary>
+
+   1. First item must be preceeded with an empty line.
+   1. Markdown renders **perfectly**.
+   1. Extra item.
+
+</details>
 
 # Linens
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
