@@ -417,11 +417,14 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 * на локальной машине SSH-клиент (OpenSSH, Putty, ...): имеет информацию для аутентификации и авторизации (пароль или SSH-ключ)
 
   
-# Vocabulary
+# Vocabulary and little notes
 * snapshot: the state of a system at a particular point in time
 * GCC = GNU Compiler Collection: a compiler supporting various programming languages, hardware architectures and operating systems
-* multimedia framework: для работы с аудио- и видеоданными, ядро мультимедийных приложений, состоит из системы плагинов (кодеков, фильтров, (де)мультиплексаторов, вывода на экран, работы с файлами и т. п.), которые можно соединить в граф для конвейерной обработки аудио/видео потока
-    + Windows
+* multimedia framework
+   + для работы с аудио- и видеоданными
+    + ядро мультимедийных приложений
+    + состоит из системы плагинов (кодеков, фильтров, (де)мультиплексаторов, вывода на экран, работы с файлами и т. п.), которые можно соединить для конвейерной обработки аудио/видео потока
+    + плагины Windows
         - Audio Compression Manager (ACM)
         - DirectShow — (1996) (до 1997 г. назывался Active Movie)
         - DirectX Media Objects (DMOs)
@@ -429,9 +432,9 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
         - QuickTime
         - Video for Windows (VfW) — (1992)
         - Windows Media
-    + Mac OS X
+    + плагины Mac OS X
         - QuickTime
-    + Linux и платформенно-независимые с открытым кодом
+    + плагины Linux и платформенно-независимые с открытым кодом
         - FFmpeg
         - GStreamer
         - Helix DNA
@@ -439,11 +442,12 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
         - xine
         - Media Lovin' Toolkit, `.mlt`, набор средств для приложений, работающих с видео потоками, основа систем нелинейного монтажа Kdenlive, Flowblade, OpenShot, Shotcut
         - libVLC
-    + Проприетарные кроссплатформенные
+    + плагины Проприетарные кроссплатформенные
         - Adobe Director
         - Adobe Flash
         - Java Media Framework (JMF)
         - Microsoft Silverlight
+* `mkcert` генерация самоподписного сертификата
 
 # Linens
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
