@@ -2,8 +2,7 @@
 * [C++](https://github.com/akostrik/CPP_modules_42)
 * [Python](https://github.com/akostrik/Python-for-Data-Science)
 
-<details open>
-<summary>Blokchain</summary>
+<details open><summary>Blokchain</summary>
 
 * starkware  
 * starknet
