@@ -453,7 +453,7 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
         - Adobe Flash
         - Java Media Framework (JMF)
         - Microsoft Silverlight
-* `mkcert` генерация самоподписного сертификата
+* `mkcert` генерация самоподписного сертификата, как правило используются для локальной разработки 
 
 # Linens
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
