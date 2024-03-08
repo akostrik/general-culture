@@ -243,6 +243,10 @@ Represent numbers as fractions with integral numerator and denominator
 * Handles irrational numbers like pi or sqrt{3} in a formal way, without dealing with an encoding
 * Process the underlying mathematics directly, instead of using approximate values for each intermediate calculation  
 * Ex: computer algebra systems such as Mathematica, Maxima, Maple
+</details>
+
+<details open>
+<summary>Algo</summary>
 
 # Merge-insertion sort = Ford-Johnson algorithm 
 * modification of insertion sort
@@ -263,9 +267,9 @@ Represent numbers as fractions with integral numerator and denominator
 * [Improvements to the Ford-Johnson algorithm](https://link.springer.com/article/10.1007/BF01934989)
 * [The Ford-Johnson Sorting Algorithm Is Not Optimal, Manacher, Glenn K. 1979](https://dl.acm.org/doi/10.1145/322139.322145)
 * https://www.youtube.com/watch?v=w1QXGe295sI
+</details>
 
-<details open>
-<summary>Tools, applications, technical details</summary>
+<details open><summary>Tools, applications, technical details</summary>
 * не запускается chrome или brave
 `
 rm -rf ~/.config/google-chrome/Singleton*
