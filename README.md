@@ -191,7 +191,9 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 <details><summary>Xserver</summary>
 
 # xserver = иксы
-  +  
+* отвечает за графику 
+* `startx` запускаем
+* графическое окружение openbox ?  
 </details>
 
 <details><summary>nginx</summary>
