@@ -490,40 +490,6 @@ Represent numbers as fractions with integral numerator and denominator
 * Quelques labo proposant des stages: KSS (https://github.com/keep-starknet-strange), Kasar (https://github.com/kasarlabs), LambdaClass (https://github.com/lambdaclass), Nethermind (https://github.com/nethermindeth), Carbonable (https://github.com/carbonable-labs) etc
 </details>
 
-<details><summary>Vocabulary and little notes</summary>
-
-* snapshot: the state of a system at a particular point in time
-* GCC = GNU Compiler Collection: a compiler supporting various programming languages, hardware architectures and operating systems
-* multimedia framework
-   + для работы с аудио- и видеоданными
-    + ядро мультимедийных приложений
-    + состоит из системы плагинов (кодеков, фильтров, (де)мультиплексаторов, вывода на экран, работы с файлами и т. п.), которые можно соединить для конвейерной обработки аудио/видео потока
-    + плагины Windows
-        - Audio Compression Manager (ACM)
-        - DirectShow — (1996) (до 1997 г. назывался Active Movie)
-        - DirectX Media Objects (DMOs)
-        - Media Foundation — (2007) (начиная с Windows Vista)
-        - QuickTime
-        - Video for Windows (VfW) — (1992)
-        - Windows Media
-    + плагины Mac OS X
-        - QuickTime
-    + плагины Linux и платформенно-независимые с открытым кодом
-        - FFmpeg
-        - GStreamer
-        - Helix DNA
-        - Phonon
-        - xine
-        - Media Lovin' Toolkit, `.mlt`, набор средств для приложений, работающих с видео потоками, основа систем нелинейного монтажа Kdenlive, Flowblade, OpenShot, Shotcut
-        - libVLC
-    + плагины Проприетарные кроссплатформенные
-        - Adobe Director
-        - Adobe Flash
-        - Java Media Framework (JMF)
-        - Microsoft Silverlight
-* `mkcert` генерация самоподписного сертификата, как правило используются для локальной разработки 
-</details>
-
 <details><summary>Regular expressions</summary>
 
  ## basic regular expressions (BRE)
@@ -589,6 +555,40 @@ Represent numbers as fractions with integral numerator and denominator
    + удалить gitignore, mlx, чекеры, libft/readme, скрытые файлы
    + -Wall -Wextra -Werror
    + клонировать и проверить 
+</details>
+
+<details><summary>Vocabulary and little notes</summary>
+
+* snapshot: the state of a system at a particular point in time
+* GCC = GNU Compiler Collection: a compiler supporting various programming languages, hardware architectures and operating systems
+* multimedia framework
+   + для работы с аудио- и видеоданными
+    + ядро мультимедийных приложений
+    + состоит из системы плагинов (кодеков, фильтров, (де)мультиплексаторов, вывода на экран, работы с файлами и т. п.), которые можно соединить для конвейерной обработки аудио/видео потока
+    + плагины Windows
+        - Audio Compression Manager (ACM)
+        - DirectShow — (1996) (до 1997 г. назывался Active Movie)
+        - DirectX Media Objects (DMOs)
+        - Media Foundation — (2007) (начиная с Windows Vista)
+        - QuickTime
+        - Video for Windows (VfW) — (1992)
+        - Windows Media
+    + плагины Mac OS X
+        - QuickTime
+    + плагины Linux и платформенно-независимые с открытым кодом
+        - FFmpeg
+        - GStreamer
+        - Helix DNA
+        - Phonon
+        - xine
+        - Media Lovin' Toolkit, `.mlt`, набор средств для приложений, работающих с видео потоками, основа систем нелинейного монтажа Kdenlive, Flowblade, OpenShot, Shotcut
+        - libVLC
+    + плагины Проприетарные кроссплатформенные
+        - Adobe Director
+        - Adobe Flash
+        - Java Media Framework (JMF)
+        - Microsoft Silverlight
+* `mkcert` генерация самоподписного сертификата, как правило используются для локальной разработки 
 </details>
 
 <details><summary>Linens</summary>
