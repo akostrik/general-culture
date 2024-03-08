@@ -311,7 +311,7 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * for code: copilot 10€ в месяц, 1 месяц бесплатно, связан с github  
 * for code: tabnine 3 месяца бесплатно, не связан с github
 
-# Verify a project
+# Verify a project (42)
    + условие
    + evaluation
    + valgrind
@@ -358,7 +358,7 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 ##
 * https://ohmybash.nntoan.com/
 
-# Virtualbox, Firewall, etc
+# Firewall, etc
 * **ufw** надстройка над файерволом iptables 
 * `shutdown now` выключить виртуальную машину 
 
@@ -416,7 +416,13 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 * на удалённой машине SSH daemon: прослушивает сетевой порт, производиит аутентификацию пользователя, предоставляет доступ 
 * на локальной машине SSH-клиент (OpenSSH, Putty, ...): имеет информацию для аутентификации и авторизации (пароль или SSH-ключ)
 
-  
+# Web
+* Смена локального домена: сменить алиас нашего локального домена (127.0.0.1) на something.42.fr
+  + `/etc/hosts`
+
+# xserver = иксы
+  +  
+
 # Vocabulary and little notes
 * snapshot: the state of a system at a particular point in time
 * GCC = GNU Compiler Collection: a compiler supporting various programming languages, hardware architectures and operating systems
