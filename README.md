@@ -371,6 +371,31 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
      2. сохранить файлы где хочешь
      3. на школьном маке: создать папку с таким же названием и по тому же пути в goinfre, скачать туда файлы, распаковать, запустить virtualbox (не менять конфигурацию в virtualbox)
      4. на другом компе: скачать и разархивировать конфигурацию, virtualbox - Инструменты - зелёный плюсик "Добавить", указав папку с файлом Debian.vbox и прочими файлами
+* `.vdi` file has
+     1. a pre-header: signatures and a format version mark, it exists as a sanity check to determine that the file is really in VDI format, and is not some random file renamed to a .vdi extension
+     3. the real header
+     4. data
+* Error
+```
+"Could not open the medium '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi'.
+VDI: error reading pre-header in '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi' (VERR_IS_A_DIRECTORY).
+VD: error VERR_VD_VDI_INVALID_HEADER opening image file '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi' (VERR_VD_VDI_INVALID_HEADER).
+Result Code: 
+NS_ERROR_FAILURE (0x80004005)
+Component: 
+MediumWrap
+Interface: 
+IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}" 
+```
+        a) Install HxD Hex Editor to open .vdi file as streams of bytes (http://download.cnet.com/HxD-Hex-Editor ... tag=button)
+        b) pre-header = the first 72 bytes (http://forums.virtualbox.org/viewtopic.php?t=52)
+        c) create a new vm `test.vdi` with all default options
+        d) Open `test.vdi` and copy its first 72 bytes
+        e) overwrite them in the invalid vdi file that you want to fix
+        f) reboot your vm using the modified vdi
+
+
+
       
 # ssh = Secure Shell
 * протокол прикладного уровня
