@@ -10,8 +10,7 @@
 * https://www.youtube.com/channel/UCl6oyLa4CblZRurgwZwpgPQ 
 </details>
 
-<details open>
-<summary>Starknet</summary>
+<details open><summary>Starknet</summary>
 
 * secority scaling technologie
 * Starknet France: https://t.me/+LreNgBuiV2VmZjVk
@@ -24,8 +23,8 @@
 * Quelques labo proposant des stages: KSS (https://github.com/keep-starknet-strange), Kasar (https://github.com/kasarlabs), LambdaClass (https://github.com/lambdaclass), Nethermind (https://github.com/nethermindeth), Carbonable (https://github.com/carbonable-labs) etc
 </details>
 
-<details open>
-<summary>GIT</summary>
+<details open><summary>GIT</summary>
+    
 * `git add` внести изменения в индекс (временное хранилище)
 * `git commit -a -m "message"` только для отслеживаемых файлов, Untracked files игнорируются
 * откатить (сместить указатель на один коммит назад)
@@ -79,8 +78,7 @@
 * un truc comme la mlx tu utilises un gestionnaire de paquet (vcpkg, conan)
 </details>
 
-<details open>
-<summary>Representation of real numbers</summary>
+<details open><summary>Representation of real numbers</summary>
  
 **Accuracy** how close a measurement is to the true value  
 **Precision** how much information you have about a quantity  
@@ -246,8 +244,7 @@ Represent numbers as fractions with integral numerator and denominator
 * Ex: computer algebra systems such as Mathematica, Maxima, Maple
 </details>
 
-<details open>
-<summary>Algo</summary>
+<details open><summary>Algo</summary>
 
 # Merge-insertion sort = Ford-Johnson algorithm 
 * modification of insertion sort
@@ -271,6 +268,7 @@ Represent numbers as fractions with integral numerator and denominator
 </details>
 
 <details open><summary>Tools, applications, technical details</summary>
+
 * не запускается chrome или brave
 `
 rm -rf ~/.config/google-chrome/Singleton*
@@ -284,8 +282,7 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * Practice the exam just like you would in the real exam https://github.com/JCluzet/42_EXAM
 </details>
 
-<details open>
-<summary>Regular expression</summary>
+<details open><summary>Regular expression</summary>
 
  ## basic regular expressions (BRE)
 * Традиционные регулярные выражения UNIX
@@ -316,15 +313,15 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 ...
 </details>
 
-<details open>
-<summary>AI</summary>
-* Bard devient Gemini
+<details open><summary>AI</summary>
+
+    * Bard devient Gemini
 * for code: copilot 10€ в месяц, 1 месяц бесплатно, связан с github  
 * for code: tabnine 3 месяца бесплатно, не связан с github
 </details>
 
-<details open>
-<summary>Verify a project</summary>
+<details open><summary>Verify a project</summary>
+
    + условие
    + evaluation
    + valgrind
@@ -359,8 +356,7 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
    + клонировать и проверить 
 </details>
 
-<details open>
-<summary>Shell</summary>
+<details open><summary>Shell</summary>
 
 ## Bash
 * le shell par défaut dans Ubuntu
@@ -379,8 +375,8 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * `shutdown now` выключить виртуальную машину 
 </details>
 
-<details open>
-<summary>Virtualbox</summary>
+<details open><summary>Virtualbox</summary>
+
 * snapshot:
    + Виртуальная машина должна быть выключена
    + virtualbox, меню "снимки"
@@ -411,7 +407,11 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
    + Open `test.vdi` and copy its first 72 bytes
    + overwrite them in the invalid vdi file that you want to fix
    + reboot your vm using the modified vdi
-      
+
+</details>
+
+<details open><summary>SSH</summary>
+    
 # ssh = Secure Shell
 * протокол прикладного уровня
 * обмен информацией между двумя устройствами
@@ -433,6 +433,9 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 * во время SSH-сессии команды, введенные на локальном устройстве (SSH-клиент), будут отправляться через зашифрованный туннель и выполняться на удаленной машине (SSH-сервере)
 * на удалённой машине SSH daemon: прослушивает сетевой порт, производиит аутентификацию пользователя, предоставляет доступ 
 * на локальной машине SSH-клиент (OpenSSH, Putty, ...): имеет информацию для аутентификации и авторизации (пароль или SSH-ключ)
+</details>
+
+<details open><summary>Web</summary>
 
 # Web
 * Смена локального домена: сменить алиас нашего локального домена (127.0.0.1) на something.42.fr
@@ -466,11 +469,16 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
     +  бесплатный
     +  его можно применять только при обмене данными между пользователями, которые знают о самоизданном SSL сертификате и подтвердили его в браузере
     +  если к каналу, защищенному таким SSL сертификатом, подключается внешний посетитель, он видит «Сертификат безопасности не является доверенным»
+</details>
+
+<details open><summary>Xserver</summary>
 
 # xserver = иксы
   +  
+</details>
 
-# nginx
+<details open><summary>nginx</summary>
+    
 * def: **веб-сервер** программа, принимает и обрабатывает запросы от клиентов по протоколам HTTP и HTTPS и возвращает им ответ в виде HTML-страницы (=HTTP-сервер?)
 * def: **прокси-сервер** принимает и обрабатывает запросы клиентов, а затем передает их дальше, другим программам
 * def: **обратный прокси-сервер** принимает результат работы других серверов и отдаёт его клиентам
@@ -538,14 +546,19 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
   ![Screenshot from 2024-03-08 14-21-25](https://github.com/akostrik/general-culture/assets/22834202/7299967d-0c56-48db-9303-ab4b8d37ab5a)
   ![Screenshot from 2024-03-08 14-58-54](https://github.com/akostrik/general-culture/assets/22834202/21c2e1af-1da8-441b-ae20-47201cf09d5e)
 
+</details>
 
-# Процессы, потоки
+<details open><summary>Threads</summary>
+    
 * Процесс или поток
    + самодостаточный набор инструкций, который операционная система может запланировать для выполнения на ядре процессора
    + с точки зрения ОС это одно и то же, разница лишь в разделении адресного пространства
    + На 1 ядре одновременно может находиться только 1 процесс или поток. Процессы на ядре постоянно подменяют друг друга, из-за чего страдает производительность, когда процессов много. Это камень преткновения для web-приложений, которые открывают на каждое соединение свой поток
 
-# Vocabulary and little notes
+</details>
+
+<details open><summary>Vocabulary and little notes</summary>
+
 * snapshot: the state of a system at a particular point in time
 * GCC = GNU Compiler Collection: a compiler supporting various programming languages, hardware architectures and operating systems
 * multimedia framework
@@ -576,6 +589,7 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
         - Java Media Framework (JMF)
         - Microsoft Silverlight
 * `mkcert` генерация самоподписного сертификата, как правило используются для локальной разработки 
+</details>
 
 <details><summary>A dropdown list for markdown</summary>
 
