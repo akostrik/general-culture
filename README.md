@@ -654,6 +654,7 @@ https://www.patreon.com/shtab_navalny
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
 * [42 peer finder](https://find-peers.codam.nl/Paris)
 * 42 https://42evaluators.com/rncp/
+* https://meta.intra.42.fr/issues/new?tag_names[]=Pedagogy
 * [42 evals CVb3d2023](https://rphlr.github.io/42-Evals/) 
 * [42 subjects](https://github.com/rphlr/42-Subjects)
 * 42 https://meta.intra.42.fr/articles/title-level-7
