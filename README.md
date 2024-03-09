@@ -641,6 +641,12 @@ Represent numbers as fractions with integral numerator and denominator
 
 </details>
 
+<details><summary>Social projects</summary>
+
+https://shtab.navalny.com/
+
+</details>
+
 <details><summary>Linens</summary>
 
 # Linens
