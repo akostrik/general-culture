@@ -643,7 +643,8 @@ Represent numbers as fractions with integral numerator and denominator
 
 <details><summary>Social projects</summary>
 
-https://shtab.navalny.com/
+https://shtab.navalny.com/  
+https://www.patreon.com/shtab_navalny  
 
 </details>
 
