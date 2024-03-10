@@ -645,6 +645,15 @@ https://www.patreon.com/shtab_navalny
 
 </details>
 
+details><summary>Android</summary>
+* Google play
+* магазины у разных производителей
+* https://www.apkmirror.com/ apk старых версий 
+* pdalife
+* 4pda
+* rutracker.org
+</details>
+
 <details><summary>Linens</summary>
 
 # Linens
