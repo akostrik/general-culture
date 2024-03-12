@@ -595,6 +595,12 @@ Represent numbers as fractions with integral numerator and denominator
 * defines a set of constraints for how the architecture of a distributed, Internet-scale hypermedia system, such as the Web, should behave
 * emphasises uniform interfaces, independent deployment of components, the scalability of interactions between them, and creating a layered architecture to promote caching to reduce user-perceived latency, enforce security, and encapsulate legacy systems
 * provides stateless, reliable web-based applications
+
+**Alpine**
+* Легковесная система
+* легковесный apk вместо привычного apt
+* нет полноценного bash, вместо него sh
+* [свой набор репозиториев](https://pkgs.alpinelinux.org/packages "список пакетов alpine").
    
 **Linux kernel namespaces**
 * partitions kernel resources such that one set of processes sees one set of resources while another set of processes sees a different set of resources
