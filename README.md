@@ -670,6 +670,7 @@ details><summary>Android</summary>
 * https://meta.intra.42.fr/issues/new?tag_names[]=Pedagogy
 * [42 evals CVb3d2023](https://rphlr.github.io/42-Evals/) 
 * [42 subjects](https://github.com/rphlr/42-Subjects)
+* https://ivan-shamaev.ru/docker-compose-tutorial-container-image-install/  
 * 42 https://meta.intra.42.fr/articles/title-level-7
 * https://docs.google.com/spreadsheets/d/1aC5gSKkQkffmUdCiBm4GMsitl5r-zMKmD2Gwi1roxYY/edit#gid=2101605241
 * discord staff pédago si un claster bruyant
