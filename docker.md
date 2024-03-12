@@ -83,15 +83,15 @@ Facilitates the independent persistence of data, allowing data to remain even af
 `make` in the root of the directory to build and start all container  
 `make` build to build all images in docker-compose  
 `make up` to start all containers in docker-compose  
-`make down` to remove all containers in the docker-compose  
-`make start` to start all containers in the docker-compose  
+`make down` to remove all containers in the docker-compose   
+`make start` to start all containers in the docker-compose   
 `make stop` to stop all containers in the docker-compose  
 `make status` to see the running containers  
 `make logs` to see the logs of the containers  
 `make rmi` to remove ALL IMAGES CREATED BY DOCKER-COMPOSE  
 `make re` to remove, build and run all containers in docker-compose  
-`docker-compose down` остановить контейнер
-`free`
+`docker-compose down` остановить контейнер  
+`free`  
 
 ## service
 * allows containers to be scaled across Docker daemons
