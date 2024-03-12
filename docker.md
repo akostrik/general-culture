@@ -38,6 +38,7 @@
   + combine RUN apt-get update with apt-get install in the same run statement
 
 ## Image (docker object)
+отдельного софта не нужна вся полноценная операционная система, достаточно рабочего ядра и некоторого окружения из всех зависимостей - модулей, библиотек, пакетов и скриптов. По такому принципу работает wine.
 * usage: to build containers
 * usage: to store and ship applications
 * a collection of files, libraries, configuration files that build up an environment
@@ -45,9 +46,13 @@
 * build image = to define the environment to be used in a container
 * is a read-only template
 * is not a runtime
-* набор окружения, необходимого для запуска определённого софта, в контенере не содержится полноценной операционной системы, контейнер использует ядро Linux и внутрь него помещаются только необходимые для запуска софта программы и библиотеки. Для запуска отдельного софта не нужна вся полноценная операционная система, достаточно рабочего ядра и некоторого окружения из всех зависимостей - модулей, библиотек, пакетов и скриптов. По такому принципу работает wine.
 
 ## Container (docker object)
+* базовая единица программного обеспечения, покрывающая код и все его зависимости для обеспечения запуска приложения независимо от окружения
+* может быть создан с использованием образа Docker
+* исполняемый пакет программного обеспечения, содержащий все необходимое для запуска приложени (системные программы, библиотеки, код, среды исполнения, настройки)
+* набор окружения, необходимого для запуска определённого софта
+* нет ОС, использует ядро Linux и внутрь него помещаются только необходимые для запуска софта программы и библиотеки
 * usage: runs applications: a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ... (one main process in one container)
 * Ex: a container to be your MySQL database + a container to be your Wordpress server, connect the containers together
 * a process created from an image
@@ -77,7 +82,7 @@
 * _The docker swarm CLI utility_ allows users to run Swarm containers, create discovery tokens, list nodes in the cluster, and more.[37] The docker node CLI utility allows users to run various commands to manage nodes in a swarm, for example, listing the nodes in a swarm, updating nodes, and removing nodes from the swarm.[38] Docker manages swarms using the Raft consensus algorithm. According to Raft, for an update to be performed, the majority of Swarm nodes need to agree on the update.
 
 ## Docker Volume (a tool)
-Facilitates the independent persistence of data, allowing data to remain even after the container is deleted or re-created
+* Facilitates the independent persistence of data, allowing data to remain even after the container is deleted or re-created
 
 ## Commands
 `make` in the root of the directory to build and start all container  
@@ -92,6 +97,11 @@ Facilitates the independent persistence of data, allowing data to remain even af
 `make re` to remove, build and run all containers in docker-compose  
 `docker-compose down` остановить контейнер  
 `free`  
+`build` сборка образа для Docker
+`create` создание нового контейнера
+`kill` принудительная остановка контейнера
+`dockerd` запуск сервиса Docker
+`commit` создание нового образа из изменений в контейнере
 
 ## service
 * allows containers to be scaled across Docker daemons
