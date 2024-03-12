@@ -101,11 +101,12 @@
 `make re` to remove, build and run all containers in docker-compose  
 `docker-compose down` остановить контейнер  
 `free`  
-`build` сборка образа для Docker
-`create` создание нового контейнера
-`kill` принудительная остановка контейнера
-`dockerd` запуск сервиса Docker
-`commit` создание нового образа из изменений в контейнере
+`build` сборка образа для Docker  
+`create` создание нового контейнера  
+`kill` принудительная остановка контейнера  
+`dockerd` запуск сервиса Docker  
+`commit` создание нового образа из изменений в контейнере  
+`docker ps -a` список всех доступных контейнеров с их состоянием на сервере
 
 ## service
 * allows containers to be scaled across Docker daemons
