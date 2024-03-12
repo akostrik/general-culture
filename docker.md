@@ -38,6 +38,9 @@
   + combine RUN apt-get update with apt-get install in the same run statement
 
 ## Image (docker object)
+* def набор файлов, соединенный с настройками, с помощью которого можно создать экземпляры, которые запускаются в отдельных контейнерах в виде изолированных процессов
+* строится с использованием инструкций для получения полной исполняемой версии приложения, зависящей от версии ядра сервера
+* При запуске одного образа пользователь может создать несколько контейнеров.
 * usage: to build containers
 * usage: to store and ship applications
 * a collection of files, libraries, configuration files that build up an environment
@@ -107,6 +110,7 @@
 `dockerd` запуск сервиса Docker  
 `commit` создание нового образа из изменений в контейнере  
 `docker ps -a` список всех доступных контейнеров с их состоянием на сервере
+`docker run` создание контейнеров, запускаемыми с использованием образов Docker
 
 ## service
 * allows containers to be scaled across Docker daemons
