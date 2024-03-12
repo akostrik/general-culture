@@ -85,6 +85,9 @@
 ## Docker Volume (a tool)
 * Facilitates the independent persistence of data, allowing data to remain even after the container is deleted or re-created
 
+## Oher
+* **swarm mode** инструмент Docker, используемый для организации кластеризации и планирования контейнеров. Разработчики и системные администраторы с его помощью могут легко собрать несколько узлов в единую виртуальную систему Docker и управлять ею.
+
 ## Commands
 `make` in the root of the directory to build and start all container  
 `make` build to build all images in docker-compose  
