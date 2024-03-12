@@ -38,7 +38,6 @@
   + combine RUN apt-get update with apt-get install in the same run statement
 
 ## Image (docker object)
-отдельного софта не нужна вся полноценная операционная система, достаточно рабочего ядра и некоторого окружения из всех зависимостей - модулей, библиотек, пакетов и скриптов. По такому принципу работает wine.
 * usage: to build containers
 * usage: to store and ship applications
 * a collection of files, libraries, configuration files that build up an environment
