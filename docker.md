@@ -1,4 +1,3 @@
-
 # Docker 
 * a set of platform as a service (PaaS) products 
 * packages an application and its dependencies in a virtual container that can run, in isolation, in a variety of locations on Linux / Windows / macOS
@@ -6,6 +5,12 @@
 * use OS-level virtualization
 * имитирует Linux дистрибутивы, окружения или установочные процессы вместо их запуска
 * **Docker objets** entities used to assemble an application
+* usage: Сделать процесс настройки проще и упростить настройку на уровне инфраструктуры;
+* usage: Помочь разработчикам сосредоточиться исключительно на коде, сокращая время разработки и увеличивая продуктивность;
+* usage: Усилить возможности отладки с использованием встроенных функций;
+* usage: Изолировать приложения;
+* usage: Улучшить плотность использования серверов в форме контейнеризации;
+* usage: Делать быстрое развертывание на уровне операционной системы.
 
 ![Capture d’écran de 2024-01-16 01-47-57](https://github.com/akostrik/inception/assets/22834202/29a86b2f-bb7f-4297-b2ac-3a3a7a57194a)
 
