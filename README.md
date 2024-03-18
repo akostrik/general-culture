@@ -495,7 +495,7 @@ Represent numbers as fractions with integral numerator and denominator
 
 <details><summary>AI</summary>
 
-    * Bard devient Gemini
+* Bard devient Gemini
 * for code: copilot 10€ в месяц, 1 месяц бесплатно, связан с github  
 * for code: tabnine 3 месяца бесплатно, не связан с github
 </details>
@@ -679,3 +679,6 @@ details><summary>Android</summary>
 * SFP & GEN Déclaration d'absence https://docs.google.com/forms/d/e/1FAIpQLSc6Rlu-rPcHkW04KNz43AOLBW-B3d1Hkhc-lbfnA5cTq3YwQg/viewform
 * https://stackexchange.com/sites
 </details>
+
+
+* https://habr.com/ru/companies/reksoft/articles/792496/ 
