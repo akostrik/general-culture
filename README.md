@@ -682,3 +682,4 @@ details><summary>Android</summary>
 
 
 * https://habr.com/ru/companies/reksoft/articles/792496/ 
+* https://stackoverflowteams.com/c/42network/questions
