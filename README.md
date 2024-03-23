@@ -680,8 +680,8 @@ details><summary>Android</summary>
 * https://stackexchange.com/sites
 </details>
 
-
 * https://habr.com/ru/companies/reksoft/articles/792496/ 
 * https://stackoverflowteams.com/c/42network/questions
+* `./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "`` start a programm with random arguments
 * https://www.random.org/
 * https://2qbit.com/true-random-number-generator/?utm_source=yandex&utm_medium=cpc&utm_campaign=95384643&utm_content=14959768887&utm_term=генератор%20случайных%20чисел&yclid=9011125947744387071
