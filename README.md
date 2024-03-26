@@ -532,13 +532,14 @@ Represent numbers as fractions with integral numerator and denominator
       - INT_MAX
       - 0
       - "\0"
-      - ""
+      - ""0
       - NULL
       - EOF
       - BUFSIZE > 0
       - "-3"
       - "03" "0"
       - --3
+      - "-"
       - "21474833649"
       - 2 5 6 + 3
       - 2\ a\
