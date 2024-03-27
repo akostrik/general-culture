@@ -77,14 +77,16 @@
 
 ## Docker Compose (a tool)
 * _Docker-compose CLI_
-* defines and runs multi-container Docker applications
-* creation and start-up of all the containers with a single command
-* runs commands on multiple containers at once (building images, scaling containers, running containers that were stopped). Commands related to image manipulation, or user-interactive options, are not relevant in Docker Compose because they address one container
-* uses YAML files to configure the application's services
-* `docker-compose.yml` to build the Docker images, define an application's services + configuration options
-    + `build` defines configuration options such as the Dockerfile path
-    + `command` override default Docker commands
-    + the network line
+* with a single command `docker-compose.yml`
+   + creates all containers
+   + runs all continers
+   + runs the commands on multiple containers at once (building images, scaling containers, running containers that were stopped). Commands related to image manipulation, or user-interactive options, are not relevant in Docker Compose because they address one container
+   + builds the Docker images
+   + configures the application's services
+   + defines configuration options
+   + `build` defines configuration options such as the Dockerfile path
+   + `command` override default Docker commands
+   + the network line
 
 ## Docker Swarm (a tool)
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
