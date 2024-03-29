@@ -91,6 +91,12 @@
    + View the status of running services
    + Stream the log output of running services
    + Run a one-off command on a service
+* usage:
+   + streamline the development, deployment, management of containerized applications
+   + to define and manage multi-container applications in a single YAML file
+   + configuration files are easy to share, facilitating collaboration
+   + caches the configuration used to create a container. When you restart a service that has not changed, Compose re-uses the existing containers. Re-using containers means that you can make changes to your environment very quickly
+   + supports variables in the Compose file, you can use these variables to customize your composition for different environments, or different users
   
 ### Docker Swarm (a tool)
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
