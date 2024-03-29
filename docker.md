@@ -101,6 +101,7 @@ RUN mkdir -p /usr/app/      # создаст директорию app
 WORKDIR /usr/app/           # установит директорию /usr/app/ в качестве рабочей директории
 CMD ["python", "main.py"]   # системный вызов, который будет выполнен при старте контейнера
 ```
+![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
 
 ### Container (object)
 * def: развёрнутое и запущенное приложение
