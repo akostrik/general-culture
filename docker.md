@@ -94,11 +94,12 @@
   + use COPY instead of ADD
   + combine RUN apt-get update with apt-get install in the same run statement
 * Каждая команда записанная в dockerfile создаёт свой слой. Финальный Docker-образ — это объединение всех слоев в один. Благодаря такому подходу можно переиспользовать уже готовые образа для создания новых образов.
+* каждая инструкция создает свой слой, поэтому хорошей практикой является запись цепочки команд через &&: RUN comand_1 && comand_2 && comand_3
 * Ex:
 ```
 FROM python:latest          # возьми для основы образ Python с тегом latest, а если его нет локально — скачай из хаба
 RUN mkdir -p /usr/app/      # создаст директорию app
-WORKDIR /usr/app/           # установит директорию /usr/app/ в качестве рабочей директории
+WORKDIR /usr/app/           # установит директорию /usr/app/ в качестве рабочей директории, все последующие команды (COPY, RUN, CMD, ...)будут выполнены из рабочего каталога
 CMD ["python", "main.py"]   # системный вызов, который будет выполнен при старте контейнера
 ```
 ![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
