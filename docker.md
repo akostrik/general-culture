@@ -23,52 +23,22 @@
 * Отличие от VM: Docker-контейнер работает непосредственно в операционной системе, а виртуальная машина «поверх» операционной системы, что влияет на производительность.
 
 ### dockerd (software)
+* служба, управляет Docker-объектами: сетями, хранилищами, образами, контейнерами
 * server
 * daemon
 * ожидает запросов через REST API от Клиента
-* управляет Образами и Контейнерами
-* manages containers, handles container objects
+* управляет Образами и Контейнерами, manages containers, handles container objects
 * listens for requests sent via **Docker Engine API**
 
 ### docker (software)
+* консольный клиент, при помощи которого пользователи взаимодействуют с Docker daemon и отправляют ему команды, создают контейнеры, управляют ими
 * client
 * главный компонент, создающий/управляющий/запускающий контейнеризованные приложения
 * управляет Сервером через CLI (командную строку) из терминала
 * provides a command-line interface (CLI) to allow users to interact with Docker daemons
 
-### docker file (object)
-* def: commands to build an image
-* a text file
-* begins with a FROM
-* https://docs.docker.com/engine/reference/builder/ 
-* Write a dockerfile
-  + https://github.com/dnaprawa/dockerfile-best-practices  
-  + alpine is not always the best choice
-  + limit image layers amount
-  + run as a non-root user
-  + do not use a UID below 10 000
-  + use a static UID and GID
-  + the latest is an evil, choose specific image tag
-  + store arguments in CMD
-  + use COPY instead of ADD
-  + combine RUN apt-get update with apt-get install in the same run statement
-* инструкции:
-  + `VOLUME /my_volume` создать том при запуске контейнера
-
-### image (object)
-* def: набор файлов, соединенный с настройками, с помощью которого можно создать экземпляры, которые запускаются в отдельных контейнерах в виде изолированных процессов
-* def: шаблон с инструкциями только для чтения для создания контейнеров
-* def: a collection of files, libraries, configuration files that build up an environment
-* def: a pre-built environment for a certain technology or service
-* usage: to build containers
-* usage: to store and ship applications
-* build image = to define the environment to be used in a container
-* is a read-only template
-* is not a runtime
-* строится с использованием инструкций для получения полной исполняемой версии приложения, зависящей от версии ядра сервера
-* при запуске одного образа пользователь может создать несколько контейнеров
-
 ### Container (object)
+* def:  развёрнутое и запущенное приложение
 * def: базовая единица программного обеспечения = код + все его зависимости для обеспечения запуска приложения независимо от окружения
 * def: исполняемый пакет программного обеспечения, содержащий все необходимое для запуска приложени (системные программы, библиотеки, код, среды исполнения, настройки)
 * def: набор окружения, необходимого для запуска определённого софта
@@ -101,6 +71,58 @@
   + Контрольные группы (Cgroups), инструмент для контроля над распределением, приоритизацией и управлением системными ресурсами. Контрольные группы реализованы в ядре Linux. Управление контрольными группами реализовано через systemd. 
   + Средства управления привилегиями (Linux Capabilities), разбить привилегии пользователя root на небольшие группы привилегий и назначать их по отдельности. Контейнеры запускаются с ограниченным набором привилегий.
   + Дополнительные, мандатные системы обеспечения безопасности, такие как AppArmor или SELinux
+
+### image (object)
+* неизменяемый образ, из которого разворачивается контейнер
+* указания Серверу, как создавать Контейнер
+* загружаются с Docker Hub, возможно создание кастомных образов
+* def: набор файлов, соединенный с настройками, с помощью которого можно создать экземпляры, которые запускаются в отдельных контейнерах в виде изолированных процессов
+* def: шаблон с инструкциями для создания контейнеров
+* def: a collection of files, libraries, configuration files that build up an environment
+* def: a pre-built environment for a certain technology or service
+* usage: to build containers
+* usage: to store and ship applications
+* build image = to define the environment to be used in a container
+* a read-only template
+* is not a runtime
+* строится с использованием инструкций для получения исполняемой версии приложения, зависящей от версии ядра сервера
+* при запуске одного образа пользователь может создать несколько контейнеров
+* **Docker registry** = a repository for images
+  + Серверное приложение для размещения/распределения образов, полезен для локального хранения образов и полного контроля над ними
+  + возможен другой способ, через Docker Hub — крупнейший репозиторий Docker-образов
+  + an API provideing containers (?)
+  + Ex: Docker Hub, quay.io, AWS ECR
+
+### docker file (object)
+* def: commands to build an image
+* a text file
+* begins with a FROM
+* https://docs.docker.com/engine/reference/builder/ 
+* Write a dockerfile
+  + https://github.com/dnaprawa/dockerfile-best-practices  
+  + alpine is not always the best choice
+  + limit image layers amount
+  + run as a non-root user
+  + do not use a UID below 10 000
+  + use a static UID and GID
+  + the latest is an evil, choose specific image tag
+  + store arguments in CMD
+  + use COPY instead of ADD
+  + combine RUN apt-get update with apt-get install in the same run statement
+* инструкции:
+  + `VOLUME /my_volume` создать том при запуске контейнера
+
+### Docker Volume (a tool)
+* def: файловая система, которая расположена на хост-машине за пределами контейнеров. Созданием и управлением томами занимается Docker
+* facilitates the independent persistence of data, allowing data to remain even after the container is deleted or re-created
+* представляют собой средства для постоянного хранения информации
+* самостоятельны и отделены от контейнеров
+* ими могут совместно пользоваться разные контейнеры
+* позволяют организовать эффективное чтение и запись данных
+* можно размещать на ресурсах удалённого облачного провайдера
+* можно шифровать
+* им можно давать имена
+* контейнер может организовать заблаговременное наполнение тома данными
 
 ### Docker Compose (a tool)
 * Docker-compose CLI
@@ -151,22 +173,14 @@
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
 * in Docker 1.12 and higher, Swarm mode is integrated with Docker Engine
 * _The docker swarm CLI utility_ allows users to run Swarm containers, create discovery tokens, list nodes in the cluster, and more.[37] The docker node CLI utility allows users to run various commands to manage nodes in a swarm, for example, listing the nodes in a swarm, updating nodes, and removing nodes from the swarm.[38] Docker manages swarms using the Raft consensus algorithm. According to Raft, for an update to be performed, the majority of Swarm nodes need to agree on the update.
-
-### Docker Volume (a tool)
-* def: файловая система, которая расположена на хост-машине за пределами контейнеров. Созданием и управлением томами занимается Docker
-* facilitates the independent persistence of data, allowing data to remain even after the container is deleted or re-created
-* представляют собой средства для постоянного хранения информации
-* самостоятельны и отделены от контейнеров
-* ими могут совместно пользоваться разные контейнеры
-* позволяют организовать эффективное чтение и запись данных
-* можно размещать на ресурсах удалённого облачного провайдера
-* можно шифровать
-* им можно давать имена
-* контейнер может организовать заблаговременное наполнение тома данными
-
-### swarm mode (a tool)
 * для организации кластеризации и планирования контейнеров
 * собрать несколько узлов в единую виртуальную систему Docker и управлять ею
+
+### service
+* allows containers to be scaled across Docker daemons
+* **swarm** a set of cooperating daemons that communicate through the Docker API
+
+### Docker API
 
 ### Commands
 `sudo systemctl status docker` убедимся, что у установлена и работает служба docker
@@ -199,17 +213,6 @@
 `docker run -it --rm busybox sh` (-it подключили интерактивный tty в контейнер и запустили командную оболочку sh, —rm = автоматически удалить контейнер при выходе из интерактивного режима) внутри контейнера busybox доступны основные команды unix/linux   
 `docker ...`  разрешать и запрещать операции монтирования, доступ к сокетам, выполнение части операций с файловой системой, например изменение атрибутов файлов или владельца
 
-### service
-* allows containers to be scaled across Docker daemons
-* **swarm** a set of cooperating daemons that communicate through the Docker API
-
-### Docker API
-
-### Docker registry
-* a repository for images
-* an API provideing containers (?)
-* Ex: Docker Hub, quay.io, AWS ECR
-
 ### Efficency
 * a single server or virtual machine runs several containers simultaneously
 * to avoid the situations when we say “it worked on my machine”, because Docker containers will give us the same environment on all machines
@@ -218,5 +221,7 @@
 * MacOS: Docker uses a Linux virtual machine to run the containers
 * the Linux kernel's support for namespaces mostly isolates an application's view of the operating environment, including process trees, network, user IDs and mounted file systems, while the kernel's cgroups provide resource limiting for memory and CPU 
 * since 0.9, Docker includes its own component **libcontainer** to use virtualization facilities provided directly by the Linux kernel, in addition to using abstracted virtualization interfaces via libvirt, LXC and systemd-nspawn
+* Легкая переносимость, возможность создавать и тестировать приложения на локальной машине, не беспокоясь о программных зависимостях — Docker-контейнеры вмещают в себя все что нужно приложению для функционирования
+* автоматизация работы с контейнерами при помощи cron jobs, автоматизируются рутинные повторяемые задачи
 * мгновенное время запуска
 
