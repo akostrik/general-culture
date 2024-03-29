@@ -81,4 +81,17 @@
 * changes the umask to 0 to allow open(), creat(), and other operating system calls to provide their own permission masks and not to depend on the umask of the caller
 * redirects stdin, stdout, stderr to /dev/null or a logfile
 * closes all the other file descriptors inherited from the parent process
+  
+* не запускается chrome или brave
+`
+rm -rf ~/.config/google-chrome/Singleton*
+rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
+`
+* не запускается vscode: `rm -rf ~/.cache // vscode` 
+* редакторы кода: VScode, subl
+* VS Code "editor.insertSpaces": true
+* https://account.jetbrains.com/licenses  
+* на студ компах Докер и веб сервер устанавливать в виртуалку, а саму виртуалку в Sgoinfre (не goinfre, которая привязана к конкретному компу, а Sgoinfre, которая работает на всех станциях и хранит файлы несколько месяцев)
+* Practice the exam just like you would in the real exam https://github.com/JCluzet/42_EXAM
+* `./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "`` start a programm with random arguments
 
