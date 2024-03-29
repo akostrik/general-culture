@@ -4,6 +4,7 @@
 * [Docker](https://github.com/akostrik/general-culture/blob/main/docker.md)
 * [nginx](https://github.com/akostrik/general-culture/blob/main/nginx.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [xserver](https://github.com/akostrik/general-culture/blob/main/xserver.md)
   
 <details><summary>Tools, applications, technical details</summary>
 
