@@ -22,9 +22,9 @@
 * provides a command-line interface (CLI) to allow users to interact with Docker daemons
 
 ### docker file (docker object)
+* def: commands to build an image
 * a text file
 * begins with a FROM
-* commands to build an image
 * https://docs.docker.com/engine/reference/builder/ 
 * Write a dockerfile
   + https://github.com/dnaprawa/dockerfile-best-practices  
