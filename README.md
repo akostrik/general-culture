@@ -13,7 +13,7 @@
 * [threads](https://github.com/akostrik/general-culture/blob/main/threads.md)
 * [ssh](https://github.com/akostrik/general-culture/blob/main/ssh.md)
 * [algo](https://github.com/akostrik/general-culture/blob/main/algo.md)
-* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [starknet](https://github.com/akostrik/general-culture/blob/main/git.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
 <details><summary>Tools, applications, technical details</summary>
@@ -74,13 +74,6 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 
 </details>
 
-
-<details><summary>AI</summary>
-
-* Bard devient Gemini
-* for code: copilot 10€ в месяц, 1 месяц бесплатно, связан с github  
-* for code: tabnine 3 месяца бесплатно, не связан с github
-</details>
 
 <details><summary>Blokchain</summary>
 
