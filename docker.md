@@ -233,10 +233,17 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 * **swarm** a set of cooperating daemons that communicate through the Docker API
 
 ### Docker API
+* the Engine API is an HTTP API served by Docker Engine
+* the Docker client uses it to communicate with the Engine
+* everything the Docker client can do can be done with the API
+* most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
 
 ### Docker Desktop
 * GUI-клиент
 * отображает все сущности Docker
+
+### Docker host 
+* компьютер или виртуальный сервер, на котором установлен Docker
 
 ### Commands
 `sudo systemctl status docker` убедимся, что у установлена и работает служба docker  
@@ -273,9 +280,6 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 `docker pull image` Загрузить образ из DockerHub  
 `docker ...`  разрешать и запрещать операции монтирования, доступ к сокетам, выполнение части операций с файловой системой, например изменение атрибутов файлов или владельца  
 `docker build` считывает конфигурацию создаваемого образа из dockerfile и создаёт образ  
-
-### Docker host 
-* компьютер или виртуальный сервер, на котором установлен Docker
 
 ### Efficency
 * a single server or virtual machine runs several containers simultaneously
