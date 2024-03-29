@@ -163,6 +163,7 @@ CMD ["python", "main.py"]   # системный вызов, который бу
   + прописаны в Dockerfile
   + указаны в качестве аргументов и ключей `docker run`
 * контейнерам можно назначать лимиты ресурсов и строить между ними сети, для управления ресурсами используются cgroups, для изоляции namespaces
+* runtime-сущность на основе образа
  
 ### Docker Compose (a tool)
 * надстройка для управления множеством контейнеров
@@ -245,9 +246,7 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 * компьютер или виртуальный сервер, на котором установлен Docker
 
 ### Commands
-`sudo systemctl status docker` убедимся, что у установлена и работает служба docker  
-`docker images` просмотреть список доступных локально образов  
-`docker ps`, `docker ps -a` список доступных контейнеров с их состоянием на сервере   
+`systemctl status docker` убедимся, что у установлена и работает служба docker  
 `make` in the root of the directory to build and start all container  
 `make` to build all images in docker-compose  
 `make up` to start all containers in docker-compose  
@@ -256,7 +255,7 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 `make stop` to stop all containers in the docker-compose  
 `make status` to see the running containers  
 `make logs` to see the logs of the containers  
-`make rmi` to remove ALL IMAGES CREATED BY DOCKER-COMPOSE  
+`make rmi` to remove all images created by docker-compose  
 `make re` to remove, build and run all containers in docker-compose  
 `free`  
 `build` сборка образа для Docker  
@@ -264,17 +263,20 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 `kill` принудительная остановка контейнера  
 `dockerd` запуск сервиса Docker  
 `commit` создание нового образа из изменений в контейнере  
+`docker images` просмотреть список доступных локально образов  
+`docker ps`, `docker ps -a` список доступных контейнеров с их состоянием на сервере   
 `docker run` создание контейнеров, запускаемыми с использованием образов Docker (`run` имеет множество ключей)  
 `docker run image` сформировать контейнер из образа  
 `docker run -it --rm busybox sh` (-it подключили интерактивный tty в контейнер и запустили командную оболочку sh, —rm = автоматически удалить контейнер при выходе из интерактивного режима) внутри контейнера busybox доступны основные команды unix/linux   
-`docker stop`  
-`docker restart` 
+`docker stop nginx_test` остановить контейнер  
+`docker rm nginx_test` удалить контейнер  
+`docker restart`  
 `docker-compose down` остановить контейнер  
 `docker volume create —-name my_volume` создать том при запуске контейнера - команда  
 `docker volume ls` список томов  
 `docker volume inspect my_volume`  
 `docker volume rm my_volume` удалить том  
-`docker system prune` очистка ресурсов Docker, после выполнения этой команды у вас должна появиться возможность удалить тома, статус которых до этого определялся неправильно
+`docker system prune` очистка ресурсов Docker, после этой команды появляется возможность удалить тома, статус которых до этого определялся неправильно
 `docker pull busybox`  скачали готовый образ busybox с сервера Docker Hub  
 `docker pull image` Загрузить образ из DockerHub  
 `docker ...`  разрешать и запрещать операции монтирования, доступ к сокетам, выполнение части операций с файловой системой, например изменение атрибутов файлов или владельца  
