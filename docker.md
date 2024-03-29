@@ -212,9 +212,9 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 * отображает все сущности Docker
 
 ### Commands
-`sudo systemctl status docker` убедимся, что у установлена и работает служба docker
+`sudo systemctl status docker` убедимся, что у установлена и работает служба docker  
 `docker images` просмотреть список доступных локально образов  
-`docker ps`, `docker ps -a` список доступных контейнеров с их состоянием на сервере
+`docker ps`, `docker ps -a` список доступных контейнеров с их состоянием на сервере   
 `make` in the root of the directory to build and start all container  
 `make` to build all images in docker-compose  
 `make up` to start all containers in docker-compose  
