@@ -1,4 +1,4 @@
-# Docker 
+## Docker 
 * a set of platform as a service (PaaS) products 
 * packages an application and its dependencies in a virtual container that runs, in isolation, in a variety of locations on Linux / Windows / macOS
 * usage: reproduces a run-time environments
@@ -14,16 +14,16 @@
 
 ![Capture d’écran de 2024-01-16 01-47-57](https://github.com/akostrik/inception/assets/22834202/29a86b2f-bb7f-4297-b2ac-3a3a7a57194a)
 
-## dockerd (software)
+### dockerd (software)
 * daemon
 * manages containers, handles container objects
 * listens for requests sent via **Docker Engine API**
 
-## docker (software)
+### docker (software)
 * a client program
 * provides a command-line interface (CLI) to allow users to interact with Docker daemons
 
-## docker file (docker object)
+### docker file (docker object)
 * a text file
 * begins with a FROM
 * commands to build an image
@@ -40,7 +40,7 @@
   + use COPY instead of ADD
   + combine RUN apt-get update with apt-get install in the same run statement
 
-## Image (docker object)
+### Image (docker object)
 * def набор файлов, соединенный с настройками, с помощью которого можно создать экземпляры, которые запускаются в отдельных контейнерах в виде изолированных процессов
 * строится с использованием инструкций для получения полной исполняемой версии приложения, зависящей от версии ядра сервера
 * def шаблон с инструкциями только для чтения для создания контейнеров
@@ -53,7 +53,7 @@
 * is a read-only template
 * is not a runtime
 
-## Container (docker object)
+### Container (docker object)
 * изолированное рабочее пространство
 * базовая единица программного обеспечения, покрывающая код и все его зависимости для обеспечения запуска приложения независимо от окружения
 * может быть создан с использованием образа Docker
@@ -73,7 +73,7 @@
 * communicate with each other through channels
 * is not a virtual machine (so it is not recommended to use any patch based on ’tail -f’ and so forth when trying to run it)
 
-## Docker Compose (a tool)
+### Docker Compose (a tool)
 * _Docker-compose CLI_
 * with a single command `docker-compose.yml`
    + creates all containers
@@ -86,18 +86,18 @@
    + `command` override default Docker commands
    + the network line
 
-## Docker Swarm (a tool)
+### Docker Swarm (a tool)
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
 * in Docker 1.12 and higher, Swarm mode is integrated with Docker Engine
 * _The docker swarm CLI utility_ allows users to run Swarm containers, create discovery tokens, list nodes in the cluster, and more.[37] The docker node CLI utility allows users to run various commands to manage nodes in a swarm, for example, listing the nodes in a swarm, updating nodes, and removing nodes from the swarm.[38] Docker manages swarms using the Raft consensus algorithm. According to Raft, for an update to be performed, the majority of Swarm nodes need to agree on the update.
 
-## Docker Volume (a tool)
+### Docker Volume (a tool)
 * Facilitates the independent persistence of data, allowing data to remain even after the container is deleted or re-created
 
-## Oher
+### Oher
 * **swarm mode** инструмент Docker, используемый для организации кластеризации и планирования контейнеров. Разработчики и системные администраторы с его помощью могут легко собрать несколько узлов в единую виртуальную систему Docker и управлять ею.
 
-## Commands
+### Commands
 `make` in the root of the directory to build and start all container  
 `make` build to build all images in docker-compose  
 `make up` to start all containers in docker-compose  
@@ -118,18 +118,18 @@
 `docker ps -a` список всех доступных контейнеров с их состоянием на сервере
 `docker run` создание контейнеров, запускаемыми с использованием образов Docker
 
-## service
+### service
 * allows containers to be scaled across Docker daemons
 * **swarm** a set of cooperating daemons that communicate through the Docker API
 
-## Docker API
+### Docker API
 
-## Docker registry
+### Docker registry
 * a repository for images
 * an API provideing containers (?)
 * Ex: Docker Hub, quay.io, AWS ECR
 
-## Efficency
+### Efficency
 * a single server or virtual machine runs several containers simultaneously
 * to avoid the situations when we say “it worked on my machine”, because Docker containers will give us the same environment on all machines
 * containers share the services of a single OS kernel => fewer resources than virtual machines  
