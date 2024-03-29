@@ -3,6 +3,7 @@
 * [Python](https://github.com/akostrik/Python-for-Data-Science)
 * [Docker](https://github.com/akostrik/general-culture/blob/main/docker.md)
 * [nginx](https://github.com/akostrik/general-culture/blob/main/nginx.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
 <details><summary>Tools, applications, technical details</summary>
 
