@@ -16,7 +16,7 @@
 * [starknet](https://github.com/akostrik/general-culture/blob/main/git.md)
 * [AI](https://github.com/akostrik/general-culture/blob/main/AI.md)
 * [blockchains](https://github.com/akostrik/general-culture/blob/main/blockchains.md)
-* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [verify-a-project](https://github.com/akostrik/general-culture/blob/main/verify-a-project.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
