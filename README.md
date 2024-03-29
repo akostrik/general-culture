@@ -2,7 +2,7 @@
 * [C++](https://github.com/akostrik/CPP_modules_42)
 * [Python](https://github.com/akostrik/Python-for-Data-Science)
 * [Docker](https://github.com/akostrik/general-culture/blob/main/docker.md)
-* [nginx]()
+* [nginx](https://github.com/akostrik/general-culture/blob/main/nginx.md)
   
 <details><summary>GIT</summary>
     
