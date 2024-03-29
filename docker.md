@@ -72,7 +72,7 @@
 * is not a virtual machine (so it is not recommended to use any patch based on ’tail -f’ and so forth when trying to run it)
 
 ### Docker Compose (a tool)
-* _Docker-compose CLI_
+* Docker-compose CLI
 * with a single command `docker-compose.yml`
    + creates all containers
    + runs all continers
@@ -83,7 +83,11 @@
    + `build` defines configuration options such as the Dockerfile path
    + `command` override default Docker commands
    + the network line
-
+* a streamlined and efficient development
+* simplifies the control of the entire application stack
+* to manage services, networks and volumes in a YAML configuration file
+* then you create and start all the services from your configuration file
+  
 ### Docker Swarm (a tool)
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
 * in Docker 1.12 and higher, Swarm mode is integrated with Docker Engine
