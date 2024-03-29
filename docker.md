@@ -80,6 +80,10 @@
 * are isolated from one another
 * communicate with each other through channels
 * is not a virtual machine (so it is not recommended to use any patch based on ’tail -f’ and so forth when trying to run it)
+* def: изолированное пользовательское окружение, в котором выполняется приложение
+* def: запущенное из образа приложению
+* один контейнер – это одно приложение
+* LXC (Linux Containers) используют те же технологии ядра Linux, но это другое
 
 ### Docker Compose (a tool)
 * Docker-compose CLI
