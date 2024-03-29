@@ -9,7 +9,7 @@
 * [regular-expressions](https://github.com/akostrik/general-culture/blob/main/regular-expressions.md)
 * [android](https://github.com/akostrik/general-culture/blob/main/android.md)
 * [shell](https://github.com/akostrik/general-culture/blob/main/shell.md)
-* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [ssh](https://github.com/akostrik/general-culture/blob/main/ssh.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
 <details><summary>Tools, applications, technical details</summary>
@@ -60,31 +60,6 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
    + overwrite them in the invalid vdi file that you want to fix
    + reboot your vm using the modified vdi
 
-</details>
-
-<details><summary>SSH</summary>
-    
-# ssh = Secure Shell
-* протокол прикладного уровня
-* обмен информацией между двумя устройствами
-* информация шифруется => защита в незащищенных сетях
-* a goal: работа с удаленными машинами
-* a goal: передача файлов на устройства
-*  шифрование всего передаваемого трафика, а не отдельных его фрагментов (в отличие от ранее испольуемых Telnet, Rlogin, Rsh)
-* на Virtualbox по умолчанию подключение к интернету с помощью NAT => нет возможности подключаться к виртуальной машине из своей операционной системы => вы не сможете подключиться по SSH, нужен проброс портов через NAT
-* port forwarding Virtualbox via NAT
-   + NAT преобразовывает скрытые локальные IP-адреса сети во внешние
-   1) открыть порты на гостевой машине:
-   + `service ssh start`
-   + `ufw status`
-   2) перенаправить траффик с хостовой на гостевую: 
-   + на виртуальной машине `ip addr` или `ifconfig` -> узнать IP адрес, который присваивается виртуальной машине
-* 1) открытие транспортного канала аутентификации
-* 2) аутентификация
-* 3) подключение
-* во время SSH-сессии команды, введенные на локальном устройстве (SSH-клиент), будут отправляться через зашифрованный туннель и выполняться на удаленной машине (SSH-сервере)
-* на удалённой машине SSH daemon: прослушивает сетевой порт, производиит аутентификацию пользователя, предоставляет доступ 
-* на локальной машине SSH-клиент (OpenSSH, Putty, ...): имеет информацию для аутентификации и авторизации (пароль или SSH-ключ)
 </details>
 
 <details><summary>Web</summary>
