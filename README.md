@@ -15,7 +15,7 @@
 * [algo](https://github.com/akostrik/general-culture/blob/main/algo.md)
 * [starknet](https://github.com/akostrik/general-culture/blob/main/git.md)
 * [AI](https://github.com/akostrik/general-culture/blob/main/AI.md)
-* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [blockchains](https://github.com/akostrik/general-culture/blob/main/blockchains.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
