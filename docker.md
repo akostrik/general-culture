@@ -163,6 +163,7 @@
 `docker volume ls` список томов  
 `docker volume inspect my_volume`  
 `docker volume rm my_volume` удалить том  
+`docker system prune` очистка ресурсов Docker, после выполнения этой команды у вас должна появиться возможность удалить тома, статус которых до этого определялся неправильно.
 
 ### service
 * allows containers to be scaled across Docker daemons
