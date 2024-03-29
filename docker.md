@@ -1,5 +1,5 @@
 ![docker-php-16-638](https://github.com/akostrik/general-culture/assets/22834202/7305c712-59d9-44e5-b67d-6ea0283d8b06)
-![настройка nginx](media/nginx_deploy/step_0.png)
+![Screenshot from 2024-03-30 00-55-26](https://github.com/akostrik/general-culture/assets/22834202/3ea7709f-8248-4980-ad54-2b242f9e9b2a)
 
 ## Docker 
 * def: a set of platform as a service (PaaS) products 
