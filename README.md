@@ -19,6 +19,10 @@
 * [verify-a-project](https://github.com/akostrik/general-culture/blob/main/verify-a-project.md)
 * [web](https://github.com/akostrik/general-culture/blob/main/web.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [telegram](https://github.com/akostrik/general-culture/blob/main/telegram.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
 <details><summary>Tools, applications, technical details</summary>
 
