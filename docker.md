@@ -156,7 +156,12 @@
 `dockerd` запуск сервиса Docker  
 `commit` создание нового образа из изменений в контейнере  
 `docker ps -a` список всех доступных контейнеров с их состоянием на сервере
-`docker run` создание контейнеров, запускаемыми с использованием образов Docker
+`docker run` создание контейнеров, запускаемыми с использованием образов Docker  
+`VOLUME /my_volume` создать том при запуске контейнера - инструкция в Dockerfile
+`docker volume create —-name my_volume` создать том при запуске контейнера - команда  
+`docker volume ls` список томов  
+`docker volume inspect my_volume`  
+`docker volume rm my_volume` удалить том  
 
 ### service
 * allows containers to be scaled across Docker daemons
