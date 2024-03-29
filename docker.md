@@ -86,6 +86,11 @@
    + `build` defines configuration options such as the Dockerfile path
    + `command` override default Docker commands
    + the network line
+* commands for managing the whole lifecycle of your application:
+   + Start, stop, rebuild services
+   + View the status of running services
+   + Stream the log output of running services
+   + Run a one-off command on a service
   
 ### Docker Swarm (a tool)
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
