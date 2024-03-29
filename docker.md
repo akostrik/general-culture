@@ -185,7 +185,7 @@
 ### Commands
 `sudo systemctl status docker` убедимся, что у установлена и работает служба docker
 `docker images` просмотреть список доступных локально образов  
-`docker ps -a` список доступных контейнеров с их состоянием на сервере
+`docker ps`, `docker ps -a` список доступных контейнеров с их состоянием на сервере
 `make` in the root of the directory to build and start all container  
 `make` to build all images in docker-compose  
 `make up` to start all containers in docker-compose  
@@ -212,6 +212,8 @@
 `docker pull busybox`  скачали готовый образ busybox с сервера Docker Hub  
 `docker run -it --rm busybox sh` (-it подключили интерактивный tty в контейнер и запустили командную оболочку sh, —rm = автоматически удалить контейнер при выходе из интерактивного режима) внутри контейнера busybox доступны основные команды unix/linux   
 `docker ...`  разрешать и запрещать операции монтирования, доступ к сокетам, выполнение части операций с файловой системой, например изменение атрибутов файлов или владельца
+`docker pull image`Загрузить образ из DockerHub
+`docker run image` сформировать контейнер из образа
 
 ### Efficency
 * a single server or virtual machine runs several containers simultaneously
