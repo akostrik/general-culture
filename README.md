@@ -9,8 +9,12 @@
 * [regular-expressions](https://github.com/akostrik/general-culture/blob/main/regular-expressions.md)
 * [android](https://github.com/akostrik/general-culture/blob/main/android.md)
 * [shell](https://github.com/akostrik/general-culture/blob/main/shell.md)
-* [ssh](https://github.com/akostrik/general-culture/blob/main/ssh.md)
+* [representation-of-real-numbers](https://github.com/akostrik/general-culture/blob/main/representation-of-real-numbers.md)
 * [threads](https://github.com/akostrik/general-culture/blob/main/threads.md)
+* [ssh](https://github.com/akostrik/general-culture/blob/main/ssh.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
 <details><summary>Tools, applications, technical details</summary>
 
