@@ -9,7 +9,7 @@
 * usage: Усилить возможности отладки с использованием встроенных функций
 * usage: Изолировать приложения
 * usage: Улучшить плотность использования серверов в форме контейнеризации
-* usage: Делать быстрое развертывание на уровне операционной системы
+* usage: быстрое развертывание на уровне операционной системы
 * **Docker objets** entities used to assemble an application
 
 ### dockerd (software)
@@ -92,8 +92,9 @@
 ### Docker Volume (a tool)
 * Facilitates the independent persistence of data, allowing data to remain even after the container is deleted or re-created
 
-### Oher
-* **swarm mode** инструмент Docker, используемый для организации кластеризации и планирования контейнеров. Разработчики и системные администраторы с его помощью могут легко собрать несколько узлов в единую виртуальную систему Docker и управлять ею.
+### swarm mode (a tool)
+* для организации кластеризации и планирования контейнеров
+* собрать несколько узлов в единую виртуальную систему Docker и управлять ею
 
 ### Commands
 `make` in the root of the directory to build and start all container  
