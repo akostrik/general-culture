@@ -2,14 +2,20 @@
 * a set of platform as a service (PaaS) products 
 * packages an application and its dependencies in a virtual container that runs, in isolation, in a variety of locations on Linux / Windows / macOS
 * usage: reproduces a run-time environments
-* имитирует Linux дистрибутивы, окружения или установочные процессы вместо их запуска
-* как работает: OS-level virtualization
+* def: программное обеспечение, позволяющее упаковать приложение и его зависимости в единый модуль
+* процесс развертывания приложения, собранного в контейнер, хорошо интегрируется в CI/CD pipline
+* как работает
+  + OS-level virtualization
+  + имитирует Linux дистрибутивы, окружения или установочные процессы вместо их запуска
 * usage: Сделать процесс настройки проще и упростить настройку на уровне инфраструктуры
 * usage: Помочь разработчикам сосредоточиться исключительно на коде, сокращая время разработки и увеличивая продуктивность
 * usage: Усилить возможности отладки с использованием встроенных функций
 * usage: Изолировать приложения
 * usage: Улучшить плотность использования серверов в форме контейнеризации
 * usage: быстрое развертывание на уровне операционной системы
+* usage: переносить приложение на другие операционные системы с поддержкой cgroups
+* usage: эффективно позволяет нагрузить host машину, не создается виртуальное железо, как при использовании виртуальных машин
+* добавляется еще один уровень абстракции, что позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * **Docker objets** entities used to assemble an application
 
 ### dockerd (software)
@@ -140,8 +146,9 @@
 * собрать несколько узлов в единую виртуальную систему Docker и управлять ею
 
 ### Commands
+`sudo systemctl status docker` убедимся, что у установлена и работает служба docker
 `make` in the root of the directory to build and start all container  
-`make` build to build all images in docker-compose  
+`make` to build all images in docker-compose  
 `make up` to start all containers in docker-compose  
 `make down` to remove all containers in the docker-compose   
 `make start` to start all containers in the docker-compose   
@@ -150,20 +157,23 @@
 `make logs` to see the logs of the containers  
 `make rmi` to remove ALL IMAGES CREATED BY DOCKER-COMPOSE  
 `make re` to remove, build and run all containers in docker-compose  
-`docker-compose down` остановить контейнер  
 `free`  
 `build` сборка образа для Docker  
 `create` создание нового контейнера  
+`docker-compose down` остановить контейнер  
 `kill` принудительная остановка контейнера  
 `dockerd` запуск сервиса Docker  
 `commit` создание нового образа из изменений в контейнере  
-`docker ps -a` список всех доступных контейнеров с их состоянием на сервере
 `docker run` создание контейнеров, запускаемыми с использованием образов Docker  
 `docker volume create —-name my_volume` создать том при запуске контейнера - команда  
 `docker volume ls` список томов  
 `docker volume inspect my_volume`  
 `docker volume rm my_volume` удалить том  
 `docker system prune` очистка ресурсов Docker, после выполнения этой команды у вас должна появиться возможность удалить тома, статус которых до этого определялся неправильно.
+`docker pull busybox`  скачали готовый образ busybox с сервера Docker Hub  
+`docker run -it --rm busybox sh` (-it подключили интерактивный tty в контейнер и запустили командную оболочку sh, —rm = автоматически удалить контейнер при выходе из интерактивного режима) внутри контейнера busybox доступны основные команды unix/linux   
+`docker images` просмотреть список доступных локально образов
+`docker ps -a` список доступных контейнеров с их состоянием на сервере
 
 ### service
 * allows containers to be scaled across Docker daemons
