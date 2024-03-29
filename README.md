@@ -21,7 +21,7 @@
 * [social-projects](https://github.com/akostrik/general-culture/blob/main/social-projects.md)
 * [telegram](https://github.com/akostrik/general-culture/blob/main/telegram.md)
 * [virtualbox](https://github.com/akostrik/general-culture/blob/main/virtualbox.md)
-* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [vocabulary](https://github.com/akostrik/general-culture/blob/main/vocabulary.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
 <details><summary>Tools, applications, technical details</summary>
