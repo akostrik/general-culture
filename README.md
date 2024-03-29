@@ -163,13 +163,6 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 
 </details>
 
-<details><summary>Social projects</summary>
-
-https://shtab.navalny.com/  
-https://www.patreon.com/shtab_navalny  
-
-</details>
-
 <details><summary>Linens</summary>
 
 # Linens
