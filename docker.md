@@ -122,7 +122,16 @@
 * _The docker swarm CLI utility_ allows users to run Swarm containers, create discovery tokens, list nodes in the cluster, and more.[37] The docker node CLI utility allows users to run various commands to manage nodes in a swarm, for example, listing the nodes in a swarm, updating nodes, and removing nodes from the swarm.[38] Docker manages swarms using the Raft consensus algorithm. According to Raft, for an update to be performed, the majority of Swarm nodes need to agree on the update.
 
 ### Docker Volume (a tool)
-* Facilitates the independent persistence of data, allowing data to remain even after the container is deleted or re-created
+* def: файловая система, которая расположена на хост-машине за пределами контейнеров. Созданием и управлением томами занимается Docker
+* facilitates the independent persistence of data, allowing data to remain even after the container is deleted or re-created
+* представляют собой средства для постоянного хранения информации
+* самостоятельны и отделены от контейнеров
+* ими могут совместно пользоваться разные контейнеры
+* позволяют организовать эффективное чтение и запись данных
+* можно размещать на ресурсах удалённого облачного провайдера
+* можно шифровать
+* им можно давать имена
+* контейнер может организовать заблаговременное наполнение тома данными
 
 ### swarm mode (a tool)
 * для организации кластеризации и планирования контейнеров
