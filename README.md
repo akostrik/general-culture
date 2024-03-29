@@ -7,8 +7,8 @@
 * [xserver](https://github.com/akostrik/general-culture/blob/main/xserver.md)
 * [certificat](https://github.com/akostrik/general-culture/blob/main/certificat.md)
 * [regular-expressions](https://github.com/akostrik/general-culture/blob/main/regular-expressions.md)
-* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
-* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [android](https://github.com/akostrik/general-culture/blob/main/android.md)
+* [shell](https://github.com/akostrik/general-culture/blob/main/shell.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
@@ -25,25 +25,6 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * https://account.jetbrains.com/licenses  
 * на студ компах Докер и веб сервер устанавливать в виртуалку, а саму виртуалку в Sgoinfre (не goinfre, которая привязана к конкретному компу, а Sgoinfre, которая работает на всех станциях и хранит файлы несколько месяцев)
 * Practice the exam just like you would in the real exam https://github.com/JCluzet/42_EXAM
-</details>
-
-<details><summary>Shell</summary>
-
-## Bash
-* le shell par défaut dans Ubuntu
-* a bien des avantages (notamment pour les scripts)
-* assez limité dans certaines fonctionnalités comme l'autocomplétion
-## Zsh
-* un interpréteur de commandes (shell), comme bash
-* fournit une interface entre l'utilisateur et le système
-* orienté pour l'interactivité avec l'utilisateur
-* alias: `gcl`, etc par default
-##
-* https://ohmybash.nntoan.com/
-
-# Firewall, etc
-* **ufw** надстройка над файерволом iptables 
-* `shutdown now` выключить виртуальную машину 
 </details>
 
 <details><summary>Virtualbox</summary>
