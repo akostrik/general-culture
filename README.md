@@ -14,6 +14,10 @@
 * [ssh](https://github.com/akostrik/general-culture/blob/main/ssh.md)
 * [algo](https://github.com/akostrik/general-culture/blob/main/algo.md)
 * [starknet](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [AI](https://github.com/akostrik/general-culture/blob/main/AI.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
 <details><summary>Tools, applications, technical details</summary>
@@ -74,14 +78,6 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 
 </details>
 
-
-<details><summary>Blokchain</summary>
-
-* starkware  
-* starknet
-* onlyDust
-* https://www.youtube.com/channel/UCl6oyLa4CblZRurgwZwpgPQ 
-</details>
 
 <details><summary>Verify a project</summary>
 
