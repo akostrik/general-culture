@@ -230,9 +230,6 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 * _The docker swarm CLI utility_ allows users to run Swarm containers, create discovery tokens, list nodes in the cluster, and more.[37] The docker node CLI utility allows users to run various commands to manage nodes in a swarm, for example, listing the nodes in a swarm, updating nodes, and removing nodes from the swarm.[38] Docker manages swarms using the Raft consensus algorithm. According to Raft, for an update to be performed, the majority of Swarm nodes need to agree on the update.
 * для организации кластеризации и планирования контейнеров
 * собрать несколько узлов в единую виртуальную систему Docker и управлять ею
-
-### service
-* allows containers to be scaled across Docker daemons
 * **swarm** a set of cooperating daemons that communicate through the Docker API
 
 ### Docker API
