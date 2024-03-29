@@ -2,10 +2,10 @@
 ![Docker-API-infographic-container-devops-nordic-apis-768x470](https://github.com/akostrik/general-culture/assets/22834202/ff93bf2f-2482-4376-95d4-2b342252ee23)
 
 ## Docker 
-* a set of platform as a service (PaaS) products 
-* packages an application and its dependencies in a virtual container that runs, in isolation, in a variety of locations on Linux / Windows / macOS
-* usage: reproduces a run-time environments
+* def: a set of platform as a service (PaaS) products 
 * def: программное обеспечение, позволяющее упаковать приложение и его зависимости в единый модуль
+* packages an application and its dependencies in a virtual container that runs, in isolation, in a variety of locations 
+* usage: reproduces a run-time environments
 * процесс развертывания приложения, собранного в контейнер, хорошо интегрируется в CI/CD pipline
 * как работает
   + OS-level virtualization
