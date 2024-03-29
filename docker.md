@@ -12,8 +12,6 @@
 * usage: Делать быстрое развертывание на уровне операционной системы
 * **Docker objets** entities used to assemble an application
 
-![Capture d’écran de 2024-01-16 01-47-57](https://github.com/akostrik/inception/assets/22834202/29a86b2f-bb7f-4297-b2ac-3a3a7a57194a)
-
 ### dockerd (software)
 * daemon
 * manages containers, handles container objects
