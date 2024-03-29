@@ -5,6 +5,8 @@
 * [nginx](https://github.com/akostrik/general-culture/blob/main/nginx.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
 * [xserver](https://github.com/akostrik/general-culture/blob/main/xserver.md)
+* [certificat](https://github.com/akostrik/general-culture/blob/main/certificat.md)
+* [certificat](https://github.com/akostrik/general-culture/blob/main/certificat.md)
   
 <details><summary>Tools, applications, technical details</summary>
 
@@ -282,36 +284,6 @@ Represent numbers as fractions with integral numerator and denominator
 * Ex: computer algebra systems such as Mathematica, Maxima, Maple
 </details>
 
-<details><summary>Regular expressions</summary>
-
- ## basic regular expressions (BRE)
-* Традиционные регулярные выражения UNIX
-* определён POSIX'ом как устаревший, но он до сих пор широко распространён из соображений обратной совместимости
-* `.`
-* `|[ ]`
-* `[^ ]`
-* `^` (действует только в начале выражения)
-* `$` (действует только в конце выражения)
-* `*`
-* `\{ \}` = { }
-* `\( \)` = ( )
-* `\n`
-* #include <regex.h> + the default regular expression type
- 
-## Extended regular expressions (ERE)
-* Отменено `\{ \}`* `\( \)`
-* Обратная косая черта перед метасимволом отменяет его специальное значение
-* Отвергнута теоретически нерегулярная конструкция \n
-* `+`
-* `?`
-* `|`
-* #include <regex.h> + regcomp(..., REG_EXTENDED)
-
-## Perl Compatible Regular Expressions (PCRE) 
-...
-##  Unicode regular expressions
-...
-</details>
 
 <details><summary>Algo</summary>
 
