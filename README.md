@@ -10,7 +10,7 @@
 * [android](https://github.com/akostrik/general-culture/blob/main/android.md)
 * [shell](https://github.com/akostrik/general-culture/blob/main/shell.md)
 * [ssh](https://github.com/akostrik/general-culture/blob/main/ssh.md)
-* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [threads](https://github.com/akostrik/general-culture/blob/main/threads.md)
   
 <details><summary>Tools, applications, technical details</summary>
 
@@ -70,13 +70,6 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 
 </details>
 
-<details><summary>Threads</summary>
-    
-* Процесс или поток
-   + самодостаточный набор инструкций, который операционная система может запланировать для выполнения на ядре процессора
-   + с точки зрения ОС это одно и то же, разница лишь в разделении адресного пространства
-   + На 1 ядре одновременно может находиться только 1 процесс или поток. Процессы на ядре постоянно подменяют друг друга, из-за чего страдает производительность, когда процессов много. Это камень преткновения для web-приложений, которые открывают на каждое соединение свой поток
-</details>
 
 <details><summary>Representation of real numbers</summary>
  
