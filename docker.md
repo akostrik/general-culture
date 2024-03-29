@@ -109,11 +109,10 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 * изолированное рабочее пространство
 * может быть создан с использованием образа Docker
 * нет ОС, использует ядро Linux и внутрь него помещаются только необходимые для запуска софта программы и библиотеки
-* usage: runs applications: a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ... (one main process in one container)
+* usage: runs applications - a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ... (one main process in one container)
 * Как только контейнер запускается, создается набор пространств имен для этого контейнера. Они обеспечивают уровень изоляции для контейнеров, поскольку каждый контейнер работает в отдельном пространстве имен, с ограничением доступа к другим пространствам
 * Ex: a container to be your MySQL database + a container to be your Wordpress server, connect the containers together
-* a process created from an image
-* is started by running an image
+* a process created from an image, is started by running an image
 * is a encapsulated runtime environment
 * one container provides one service in the project
 * is managed using the Docker API or CLI
@@ -123,7 +122,7 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 * is not a virtual machine (so it is not recommended to use any patch based on ’tail -f’ and so forth when trying to run it)
 * def: изолированное пользовательское окружение, в котором выполняется приложение
 * def: запущенное из образа приложению
-* один контейнер – это одно приложение
+* один контейнер – одно приложение
 * LXC (Linux Containers) используют те же технологии ядра Linux, но это другое
 * технологии ядра Linux для изоляции контейнеров:
   + Пространства имен (Linux Namespaces), контролируют доступ к структурам данных ядра. Фактически это означает изоляцию процессов друг от друга и возможность иметь параллельно «одинаковые», но не пересекающиеся друг с другом иерархии процессов, пользователей и сетевых интерфейсов. Примеры:
@@ -135,6 +134,8 @@ CMD ["python", "main.py"]   # системный вызов, который бу
   + Контрольные группы (Cgroups), инструмент для контроля над распределением, приоритизацией и управлением системными ресурсами. Контрольные группы реализованы в ядре Linux. Управление контрольными группами реализовано через systemd. 
   + Средства управления привилегиями (Linux Capabilities), разбить привилегии пользователя root на небольшие группы привилегий и назначать их по отдельности. Контейнеры запускаются с ограниченным набором привилегий.
   + Дополнительные, мандатные системы обеспечения безопасности, такие как AppArmor или SELinux
+* Данные записываются в специальный слой «сверху» контейнера и при удалении контейнера данные удаляются
+* данные можно сохранить с помощью volumes
 
 ### Docker Compose (a tool)
 * инструмент для управления несколькими контейнерами, создавать контейнеры и задавать их конфигурацию
@@ -184,7 +185,6 @@ CMD ["python", "main.py"]   # системный вызов, который бу
   
 ### Docker Volume (a tool)
 * def: файловая система, которая расположена на хост-машине за пределами контейнеров. Созданием и управлением томами занимается Docker
-* после удаления контейнера данные стираются, но их можно сохранить с помощью volumes
 * facilitates the independent persistence of data, allowing data to remain even after the container is deleted or re-created
 * представляют собой средства для постоянного хранения информации
 * самостоятельны и отделены от контейнеров
