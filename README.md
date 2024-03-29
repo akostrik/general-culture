@@ -17,7 +17,7 @@
 * [AI](https://github.com/akostrik/general-culture/blob/main/AI.md)
 * [blockchains](https://github.com/akostrik/general-culture/blob/main/blockchains.md)
 * [verify-a-project](https://github.com/akostrik/general-culture/blob/main/verify-a-project.md)
-* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [web](https://github.com/akostrik/general-culture/blob/main/web.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
 <details><summary>Tools, applications, technical details</summary>
@@ -67,14 +67,6 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
    + Open `test.vdi` and copy its first 72 bytes
    + overwrite them in the invalid vdi file that you want to fix
    + reboot your vm using the modified vdi
-
-</details>
-
-<details><summary>Web</summary>
-
-# Web
-* Смена локального домена: сменить алиас нашего локального домена (127.0.0.1) на something.42.fr
-  + `/etc/hosts`
 
 </details>
 
