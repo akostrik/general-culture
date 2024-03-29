@@ -95,6 +95,7 @@
 
 ### docker file (object)
 * def: commands to build an image
+* def: инструкция для сборки образа
 * a text file
 * begins with a FROM
 * https://docs.docker.com/engine/reference/builder/ 
