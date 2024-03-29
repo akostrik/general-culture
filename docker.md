@@ -97,6 +97,24 @@
    + configuration files are easy to share, facilitating collaboration
    + caches the configuration used to create a container. When you restart a service that has not changed, Compose re-uses the existing containers. Re-using containers means that you can make changes to your environment very quickly
    + supports variables in the Compose file, you can use these variables to customize your composition for different environments, or different users
+* разница:
+   + docker для работы с контейнерами по отдельности
+   + docker compose позволяет одновременно управлять несколькими контейнерами, а следовательно, работать с более сложными проектами
+* пример:
+   + веб-сайт
+   + для авторизации пользователей необходимо подключение к базе данных
+   + первый сервис отвечает за функционирование сайта
+   + второй отвечает за базу данных
+   + разработчику понадобится средство, позволяющее управлять одновременно двумя контейнерами
+* пример:
+   + веб-проект, состоящий из двух сайтов
+   + первый позволяет создать интернет-магазин
+   + второй для поддержки клиентов
+   + оба сайта подключены к общей базе данных
+   + по мере развития проекта мощностей текущего сервера недостаточно
+   + перенести сайты на новый сервер
+   + без docker compose переносить и настраивать все сервисы заново
+   + при помощи docker compose можно выполнить перенос сайтов при помощи нескольких команд, потребуется лишь изменить некоторые настройки и перенести на другой сервер резервную копию баз данных
   
 ### Docker Swarm (a tool)
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
