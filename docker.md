@@ -37,6 +37,8 @@
   + store arguments in CMD
   + use COPY instead of ADD
   + combine RUN apt-get update with apt-get install in the same run statement
+* инструкции:
+  + `VOLUME /my_volume` создать том при запуске контейнера
 
 ### Image (docker object)
 * def: набор файлов, соединенный с настройками, с помощью которого можно создать экземпляры, которые запускаются в отдельных контейнерах в виде изолированных процессов
@@ -157,7 +159,6 @@
 `commit` создание нового образа из изменений в контейнере  
 `docker ps -a` список всех доступных контейнеров с их состоянием на сервере
 `docker run` создание контейнеров, запускаемыми с использованием образов Docker  
-`VOLUME /my_volume` создать том при запуске контейнера - инструкция в Dockerfile
 `docker volume create —-name my_volume` создать том при запуске контейнера - команда  
 `docker volume ls` список томов  
 `docker volume inspect my_volume`  
