@@ -6,7 +6,11 @@
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
 * [xserver](https://github.com/akostrik/general-culture/blob/main/xserver.md)
 * [certificat](https://github.com/akostrik/general-culture/blob/main/certificat.md)
-* [certificat](https://github.com/akostrik/general-culture/blob/main/certificat.md)
+* [regular-expressions](https://github.com/akostrik/general-culture/blob/main/regular-expressions.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
+* [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
 <details><summary>Tools, applications, technical details</summary>
 
@@ -466,15 +470,6 @@ Represent numbers as fractions with integral numerator and denominator
 https://shtab.navalny.com/  
 https://www.patreon.com/shtab_navalny  
 
-</details>
-
-details><summary>Android</summary>
-* Google play
-* магазины у разных производителей
-* https://www.apkmirror.com/ apk старых версий 
-* pdalife
-* 4pda топ для ломаных apk
-* rutracker.org
 </details>
 
 <details><summary>Linens</summary>
