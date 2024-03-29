@@ -111,6 +111,7 @@
 * def: инструкция для сборки образа
 * a text file
 * begins with a FROM
+* команды и опции создания образа, настройки будущего контейнера (порты, переменные окружения, ...)
 * https://docs.docker.com/engine/reference/builder/ 
 * Write a dockerfile
   + https://github.com/dnaprawa/dockerfile-best-practices  
@@ -125,6 +126,14 @@
   + combine RUN apt-get update with apt-get install in the same run statement
 * инструкции:
   + `VOLUME /my_volume` создать том при запуске контейнера
+* Каждая команда записанная в dockerfile создаёт свой слой. Финальный Docker-образ — это объединение всех слоев в один. Благодаря такому подходу можно переиспользовать уже готовые образа для создания новых образов.
+* Ex:
+```
+FROM python:latest          # возьми образ Python с тегом latest, а если его нет локально — скачай из хаба
+RUN mkdir -p /usr/app/      # создаст директорию app
+WORKDIR /usr/app/           # установит директорию /usr/app/ в качестве рабочей директории
+CMD ["python", "main.py"]   # системный вызов, который будет выполнен при старте контейнера
+```
 
 ### Docker Volume (a tool)
 * def: файловая система, которая расположена на хост-машине за пределами контейнеров. Созданием и управлением томами занимается Docker
