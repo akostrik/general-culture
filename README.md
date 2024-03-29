@@ -24,26 +24,8 @@
 * [vocabulary](https://github.com/akostrik/general-culture/blob/main/vocabulary.md)
 * [git](https://github.com/akostrik/general-culture/blob/main/git.md)
   
-<details><summary>Tools, applications, technical details</summary>
 
-* не запускается chrome или brave
-`
-rm -rf ~/.config/google-chrome/Singleton*
-rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
-`
-* не запускается vscode: `rm -rf ~/.cache // vscode` 
-* редакторы кода: VScode, subl
-* VS Code "editor.insertSpaces": true
-* https://account.jetbrains.com/licenses  
-* на студ компах Докер и веб сервер устанавливать в виртуалку, а саму виртуалку в Sgoinfre (не goinfre, которая привязана к конкретному компу, а Sgoinfre, которая работает на всех станциях и хранит файлы несколько месяцев)
-* Practice the exam just like you would in the real exam https://github.com/JCluzet/42_EXAM
-* `./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "`` start a programm with random arguments
-
-</details>
-
-<details><summary>Linens</summary>
-
-# Linens
+  
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
 * [42 peer finder](https://find-peers.codam.nl/Paris)
 * 42 https://42evaluators.com/rncp/
@@ -58,8 +40,6 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * Pour les SFP: vous déclarez être" en formation" lors de l’actualisation PE, même quand vous êtes en stage
 * SFP & GEN Déclaration d'absence https://docs.google.com/forms/d/e/1FAIpQLSc6Rlu-rPcHkW04KNz43AOLBW-B3d1Hkhc-lbfnA5cTq3YwQg/viewform
 * https://stackexchange.com/sites
-</details>
-
 * https://habr.com/ru/companies/reksoft/articles/792496/ 
 * https://stackoverflowteams.com/c/42network/questions
 * https://www.random.org/
