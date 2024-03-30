@@ -1,6 +1,3 @@
-![docker-php-16-638](https://github.com/akostrik/general-culture/assets/22834202/7305c712-59d9-44e5-b67d-6ea0283d8b06)
-![Screenshot from 2024-03-30 00-55-26](https://github.com/akostrik/general-culture/assets/22834202/3ea7709f-8248-4980-ad54-2b242f9e9b2a)
-
 ## Docker 
 * def: a set of platform as a service (PaaS) products 
 * def: программное обеспечение, позволяющее упаковать приложение и его зависимости в единый модуль
@@ -112,7 +109,6 @@ RUN mkdir -p /usr/app/      # создаст директорию app
 WORKDIR /usr/app/           # установит директорию /usr/app/ в качестве рабочей директории, все последующие команды (COPY, RUN, CMD, ...)будут выполнены из рабочего каталога
 CMD ["python", "main.py"]   # системный вызов, который будет выполнен при старте контейнера
 ```
-![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
 
 ### Container (object)
 * def: развёрнутое и запущенное приложение
@@ -300,3 +296,7 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 * работает медленнее, чем обычный запуск приложения на физическом сервере
 * сложность использования
 * так как Docker работает непосредственно в операционной системе, возможно внедрение зловредного кода в контейнеры и далее проникновение в ОС
+
+![docker-php-16-638](https://github.com/akostrik/general-culture/assets/22834202/7305c712-59d9-44e5-b67d-6ea0283d8b06)
+![Screenshot from 2024-03-30 00-55-26](https://github.com/akostrik/general-culture/assets/22834202/3ea7709f-8248-4980-ad54-2b242f9e9b2a)
+![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
