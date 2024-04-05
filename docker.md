@@ -245,8 +245,32 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 ### Docker host 
 * компьютер или виртуальный сервер, на котором установлен Docker
 
-### Commands
+### Commands docker
 `systemctl status docker` убедимся, что у установлена и работает служба docker  
+`dockerd` запуск сервиса Docker  
+`docker images` просмотреть список доступных локально образов  
+`docker ps`, `docker ps -a` список доступных контейнеров с их состоянием на сервере   
+`docker run` создание контейнеров, запускаемыми с использованием образов Docker
+`docker run image` сформировать контейнер из образа  
+`docker run -it --rm busybox sh` (-it подключили интерактивный tty в контейнер и запустили sh, —rm = автоматически удалить контейнер при выходе из интерактивного режима) внутри контейнера busybox доступны основные команды unix/linux   
+`docker stop nginx_test` остановить контейнер  
+`docker rm nginx_test` удалить контейнер  
+`docker restart`  
+`docker volume create —-name my_volume` создать том при запуске контейнера - команда  
+`docker volume ls` список томов  
+`docker volume inspect my_volume`  
+`docker volume rm my_volume` удалить том  
+`docker system prune` очистка ресурсов docker, после этой команды появляется возможность удалить тома, статус которых до этого определялся неправильно
+`docker ...`  разрешать и запрещать операции монтирования, доступ к сокетам, выполнение части операций с файловой системой, изменение атрибутов файлов или владельца  
+`docker build` считывает конфигурацию создаваемого образа из dockerfile и создаёт образ  
+`docker create` создание нового контейнера  
+`docker commit` создание нового образа из изменений в контейнере  
+`docker pull busybox`  скачали готовый образ busybox с сервера Docker Hub  
+`docker pull image` загрузить образ из DockerHub  
+`docker kill` принудительная остановка контейнера  
+`free`  
+
+### Commands docker-compose
 `make` in the root of the directory to build and start all container  
 `make` to build all images in docker-compose  
 `make up` to start all containers in docker-compose  
@@ -257,30 +281,7 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 `make logs` to see the logs of the containers  
 `make rmi` to remove all images created by docker-compose  
 `make re` to remove, build and run all containers in docker-compose  
-`free`  
-`build` сборка образа для Docker  
-`create` создание нового контейнера  
-`kill` принудительная остановка контейнера  
-`dockerd` запуск сервиса Docker  
-`commit` создание нового образа из изменений в контейнере  
-`docker images` просмотреть список доступных локально образов  
-`docker ps`, `docker ps -a` список доступных контейнеров с их состоянием на сервере   
-`docker run` создание контейнеров, запускаемыми с использованием образов Docker (`run` имеет множество ключей)  
-`docker run image` сформировать контейнер из образа  
-`docker run -it --rm busybox sh` (-it подключили интерактивный tty в контейнер и запустили командную оболочку sh, —rm = автоматически удалить контейнер при выходе из интерактивного режима) внутри контейнера busybox доступны основные команды unix/linux   
-`docker stop nginx_test` остановить контейнер  
-`docker rm nginx_test` удалить контейнер  
-`docker restart`  
 `docker-compose down` остановить контейнер  
-`docker volume create —-name my_volume` создать том при запуске контейнера - команда  
-`docker volume ls` список томов  
-`docker volume inspect my_volume`  
-`docker volume rm my_volume` удалить том  
-`docker system prune` очистка ресурсов Docker, после этой команды появляется возможность удалить тома, статус которых до этого определялся неправильно
-`docker pull busybox`  скачали готовый образ busybox с сервера Docker Hub  
-`docker pull image` Загрузить образ из DockerHub  
-`docker ...`  разрешать и запрещать операции монтирования, доступ к сокетам, выполнение части операций с файловой системой, например изменение атрибутов файлов или владельца  
-`docker build` считывает конфигурацию создаваемого образа из dockerfile и создаёт образ  
 
 ### Efficency
 * a single server or virtual machine runs several containers simultaneously
