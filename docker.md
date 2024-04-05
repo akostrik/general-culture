@@ -1,3 +1,4 @@
+![Screenshot from 2024-04-06 00-40-31+](https://github.com/akostrik/general-culture/assets/22834202/1303f873-4442-4415-902c-4e04b8099ebf)
 ## Docker 
 * def: a set of platform as a service (PaaS) products 
 * def: программное обеспечение, позволяющее упаковать приложение и его зависимости в единый модуль
