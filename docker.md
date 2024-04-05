@@ -21,6 +21,11 @@
 * **Docker objets** entities used to assemble an application
 * Отличие от VM: Docker-контейнер работает непосредственно в операционной системе, а виртуальная машина «поверх» операционной системы, что влияет на производительность
 * использует проверенные технологии ядра, привнося минимум своих решений
+* Docker API
+  + the Engine API is an HTTP API served by Docker Engine
+  + the Docker client uses it to communicate with the Engine
+  + everything the Docker client can do can be done with the API
+  + most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
 
 ### server daemon dockerd
 * центральный системный компонент
@@ -224,12 +229,6 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 * для организации кластеризации и планирования контейнеров
 * собрать несколько узлов в единую виртуальную систему Docker и управлять ею
 * **swarm** a set of cooperating daemons that communicate through the Docker API
-
-### Docker API
-* the Engine API is an HTTP API served by Docker Engine
-* the Docker client uses it to communicate with the Engine
-* everything the Docker client can do can be done with the API
-* most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
 
 ### Docker Desktop
 * GUI-клиент
