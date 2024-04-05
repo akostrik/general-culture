@@ -51,6 +51,41 @@
 * создаюёт/управляет/запускает контейнеризованные приложения
 * управляет Сервером через CLI 
 
+### docker file (object)
+* инструкция для сборки образа, набор софта, который мы хотим развернуть внутри контейнера, настройки будущего контейнера (порты, переменные окружения, ...)
+* a text file
+* begins with a FROM
+* https://docs.docker.com/engine/reference/builder/ 
+* Каждая команда создаёт свой слой. Финальный Docker-образ — это объединение всех слоев в один. Благодаря такому подходу можно переиспользовать уже готовые образа для создания новых образов.
+* каждая команда создаёт новый слой образа с результатом вызванной команды, подобно тому, как система снапшотов сохраняет изменения в виртуальной машине
+* Финальной инструкцией является CMD или ENTRYPOINT
+  + The default command to run when the container is started
+  + CMD может быть только одна
+  + CMD может быть переопределена при старте контейнера командой docker run
+  + CMD наследует условия установленные инструкцией WORKDIR
+  + ``CMD`` и ``ENTRYPOINT`` запускают что-либо, но НЕ ЗАПИСЫВАЮТ изменений в образ. Потому не стоит выполнять ими скрипты, результат которых нужно "положить" в конечный образ или раздел (для этого есть ``RUN``). The command needs to be performed every time the container starts, rather than being stored in the immutable image.
+* пробросить порт наружу контейнера: `EXPOSE 80`, прокинуть порт и переназначить его снаружи `docker run -p 80:80 --name test_cont -d`
+* RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают, невозможно запустить приложение напрямую
+* Write a dockerfile
+  + https://github.com/dnaprawa/dockerfile-best-practices  
+  + alpine is not always the best choice
+  + limit image layers amount
+  + run as a non-root user
+  + do not use a UID below 10 000
+  + use a static UID and GID
+  + the latest is an evil, choose specific image tag
+  + store arguments in CMD
+  + use COPY instead of ADD
+  + combine RUN apt-get update with apt-get install in the same run statement
+  + запись цепочки команд через &&: RUN comand_1 && comand_2 && comand_3
+* Ex:
+```
+FROM python:latest          # возьми для основы образ Python с тегом latest, а если его нет локально — скачай из хаба
+RUN mkdir -p /usr/app/      # создаст директорию app
+WORKDIR /usr/app/           # установит директорию /usr/app/ в качестве рабочей директории, все последующие команды (COPY, RUN, CMD, ...)будут выполнены из рабочего каталога
+CMD ["python", "main.py"]   # системный вызов, который будет выполнен при старте контейнера
+```
+
 ### image (object)
 * исполняемый пакет, из которого разворачивается контейнер
 * всё для запуска приложения: код, среду выполнения, библиотеки, переменные окружения, конфигурационные файлы
@@ -58,7 +93,6 @@
 * a collection of files, libraries, configuration files that build up an environment
 * a pre-built environment for a certain technology or service
 * в основе любого образа лежит родительский образ, который, как правило, содержит ОС
-* каждая команда в Dockerfile создаёт новый слой образа с результатом вызванной команды, подобно тому, как система снапшотов сохраняет изменения в виртуальной машине
 * образ состоит из таких слоёв-изменений
 * можно использовать много раз
 * build image = to define the environment to be used in a container
@@ -71,44 +105,6 @@
   + Серверное приложение для размещения/распределения образов, полезен для локального хранения образов и полного контроля над ними
   + an API providing containers (?)
   + Ex: Docker Hub, quay.io, AWS ECR
-
-### docker file (object)
-* def: commands to build an image
-* def: инструкция для сборки образа
-* a text file
-* begins with a FROM
-* команды и опции создания образа, настройки будущего контейнера (порты, переменные окружения, ...)
-* https://docs.docker.com/engine/reference/builder/ 
-* Write a dockerfile
-  + https://github.com/dnaprawa/dockerfile-best-practices  
-  + alpine is not always the best choice
-  + limit image layers amount
-  + run as a non-root user
-  + do not use a UID below 10 000
-  + use a static UID and GID
-  + the latest is an evil, choose specific image tag
-  + store arguments in CMD
-  + use COPY instead of ADD
-  + combine RUN apt-get update with apt-get install in the same run statement
-* Каждая команда записанная в dockerfile создаёт свой слой. Финальный Docker-образ — это объединение всех слоев в один. Благодаря такому подходу можно переиспользовать уже готовые образа для создания новых образов.
-* каждая инструкция создает свой слой, поэтому хорошей практикой является запись цепочки команд через &&: RUN comand_1 && comand_2 && comand_3
-* Финальной инструкцией является CMD или ENTRYPOINT
-  + The default command to run when the container is started
-  + CMD может быть только одна
-  + CMD может быть переопределена при старте контейнера командой docker run
-  + CMD наследует условия установленные инструкцией WORKDIR
-  + ``CMD`` и ``ENTRYPOINT`` запускают что-либо, но НЕ ЗАПИСЫВАЮТ изменений в образ. Потому не стоит выполнять ими скрипты, результат которых нужно "положить" в конечный образ или раздел (для этого есть ``RUN``). The command needs to be performed every time the container starts, rather than being stored in the immutable image.
-* не все инструкции Dockerfile непосредственно исполняются при сборке образа и запуске контейнера, например, `EXPOSE 80` лишь говорит демону Docker, что мы намереваемся пробросить порт наружу контейнера
-* после запуска контейнера «постучаться» на 80 порт к нему мы не сможем. Так как для подтверждения инструкции EXPOSE используется ключ -P команды `docker run`. Если требуется прокинуть порт и переназначить его снаружи — используется команда `docker run -p 80:80 --name test_cont -d`
-* прописывается набор софта, который мы хотим развернуть внутри контейнера
-* ``RUN`` создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают, невозможно запустить приложение напрямую, is used to add a layer to the image filesystem 
-* Ex:
-```
-FROM python:latest          # возьми для основы образ Python с тегом latest, а если его нет локально — скачай из хаба
-RUN mkdir -p /usr/app/      # создаст директорию app
-WORKDIR /usr/app/           # установит директорию /usr/app/ в качестве рабочей директории, все последующие команды (COPY, RUN, CMD, ...)будут выполнены из рабочего каталога
-CMD ["python", "main.py"]   # системный вызов, который будет выполнен при старте контейнера
-```
 
 ### Container (object)
 * def: развёрнутое и запущенное приложение
@@ -162,6 +158,7 @@ CMD ["python", "main.py"]   # системный вызов, который бу
   + указаны в качестве аргументов и ключей `docker run`
 * контейнерам можно назначать лимиты ресурсов и строить между ними сети, для управления ресурсами используются cgroups, для изоляции namespaces
 * runtime-сущность на основе образа
+* использует ядро операционной системы на хосте
  
 ### Docker Compose (a tool)
 * надстройка для управления множеством контейнеров
