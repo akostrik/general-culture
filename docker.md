@@ -67,16 +67,13 @@
 * RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают, невозможно запустить приложение напрямую
 * Write a dockerfile
   + https://github.com/dnaprawa/dockerfile-best-practices  
-  + alpine is not always the best choice
-  + limit image layers amount
+  + limit image layers amount, цепочки команд через && `RUN comand_1 && comand_2`, `RUN apt-get update && apt-get install` 
   + run as a non-root user
   + do not use a UID below 10 000
   + use a static UID and GID
   + the latest is an evil, choose specific image tag
   + store arguments in CMD
   + use COPY instead of ADD
-  + combine RUN apt-get update with apt-get install in the same run statement
-  + запись цепочки команд через &&: RUN comand_1 && comand_2 && comand_3
 * Ex:
 ```
 FROM python:latest          # возьми для основы образ Python с тегом latest, а если его нет локально — скачай из хаба
