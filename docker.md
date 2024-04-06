@@ -44,14 +44,35 @@
   + Cgroups (контрольные группы) — механизм управления ресурсами, используемыми контейнером (процессор, оперативная память и т.д.). С помощью cgroups Docker также реализует возможность остановки контейнеров — docker pause (freezing и unfreezing)
   + Namespaces (пространства имен) — механизм изоляции контейнеров, гарантирующий, что файловая система, имя хоста, пользователи, сетевая среда и процессы любого контейнера полностью отделены от остальной части системы
 * работает как фоновый процесс (демон)
+* commands
+  + `dockerd` запуск сервиса
 
 ### client docker
 * консольный (a command-line interface, CLI) или графический клиент
 * общается с сервером через REST API 
 * пользователи отправляют команды, создают контейнеры, управляют ими, создаёт/управляет/запускает контейнеризованные приложения
+* commands
+  + `systemctl status docker` убедимся, что установлена и работает служба docker  
+  + `docker images` просмотреть список доступных локально образов  
+  + `docker ps`, `docker ps -a` список доступных контейнеров с их состоянием на сервере   
+  + `docker build` считывает конфигурацию создаваемого образа из dockerfile и создаёт образ  
+  + `docker run` creates a container that uses the image as a base filesystem, создание контейнеров, запускаемыми с использованием образов,   
+  + `docker stop nginx_test` остановить контейнер  
+  + `docker kill` принудительная остановка контейнера  
+  + `docker rm nginx_test` удалить контейнер  
+  + `docker restart`  
+  + `docker volume create —-name my_volume` создать том при запуске контейнера - команда  
+  + `docker volume ls` список томов  
+  + `docker volume inspect my_volume`  
+  + `docker volume rm my_volume` удалить том  
+  + `docker system prune` очистка ресурсов docker, после этой команды появляется возможность удалить тома, статус которых до этого определялся неправильно
+  + `docker ...`  разрешать и запрещать операции монтирования, доступ к сокетам, выполнение части операций с файловой системой, изменение атрибутов файлов или владельца  
+  + `docker create` создание нового контейнера  
+  + `docker commit` создание нового образа из изменений в контейнере  
+  + `docker pull image` загрузить образ из DockerHub  
 
 ### docker file (object)
-* инструкция для сборки образа, набор софта, который мы хотим развернуть внутри контейнера, настройки будущего контейнера (порты, переменные окружения, ...)
+* инструкция для сборки образа, набор софта, который мы хотим развернуть, настройки контейнера (порты, переменные окружения, ...)
 * a text file
 * begins with a FROM
 * https://docs.docker.com/engine/reference/builder/ 
@@ -97,18 +118,16 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 * is not a runtime
 
 ### Container (object)
+* runtime-сущность
 * an encapsulated runtime environment
 * развёрнутое и запущенное приложение
 * изолированное пользовательское окружение, в котором выполняется приложение
 * запущенный и изолированный образ
-* исполняемый пакет программного обеспечения, содержащий все необходимое для запуска приложени (системные программы, библиотеки, код, среды исполнения, настройки)
+* исполняемый пакет программного обеспечения, содержащий все для запуска (системные программы, библиотеки, код, среды исполнения, настройки)
 * набор окружения, необходимого для запуска определённого софта
 * запущенный образ со специальным слоем для записи и временного хранения информации
-* аналогия: образ = инсталлятор программы, контейнер = запущенная программа
 * аналогия: образ = CD-диск, с которого будет установлен софт, контейнер = запущенная копия образа
-* изолированное рабочее пространство
-* может быть создан с использованием образа
-* изолирован от хостовой ОС и других контейнеров
+* создан с использованием образа
 * нет ОС, использует ядро Linux и внутрь него помещаются только необходимые для запуска софта программы и библиотеки
 * usage: runs applications - a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ... (one main process in one container)
 * когда контейнер запускается, создается набор пространств имен, каждый контейнер работает в отдельном пространстве имен, с ограничением доступа к другим пространствам
@@ -117,9 +136,8 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 * one container provides one service in the project
 * is managed using the Docker API or CLI
 * bundle software, libraries, configuration files
-* are isolated from one another
+* изолирован от хостовой ОС и других контейнеров
 * communicate with each other through channels
-* is not a virtual machine (so it is not recommended to use any patch based on ’tail -f’ and so forth when trying to run it)
 * один контейнер – одно приложение
 * LXC (Linux Containers) используют те же технологии ядра Linux, но это другое
 * технологии ядра Linux для изоляции контейнеров:
@@ -145,8 +163,8 @@ CMD ["python", "main.py"]   # системный вызов, который бу
   + прописаны в Dockerfile
   + указаны в качестве аргументов и ключей `docker run`
 * контейнерам можно назначать лимиты ресурсов и строить между ними сети, для управления ресурсами используются cgroups, для изоляции namespaces
-* runtime-сущность на основе образа
 * использует ядро операционной системы на хосте
+* performs the command in ENTRYPOINT or CMD, this will add to the container startup time
  
 ### Docker Compose (a tool)
 * надстройка для управления множеством контейнеров
@@ -221,32 +239,6 @@ CMD ["python", "main.py"]   # системный вызов, который бу
 
 ### Docker host 
 * компьютер или виртуальный сервер, на котором установлен Docker
-
-### Commands docker
-`systemctl status docker` убедимся, что у установлена и работает служба docker  
-`dockerd` запуск сервиса Docker  
-`docker images` просмотреть список доступных локально образов  
-`docker ps`, `docker ps -a` список доступных контейнеров с их состоянием на сервере   
-`docker build` считывает конфигурацию создаваемого образа из dockerfile и создаёт образ  
-`docker run` creates a container that uses the image as a base filesystem, создание контейнеров, запускаемыми с использованием образов,   
-
-, then you need to perform that command in your ENTRYPOINT or CMD. This will add to the container startup time, so if the result of that command can be stored as a filesystem change and cached for all future containers being run, you want to make that setting in a RUN line.
-
-`docker stop nginx_test` остановить контейнер  
-`docker rm nginx_test` удалить контейнер  
-`docker restart`  
-`docker volume create —-name my_volume` создать том при запуске контейнера - команда  
-`docker volume ls` список томов  
-`docker volume inspect my_volume`  
-`docker volume rm my_volume` удалить том  
-`docker system prune` очистка ресурсов docker, после этой команды появляется возможность удалить тома, статус которых до этого определялся неправильно
-`docker ...`  разрешать и запрещать операции монтирования, доступ к сокетам, выполнение части операций с файловой системой, изменение атрибутов файлов или владельца  
-`docker create` создание нового контейнера  
-`docker commit` создание нового образа из изменений в контейнере  
-`docker pull busybox`  скачали готовый образ busybox с сервера Docker Hub  
-`docker pull image` загрузить образ из DockerHub  
-`docker kill` принудительная остановка контейнера  
-`free`  
 
 ### Commands docker-compose
 `make` in the root of the directory to build and start all container  
