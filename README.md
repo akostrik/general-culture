@@ -22,8 +22,9 @@ Cairo, initiation https://github.com/shramee/starklings-cairo1, https://book.cai
 [virtualbox](https://github.com/akostrik/general-culture/blob/main/virtualbox.md)  
 [social-projects](https://github.com/akostrik/general-culture/blob/main/social-projects.md)  
 [vocabulary](https://github.com/akostrik/general-culture/blob/main/vocabulary.md)  
-  
-  
+
+
+* `-fsanitize=address` super compile flag
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
 * [42 peer finder](https://find-peers.codam.nl/Paris)
 * 42 https://42evaluators.com/rncp/
