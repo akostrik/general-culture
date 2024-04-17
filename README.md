@@ -1,7 +1,10 @@
 ¯\_(ツ)_/¯
 
 Cairo, initiation https://github.com/shramee/starklings-cairo1, https://book.cairo-lang.org/    
-Bijour, si jamais je suis encore a la recherche de personnes avec qui faire le projet  
+Bijour, si jamais je suis encore a la recherche de personnes avec qui faire le projet    
+
+Hello tout le monde ! Je cherches des mates pour faire ce magnifique projet, A tres bientot j'espere 🙂  
+
 
 * `-fsanitize=address` super compile flag
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
