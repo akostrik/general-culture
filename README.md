@@ -1,3 +1,5 @@
+¯\_(ツ)_/¯
+
 Cairo, initiation https://github.com/shramee/starklings-cairo1, https://book.cairo-lang.org/    
 Bijour, si jamais je suis encore a la recherche de personnes avec qui faire le projet  
 
