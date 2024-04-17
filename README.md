@@ -3,7 +3,9 @@
 Cairo, initiation https://github.com/shramee/starklings-cairo1, https://book.cairo-lang.org/    
 Bijour, si jamais je suis encore a la recherche de personnes avec qui faire le projet    
 
-Hello tout le monde ! Je cherches des mates pour faire ce magnifique projet, A tres bientot j'espere 🙂  
+Hello tout le monde ! Je cherches des mates pour faire ce magnifique projet, A tres bientot j'espere 
+
+salut a tous, je commence ft_irc et je recherche un ou deux partenaires, n'hesitez pas a me mp si vous etes interesses 
 
 
 * `-fsanitize=address` super compile flag
