@@ -11,6 +11,7 @@ salut a tous, je commence ft_irc et je recherche un ou deux partenaires, n'hesit
 * `-fsanitize=address` super compile flag
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
 * [42 peer finder](https://find-peers.codam.nl/Paris)
+* checklists https://github.com/mharriso/school21-checklists/blob/master/ng_5_ft_irc.pdf
 * 42 https://42evaluators.com/rncp/
 * https://meta.intra.42.fr/issues/new?tag_names[]=Pedagogy
 * [42 evals CVb3d2023](https://rphlr.github.io/42-Evals/) 
