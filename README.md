@@ -29,3 +29,4 @@ salut a tous, je commence ft_irc et je recherche un ou deux partenaires, n'hesit
 * https://www.random.org/
 * https://2qbit.com/true-random-number-generator/?utm_source=yandex&utm_medium=cpc&utm_campaign=95384643&utm_content=14959768887&utm_term=генератор%20случайных%20чисел&yclid=9011125947744387071
 * создать анкету https://app.dragnsurvey.com/en/login
+* grammaire http://abcdrfc.free.fr/rfc-vf/rfc5234.html 
