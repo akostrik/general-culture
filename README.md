@@ -9,6 +9,7 @@ salut a tous, je commence ft_irc et je recherche un ou deux partenaires, n'hesit
 
 Hello, es-ce que des gens serait chaud pour faire IRC je suis entrain de chercher des mates ?  
 
+Coucou, j'aimerai faire ft_irc, du coup si jamais 1 ou 2 personnes sont intéressées pour le faire avec moi vous pouvez me mp et on en discute 😉 . Bonne journée à tous  
 
 * `-fsanitize=address` super compile flag
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
