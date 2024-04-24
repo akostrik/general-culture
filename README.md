@@ -11,6 +11,8 @@ Hello, es-ce que des gens serait chaud pour faire IRC je suis entrain de cherche
 
 Coucou, j'aimerai faire ft_irc, du coup si jamais 1 ou 2 personnes sont intéressées pour le faire avec moi vous pouvez me mp et on en discute 😉 . Bonne journée à tous  
 
+Si vous êtes à la recherche d'une personne sympathique et motivée ne cherchez plus vous m'avez trouvé  
+
 * `-fsanitize=address` super compile flag
 * [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
 * [42 peer finder](https://find-peers.codam.nl/Paris)
