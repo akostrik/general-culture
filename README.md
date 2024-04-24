@@ -5,7 +5,9 @@ Bijour, si jamais je suis encore a la recherche de personnes avec qui faire le p
 
 Hello tout le monde ! Je cherches des mates pour faire ce magnifique projet, A tres bientot j'espere 
 
-salut a tous, je commence ft_irc et je recherche un ou deux partenaires, n'hesitez pas a me mp si vous etes interesses 
+salut a tous, je commence ft_irc et je recherche un ou deux partenaires, n'hesitez pas a me mp si vous etes interesses  
+
+Hello, es-ce que des gens serait chaud pour faire IRC je suis entrain de chercher des mates ?  
 
 
 * `-fsanitize=address` super compile flag
