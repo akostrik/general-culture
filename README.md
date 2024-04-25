@@ -36,3 +36,4 @@ Si vous êtes à la recherche d'une personne sympathique et motivée ne cherchez
 * создать анкету https://app.dragnsurvey.com/en/login
 * grammaire http://abcdrfc.free.fr/rfc-vf/rfc5234.html 
 * Wireshark это достаточно известный инструмент для захвата и анализа сетевого трафика, фактически стандарт как для образования, так и для траблшутинга
+* https://github.com/shuygena/intra42_ru_guides?tab=readme-ov-file#irc
