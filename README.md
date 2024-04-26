@@ -38,3 +38,4 @@ Si vous êtes à la recherche d'une personne sympathique et motivée ne cherchez
 * Wireshark это достаточно известный инструмент для захвата и анализа сетевого трафика, фактически стандарт как для образования, так и для траблшутинга
 * https://github.com/shuygena/intra42_ru_guides?tab=readme-ov-file#irc
 * https://github.com/mharriso/school21-checklists/blob/master/ng_5_ft_irc.pdf 
+* https://42.fr/le-campus-de-paris/forty2/ !!!
