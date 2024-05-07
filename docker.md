@@ -6,29 +6,34 @@
 * def: a set of platform as a service (PaaS) products 
 * def: программное обеспечение, позволяющее упаковать приложение и его зависимости в единый модуль
 * создаёт образы и контейнеры, следит за их состоянием, управляет сетевым окружением контейнеров, работает с локальным и удалённым репозиторием
-* usage: reproduces a run-time environments
-* usage: процесс развертывания приложения, собранного в контейнер, хорошо интегрируется в CI/CD pipline
-* как работает
-  + OS-level virtualization
-  + имитирует Linux дистрибутивы, окружения или установочные процессы вместо их запуска
-  + packages an application and its dependencies in a virtual container that runs, in isolation, in a variety of locations
-  + Отличие от VM: Docker-контейнер работает непосредственно в операционной системе, а виртуальная машина «поверх» операционной системы, что влияет на производительность
-* usage: упростить настройку на уровне инфраструктуры
-* usage: разработчики сосредотачиваются исключительно на коде
-* usage: отладка с использованием встроенных функций
-* usage: Изолировать приложения
-* usage: быстрое развертывание на уровне операционной системы
-* usage: переносить приложение на другие операционные системы с поддержкой cgroups
-* usage: эффективно нагрузить host машину, не создается виртуальное железо, как при использовании виртуальных машин
-* usage: Улучшить плотность использования серверов в форме контейнеризации
-* ещё один уровень абстракции, что позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * **Docker objets** entities used to assemble an application
+
+## Usage docker
+* reproduces a run-time environments
+* быстрое развертывание на уровне операционной системы
+* переносить приложение на другие операционные системы с поддержкой cgroups
+* процесс развертывания приложения, собранного в контейнер, хорошо интегрируется в CI/CD pipline
+* упростить настройку на уровне инфраструктуры
+* разработчики сосредотачиваются на коде
+* отладка с использованием встроенных функций
+* изолировать приложения
+* эффективно нагрузить host машину (не создается виртуальное железо, как при использовании VM)
+* улучшить плотность использования серверов в форме контейнеризации
+
+## Как работает docker
+* OS-level virtualization
+* имитирует Linux дистрибутивы, окружения или установочные процессы вместо их запуска
+* packages an application and its dependencies in a virtual container that runs, in isolation, in a variety of locations
+* Отличие от VM: Docker-контейнер работает непосредственно в операционной системе, а виртуальная машина «поверх» операционной системы, что влияет на производительность
+* собственная библиотека, абстрагирующая виртуализационные возможности ядра Linux — libcontainer
+* ещё один уровень абстракции, что позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * использует проверенные технологии ядра, привнося минимум своих решений
-* Docker API
-  + the Engine API is an HTTP API served by Docker Engine
-  + the Docker client uses it to communicate with the Engine
-  + everything the Docker client can do can be done with the API
-  + most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
+
+## Docker API
+* the Engine API is an HTTP API served by Docker Engine
+* the Docker client uses it to communicate with the Engine
+* everything the Docker client can do can be done with the API
+* most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
 
 ### server daemon dockerd
 * центральный системный компонент
