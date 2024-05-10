@@ -114,6 +114,7 @@
   + the latest is an evil, choose specific image tag
   + store arguments in CMD
   + use COPY instead of ADD
+  + Делаем это одним RUN мы потому, что каждая директива RUN создаёт новый слой в docker-образе, и лучше не плодить лишние RUN-ы без надобности.
 Ex:  
 ```
 FROM python:latest          # возьми для основы образ Python с тегом latest, если его нет локально, скачай из хаба
