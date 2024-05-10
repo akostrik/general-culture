@@ -62,7 +62,6 @@
 * работает как фоновый процесс (демон)
 * commands
   + `dockerd` запуск сервиса
-  + docker pause (freezing и unfreezing)
 
 ### client docker
 * консольный (a command-line interface, CLI) или графический клиент
@@ -77,6 +76,7 @@
   + `docker stop nginx_test` остановить контейнер  
   + `docker kill` принудительная остановка контейнера  
   + `docker rm nginx_test` удалить контейнер  
+  + `docker pause` freezing, unfreezing
   + `docker restart`  
   + `docker volume create —-name my_volume` создать том при запуске контейнера - команда  
   + `docker volume ls` список томов  
