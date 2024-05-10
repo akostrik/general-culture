@@ -47,7 +47,7 @@
 * everything the Docker client can do can be done with the API
 * most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
 
-### server daemon dockerd
+### server daemon `dockerd`
 * центральный системный компонент
 * ожидает запросов через API от Клиента
 * следует инструкциям из Dockerfile и Docker-compose.yaml
@@ -66,8 +66,8 @@
 * commands
   + `dockerd` запуск сервиса
 
-### client docker
-* консольный (a command-line interface, CLI) или графический клиент
+### client `docker`
+* консольный (a command-line interface, CLI) или графический
 * общается с сервером через REST API 
 * пользователи отправляют команды, создают контейнеры, управляют ими, создаёт/управляет/запускает контейнеризованные приложения
 * commands
