@@ -29,7 +29,14 @@
 * проверенные технологии ядра
 * минимум своих решений
 
-## Docker Engine API 
+## Docker Engine
+* a containerization technology for building and containerizing your applications
+* a client-server application with:
+  + a server with a long-running daemon process dockerd
+  + APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon
+  + a command line interface (CLI) client docker
+
+## API 
 * REST API
 * HTTP API
 * served by Docker Engine
