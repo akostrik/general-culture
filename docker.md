@@ -1,6 +1,5 @@
 ![Screenshot from 2024-04-06 00-40-31+](https://github.com/akostrik/general-culture/assets/22834202/d7532890-67e0-437a-bb90-7f0ca9b29e56)
 ![Screenshot from 2024-04-06 01-09-43+](https://github.com/akostrik/general-culture/assets/22834202/4b0ea467-2d6b-45a7-b1f6-c9e22093b2dc)
-![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 
 ## Docker 
 * def: a set of platform as a service (PaaS) products 
@@ -29,9 +28,13 @@
 * OS-level virtualization: имитирует Linux дистрибутивы, окружения или установочные процессы вместо их запуска
 * packages an application and its dependencies in a virtual container that runs, in isolation, in a variety of locations
   + разработчикам создают программу и упаковают зависимости и настройки в единый образ
-* Docker-контейнер работает непосредственно в операционной системе
-  + не создается виртуальное железо, как при использовании VM
-  + VM работает «поверх» операционной системы
+* контейнер работает непосредственно в операционной системе, в изолированной среде, не влияющей на основную операционную систему
+  + виртуальная среда запускается из ядра основной ОС
+  + не создается виртуальное железо
+* VM:
+  + как отдельный компьютер со своей ОС и виртуальным оборудованием
+  + работает «поверх» операционной системы
+  + создается виртуальное железо
 * libcontainer собственная библиотека, абстрагирующая виртуализационные возможности ядра Linux
 * ещё один уровень абстракции, что позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * проверенные технологии ядра
@@ -101,6 +104,7 @@
 
 ### Container (object)
 ![Screenshot from 2024-04-06 01-14-25+](https://github.com/akostrik/general-culture/assets/22834202/c42f1635-8a66-4610-8b50-1162d741c4de)
+![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 * запущенный образ, is started by running an image
 * a process created from an image, 
 * исполняемый пакет
@@ -113,10 +117,7 @@
 * нет ОС, использует ядро Linux, внутрь него помещаются только необходимые для запуска софта программы и библиотеки
 * usage: runs applications - a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ... (one main process in one container)
 * когда контейнер запускается, создается набор пространств имен, контейнер работает в отдельном пространстве имен, с ограничением доступа к другим пространствам
-* Ex: a container to be your MySQL database + a container to be your Wordpress server, connect the containers together
 * is managed using the Docker API or CLI
-* bundle software, libraries, configuration files
-* communicate with each other through channels
 * LXC (Linux Containers) используют те же технологии ядра Linux != container
 * cgroups (контрольные группы): для управления ресурсами, механизм ядра для управления ресурсами, используемыми контейнером (процессор, оперативная память и т.д.)
 * namespaces (пространства имен): механизм ядра для изоляции контейнеров
@@ -138,17 +139,13 @@
     - инструкция `VOLUME /my_volume в Dockerfile` = создать том при запуске контейнера
   + монтирования папки с хоста к контейнеру, подходит для разработки и отладки приложения, вносимые изменения на хосте сразу отражаются в контейнере, для продакшна не годится
 * технология для хранения слоев в контейнере — файловая система с каскадно-объединенным монтированием (Union File System – UnionFS)
-* находится в /var/lib/docker/containers
 * условия запуска контейнера могут быть заданы двумя путями
   + прописаны в Dockerfile
   + указаны в качестве аргументов и ключей `docker run`
 * контейнерам можно назначать лимиты ресурсов и строить между ними сети
-* использует ядро операционной системы на хосте
 * performs the command in ENTRYPOINT or CMD, this will add to the container startup time
-* Контейнеризация = упаковка приложения и всех его зависимостей в образ, который запускается в изолированной среде, не влияющей на основную операционную систему
-  + виртуальная среда запускается прямо из ядра основной ОС и не виртуализирует оборудование
-  + контейнер может работать только в той же операционной системе, что и основная
-  + виртаулизация: работает как отдельный компьютер со своей ОС и виртуальным оборудованием
+* communicate with each other through channels
+* /var/lib/docker/containers
  
 ### сети (object)
 
