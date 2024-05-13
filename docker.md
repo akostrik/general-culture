@@ -69,7 +69,7 @@
   + `systemctl status docker` убедимся, что установлена и работает служба docker  
   + `docker images` просмотреть список доступных локально образов  
   + `docker ps`, `docker ps -a` список доступных контейнеров с их состоянием на сервере   
-  + `docker build` считывает конфигурацию создаваемого образа из dockerfile и создаёт образ  
+  + `docker build` считывает dockerfile (инструкцию по сборке образа) и создаёт образ  
   + `docker run` создание контейнеров, запускаемых с использованием образов
   + `docker stop nginx_test` остановить контейнер  
   + `docker kill` принудительная остановка контейнера  
@@ -85,44 +85,6 @@
   + `docker create` создание нового контейнера  
   + `docker commit` создание нового образа из изменений в контейнере  
   + `docker pull image` загрузить образ из DockerHub  
-
-### Dockerfile (object)
-* инструкция для сборки образа
-  + набор софта, который мы хотим развернуть
-  + настройки контейнера (порты, переменные окружения, ...)
-* Docker builds images automatically by reading the instructions from a Dockerfile
-* каждая команда создаёт новый слой образа с результатом вызванной команды, подобно тому, как система снапшотов сохраняет изменения в виртуальной машине
-  + финальный Docker-образ = объединение всех слоев в один
-  + можно переиспользовать уже готовые образа для создания новых образов
-* Финальной инструкцией является CMD или ENTRYPOINT
-  + The default command to run when the container is started
-  + CMD может быть только одна
-  + CMD может быть переопределена при старте командой docker run
-  + CMD наследует условия, установленные инструкцией WORKDIR
-  + `CMD` и `ENTRYPOINT` запускают что-либо, но НЕ ЗАПИСЫВАЮТ изменений в образ
-    - не стоит выполнять ими скрипты, результат которых нужно "положить" в конечный образ или раздел (для этого есть ``RUN``)
-    - The command needs to be performed every time the container starts, rather than being stored in the immutable image
-* RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают, невозможно запустить приложение напрямую
-* пробросить порт наружу контейнера: `EXPOSE 80`
-* прокинуть порт и переназначить его снаружи `docker run -p 80:80 --name test_cont -d`
-* Write a dockerfile
-  + https://github.com/dnaprawa/dockerfile-best-practices  
-  + limit image layers amount, цепочки команд через && `RUN comand_1 && comand_2`, `RUN apt-get update && apt-get install` 
-  + run as a non-root user
-  + do not use a UID below 10 000
-  + use a static UID and GID
-  + the latest is an evil, choose specific image tag
-  + store arguments in CMD
-  + use COPY instead of ADD
-  + Делаем это одним RUN мы потому, что каждая директива RUN создаёт новый слой в docker-образе, и лучше не плодить лишние RUN-ы без надобности.
-Ex:  
-```
-FROM python:latest          # возьми для основы образ Python с тегом latest, если его нет локально, скачай из хаба
-RUN mkdir -p /usr/app/      # создаст директорию app
-WORKDIR /usr/app/           # установит директорию /usr/app/ в качестве рабочей директории
-                            # все последующие команды (COPY, RUN, CMD, ...) будут выполнены из рабочего каталога
-CMD ["python", "main.py"]   # системный вызов, который будет выполнен при старте контейнера
-```
 
 ### image (object)
 * исполняемый пакет (код, среду выполнения, библиотеки, переменные окружения, конфигурационные файлы)
@@ -193,8 +155,38 @@ CMD ["python", "main.py"]   # системный вызов, который бу
   + контейнер может работать только в той же операционной системе, что и основная
   + виртаулизация: работает как отдельный компьютер со своей ОС и виртуальным оборудованием
  
+### Dockerfile (object)
+* инструкция для сборки образа
+  + набор софта, который мы хотим развернуть
+  + настройки контейнера (порты, переменные окружения, ...)
+* каждая команда создаёт новый слой образа с результатом вызванной команды, подобно тому, как система снапшотов сохраняет изменения в виртуальной машине
+  + финальный Docker-образ = объединение всех слоев в один
+  + можно переиспользовать уже готовые образа для создания новых образов
+* Финальной инструкцией является CMD или ENTRYPOINT
+  + The default command to run when the container is started
+  + CMD может быть только одна
+  + CMD может быть переопределена при старте командой docker run
+  + CMD наследует условия, установленные инструкцией WORKDIR
+  + `CMD` и `ENTRYPOINT` запускают что-либо, но НЕ ЗАПИСЫВАЮТ изменений в образ
+    - не стоит выполнять ими скрипты, результат которых нужно "положить" в конечный образ или раздел (для этого есть ``RUN``)
+    - The command needs to be performed every time the container starts, rather than being stored in the immutable image
+* RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают, невозможно запустить приложение напрямую
+* пробросить порт наружу контейнера: `EXPOSE 80`
+* прокинуть порт и переназначить его снаружи `docker run -p 80:80 --name test_cont -d`
+* Write a dockerfile
+  + https://github.com/dnaprawa/dockerfile-best-practices  
+  + limit image layers amount, цепочки команд через && `RUN comand_1 && comand_2`, `RUN apt-get update && apt-get install` 
+  + run as a non-root user
+  + do not use a UID below 10 000
+  + use a static UID and GID
+  + the latest is an evil, choose specific image tag
+  + store arguments in CMD
+  + use COPY instead of ADD
+  + Делаем это одним RUN мы потому, что каждая директива RUN создаёт новый слой в docker-образе, и лучше не плодить лишние RUN-ы без надобности.
+
 ### Docker Compose (a tool)
 * инструмент, надстройка для управления несколькими контейнерами, создавать контейнеры и задавать их конфигурацию
+* функционал для управления несколькими контейнерами
 * Docker-compose CLI
 * a streamlined and efficient development
 * simplifies the control of the entire application stack
