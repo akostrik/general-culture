@@ -45,6 +45,7 @@
 * the Docker client uses it to communicate with the Engine
 * everything the Docker client can do can be done with the API
 * most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
+* клиент общается с сервером через REST API 
 
 ### server daemon `dockerd`= Docker Engine ?
 * фоновый процесс (демон)
@@ -63,8 +64,7 @@
   + `dockerd` запуск сервиса
 
 ### client `docker`
-* консольный (a command-line interface, CLI) или графический
-* общается с сервером через REST API 
+* консольный (command-line) или графический
 * пользователи отправляют команды, создают контейнеры, управляют ими, создаёт/управляет/запускает контейнеризованные приложения
 * commands
   + `systemctl status docker` убедимся, что установлена и работает служба docker  
