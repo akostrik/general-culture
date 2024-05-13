@@ -188,15 +188,14 @@
 ### Docker Compose (a tool)
 * инструмент, надстройка для управления несколькими контейнерами, создавать контейнеры и задавать их конфигурацию
 * функционал для управления несколькими контейнерами
-* Docker-compose CLI
-* a streamlined and efficient development
-* simplifies the control of the entire application stack
-* to manage services, networks, volumes in a YAML configuration file
-* with a single command `docker-compose.yml`
+* запуск множества контейнеров одной командой
+* docker-compose CLI
+* to manage services, networks, volumes
+* `docker-compose.yml`
    + creates and starts all the services (containers?) from the configuration file
+   + builds the Docker images
    + runs the commands on multiple containers at once (building images, scaling containers, running containers that were stopped)
    + commands related to image manipulation, or user-interactive options, are not relevant in Docker Compose because they address one container
-   + builds the Docker images
    + configures the application's services
    + defines configuration options
    + `build` defines configuration options such as the Dockerfile path
