@@ -31,27 +31,24 @@
 * ещё один уровень абстракции, что позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * проверенные технологии ядра
 * минимум своих решений
-
-## Docker Engine
-* a containerization technology for building and containerizing your applications
-* a client-server application with:
-  + a server with a long-running daemon process dockerd
-  + APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon
-  + a command line interface (CLI) client docker
+* a client-server application
 
 ## API 
 * REST API
 * HTTP API
-* served by Docker Engine
+* specifies interfaces that programs can use to talk to and instruct the Docker daemon
+  served by Docker Engine
 * the Docker client uses it to communicate with the Engine
 * everything the Docker client can do can be done with the API
 * most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
 
-### server daemon `dockerd`
-* центральный системный компонент
+### server daemon `dockerd`= Docker Engine ?
 * фоновый процесс (демон)
-* следует инструкциям из Dockerfile и Docker-compose.yaml
+* управляет контейнерами
+* можно назвать Docker-движком
 * ожидает запросов через API от Клиента
+* принимает информацию от клиента и выполняет заданную команду
+* следует инструкциям из Dockerfile и Docker-compose.yaml
 * управляет :
   + Docker-объектами: сетями, хранилищами, образами, контейнерами
   + процессами докера: создание образов, запуск и остановка контейнеров, скачивание образов
