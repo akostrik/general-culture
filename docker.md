@@ -1,6 +1,5 @@
 ![Screenshot from 2024-04-06 00-40-31+](https://github.com/akostrik/general-culture/assets/22834202/d7532890-67e0-437a-bb90-7f0ca9b29e56)
 ![Screenshot from 2024-04-06 01-09-43+](https://github.com/akostrik/general-culture/assets/22834202/4b0ea467-2d6b-45a7-b1f6-c9e22093b2dc)
-![Screenshot from 2024-04-06 01-14-25+](https://github.com/akostrik/general-culture/assets/22834202/c42f1635-8a66-4610-8b50-1162d741c4de)
 ![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 
 ## Docker 
@@ -102,22 +101,20 @@
 * возможно создание кастомных образов
 
 ### Container (object)
-* создан с использованием образа
+![Screenshot from 2024-04-06 01-14-25+](https://github.com/akostrik/general-culture/assets/22834202/c42f1635-8a66-4610-8b50-1162d741c4de)
+* запущенный образ, is started by running an image
+* a process created from an image, 
+* исполняемый пакет
+* содержит все для запуска (системные программы, библиотеки, код, среды исполнения, настройки)
 * runtime-сущность
-* an encapsulated runtime environment
-* один контейнер – одно приложение
-* развёрнутое и запущенное приложение
-* запущенный и изолированный от хостовой ОС и других контейнеров образ 
-* исполняемый пакет, содержащий все для запуска (системные программы, библиотеки, код, среды исполнения, настройки)
-* запущенный образ со специальным слоем для записи и временного хранения информации
+* one container provides one service, один контейнер – одно (развёрнутое и запущенное) приложение
+* со специальным слоем для записи и временного хранения информации
+* изолированный от хостовой ОС и других контейнеров 
 * аналогия: образ = CD-диск, с которого будет установлен софт, контейнер = запущенная копия образа
 * нет ОС, использует ядро Linux, внутрь него помещаются только необходимые для запуска софта программы и библиотеки
 * usage: runs applications - a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ... (one main process in one container)
-* когда контейнер запускается, создается набор пространств имен
-* каждый контейнер работает в отдельном пространстве имен, с ограничением доступа к другим пространствам
+* когда контейнер запускается, создается набор пространств имен, контейнер работает в отдельном пространстве имен, с ограничением доступа к другим пространствам
 * Ex: a container to be your MySQL database + a container to be your Wordpress server, connect the containers together
-* a process created from an image, is started by running an image
-* one container provides one service in the project
 * is managed using the Docker API or CLI
 * bundle software, libraries, configuration files
 * communicate with each other through channels
