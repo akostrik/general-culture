@@ -223,31 +223,31 @@
 * компьютер или виртуальный сервер, на котором установлен Docker
 
 ### Commands client
-#### создать, запустить, остановить контейнер, скачать образ
-`systemctl status docker` убедимся, что установлена и работает служба docker  
-`docker create` создание нового контейнера  
-`docker start` активирует уже существующий контейнер
-`docker build` считывает dockerfile и создаёт образ  
-`docker run` создает новый контейнер и включает его
-`docker system prune` очистка ресурсов docker, появляется возможность удалить тома, статус которых до этого определялся неправильно
-`docker stop` пытается остановить контейнер, отправив ему SIGTERM, если ответ занимает много времени, то посылает SIGKILL
-`docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных
-`docker rm` удалить контейнер (он должен быть выключен, чтобы команда сработала)
-`docker pause`
-`docker restart`
-`docker pull image` загрузить образ из DockerHub  
-`docker commit` создание нового образа из изменений в контейнере  
+#### создать, запустить, остановить контейнер, скачать образ 
+`systemctl status docker` убедимся, что установлена и работает служба docker   
+`docker create` создание нового контейнера   
+`docker start` активирует уже существующий контейнер  
+`docker build` считывает dockerfile и создаёт образ   
+`docker run` создает новый контейнер и включает его  
+`docker system prune` очистка ресурсов docker, появляется возможность удалить тома, статус которых до этого определялся неправильно  
+`docker stop` пытается остановить контейнер, отправив ему SIGTERM, если долго нет ответа, то SIGKILL   
+`docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
+`docker rm` удалить контейнер (он должен быть выключен, чтобы команда сработала)  
+`docker pause`  
+`docker restart`  
+`docker pull image` загрузить образ из DockerHub   
+`docker commit` создание нового образа из изменений в контейнере   
 #### настройка контейнера
-`docker ...`  разрешать/запрещать монтирование, доступ к сокетам, выполнение части операций с файловой системой, изменение атрибутов файлов или владельца  
-`docker volume create --name myVolume` создать том при запуске контейнера
-`docker volume ls` список томов  
-`docker volume inspect myVolume`  
-`docker volume rm myVolume` удалить том  
+`docker ...`  разрешать/запрещать монтирование, доступ к сокетам, выполнение части операций с файловой системой, изменение атрибутов файлов или владельца   
+`docker volume create --name myVolume` создать том при запуске контейнера   
+`docker volume ls` список томов   
+`docker volume inspect myVolume`   
+`docker volume rm myVolume` удалить том   
 #### инспектировать
-`docker images`, `docker image ls` просмотреть список доступных локально образов  
-`docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере   
-`docker image inspect` подробнее рассказывает о выбранном контейнере
-`docker logs` выводит в консоль логи
+`docker images`, `docker image ls` просмотреть список доступных локально образов   
+`docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
+`docker image inspect` подробнее рассказывает о выбранном контейнере  
+`docker logs` выводит в консоль логи  
 
 ### Commands docker-compose
 `make` in the root of the directory to build and start all container  
@@ -257,9 +257,9 @@
 `make start` to start all containers in the docker-compose   
 `make stop` to stop all containers in the docker-compose  
 `make status` to see the running containers  
-`make logs` to see the logs of the containers  
-`make rmi` to remove all images created by docker-compose  
-`make re` to remove, build and run all containers in docker-compose  
+`make logs` to see the logs of the containers   
+`make rmi` to remove all images created by docker-compose   
+`make re` to remove, build and run all containers in docker-compose   
 `docker-compose down` остановить контейнер  
 
 ### Efficency
