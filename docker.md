@@ -76,7 +76,8 @@
   + `docker volume ls` список томов  
   + `docker volume inspect myVolume`  
   + `docker volume rm myVolume` удалить том  
-  + `docker system prune` очистка ресурсов docker, после этой команды появляется возможность удалить тома, статус которых до этого определялся неправильно
+  + `docker system prune` очистка ресурсов docker
+    - появляется возможность удалить тома, статус которых до этого определялся неправильно
   + `docker pull image` загрузить образ из DockerHub  
   + `docker commit` создание нового образа из изменений в контейнере  
   + `docker images` просмотреть список доступных локально образов  
