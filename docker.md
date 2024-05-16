@@ -1,4 +1,3 @@
-![Screenshot from 2024-04-06 00-40-31+](https://github.com/akostrik/general-culture/assets/22834202/d7532890-67e0-437a-bb90-7f0ca9b29e56)
 ![docker-php-16-638](https://github.com/akostrik/general-culture/assets/22834202/7305c712-59d9-44e5-b67d-6ea0283d8b06)
 
 ## Docker 
