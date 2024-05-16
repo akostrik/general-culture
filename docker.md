@@ -222,6 +222,23 @@
 ### Docker host 
 * компьютер или виртуальный сервер, на котором установлен Docker
 
+### Efficency
+* a single server or virtual machine runs several containers simultaneously
+* to avoid the situations when we say “it worked on my machine”, because Docker containers will give us the same environment on all machines
+* containers share the services of a single OS kernel => fewer resources than virtual machines  
+* Linux: Docker uses the resource isolation features of the Linux kernel (cgroups, kernel namespaces) and a union-capable file system to allow containers to run within a single Linux instance, avoiding the overhead of starting and maintaining virtual machines
+* MacOS: Docker uses a Linux virtual machine to run the containers
+* the Linux kernel's support for namespaces mostly isolates an application's view of the operating environment, including process trees, network, user IDs and mounted file systems, while the kernel's cgroups provide resource limiting for memory and CPU 
+* since 0.9, Docker includes its own component **libcontainer** to use virtualization facilities provided directly by the Linux kernel, in addition to using abstracted virtualization interfaces via libvirt, LXC and systemd-nspawn
+* Легкая переносимость, возможность создавать и тестировать приложения на локальной машине, не беспокоясь о программных зависимостях — Docker-контейнеры вмещают в себя все что нужно приложению для функционирования
+* автоматизация работы с контейнерами при помощи cron jobs, автоматизируются рутинные повторяемые задачи
+* мгновенное время запуска
+
+### Недостатки
+* работает медленнее, чем обычный запуск приложения на физическом сервере
+* сложность использования
+* так как Docker работает непосредственно в операционной системе, возможно внедрение зловредного кода в контейнеры и далее проникновение в ОС
+
 ### Commands client
 #### создать, запустить, остановить контейнер, скачать образ 
 `systemctl status docker` установлена и работает служба docker   
@@ -271,22 +288,116 @@
 `make re` to remove, build and run all containers in docker-compose   
 `docker-compose down` остановить контейнер  
 
-### Efficency
-* a single server or virtual machine runs several containers simultaneously
-* to avoid the situations when we say “it worked on my machine”, because Docker containers will give us the same environment on all machines
-* containers share the services of a single OS kernel => fewer resources than virtual machines  
-* Linux: Docker uses the resource isolation features of the Linux kernel (cgroups, kernel namespaces) and a union-capable file system to allow containers to run within a single Linux instance, avoiding the overhead of starting and maintaining virtual machines
-* MacOS: Docker uses a Linux virtual machine to run the containers
-* the Linux kernel's support for namespaces mostly isolates an application's view of the operating environment, including process trees, network, user IDs and mounted file systems, while the kernel's cgroups provide resource limiting for memory and CPU 
-* since 0.9, Docker includes its own component **libcontainer** to use virtualization facilities provided directly by the Linux kernel, in addition to using abstracted virtualization interfaces via libvirt, LXC and systemd-nspawn
-* Легкая переносимость, возможность создавать и тестировать приложения на локальной машине, не беспокоясь о программных зависимостях — Docker-контейнеры вмещают в себя все что нужно приложению для функционирования
-* автоматизация работы с контейнерами при помощи cron jobs, автоматизируются рутинные повторяемые задачи
-* мгновенное время запуска
+### Example 1
+`docker run -i -t ubuntu /bin/bash`  
+1. `docker` запускается клиент   
+2. скачивает образ ubuntu
+3. `run` запускает новый контейнер
+4. инициализирует файловую систему и монтирует read-only уровень
+5. инициализирует сеть/мост: создает сетевой интерфейс, который позволяет docker-у общаться хост машиной
+6. находит и задает IP адрес
+7. запускает приложение
+8. запускает команду `/bin/bash`  
 
-### Недостатки
-* работает медленнее, чем обычный запуск приложения на физическом сервере
-* сложность использования
-* так как Docker работает непосредственно в операционной системе, возможно внедрение зловредного кода в контейнеры и далее проникновение в ОС
+### Example 2: http://127.0.0.1:8080/ + Dockerfile
+**index.html**:  
+```
+<html>
+  <body>Example 2</body>
+</html>
+```
+**Dockerfile**:  
+```
+FROM nginx                    # соберем image из готового образа docker hub  
+COPY index.html /usr/share/nginx/html
+```
+`docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx, выполняет dockerfile`  
+`docker run -p 8080:80 -d mynginx # -p порт 80 контейнера -> порт host машины 8080`  
+`                                 # -d в фоновом режиме без привязки к текущей консоли`  
+`startx                           # x-server для отрисовки графического окружения (GUI)`  
+
+### Example 3: http://127.0.0.1:8080 + docker-compose
+// https://github.com/codesshaman/simple_docker_nginx_html.git  
+**docker-compose.yml**:  
+```
+version: '3'
+services:
+  nginx:
+   image: nginx:stable-alpine
+    volumes:
+      - ./public:/var/www/public
+      - ./nginx/conf.d:/etc/nginx/conf.d/
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    container_name: myContainer
+```
+nginx/conf.d/**nginx.conf**:  
+```
+server {
+    root    /var/www/public/html;
+    location / {
+	try_files $uri /index.html;
+    }
+}
+```
+`docker-compose up -d --build                        # BUILD (first run)`  
+`docker-compose up -d                                # RUN`  
+
+### Example 4: http://nickname.42.fr 
+`/etc/hosts`: добавляем алиас локального домена `nickname.42.fr`   
+
+### Example 5: https://nickname.42.fr всё ещё на виртуальной
+`cd ~/project/srcs/requirements/tools/`  
+`mkcert nickname.42.fr` сгенерируем самоподписный сертификат  
+`mv nickname.42.fr-key.pem nickname.42.fr.key` поменять расширения файлов, чтобы сервер nginx их правильно читал  
+`mv nickname.42.fr.pem nickname.42.fr.crt`   
+~/ex3/nginx/conf.d/**nginx.conf**:  
+```
+server {
+    listen             80;                                  # Слушаем порт http
+    listen             443 ssl;                             # Слушаем порт https - ssl
+    server_name        nickname.42.fr www.nickname.42.fr;   # домен, на котором мы будем работать
+    root               /var/www/public/html;                # корневая директория
+    #if ($scheme = 'http') {                                # закомментировано для нормальной работы с хостовой машины, перенаправление с http на https
+    #    return 301 https://nickname.42.fr$request_uri;
+    #}
+    ssl_certificate     /etc/nginx/ssl/nickname.42.fr.crt;  # путь к сертификату 
+    ssl_certificate_key /etc/nginx/ssl/nickname.42.fr.key;  # путь к ключу
+    ssl_protocols       TLSv1.2 TLSv1.3;                    # поддерживаемые протоколы tls
+    ssl_session_timeout 10m;                                # опции кэширования  
+    keepalive_timeout   70;                                 # таймауты
+    location / {                                            # искать файл в корне 
+        try_files $uri /index.html;
+    }
+}
+```
+**docker-compose.yml**:   
+```
+version: '3'
+services:
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./public:/var/www/public/
+      - ./nginx/conf.d:/etc/nginx/conf.d/
+      - /home/${USER}/project/srcs/requirements/tools:/etc/nginx/ssl/ # ключи, сертификаты
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    container_name: myContainer
+```
+Браузер: Advanced - Принять риск и продолжить => 
+* браузер доверяет самоподписному сертификату
+* сайт загружается по ssl
+* соединение не считается безопасным
+
+### Example 6: https://nickname.42.fr на хостовой
+сейчас проект доступен по `127.0.0.1`  
+раскомментируем редирект в nginx.conf -> нас редиректит на 42.fr, но школьный мак не знает такого сайта  
+В браузере: самоподписной ssl -> Дополнительно -> Перейти на сайт
+![Screenshot from 2024-03-08 18-21-00](https://github.com/akostrik/inception_fork/assets/22834202/1d441f30-a521-431c-a09a-f097910c1e11)
 
 ![docker-php-16-638](https://github.com/akostrik/general-culture/assets/22834202/7305c712-59d9-44e5-b67d-6ea0283d8b06)
 ![Screenshot from 2024-03-30 00-55-26](https://github.com/akostrik/general-culture/assets/22834202/3ea7709f-8248-4980-ad54-2b242f9e9b2a)
