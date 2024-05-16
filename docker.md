@@ -250,6 +250,11 @@
 `docker image inspect` подробнее рассказывает о выбранном контейнере  
 `docker logs` выводит в консоль логи  
 
+### Commands Dockerfile
+`RUN`  
+`CMD`  
+`EXPOSE`  
+
 ### Commands docker-compose
 `make` in the root of the directory to build and start all container  
 `make` to build all images in docker-compose  
