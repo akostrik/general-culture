@@ -224,22 +224,24 @@
 
 ### Commands client
 #### создать, запустить, остановить контейнер, скачать образ 
-`systemctl status docker` убедимся, что установлена и работает служба docker   
-`docker create` создание нового контейнера   
-`docker start` активирует уже существующий контейнер  
-`docker build` считывает dockerfile и создаёт образ   
-`docker run` создает новый контейнер и включает его  
+`systemctl status docker` установлена и работает служба docker   
+`docker create` создание контейнера   
+`docker start` активирует существующий контейнер  
+`docker build` считывает dockerfile, создаёт образ   
+`docker run` создает контейнер, включает его  
 `docker system prune`, `docker image prune` очистка ресурсов  
-`docker stop` пытается остановить контейнер, отправив ему SIGTERM, если долго нет ответа, то SIGKILL   
+`docker stop` пытается остановить контейнер отправив SIGTERM, если долго нет ответа SIGKILL   
 `docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
-`docker rm` удалить контейнер (он должен быть выключен, чтобы команда сработала)  
+`docker rm` удалить контейнер (он должен быть выключен)  
 `docker pause`  
 `docker restart`  
 `docker pull image` загрузить образ из DockerHub   
 `docker commit` создание нового образа из изменений в контейнере   
 #### настройка контейнера
-`docker image tag` create a tag TARGET_IMAGE that refers to SOURCE_IMAGE  
-`docker ...`  разрешать/запрещать монтирование, доступ к сокетам, выполнение части операций с файловой системой, изменение атрибутов файлов или владельца   
+разрешать/запрещать монтирование  
+доступ к сокетам  
+выполнение части операций с файловой системой  
+изменение атрибутов файлов или владельца   
 `docker volume create --name myVolume` создать том при запуске контейнера   
 `docker volume ls` список томов   
 `docker volume inspect myVolume`   
