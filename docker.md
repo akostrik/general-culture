@@ -242,6 +242,7 @@
 доступ к сокетам  
 выполнение части операций с файловой системой  
 изменение атрибутов файлов или владельца   
+`docker tag` переименовать образ   
 `docker volume create --name myVolume` создать том при запуске контейнера   
 `docker volume ls` список томов   
 `docker volume inspect myVolume`   
