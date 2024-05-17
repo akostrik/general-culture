@@ -353,7 +353,7 @@ services:
 server {
     root    /var/www/public/html;
     location / {                       # all locations
-	try_files $uri /index.html;    # if the URI received matched by $uri, nginx serves it   
+	try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it   
                                        # if fails, serves `/test/index.html` (the fall back option)     
                                        # if fails, serves the 404 error page   
     }
