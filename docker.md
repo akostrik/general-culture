@@ -356,14 +356,13 @@ services:
 ```
 server {
     root    /var/www/public/html;
-    location / {                        # all locations
-	try_files $uri /index.html;
+    location / {                       # all locations
+	try_files $uri /index.html;    # if the URI received matched by $uri, nginx serves it   
+                                       # if fails, serves `/test/index.html` (the fall back option)     
+                                       # if fails, serves the 404 error page   
     }
 }
 ```
-try_files = the URI received matched by $uri, nginx serves it (for ex http://example.com/images/image.jpg)  
-if fails, `/test/index.html` (the fall back option)     
-if fails, nginx serves the 404 error page   
 
 `docker-compose up -d --build` or `docker-compose up -d` (build = first run)  
 
