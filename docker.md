@@ -311,13 +311,13 @@ exit
 8. запускает команду `/bin/bash`  
 
 ### Example 2: http://127.0.0.1:8080/ + Dockerfile
-**index.html**:  
+~/ex2/**index.html**:  
 ```
 <html>
   <body>Example 2</body>
 </html>
 ```
-**Dockerfile**:  
+~/ex2/**Dockerfile**:  
 ```
 FROM nginx                    # соберем image из готового образа docker hub  
 COPY index.html /usr/share/nginx/html
@@ -328,13 +328,13 @@ COPY index.html /usr/share/nginx/html
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 
 ### Example 3: http://127.0.0.1 + docker-compose
-public/html/**index.html**:  
+~/ex3/public/html/**index.html**:  
 ```
 <html>
   <body>Example 3</body>
 </html>
 ```
-**docker-compose.yml**:  
+~/ex3/**docker-compose.yml**:  
 ```
 version: '3'
 services:
