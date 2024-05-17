@@ -339,7 +339,6 @@ COPY index.html /usr/share/nginx/html
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 
 ### Example 3: http://127.0.0.1:8080 + docker-compose
-// https://github.com/codesshaman/simple_docker_nginx_html.git  
 **docker-compose.yml**:  
 ```
 version: '3'
@@ -354,7 +353,7 @@ services:
       - "80:80"
     container_name: myContainer
 ```
-nginx/conf.d/**nginx.conf**:  
+~/ex3/nginx/conf.d/**nginx.conf**:  
 ```
 server {
     root    /var/www/public/html;
@@ -372,9 +371,9 @@ server {
 ### Example 5: https://nickname.42.fr всё ещё на виртуальной
 `cd ~/project/srcs/requirements/tools/`  
 `mkcert nickname.42.fr` сгенерируем самоподписный сертификат  
-`mv nickname.42.fr-key.pem nickname.42.fr.key` поменять расширения файлов, чтобы сервер nginx их правильно читал  
+`mv nickname.42.fr-key.pem nickname.42.fr.key` поменять расширения файлов, чтобы nginx их правильно читал  
 `mv nickname.42.fr.pem nickname.42.fr.crt`   
-~/ex3/nginx/conf.d/**nginx.conf**:  
+~/ex5/nginx/conf.d/**nginx.conf**:  
 ```
 server {
     listen             80;                                  # Слушаем порт http
