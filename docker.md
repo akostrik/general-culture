@@ -332,6 +332,12 @@ COPY index.html /usr/share/nginx/html
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 
 ### Example 3: http://127.0.0.1 + docker-compose
+public/html/**index.html**:  
+```
+<html>
+  <body>Example 3</body>
+</html>
+```
 **docker-compose.yml**:  
 ```
 version: '3'
