@@ -37,16 +37,12 @@
   + работает поверх операционной системы
   + создается виртуальное железо
 * libcontainer собственная библиотека, абстрагирующая виртуализационные возможности ядра Linux
-* ещё один уровень абстракции, что позволяет использовать на одном хосте различные версии языков, библиотек, etc
+* ещё один уровень абстракции => позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * проверенные технологии ядра
 * минимум своих решений
 * a client-server application
-* uses /var/lib/docker to store your images, containers, and local named volumes
-  + deleting this can result in data loss and possibly stop the engine from running
-  + overlay2 subdirectory contains the various filesystem layers for images and containers
-  + `docker system prune` to cleanup unused containers and images
-    - prune never deletes running containers, logs on those containers, filesystem changes made by those containers
-    -  
+* `/var/lib/docker/overlay2` writable layers, the various filesystem layers for images and containers
+* `/var/lib/docker` your images, containers, local named volumes
 * Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
 ```
 sudo -s
@@ -265,8 +261,9 @@ exit
 `docker restart`  
 `docker pull image` загрузить образ из DockerHub   
 `docker commit` создание нового образа из изменений в контейнере   
-`docker system prune`, `docker image prune` очистка ресурсов  
-`docker image prune --all` remove unused images
+`docker system prune`, `docker image prune` очистка ресурсов   
+`docker image prune --all` remove unused images   
+`docker system prune` cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers
 #### настройка контейнера
 разрешать/запрещать монтирование  
 доступ к сокетам  
@@ -307,10 +304,10 @@ exit
 2. скачивает образ ubuntu
 3. `run` запускает новый контейнер
 4. инициализирует файловую систему и монтирует read-only уровень
-5. инициализирует сеть/мост: создает сетевой интерфейс, который позволяет docker-у общаться хост машиной
-6. находит и задает IP адрес
-7. запускает приложение
-8. запускает команду `/bin/bash`  
+6. 6. инициализирует сеть/мост: создает сетевой интерфейс, который позволяет docker-у общаться хост машиной
+7. находит и задает IP адрес
+8. запускает приложение
+9. запускает команду `/bin/bash`  
 
 ### Example 2: http://127.0.0.1:8080/ + Dockerfile
 ~/ex2/**index.html**:  
