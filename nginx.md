@@ -1,5 +1,3 @@
-![Screenshot from 2024-03-08 14-21-25](https://github.com/akostrik/general-culture/assets/22834202/7299967d-0c56-48db-9303-ab4b8d37ab5a)
-  
 ![Screenshot from 2024-03-08 14-58-54](https://github.com/akostrik/general-culture/assets/22834202/21c2e1af-1da8-441b-ae20-47201cf09d5e)
 
 * nginx = **веб-сервер** (**HTTP-сервер**) обрабатывает запросы от клиентов по протоколам HTTP и HTTPS, возвращает ответ в виде HTML-страницы
