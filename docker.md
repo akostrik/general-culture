@@ -37,6 +37,7 @@
   + работает поверх операционной системы
   + создается виртуальное железо
 * libcontainer собственная библиотека, абстрагирующая виртуализационные возможности ядра Linux
+  + to use virtualization facilities provided directly by the Linux kernel, in addition to using abstracted virtualization interfaces via libvirt, LXC and systemd-nspawn
 * ещё один уровень абстракции => позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * проверенные технологии ядра
 * минимум своих решений
@@ -238,7 +239,6 @@ exit
 * Linux: Docker uses the resource isolation features of the Linux kernel (cgroups, kernel namespaces) and a union-capable file system to allow containers to run within a single Linux instance, avoiding the overhead of starting and maintaining virtual machines
 * MacOS: Docker uses a Linux virtual machine to run the containers
 * the Linux kernel's support for namespaces mostly isolates an application's view of the operating environment, including process trees, network, user IDs and mounted file systems, while the kernel's cgroups provide resource limiting for memory and CPU 
-* since 0.9, Docker includes its own component **libcontainer** to use virtualization facilities provided directly by the Linux kernel, in addition to using abstracted virtualization interfaces via libvirt, LXC and systemd-nspawn
 * Легкая переносимость, возможность создавать и тестировать приложения на локальной машине, не беспокоясь о программных зависимостях — Docker-контейнеры вмещают в себя все что нужно приложению для функционирования
 * автоматизация работы с контейнерами при помощи cron jobs, автоматизируются рутинные повторяемые задачи
 * мгновенное время запуска
