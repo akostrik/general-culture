@@ -42,6 +42,7 @@
 * минимум своих решений
 * a client-server application
 * `/var/lib/docker/overlay2` writable layers, the various filesystem layers for images and containers
+  + `/var/lib/docker/overlay2/eceb7b667587c3cc2a08d7c970eae723fdd8981b7a7580db19587434123a2681`
 * `/var/lib/docker` your images, containers, local named volumes
 * Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
 ```
