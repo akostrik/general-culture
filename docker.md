@@ -45,7 +45,8 @@
   + deleting this can result in data loss and possibly stop the engine from running
   + overlay2 subdirectory contains the various filesystem layers for images and containers
   + `docker system prune` to cleanup unused containers and images
-    - prune never deletes running containers, logs on those containers, filesystem changes made by those containers, 
+    - prune never deletes running containers, logs on those containers, filesystem changes made by those containers
+    -  
 * Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
 ```
 sudo -s
@@ -257,7 +258,6 @@ exit
 `docker start` активирует существующий контейнер  
 `docker build` считывает dockerfile, создаёт образ   
 `docker run` создает контейнер, включает его  
-`docker system prune`, `docker image prune` очистка ресурсов  
 `docker stop` пытается остановить контейнер отправив SIGTERM, если долго нет ответа SIGKILL   
 `docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
 `docker rm` удалить выключенный контейнер  
@@ -265,6 +265,8 @@ exit
 `docker restart`  
 `docker pull image` загрузить образ из DockerHub   
 `docker commit` создание нового образа из изменений в контейнере   
+`docker system prune`, `docker image prune` очистка ресурсов  
+`docker image prune --all` remove unused images
 #### настройка контейнера
 разрешать/запрещать монтирование  
 доступ к сокетам  
