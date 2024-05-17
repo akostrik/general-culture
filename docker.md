@@ -355,8 +355,7 @@ server {
     }
 }
 ```
-`docker-compose up -d --build                        # BUILD (first run)`  
-`docker-compose up -d                                # RUN`  
+`docker-compose up -d --build` or `docker-compose up -d` (build = first run)  
 
 ### Example 4: http://nickname.42.fr 
 `/etc/hosts`: добавляем алиас локального домена `nickname.42.fr`   
