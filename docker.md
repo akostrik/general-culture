@@ -361,6 +361,16 @@ server {
     }
 }
 ```
+`location /` = all locations
+
+location / {
+    try_files $uri $uri/ /test/index.html;
+}
+
+try_files = you receive a URI that's matched by $uri, nginx serves it (for ex, for http://example.com/images/image.jpg nginx checks this file)  
+if fails, the fall back option `/test/index.html`  
+if fails, nginx serves the 404 error page   
+
 `docker-compose up -d --build` or `docker-compose up -d` (build = first run)  
 
 ### Example 4: http://nickname.42.fr 
