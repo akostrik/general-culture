@@ -262,9 +262,8 @@ exit
 `docker restart`  
 `docker pull image` загрузить образ из DockerHub   
 `docker commit` создание нового образа из изменений в контейнере   
-`docker system prune`, `docker image prune` очистка ресурсов   
-`docker image prune --all` remove unused images   
 `docker system prune` cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers
+`docker image prune --all` remove unused images   
 #### настройка контейнера
 разрешать/запрещать монтирование  
 доступ к сокетам  
