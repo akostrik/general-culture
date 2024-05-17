@@ -331,7 +331,7 @@ COPY index.html /usr/share/nginx/html
 `                                 # -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 
-### Example 3: http://127.0.0.1:8080 + docker-compose
+### Example 3: http://127.0.0.1 + docker-compose
 **docker-compose.yml**:  
 ```
 version: '3'
