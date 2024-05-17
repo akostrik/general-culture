@@ -46,21 +46,14 @@
   + overlay2 subdirectory contains the various filesystem layers for images and containers
   + `docker system prune` to cleanup unused containers and images
     - prune never deletes running containers, logs on those containers, filesystem changes made by those containers, 
-
-# danger, read the entire text around this code before running
-# you will lose data
+* Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
+```
 sudo -s
 systemctl stop docker
 rm -rf /var/lib/docker
 systemctl start docker
 exit
-The engine will restart in a completely empty state, which means you will lose all:
-
-images
-containers
-named volumes
-user created networks
-swarm state
+```
 
 ## API
 * served by Docker Engine
