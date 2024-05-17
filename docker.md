@@ -358,8 +358,18 @@ server {
     }
 }
 ```
-
-`docker-compose up -d --build` or `docker-compose up -d` (build = first run)  
+~/ex3/**test.sh**:  
+```
+#!/bin/bash
+docker stop simple_nginx_html
+docker rm simple_nginx_html
+docker image prune --all
+docker system prune
+service docker stop
+service docker start
+docker-compose up -d --build           # build = first run
+startx
+```
 
 ### Example 4: http://nickname.42.fr 
 `/etc/hosts`: добавляем алиас локального домена `nickname.42.fr`   
