@@ -336,9 +336,10 @@ COPY index.html /usr/share/nginx/html
 ~/ex3/**docker-compose.yml**:  
 ```
 version: '3'
+
 services:
   nginx:
-   image: nginx:stable-alpine
+    image: nginx:stable-alpine
     volumes:
       - ./public:/var/www/public      # the default root folder of the web server (if you change it, then change nginx.conf) 
       - ./nginx/conf.d:/etc/nginx/conf.d/
