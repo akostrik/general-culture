@@ -341,7 +341,7 @@ services:
   nginx:
     image: nginx:stable-alpine
     volumes:
-      - ./public:/var/www/public      # the default root folder of the web server (if you change it, then change nginx.conf) 
+      - ./public:/var/www/public
       - ./nginx/conf.d:/etc/nginx/conf.d/
     restart: unless-stopped
     ports:
