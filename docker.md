@@ -361,8 +361,8 @@ server {
 ~/ex3/**test.sh**:  
 ```
 #!/bin/bash
-docker stop simple_nginx_html
-docker rm simple_nginx_html
+docker stop myContainer
+docker rm myContainer
 docker image prune --all
 docker system prune
 service docker stop
