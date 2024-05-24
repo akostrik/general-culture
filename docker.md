@@ -362,7 +362,6 @@ COPY index.html /usr/share/nginx/html
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 
 ### Example 3: http://127.0.0.1 + docker-compose
-```
 ~/ex3/nginx/conf.d/**nginx.conf**:  
 ```
 server {
@@ -379,6 +378,7 @@ server {
 <html>
   <body>Example 3</body>
 </html>
+```
 ~/ex3/**docker-compose.yml**:  
 ```
 version: '3'
