@@ -345,10 +345,10 @@ exit
 2. скачивает образ ubuntu
 3. `run` запускает новый контейнер
 4. инициализирует файловую систему и монтирует read-only уровень
-6. 6. инициализирует сеть/мост: создает сетевой интерфейс, который позволяет docker-у общаться хост машиной
-7. находит и задает IP адрес
-8. запускает приложение
-9. запускает команду `/bin/bash`  
+5. инициализирует сеть/мост: создает сетевой интерфейс, который позволяет docker-у общаться хост машиной
+6. находит и задает IP адрес
+7. запускает приложение
+8. запускает команду `/bin/bash`  
 
 ### Example 2
 `$ docker run -it -v public:/var/www/public ubuntu:22.04` 
@@ -361,7 +361,7 @@ exit
 `exit` detach from your container, the container stops  
 `docker run -it -v public://var/www/public2 alpine:latest` start a new container that attaches the same volume   
 
-### Example 3: http://127.0.0.1:8080/ + Dockerfile
+### Example 3: http://127.0.0.1:8080/ на виртуальной + Dockerfile
 ~/ex3/**index.html**:  
 ```
 <html>
@@ -378,7 +378,13 @@ COPY index.html /usr/share/nginx/html
 `                                 # -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 
-### Example 4: http://127.0.0.1 + docker-compose
+### Example 4: http://127.0.0.1 на виртуальной + docker-compose
+~/ex4/public/html/**index.html**:  
+```
+<html>
+  <body>Example 3</body>
+</html>
+```
 ~/ex4/nginx/conf.d/**nginx.conf**:  
 ```
 server {
@@ -389,12 +395,6 @@ server {
                                        # if fails, serves the 404 error page   
     }
 }
-```
-~/ex4/public/html/**index.html**:  
-```
-<html>
-  <body>Example 3</body>
-</html>
 ```
 ~/ex4/**docker-compose.yml**:  
 ```
@@ -424,26 +424,29 @@ docker-compose up -d --build           # build = first run
 startx
 ```
 
-### Example 5: http://nickname.42.fr 
+### Example 5: http://nickname.42.fr на виртуальной
 `/etc/hosts`: добавляем алиас локального домена `nickname.42.fr`   
 
-### Example 6: https://nickname.42.fr всё ещё на виртуальной
+### Example 6: https://nickname.42.fr на виртуальной
 `cd ~/project/srcs/requirements/tools/`  
 `mkcert nickname.42.fr` сгенерируем самоподписный сертификат  
 `mv nickname.42.fr-key.pem nickname.42.fr.key` поменять расширения файлов, чтобы nginx их правильно читал  
 `mv nickname.42.fr.pem nickname.42.fr.crt`   
+~/ex6/public/html/**index.html**:  
+```
+<html>
+  <body>Example 3</body>
+</html>
+```
 ~/ex6/nginx/conf.d/**nginx.conf**:  
 ```
 server {
-    listen             80;                                  # Слушаем порт http
-    listen             443 ssl;                             # Слушаем порт https - ssl
+    listen             80;
+    listen             443 ssl;
     server_name        nickname.42.fr www.nickname.42.fr;   # домен, на котором мы будем работать
-    root               /var/www/public/html;                # корневая директория
-    #if ($scheme = 'http') {                                # закомментировано для нормальной работы с хостовой машины, перенаправление с http на https
-    #    return 301 https://nickname.42.fr$request_uri;
-    #}
-    ssl_certificate     /etc/nginx/ssl/nickname.42.fr.crt;  # путь к сертификату 
-    ssl_certificate_key /etc/nginx/ssl/nickname.42.fr.key;  # путь к ключу
+    root               /var/www/public/html;
+    ssl_certificate     /etc/nginx/ssl/nickname.42.fr.crt;  # сертификат
+    ssl_certificate_key /etc/nginx/ssl/nickname.42.fr.key;  # ключ
     ssl_protocols       TLSv1.2 TLSv1.3;                    # поддерживаемые протоколы tls
     ssl_session_timeout 10m;                                # опции кэширования  
     keepalive_timeout   70;                                 # таймауты
@@ -476,5 +479,9 @@ services:
 ### Example 7: https://nickname.42.fr на хостовой
 сейчас проект доступен по `127.0.0.1`  
 раскомментируем редирект в nginx.conf -> нас редиректит на 42.fr, но школьный мак не знает такого сайта  
+    #if ($scheme = 'http') {                                # закомментировано для нормальной работы с хостовой машины, перенаправление с http на https
+    #    return 301 https://nickname.42.fr$request_uri;
+    #}
+
 В браузере: самоподписной ssl -> Дополнительно -> Перейти на сайт
 ![Screenshot from 2024-03-08 18-21-00](https://github.com/akostrik/inception_fork/assets/22834202/1d441f30-a521-431c-a09a-f097910c1e11)
