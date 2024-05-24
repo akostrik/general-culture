@@ -376,7 +376,7 @@ services:
   nginx:
     image: nginx:stable-alpine
     volumes:
-      - ./public:/var/www/public
+      - ./public:/var/www/public       # a volume called public is mounted to /var/www/public inside the container
       - ./nginx/conf.d:/etc/nginx/conf.d/
     restart: unless-stopped
     ports:
