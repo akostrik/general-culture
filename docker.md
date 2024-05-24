@@ -227,7 +227,19 @@ exit
   + local storage on your Docker host (by default)
   + NFS volumes
   + CIFS/Samba shares
-  + device-level block storage adapters  
+  + device-level block storage adapters
+* **Bind mounts** are another way to give containers access to files and folders on your host
+  + directly mount a host directory into your container
+  + any changes made to the directory will be reflected on both sides of the mount, whether the modification originates from the host or within the container
+  + are best used for ad-hoc storage on a short-term basis
+  + convenient in development workflows
+  + for example: bind mounting your working directory into a container automatically synchronizes your source code files, allowing you to immediately test changes without rebuilding your Docker image
+* volumes are a better solution than bin mont, when you’re providing permanent storage to operational containers
+  + you don’t need to manually maintain directories on your host
+  + there’s less chance of data being accidentally modified
+  + no dependency on a particular folder structure
+  + increased performance
+  + the possibility of writing changes
 
 ### Docker Swarm (a tool)
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
