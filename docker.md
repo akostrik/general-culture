@@ -195,8 +195,8 @@ exit
    + caches the configuration used to create a container. When you restart a service that has not changed, Compose re-uses the existing containers. Re-using containers means that you can make changes to your environment very quickly
    + supports variables in the Compose file, you can use these variables to customize your composition for different environments, or different users
 * разница:
-   + docker для работы с контейнерами по отдельности
-   + docker compose позволяет одновременно управлять несколькими контейнерами, а следовательно, работать с более сложными проектами
+   + docker работать с контейнерами по отдельности
+   + docker compose одновременно управлять несколькими контейнерами
 * пример: веб-сайт
    + для авторизации пользователей необходимо подключение к базе данных
    + первый сервис отвечает за функционирование сайта
