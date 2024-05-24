@@ -225,18 +225,13 @@ exit
 * можно шифровать
 * можно давать имена
 * контейнер может организовать заблаговременное наполнение тома данными
+* Драйверы томов — указывать параметры хранения (место хранения, ...)
 * different drivers to store volume data in different services:
   + local storage on your Docker host (by default)
   + NFS volumes
   + CIFS/Samba shares
   + device-level block storage adapters
-* **Bind mounts** = another way to give containers access to files and folders on your host
-  + directly mount a host directory into your container
-  + any changes made to the directory will be reflected on both sides of the mount, whether the modification originates from the host or within the container
-  + are best used for ad-hoc storage on a short-term basis
-  + convenient in development workflows
-  + for example: bind mounting your working directory into a container automatically synchronizes your source code files, allowing you to immediately test changes without rebuilding your Docker image
-* volumes are a better solution than bind mont, when you’re providing permanent storage to operational containers
+* volumes are a better solution than bind mounts, when you’re providing permanent storage to operational containers
   + you don’t need to manually maintain directories on your host
   + there’s less chance of data being accidentally modified
   + no dependency on a particular folder structure
@@ -248,11 +243,19 @@ exit
   + to persist the contents of any caches
   + to backup container data by mirroring /var/lib/docker/volumes to another location
   + share data between containers
-  + write to remote filesystems 
+  + write to remote filesystems адра
 * Ex: `docker volume create` создание тома (Volume) 
 * Ex: `$ docker run -it -v demo_volume:/data ubuntu:22.04`
   + `it` attaches your terminal to the container
   +  a volume called demo_volume is mounted to /data inside the container
+* Помимо стандартных томов при помощи Docker Volumes можно также создавать тома следующих типов, предназначенные для решения специальных задач
+  + **Bind Mount**. Тома mount предназначены для добавления в контейнер имеющегося пути. Это помогает для добавления конфигурационной информации, а также наборов данных и статики с сайтов. Чтобы указать каталоги, предназначенные для монтирования в контейнер, нужно использовать инструкцию --mount совместно с <host path>:<container path>.
+    - directly mount a host directory into your container
+    - any changes made to the directory will be reflected on both sides of the mount, whether the modification originates from the host or within the container
+    - are best used for ad-hoc storage on a short-term basis
+    - convenient in development workflows
+    - for example: bind mounting your working directory into a container automatically synchronizes your source code files, allowing you to immediately test changes without rebuilding your Docker image
+  + **Tempfs Mount** выполняют функцию, обратную главной задаче Docker Volumes, то есть они отменяют сохранение информации после ликвидации контейнера. Это может понадобиться тем разработчикам, которые ведут достаточно обширное журналирование, т.к. постоянные одноразовые записи могут привести к падению производительности системы
 
 ### Docker Swarm (a tool)
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
