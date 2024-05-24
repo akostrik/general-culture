@@ -407,7 +407,7 @@ services:
   nginx:
     image: nginx:stable-alpine
     volumes:
-      - ./public:/var/www/public       # the host folder "/public" is mounted to "/var/www/public" inside the container
+      - ./public:/var/www/public       # "/var/www/public" inside the container refers to the host folder "/public" 
       - ./nginx/conf.d:/etc/nginx/conf.d/
     restart: unless-stopped
     ports:
