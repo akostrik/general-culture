@@ -362,12 +362,23 @@ COPY index.html /usr/share/nginx/html
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 
 ### Example 3: http://127.0.0.1 + docker-compose
+```
+~/ex3/nginx/conf.d/**nginx.conf**:  
+```
+server {
+    root    /var/www/public/html;
+    location / {                       # all locations
+	try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it   
+                                       # if fails, serves `/index.html` (the fall back option)     
+                                       # if fails, serves the 404 error page   
+    }
+}
+```
 ~/ex3/public/html/**index.html**:  
 ```
 <html>
   <body>Example 3</body>
 </html>
-```
 ~/ex3/**docker-compose.yml**:  
 ```
 version: '3'
@@ -382,17 +393,6 @@ services:
     ports:
       - "80:80"
     container_name: myContainer
-```
-~/ex3/nginx/conf.d/**nginx.conf**:  
-```
-server {
-    root    /var/www/public/html;
-    location / {                       # all locations
-	try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it   
-                                       # if fails, serves `/index.html` (the fall back option)     
-                                       # if fails, serves the 404 error page   
-    }
-}
 ```
 ~/ex3/**test.sh**:  
 ```
