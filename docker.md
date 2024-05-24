@@ -348,13 +348,13 @@ exit
 `$ docker run -it -v public:/var/www/public ubuntu:22.04` 
 * starts a new container
 * attaches your terminal to it (-it)
-* a volume called public is mounted to /var/www/public inside the container
+* a volume called public is mounted to /var/www/public inside the container  
 `ls /var/www/public` list the contents of your container’s /var/www/public   
 * the path exists, indicating the volume has mounted successfully
-* no files have been created yet
-`echo "foobar" > /var/www/public/foo` add a test file with some arbitrary content  
-`exit` detach from your container, the container stops 
-`docker run -it -v public://var/www/public2 alpine:latest` start a new container that attaches the same volume  
+* no files have been created yet  
+`echo "foobar" > /var/www/public/foo` add a test file with some arbitrary content   
+`exit` detach from your container, the container stops  
+`docker run -it -v public://var/www/public2 alpine:latest` start a new container that attaches the same volume   
 
 ### Example 2: http://127.0.0.1:8080/ + Dockerfile
 ~/ex2/**index.html**:  
