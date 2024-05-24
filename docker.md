@@ -445,8 +445,8 @@ server {
     listen             443 ssl;
     server_name        nickname.42.fr www.nickname.42.fr;   # домен, на котором мы будем работать
     root               /var/www/public/html;
-    ssl_certificate     /etc/nginx/ssl/nickname.42.fr.crt;  # сертификат
-    ssl_certificate_key /etc/nginx/ssl/nickname.42.fr.key;  # ключ
+    ssl_certificate     /etc/nginx/ssl/nickname.42.fr.crt;
+    ssl_certificate_key /etc/nginx/ssl/nickname.42.fr.key;
     ssl_protocols       TLSv1.2 TLSv1.3;                    # поддерживаемые протоколы tls
     ssl_session_timeout 10m;                                # опции кэширования  
     keepalive_timeout   70;                                 # таймауты
@@ -477,11 +477,30 @@ services:
 * соединение не считается безопасным
 
 ### Example 7: https://nickname.42.fr на хостовой
+Все файлы, как в примере 6, кроме
+~/ex6/nginx/conf.d/**nginx.conf**:  
+```
+server {
+    listen              80;
+    listen              443 ssl;
+    server_name         nickname.42.fr www.nickname.42.fr;  
+    root                /var/www/public/html;
+    if ($scheme = 'http') {                                 # перенаправление с http на https
+        return 301 https://nickname.42.fr$request_uri;
+    }
+    ssl_certificate     /etc/nginx/ssl/nickname.42.fr.crt;
+    ssl_certificate_key /etc/nginx/ssl/nickname.42.fr.key;
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_session_timeout 10m;  
+    keepalive_timeout   70;
+    location / { 
+        try_files $uri /index.html;
+    }
+}
+```
+
 сейчас проект доступен по `127.0.0.1`  
-раскомментируем редирект в nginx.conf -> нас редиректит на 42.fr, но школьный мак не знает такого сайта  
-    #if ($scheme = 'http') {                                # закомментировано для нормальной работы с хостовой машины, перенаправление с http на https
-    #    return 301 https://nickname.42.fr$request_uri;
-    #}
+нас редиректит на 42.fr, но школьный мак не знает такого сайта  
 
 В браузере: самоподписной ssl -> Дополнительно -> Перейти на сайт
 ![Screenshot from 2024-03-08 18-21-00](https://github.com/akostrik/inception_fork/assets/22834202/1d441f30-a521-431c-a09a-f097910c1e11)
