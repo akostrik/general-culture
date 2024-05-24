@@ -350,21 +350,18 @@ exit
 8. запускает приложение
 9. запускает команду `/bin/bash`  
 
-### Example 1.2
+### Example 2
 `$ docker run -it -v public:/var/www/public ubuntu:22.04` 
 * starts a new container
 * attaches your terminal to it (-it)
 * a volume called public is mounted to /var/www/public inside the container
   
 `ls /var/www/public` list the contents of your container’s /var/www/public   
-* the path exists, indicating the volume has mounted successfully
-* no files have been created yet
-
 `echo "foobar" > /var/www/public/foo` add a test file with some arbitrary content   
 `exit` detach from your container, the container stops  
 `docker run -it -v public://var/www/public2 alpine:latest` start a new container that attaches the same volume   
 
-### Example 2: http://127.0.0.1:8080/ + Dockerfile
+### Example 3: http://127.0.0.1:8080/ + Dockerfile
 ~/ex2/**index.html**:  
 ```
 <html>
@@ -381,7 +378,7 @@ COPY index.html /usr/share/nginx/html
 `                                 # -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 
-### Example 3: http://127.0.0.1 + docker-compose
+### Example 4: http://127.0.0.1 + docker-compose
 ~/ex3/nginx/conf.d/**nginx.conf**:  
 ```
 server {
@@ -427,10 +424,10 @@ docker-compose up -d --build           # build = first run
 startx
 ```
 
-### Example 4: http://nickname.42.fr 
+### Example 5: http://nickname.42.fr 
 `/etc/hosts`: добавляем алиас локального домена `nickname.42.fr`   
 
-### Example 5: https://nickname.42.fr всё ещё на виртуальной
+### Example 6: https://nickname.42.fr всё ещё на виртуальной
 `cd ~/project/srcs/requirements/tools/`  
 `mkcert nickname.42.fr` сгенерируем самоподписный сертификат  
 `mv nickname.42.fr-key.pem nickname.42.fr.key` поменять расширения файлов, чтобы nginx их правильно читал  
@@ -476,7 +473,7 @@ services:
 * сайт загружается по ssl
 * соединение не считается безопасным
 
-### Example 6: https://nickname.42.fr на хостовой
+### Example 7: https://nickname.42.fr на хостовой
 сейчас проект доступен по `127.0.0.1`  
 раскомментируем редирект в nginx.conf -> нас редиректит на 42.fr, но школьный мак не знает такого сайта  
 В браузере: самоподписной ssl -> Дополнительно -> Перейти на сайт
