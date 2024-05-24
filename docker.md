@@ -210,7 +210,12 @@ exit
    + при помощи docker compose можно легко выполнить перенос сайтов (потребуется изменить настройки и перенести на другой сервер резервную копию баз данных)
   
 ### Docker Volume (a tool)
-* def: файловая система, которая расположена на хост-машине за пределами контейнеров. Созданием и управлением томами занимается Docker
+* a mechanism for storing data outside containers
+* файловая система, которая расположена на хост-машине за пределами контейнеров
+* is managed by Docker
+* is stored in a dedicated directory on your host, usually /var/lib/docker/volumes
+* is mounted to filesystem paths in your containers
+* the changes are applied to the volume instead of the container’s writable image layer
 * самостоятельны и отделены от контейнеров
 * разные контейнеры могут совместно пользоваться одним volume
 * эффективное чтение и запись данных
@@ -218,6 +223,11 @@ exit
 * можно шифровать
 * можно давать имена
 * контейнер может организовать заблаговременное наполнение тома данными
+* several different drivers are available to store volume data in different services:
+  + local storage on your Docker host (by default)
+  + NFS volumes
+  + CIFS/Samba shares
+  + device-level block storage adapters  
 
 ### Docker Swarm (a tool)
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
