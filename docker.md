@@ -362,13 +362,13 @@ exit
 `docker run -it -v public://var/www/public2 alpine:latest` start a new container that attaches the same volume   
 
 ### Example 3: http://127.0.0.1:8080/ + Dockerfile
-~/ex2/**index.html**:  
+~/ex3/**index.html**:  
 ```
 <html>
   <body>Example 2</body>
 </html>
 ```
-~/ex2/**Dockerfile**:  
+~/ex3/**Dockerfile**:  
 ```
 FROM nginx                    # соберем image из готового образа docker hub  
 COPY index.html /usr/share/nginx/html
@@ -379,7 +379,7 @@ COPY index.html /usr/share/nginx/html
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 
 ### Example 4: http://127.0.0.1 + docker-compose
-~/ex3/nginx/conf.d/**nginx.conf**:  
+~/ex4/nginx/conf.d/**nginx.conf**:  
 ```
 server {
     root    /var/www/public/html;
@@ -390,13 +390,13 @@ server {
     }
 }
 ```
-~/ex3/public/html/**index.html**:  
+~/ex4/public/html/**index.html**:  
 ```
 <html>
   <body>Example 3</body>
 </html>
 ```
-~/ex3/**docker-compose.yml**:  
+~/ex4/**docker-compose.yml**:  
 ```
 version: '3'
 
@@ -432,7 +432,7 @@ startx
 `mkcert nickname.42.fr` сгенерируем самоподписный сертификат  
 `mv nickname.42.fr-key.pem nickname.42.fr.key` поменять расширения файлов, чтобы nginx их правильно читал  
 `mv nickname.42.fr.pem nickname.42.fr.crt`   
-~/ex5/nginx/conf.d/**nginx.conf**:  
+~/ex6/nginx/conf.d/**nginx.conf**:  
 ```
 server {
     listen             80;                                  # Слушаем порт http
@@ -452,7 +452,7 @@ server {
     }
 }
 ```
-**docker-compose.yml**:   
+~/ex6/**docker-compose.yml**:   
 ```
 version: '3'
 services:
