@@ -29,4 +29,5 @@
 
 ## Ports
 * `telnet loclhost 80` verify
-* `netstat -a`
+* `netstat -a` verity
+* `ss` verify
