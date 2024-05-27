@@ -44,3 +44,6 @@
 53 DNS  
 443 HTTPS  
 22 SSH
+
+## IP
+`ip addr show | grep inet| awk '{print $2; }'` my IP  
