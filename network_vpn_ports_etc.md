@@ -31,3 +31,8 @@
 * `telnet loclhost 80` verify
 * `netstat -a` verity
 * `ss -ltn` verify
+80 HTTP  
+3306 MySQL  
+53 DNS  
+443 HTTPS  
+22 SSH
