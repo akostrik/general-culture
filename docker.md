@@ -289,7 +289,7 @@ exit
 * сложность использования
 * Docker работает непосредственно в ОС => возможно внедрение зловредного кода в контейнеры и проникновение в ОС
 
-### Commands client
+### docker commands via client
 #### создать, запустить, остановить контейнер, скачать образ 
 `systemctl status docker` установлена и работает служба docker   
 `docker create` создание контейнера   
@@ -315,6 +315,10 @@ exit
 `docker volume ls` список томов   
 `docker volume inspect myVolume`   
 `docker volume rm myVolume` удалить том   
+`docker run -p` publish a container's port to the host
+`docker run -P` publish all exposed port to random ports
+`docker run -d -p 7000:80 test:latest`
+ 
 #### инспектировать
 `docker images`, `docker image ls` просмотреть список доступных локально образов   
 `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
@@ -325,6 +329,10 @@ exit
 `RUN`  
 `CMD`  
 `EXPOSE`  
+`FROM` defines a base for your image. exemple : FROM debian  
+`WORKDIR` sets the working directory for any RUN, CMD, ENTRYPOINT, COPY, and ADD instructions that follow it in the Dockerfile. (You go directly in the directory you choose)  
+`COPY` copies new files or directories from and adds them to the filesystem of the container at the path  
+`CMD` lets you define the default program that is run once you start the container based on this image. Each Dockerfile only has one CMD, and only the last CMD instance is respected when multiple ones exist  
 
 ### Commands docker-compose
 `make` in the root of the directory to build and start all container  
