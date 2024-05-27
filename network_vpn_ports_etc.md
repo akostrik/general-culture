@@ -26,3 +26,7 @@
 ## Web
 * Смена локального домена: сменить алиас нашего локального домена (127.0.0.1) на something.42.fr
   + `/etc/hosts`
+
+## Ports
+* `telnet loclhost 80` verify
+* `netstat -a`
