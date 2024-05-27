@@ -30,4 +30,4 @@
 ## Ports
 * `telnet loclhost 80` verify
 * `netstat -a` verity
-* `ss` verify
+* `ss -ltn` verify
