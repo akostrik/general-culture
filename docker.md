@@ -168,10 +168,11 @@ exit
   + Делаем это одним RUN мы потому, что каждая директива RUN создаёт новый слой в docker-образе, и лучше не плодить лишние RUN-ы без надобности.
 
 ### Docker Compose (a tool)
+* docker-compose CLI
 * инструмент, надстройка для управления несколькими контейнерами, создавать контейнеры и задавать их конфигурацию
 * функционал для управления несколькими контейнерами
+  + docker работает с контейнерами по отдельности
 * запуск множества контейнеров одной командой
-* docker-compose CLI
 * to manage services, networks, volumes
 * `docker-compose.yml`
    + creates and starts all the services (containers?) from the configuration file
@@ -180,7 +181,7 @@ exit
    + commands related to image manipulation, or user-interactive options, are not relevant in Docker Compose because they address one container
    + configures the application's services
    + defines configuration options
-   + `build` defines configuration options such as the Dockerfile path
+   + `build` defines configuration options
    + `command` override default Docker commands
    + the network line
 * commands for managing the whole lifecycle of your application:
@@ -194,9 +195,6 @@ exit
    + configuration files are easy to share, facilitating collaboration
    + caches the configuration used to create a container. When you restart a service that has not changed, Compose re-uses the existing containers. Re-using containers means that you can make changes to your environment very quickly
    + supports variables in the Compose file, you can use these variables to customize your composition for different environments, or different users
-* разница:
-   + docker работать с контейнерами по отдельности
-   + docker compose одновременно управлять несколькими контейнерами
 * пример: веб-сайт
    + для авторизации пользователей необходимо подключение к базе данных
    + первый сервис отвечает за функционирование сайта
@@ -207,8 +205,8 @@ exit
    + второй для поддержки клиентов
    + оба сайта подключены к общей базе данных
    + по мере развития проекта мощностей текущего сервера недостаточно => переносят сайты на новый сервер
-   + при помощи docker compose можно легко выполнить перенос сайтов (потребуется изменить настройки и перенести на другой сервер резервную копию баз данных)
-* `docker volume ls`
+     - при помощи docker compose легко перености
+     - потребуется изменить настройки и перенести на другой сервер резервную копию баз данных
   
 ### Docker Volume (a tool)
 * storing data outside containers, файловая система, которая расположена на хост-машине за пределами контейнеров
@@ -245,6 +243,7 @@ exit
   + to backup container data by mirroring /var/lib/docker/volumes to another location
   + share data between containers
   + write to remote filesystems адра
+* `docker volume ls`
 * Ex: `docker volume create` создание тома (Volume) 
 * Ex: `$ docker run -it -v demo_volume:/data ubuntu:22.04`
   + `it` attaches your terminal to the container
