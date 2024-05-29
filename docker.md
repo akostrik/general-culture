@@ -485,15 +485,14 @@ services:
 * соединение не считается безопасным
 
 ### Example 7: https://nickname.42.fr на хостовой
-Все файлы, как в примере 6, кроме
-~/ex6/nginx/conf.d/**nginx.conf**:  
+nginx.conf:  
 ```
 server {
     listen              80;
     listen              443 ssl;
     server_name         nickname.42.fr www.nickname.42.fr;  
     root                /var/www/public/html;
-    if ($scheme = 'http') {                                 # перенаправление с http на https
+    if ($scheme = 'http') {                                 # NEW перенаправление с http на https
         return 301 https://nickname.42.fr$request_uri;
     }
     ssl_certificate     /etc/nginx/ssl/nickname.42.fr.crt;
