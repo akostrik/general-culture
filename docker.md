@@ -362,9 +362,9 @@ exit
 `$ docker run -it -v public:/var/www/public ubuntu:22.04` 
 * starts a new container
 * attaches your terminal to it (-it)
-* a volume called public is mounted to /var/www/public inside the container
+* a volume `public` is mounted to /var/www/public inside the container
   
-`ls /var/www/public` list the contents of your container’s /var/www/public   
+`ls /var/www/public` the contents of the container’s /var/www/public   
 `echo "foobar" > /var/www/public/foo` add a test file with some arbitrary content   
 `exit` detach from your container, the container stops  
 `docker run -it -v public://var/www/public2 alpine:latest` start a new container that attaches the same volume   
@@ -385,6 +385,7 @@ COPY index.html /usr/share/nginx/html
 `docker run -p 8080:80 -d mynginx # -p порт 80 контейнера -> порт host машины 8080`  
 `                                 # -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
+`wget https://localhost/index.html --no-check-certificate` проверить без браузера
 
 ### Example 4: http://127.0.0.1 на виртуальной + docker-compose
 ~/ex4/public/html/**index.html**:  
