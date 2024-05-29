@@ -434,14 +434,14 @@ wget http://127.0.0.1/index.html --no-check-certificate
 
 ```
 
-### Example 5: http://nickname.42.fr на виртуальной
-`/etc/hosts`: добавляем алиас локального домена `nickname.42.fr`   
+### Example 5: http://akostrik.42.fr на виртуальной
+`/etc/hosts`: добавляем алиас локального домена `akostrik.42.fr`   
 
-### Example 6: https://nickname.42.fr на виртуальной
+### Example 6: https://akostrik.42.fr на виртуальной
 `cd ~/project/srcs/requirements/tools/`  
-`mkcert nickname.42.fr` сгенерируем самоподписный сертификат  
-`mv nickname.42.fr-key.pem nickname.42.fr.key` поменять расширения файлов, чтобы nginx их правильно читал  
-`mv nickname.42.fr.pem nickname.42.fr.crt`   
+`mkcert akostrik.42.fr` сгенерируем самоподписный сертификат  
+`mv akostrik.42.fr-key.pem akostrik.42.fr.key` поменять расширения файлов, чтобы nginx их правильно читал  
+`mv akostrik.42.fr.pem akostrik.42.fr.crt`   
 ~/ex6/public/html/**index.html**:  
 ```
 <html>
@@ -453,10 +453,10 @@ wget http://127.0.0.1/index.html --no-check-certificate
 server {
     listen             80;
     listen             443 ssl;
-    server_name        nickname.42.fr www.nickname.42.fr;   # домен, на котором мы будем работать
+    server_name        akostrik.42.fr www.akostrik.42.fr;   # домен, на котором мы будем работать
     root               /var/www/public/html;
-    ssl_certificate     /etc/nginx/ssl/nickname.42.fr.crt;
-    ssl_certificate_key /etc/nginx/ssl/nickname.42.fr.key;
+    ssl_certificate     /etc/nginx/ssl/akostrik.42.fr.crt;
+    ssl_certificate_key /etc/nginx/ssl/akostrik.42.fr.key;
     ssl_protocols       TLSv1.2 TLSv1.3;                    # поддерживаемые протоколы tls
     ssl_session_timeout 10m;                                # опции кэширования  
     keepalive_timeout   70;                                 # таймауты
@@ -486,19 +486,19 @@ services:
 * сайт загружается по ssl
 * соединение не считается безопасным
 
-### Example 7: https://nickname.42.fr на хостовой
+### Example 7: https://akostrik.42.fr на хостовой
 nginx.conf:  
 ```
 server {
     listen              80;
     listen              443 ssl;
-    server_name         nickname.42.fr www.nickname.42.fr;  
+    server_name         akostrik.42.fr www.akostrik.42.fr;  
     root                /var/www/public/html;
     if ($scheme = 'http') {                                 # NEW перенаправление с http на https
-        return 301 https://nickname.42.fr$request_uri;
+        return 301 https://akostrik.42.fr$request_uri;
     }
-    ssl_certificate     /etc/nginx/ssl/nickname.42.fr.crt;
-    ssl_certificate_key /etc/nginx/ssl/nickname.42.fr.key;
+    ssl_certificate     /etc/nginx/ssl/akostrik.42.fr.crt;
+    ssl_certificate_key /etc/nginx/ssl/akostrik.42.fr.key;
     ssl_protocols       TLSv1.2 TLSv1.3;
     ssl_session_timeout 10m;  
     keepalive_timeout   70;
