@@ -419,7 +419,7 @@ services:
       - "80:80"
     container_name: myContainer
 ```
-~/ex3/**test.sh**:  
+~/ex4/**test.sh**:  
 ```
 #!/bin/bash
 docker stop myContainer
