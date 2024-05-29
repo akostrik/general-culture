@@ -372,7 +372,7 @@ exit
 ~/ex3/**index.html**:  
 ```
 <html>
-  <body>Example 2</body>
+  <body>Example 3</body>
 </html>
 ```
 ~/ex3/**Dockerfile**:  
@@ -390,7 +390,7 @@ COPY index.html /usr/share/nginx/html
 ~/ex4/public/html/**index.html**:  
 ```
 <html>
-  <body>Example 3</body>
+  <body>Example 4</body>
 </html>
 ```
 ~/ex4/nginx/conf.d/**nginx.conf**:  
@@ -445,7 +445,7 @@ wget http://127.0.0.1/index.html --no-check-certificate
 ~/ex6/public/html/**index.html**:  
 ```
 <html>
-  <body>Example 3</body>
+  <body>Example 6</body>
 </html>
 ```
 ~/ex6/nginx/conf.d/**nginx.conf**:  
