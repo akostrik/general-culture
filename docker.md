@@ -384,7 +384,7 @@ COPY index.html /usr/share/nginx/html
 `docker run -p 8080:80 -d mynginx # -p порт 80 контейнера -> порт host машины 8080`  
 `                                 # -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
-`wget https://localhost/index.html --no-check-certificate` проверить без браузера
+`wget http://127.0.0.1/index.html --no-check-certificate` проверить без браузера
 
 ### Example 4: http://127.0.0.1 на виртуальной + docker-compose
 ~/ex4/public/html/**index.html**:  
@@ -429,7 +429,9 @@ docker system prune
 service docker stop
 service docker start
 docker-compose up -d --build           # build = first run
-startx
+# startx
+wget http://127.0.0.1/index.html --no-check-certificate
+
 ```
 
 ### Example 5: http://nickname.42.fr на виртуальной
