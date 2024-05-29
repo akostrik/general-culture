@@ -505,29 +505,6 @@ server {
     }
 }
 ```
-* Виртуалка имеет внешний сетевой интерфейс, который подключен к виртуальному коммутатору внутри хостовой системы, по этому адресу стучитесь
-* После установки VirtualBox, в системе появится Виртуальный сетевой адаптер, взаимодействие между ним, и существующим сейчас интернет соединением необходимо настроить (?)
-* Первый вариант: пробросить еще один интерфейс как бридж и разрешить ему форвардить пакеты из сети 10.0.2.0 в вашу подсеть, после чего прописать маршруты на обеих сторонах
-* Второй ваиант: удалить стандартный NAT интерфейс в virtualbox и добавить вместо него bridge чтоб ловил адрес в вашей сети. После чего перенастроить nginx на новый ip полученый из вашей сети
-* вам нужен обратный прокси-сервер (возможно, роутер сможет выполнить его функции) или http-сервер, работающий в ms/windows
-* Easiest way is to change the Network configuration of the VM in your Vbox, configure the Network connection to sit in the same network as the HOST, instead of Natted\
-  + if you still want to NAT on your VM, or do not have the option to change it; you can configure IPtables to perform a Port-Forward to the VM's IP and port number
-* you can use as network adapter of VirtualBox a network bridge
-  + your virtual ubuntu should get an IP address from your intern network (it is easier to give the IP manually so it is everytime the same IP)
-  + to forward port 80 in your router to port 80 of the network IP from your virtual ubuntu
-  + if you than browse to your extern IP (you see it in your router) than you shall see your webside
-* if having set up port forwarding or bridged you still can't connect to the guest's web server then possibly the guest firewall is blocking it
-  + using 'curl -v' I was able see that curl was making a connection and sending headers but getting no response
-  + so in my guest I put in a set of rules to disable it iptables
-  + `iptables -P INPUT ACCEPT`
-  + `iptables -P OUTPUT ACCEPT`
-  + `iptables -P FORWARD ACCEPT`
-  + `iptables -F`
-* My guess web service is listening on 0.0.0.0:8000 (ie all interfaces on port 8000). My host was Windows 10.
-  + setup NAT forwarding of port 8888 on my host in virtualbox to port 8000 of the guest. In virtualbox I did not provide an ipaddress for either the host or guest in the nat forwarding config. I then hit 127.0.0.1:8888 in the host and was able to access my site.
-  + turn on bridged in virtual box then, after restarting the guest, I ran ifconfig and found the network interface that was assigned a dhcp address by my router. This address was one starting with 192.168.0. as that's how my router is setup. Mine was 192.168.0.62 but yours will be different. I then hit 192.168.0.62:8000 and was able to contact my site.
-  + setup a bridged network in VMware workstation Player and did the same steps as B and that also worked.
-  + in VMware player I couldn't see a place to configure the port forwarding so didn't try that
 
 сейчас проект доступен по `127.0.0.1`  
 нас редиректит на 42.fr, но школьный мак не знает такого сайта  
