@@ -305,7 +305,15 @@ exit
 * `/etc/default` DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
 * `/etc/init.d/docker`
 * `/etc/init/docker.conf` DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
+* `/etc/systemd/system/docker.service.d`
+* `/etc/systemd/system/docker.service.d/override.conf`
+* `/etc/docker/daemon.json`
 * `/lib/systemd/system/docker.service` ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:
+* Never edit the docker service script (or any service script) directly, SystemD has a differential editing feature built in, Use systemctl edit docker.service
+* if you open docker to listen on the network
+  + the docker API ports are frequently scanned on the internet, and you will find malware installed on your host
+  + you are running the equivalent of an open telnet server with root logins allowed without a password
+  + you should configure mutual TLS between client and server
 
 ### Efficency
 * a single server or virtual machine runs several containers simultaneously
