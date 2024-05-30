@@ -65,6 +65,13 @@
   + с докером если тестирование завершится некорректно и повредит данные в контейнере, они удалятся вместе с контейнером
 * полезен в условиях высоких нагрузок, например, при создания собственного облака или platform-as-service
 * полезен для маленьких и средних приложений, когда вам хочется получать больше из имеющихся ресурсов
+* a single server or virtual machine runs several containers simultaneously
+* автоматизация работы с контейнерами при помощи cron jobs, автоматизируются рутинные повторяемые задачи
+* мгновенное время запуска
+### Недостатки
+* медленнее, чем запуск приложения на физическом сервере
+* сложность использования
+* Docker работает непосредственно в ОС => возможно внедрение зловредного кода в контейнеры и проникновение в ОС
 
 ## Как устроен
 ![Screenshot from 2024-04-06 01-09-43+](https://github.com/akostrik/general-culture/assets/22834202/4b0ea467-2d6b-45a7-b1f6-c9e22093b2dc)
@@ -85,6 +92,8 @@
 * `/var/lib/docker/overlay2` writable layers, the various filesystem layers for images and containers
   + `/var/lib/docker/overlay2/eceb7b667587c3cc2a08d7c970eae723fdd8981b7a7580db19587434123a2681`
 * `/var/lib/docker` your images, containers, local named volumes
+* Linux: Docker uses the resource isolation features of the Linux kernel (cgroups, kernel namespaces) and a union-capable file system to allow containers to run within a single Linux instance, avoiding the overhead of virtual machines
+* MacOS: Docker uses a Linux virtual machine to run the containers
 * написан на Go
 * Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
 ```
@@ -177,6 +186,7 @@ exit
   + файловая система, имя хоста, пользователи, сетевая среда, процессы отделены от остальной части системы
 * технологии ядра Linux для изоляции контейнеров:
   + namespaces
+    - the Linux kernel's support for namespaces isolates an application's view of the operating environment, including process trees, network, user IDs and mounted file systems
     - когда запускаем контейнер, docker создает набор пространств
     - это создает изолированный уровень, каждый аспект контейнера запущен в своем простанстве имен и не имеет доступа к внешней системе
     - некоторые пространств имен, которые использует docker: pid: для изоляции процесса, net: для управления сетевыми интерфейсами, ipc: для управления IPC ресурсами. (ICP: InterProccess Communication), mnt: для управления точками монтирования, utc: для изолирования ядра и контроля генерации версий(UTC: Unix timesharing system)
@@ -185,6 +195,7 @@ exit
       - изоляция процессов друг от друга
       - возможность иметь параллельно «одинаковые», но не пересекающиеся друг с другом иерархии процессов, пользователей и сетевых интерфейсов. Примеры: PID Process ID изоляция иерархии процессов, NET Networking изоляция сетевых интерфейсов, PC InterProcess Communication управление взаимодействием между процессами, MNT Mount управление точками монтирования, UTS Unix Timesharing System изоляция ядра и идентификаторов версии
   + Контрольные группы (Cgroups)
+    - the kernel's cgroups provide resource limiting for memory and CPU 
     - контроль над распределением, приоритизацией и управлением системными ресурсами
     - управление ресурсами, используемыми контейнером (процессор, оперативная память и т.д.)
     - предоставление приложению только тех ресурсов, которые вы хотите предоставить => контейнеры хорошие соседи
@@ -396,20 +407,6 @@ exit
   + you are running the equivalent of an open telnet server with root logins allowed without a password
   + you should configure mutual TLS between client and server
 
-### Efficency
-* a single server or virtual machine runs several containers simultaneously
-* Linux: Docker uses the resource isolation features of the Linux kernel (cgroups, kernel namespaces) and a union-capable file system to allow containers to run within a single Linux instance, avoiding the overhead of virtual machines
-* MacOS: Docker uses a Linux virtual machine to run the containers
-* the Linux kernel's support for namespaces mostly isolates an application's view of the operating environment, including process trees, network, user IDs and mounted file systems, while the kernel's cgroups provide resource limiting for memory and CPU 
-* легкая переносимость
-* автоматизация работы с контейнерами при помощи cron jobs, автоматизируются рутинные повторяемые задачи
-* мгновенное время запуска
-
-### Недостатки
-* медленнее, чем запуск приложения на физическом сервере
-* сложность использования
-* Docker работает непосредственно в ОС => возможно внедрение зловредного кода в контейнеры и проникновение в ОС
-
 ### docker commands via client
 #### создать, запустить, остановить контейнер, скачать образ 
 `systemctl status docker` установлена и работает служба docker   
@@ -448,11 +445,12 @@ exit
 `docker logs` выводит в консоль логи  
 `cat /var/lib/docker/repositories | python -mjson.tool` list of the repositories on your host
 `ls -al /var/lib/docker/graph`
+`netstat -ntpl`  
 `/var/lib/docker/aufs/diff/` все файлы контейнеров, если для работы с файловой системой Docker использует драйвер AUFS
 `/var/lib/docker/containers/` служебная информация, не сами файлы контейнеров
 `/var/lib/docker/aufs/diff/` образы
 `/etc/init.d/docker status`  
-`netstat -ntpl`  
+`/etc/resolv.conf`
 
 ### Commands docker daemon
 * `dockerd` запуск сервиса
