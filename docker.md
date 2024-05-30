@@ -4,7 +4,7 @@
 * компьютер или виртуальный сервер, на котором установлен Docker
 
 ## Docker 
-* a set of platform as a service (PaaS) products 
+* a set of platform as a service (PaaS) products
 * **Docker objets** entities used to assemble an application (сети, хранилища, образы, контейнеры)
 
 ## Usage
@@ -41,6 +41,7 @@
 * `/var/lib/docker/overlay2` writable layers, the various filesystem layers for images and containers
   + `/var/lib/docker/overlay2/eceb7b667587c3cc2a08d7c970eae723fdd8981b7a7580db19587434123a2681`
 * `/var/lib/docker` your images, containers, local named volumes
+* написан на Go
 * Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
 ```
 sudo -s
