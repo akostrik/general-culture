@@ -156,6 +156,7 @@ exit
 * контейнеры похожи на директории
 * в контейнерах содержится все, что нужно для работы приложения
 * набор процессов
+* docker не исполняет контейнеры, а управляет ими
 * runs, in isolation, in a variety of locations
 * runs applications - a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ...
 * когда docker запускает контейнер, он создает уровень для чтения/записи сверху образа (используя unionFS), в котором может быть запущено приложение
@@ -184,6 +185,9 @@ exit
     - управление ресурсами, используемыми контейнером (процессор, оперативная память и т.д.)
     - предоставление приложению только тех ресурсов, которые вы хотите предоставить => контейнеры хорошие соседи
     - разделять доступные ресурсы железа и если необходимо, устанавливать пределы и ограничения (например, ограничить количество памяти контейнеру)
+    - контейнеры исполняются механизмом ядра Cgroups
+    - служба docker запускает контейнер по команде, полученной от клиентского приложения (например, docker), и останавливает его когда в контейнере освобождается поток стандартного ввода-вывода
+    - поэтому в конфигурации Nginx для Docker пишут: Be sure to include daemon off; in your custom configuration to ensure that Nginx stays in the foreground so that Docker can track the process properly (otherwise your container will stop immediately after starting)!
   + Средства управления привилегиями (Linux Capabilities)
     - разбить привилегии пользователя root на небольшие группы привилегий и назначать их по отдельности
     - контейнеры запускаются с ограниченным набором привилегий.
@@ -227,6 +231,10 @@ exit
 * контейнер работает до тех пор, пока выполняется его главный процесс (команда или программа)
 * в контейнере обычно выполняется только один процесс, но от его имени можно запустить другие процессы, тогда в этом же в контейнере будет выполняться множество процессов
 * контейнер не считается запущенным, если в нём не выполняется хотя бы один процесс, если главный процесс остановлен, значит и контейнер остановлен
+* когда работа контейнера заканчивается, он не удаляется, если это не указать специально
+  + каждый запуск контейнера командой docker run image_name без параметров --name или --rm создает новый контейнер с уникальным идентификатором
+  + замусоривание
+  + контейнеры, в которых не нужно сохранять данные, создавайте с параметром --rm
 
 ### сети (object)
 
@@ -386,10 +394,11 @@ exit
 * a single server or virtual machine runs several containers simultaneously
 * to avoid the situations when we say “it worked on my machine”, because Docker containers will give us the same environment on all machines
 * containers share the services of a single OS kernel => fewer resources than virtual machines  
-* Linux: Docker uses the resource isolation features of the Linux kernel (cgroups, kernel namespaces) and a union-capable file system to allow containers to run within a single Linux instance, avoiding the overhead of starting and maintaining virtual machines
+* Linux: Docker uses the resource isolation features of the Linux kernel (cgroups, kernel namespaces) and a union-capable file system to allow containers to run within a single Linux instance, avoiding the overhead of virtual machines
 * MacOS: Docker uses a Linux virtual machine to run the containers
 * the Linux kernel's support for namespaces mostly isolates an application's view of the operating environment, including process trees, network, user IDs and mounted file systems, while the kernel's cgroups provide resource limiting for memory and CPU 
-* Легкая переносимость, возможность создавать и тестировать приложения на локальной машине, не беспокоясь о программных зависимостях — Docker-контейнеры вмещают в себя все что нужно приложению для функционирования
+* легкая переносимость
+* создавать и тестировать приложения на локальной машине, не беспокоясь о программных зависимостях
 * автоматизация работы с контейнерами при помощи cron jobs, автоматизируются рутинные повторяемые задачи
 * мгновенное время запуска
 
