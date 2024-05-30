@@ -95,7 +95,8 @@ exit
 ![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 * runtime-сущность
 * one container = one service = одно развёрнутое и запущенное приложение = a process created from an image
-* runs applications - a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ... 
+* runs applications - a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ...
+* контейнер = набор процессов
 * содержит все для запуска (системные программы, библиотеки, код, среды исполнения, настройки)
 * условия запуска контейнера могут быть заданы
   + в Dockerfile
