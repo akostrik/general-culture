@@ -529,11 +529,11 @@ COPY index.html /usr/share/nginx/html
 ~/ex4/nginx/conf.d/**nginx.conf**:  
 ```
 server {
-    root    /var/www/public/html;
-    location / {                       # all locations
-	try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it   
-                                       # if fails, serves `/index.html` (the fall back option)     
-                                       # if fails, serves the 404 error page   
+  root    /var/www/public/html;
+  location / {                     # all locations
+    try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it   
+                                   # if fails, serves `/index.html` (the fall back option)     
+                                   # if fails, serves the 404 error page   
     }
 }
 ```
@@ -585,18 +585,18 @@ wget http://127.0.0.1/index.html --no-check-certificate
 ~/ex6/nginx/conf.d/**nginx.conf**:  
 ```
 server {
-    listen             80;
-    listen             443 ssl;
-    server_name        akostrik.42.fr www.akostrik.42.fr;   # домен, на котором мы будем работать
-    root               /var/www/public/html;
-    ssl_certificate     /etc/nginx/ssl/akostrik.42.fr.crt;
-    ssl_certificate_key /etc/nginx/ssl/akostrik.42.fr.key;
-    ssl_protocols       TLSv1.2 TLSv1.3;                    # поддерживаемые протоколы tls
-    ssl_session_timeout 10m;                                # опции кэширования  
-    keepalive_timeout   70;                                 # таймауты
-    location / {                                            # искать файл в корне 
-        try_files $uri /index.html;
-    }
+  listen             80;
+  listen             443 ssl;
+  server_name        akostrik.42.fr www.akostrik.42.fr;   # домен, на котором мы будем работать
+  root               /var/www/public/html;
+  ssl_certificate     /etc/nginx/ssl/akostrik.42.fr.crt;
+  ssl_certificate_key /etc/nginx/ssl/akostrik.42.fr.key;
+  ssl_protocols       TLSv1.2 TLSv1.3;                    # поддерживаемые протоколы tls
+  ssl_session_timeout 10m;                                # опции кэширования  
+  keepalive_timeout   70;                                 # таймауты
+  location / {                                            # искать файл в корне 
+    try_files $uri /index.html;
+  }
 }
 ```
 ~/ex6/**docker-compose.yml**:   
