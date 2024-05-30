@@ -428,6 +428,8 @@ exit
 `docker logs` выводит в консоль логи  
 `cat /var/lib/docker/repositories | python -mjson.tool` list of the repositories on your host
 `ls -al /var/lib/docker/graph`
+`/var/lib/docker/aufs/diff/` все файлы контейнеров, если для работы с файловой системой Docker использует драйвер AUFS
+`/var/lib/docker/containers/` служебная информация, не сами файлы контейнеров
 
 ### Commands docker daemon
 * `dockerd` запуск сервиса
