@@ -618,7 +618,9 @@ services:
 * сайт загружается по ssl  
 * соединение не считается безопасным  
 
-### Example 7: https://akostrik.42.fr на хостовой
+### Example 7: https://127.0.0.1:1443 на хостовой
+`chmod o+r /etc/resolv.conf` make sure your DNS Resolver config file is writable
+
 nginx.conf:  
 ```
 server {
