@@ -30,11 +30,8 @@
 ![Screenshot from 2024-04-06 01-09-43+](https://github.com/akostrik/general-culture/assets/22834202/4b0ea467-2d6b-45a7-b1f6-c9e22093b2dc)
 ![Screenshot from 2024-03-30 00-55-26](https://github.com/akostrik/general-culture/assets/22834202/3ea7709f-8248-4980-ad54-2b242f9e9b2a)
 * контейнер работает в операционной системе, в изолированной среде, не влияющей на основную операционную систему
-  + виртуальная среда запускается из ядра основной ОС
-  + не создается виртуальное железо
-* VM:
-  + работает поверх операционной системы
-  + создается виртуальное железо
+  + виртуальная среда запускается из ядра основной ОС (в оличие от VM)
+  + не создается виртуальное железо (в оличие от VM)
 * ещё один уровень абстракции => позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * libcontainer собственная библиотека, абстрагирующая виртуализационные возможности ядра Linux
   + to use virtualization facilities provided directly by the Linux kernel, in addition to using abstracted virtualization interfaces via libvirt, LXC and systemd-nspawn
