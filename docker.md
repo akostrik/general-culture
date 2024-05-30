@@ -33,6 +33,9 @@
   + виртуальная среда запускается из ядра основной ОС (в оличие от VM)
   + не создается виртуальное железо (в оличие от VM)
 * ещё один уровень абстракции => позволяет использовать на одном хосте различные версии языков, библиотек, etc
+* docker сочетает компоненты в обертку, которую мы называем форматом контейнера
+  + libcontainer - формат по умолчанию
+  + docker поддерживает традиционный формат контейнеров в Linux c помощью LXC
 * libcontainer собственная библиотека, абстрагирующая виртуализационные возможности ядра Linux
   + to use virtualization facilities provided directly by the Linux kernel, in addition to using abstracted virtualization interfaces via libvirt, LXC and systemd-nspawn
 * проверенные технологии ядра
