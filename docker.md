@@ -624,21 +624,21 @@ services:
 nginx.conf:  
 ```
 server {
-    listen              80;
-    listen              443 ssl;
-    server_name         akostrik.42.fr www.akostrik.42.fr;  
-    root                /var/www/public/html;
-    if ($scheme = 'http') {                                 # NEW перенаправление с http на https
-        return 301 https://akostrik.42.fr$request_uri;
-    }
-    ssl_certificate     /etc/nginx/ssl/akostrik.42.fr.crt;
-    ssl_certificate_key /etc/nginx/ssl/akostrik.42.fr.key;
-    ssl_protocols       TLSv1.2 TLSv1.3;
-    ssl_session_timeout 10m;  
-    keepalive_timeout   70;
-    location / { 
-        try_files $uri /index.html;
-    }
+  listen              80;   # ?
+  listen              443 ssl;
+  server_name         akostrik.42.fr www.akostrik.42.fr;  
+  root                /var/www/public/html;
+  if ($scheme = 'http') {                                 # NEW перенаправление с http на https
+    return 301 https://akostrik.42.fr$request_uri;
+  }
+  ssl_certificate     /etc/nginx/ssl/akostrik.42.fr.crt;
+  ssl_certificate_key /etc/nginx/ssl/akostrik.42.fr.key;
+  ssl_protocols       TLSv1.2 TLSv1.3;
+  ssl_session_timeout 10m;  
+  keepalive_timeout   70;
+  location / { 
+    try_files $uri /index.html;
+  }
 }
 ```
 
