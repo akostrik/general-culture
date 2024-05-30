@@ -93,7 +93,8 @@ exit
 ![Screenshot from 2024-04-06 01-14-25+](https://github.com/akostrik/general-culture/assets/22834202/c42f1635-8a66-4610-8b50-1162d741c4de)
 ![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 * runtime-сущность
-* контейнер = набор процессов
+* набор процессов
+* изолированное рабочее пространство
 * runs, in isolation, in a variety of locations
 * one container = one service = одно развёрнутое и запущенное приложение = a process created from an image
 * runs applications - a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ...
