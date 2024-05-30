@@ -139,6 +139,11 @@ exit
 * при запуске одного образа можно создать несколько контейнеров
 * image becomes container at runtime
   + in the case of Docker container: image becomes container when they run on Docker Engine
+* Образ ≈ класс в коде, контейнер ≈ объект, созданный из класса
+* состоит из слоев
+  + слои — это папки, которые лежат в /var/lib/docker/aufs/diff/
+* обычно образы приложений наследуют какие-то готовые официальные системные образы
+* когда Docker скачивает образ, ему нужны только те слои, которых у него нет
 * **An index** manages user accounts, permissions, search, tagging, etc that's in the public web interface
 * **A registry** stores and serves up the actual image assets, delegates authentication to the index
 
@@ -146,6 +151,7 @@ exit
 ![Screenshot from 2024-04-06 01-14-25+](https://github.com/akostrik/general-culture/assets/22834202/c42f1635-8a66-4610-8b50-1162d741c4de)
 ![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 * runtime-сущность
+* контейнер можно закомитить и сделать из него образ
 * 1 container = 1 service = 1 развёрнутое и запущенное приложение = a process created from an image
 * контейнеры похожи на директории
 * в контейнерах содержится все, что нужно для работы приложения
@@ -430,6 +436,7 @@ exit
 `ls -al /var/lib/docker/graph`
 `/var/lib/docker/aufs/diff/` все файлы контейнеров, если для работы с файловой системой Docker использует драйвер AUFS
 `/var/lib/docker/containers/` служебная информация, не сами файлы контейнеров
+`/var/lib/docker/aufs/diff/` образы
 
 ### Commands docker daemon
 * `dockerd` запуск сервиса
