@@ -58,10 +58,13 @@ exit
 * REST API
 * HTTP API
 * specifies interfaces that programs can use to talk to and instruct the Docker daemon
+* сервер ожидает запросов через API от Клиента и выполняет заданную команду
+* client uses API to communicate with the Engine
+  + everything the Docker client can do can be done with the API
+  + most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
 
 ### server daemon `dockerd`= Docker Engine ?
 * фоновый процесс (демон)
-* ожидает запросов через API от Клиента и выполняет заданную команду
 * следует инструкциям из Dockerfile и Docker-compose.yaml
 * управляет:
   + Docker-объектами
@@ -72,37 +75,32 @@ exit
 ### client `docker`
 * консольный (command-line) или графический
 * пользователи отправляют команды, создают контейнеры, управляют ими, создаёт/управляет/запускает контейнеризованные приложения
-* uses API to communicate with the Engine
-  + everything the Docker client can do can be done with the API
-  + most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
  
 ### image (object)
 * is not a runtime
 * Неизменяемый файл (образ), из которого можно неограниченное количество раз развернуть контейнер
-* образ = CD-диск, контейнер = запущенная копия образа
 * исполняемый пакет (код, среда выполнения, библиотеки, переменные окружения, конфигурационные файлы)
+* образ = CD-диск, контейнер = запущенная копия образа
 * в его основе лежит родительский образ, как правило, содержащий ОС
 * состоит из слоёв-изменений
 * при запуске одного образа можно создать несколько контейнеров
-* Docker старается максимально переиспользовать готовые шаблоны, если нужный шаблон не будет найден локально, он будет скачан из удалённого репозитория
-* возможно создание кастомных образов
+* Docker переиспользует готовые шаблоны, если шаблон не найден локально, то он скачиватеся из удалённого репозитория
 
 ### Container (object)
 ![Screenshot from 2024-04-06 01-14-25+](https://github.com/akostrik/general-culture/assets/22834202/c42f1635-8a66-4610-8b50-1162d741c4de)
 ![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 * runtime-сущность
+* контейнер = набор процессов
 * runs, in isolation, in a variety of locations
 * one container = one service = одно развёрнутое и запущенное приложение = a process created from an image
 * runs applications - a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ...
-* контейнер = набор процессов
 * содержит все для запуска (системные программы, библиотеки, код, среды исполнения, настройки)
 * условия запуска контейнера могут быть заданы
   + в Dockerfile
   + в качестве аргументов и ключей `docker run`
-* is managed using the Docker API or CLI
-* запускается без дополнительной нагрузки гипервизора
+* запускается без гипервизора
 * изолирован от хостовой ОС и других контейнеров 
-  + файловая система, имя хоста, пользователи, сетевая среда и процессы любого контейнера полностью отделены от остальной части системы
+  + файловая система, имя хоста, пользователи, сетевая среда и процессы контейнера отделены от остальной части системы
 * технологии ядра Linux для изоляции контейнеров:
   + namespaces
     - контейнер работает в отдельном пространстве имен, с ограничением доступа к другим пространствам
@@ -144,7 +142,7 @@ exit
   + настройки контейнера (порты, переменные окружения, ...)
 * каждая команда создаёт новый слой образа с результатом вызванной команды, подобно тому, как система снапшотов сохраняет изменения в виртуальной машине
   + финальный Docker-образ = объединение всех слоев в один
-  + можно переиспользовать уже готовые образа для создания новых образов
+* можно переиспользовать уже готовые образа для создания новых образов
 * Финальной инструкцией является CMD или ENTRYPOINT
   + The default command to run when the container is started
   + CMD может быть только одна
@@ -160,20 +158,15 @@ exit
   + https://github.com/dnaprawa/dockerfile-best-practices  
   + limit image layers amount, цепочки команд через && `RUN comand_1 && comand_2`, `RUN apt-get update && apt-get install` 
   + run as a non-root user
-  + do not use a UID below 10 000
   + use a static UID and GID
   + the latest is an evil, choose specific image tag
   + store arguments in CMD
   + use COPY instead of ADD
-  + Делаем это одним RUN мы потому, что каждая директива RUN создаёт новый слой в docker-образе, и лучше не плодить лишние RUN-ы без надобности.
+  + Делаем это одним RUN мы потому, что каждая директива RUN создаёт новый слой в docker-образе
 
 ### Docker Compose (a tool)
 * docker-compose CLI
-* инструмент, надстройка для управления несколькими контейнерами, создавать контейнеры и задавать их конфигурацию
-* функционал для управления несколькими контейнерами
-  + docker работает с контейнерами по отдельности
-* запуск множества контейнеров одной командой
-* to manage services, networks, volumes
+* надстройка для управления несколькими контейнерами, создавать контейнеры, задавать конфигурацию, запуск множества контейнеров одной командой, to manage services, networks, volumes
 * `docker-compose.yml`
    + creates and starts all the services (containers?) from the configuration file
    + builds the Docker images
@@ -197,16 +190,13 @@ exit
    + supports variables in the Compose file, you can use these variables to customize your composition for different environments, or different users
 * пример: веб-сайт
    + для авторизации пользователей необходимо подключение к базе данных
-   + первый сервис отвечает за функционирование сайта
-   + второй отвечает за базу данных
-   + одновременно два контейнерам
+   + первый сервис (контейнер) отвечает за функционирование сайта
+   + второй сервис (контейнер) отвечает за базу данных
 * пример: веб-проект, состоящий из двух сайтов
    + первый позволяет создать интернет-магазин
    + второй для поддержки клиентов
    + оба сайта подключены к общей базе данных
-   + по мере развития проекта мощностей текущего сервера недостаточно => переносят сайты на новый сервер
-     - при помощи docker compose легко перености
-     - потребуется изменить настройки и перенести на другой сервер резервную копию баз данных
+   + по мере развития проекта мощностей текущего сервера недостаточно => легко переносят сайты на новый сервер при помощи docker compose
   
 ### Docker Volume (a tool)
 * storing data outside containers, файловая система, которая расположена на хост-машине за пределами контейнеров
