@@ -619,7 +619,7 @@ services:
 * соединение не считается безопасным  
 
 ### Example 7: https://127.0.0.1:1443 на хостовой
-`chmod o+r /etc/resolv.conf` make sure your DNS Resolver config file is writable
+`chmod o+r /etc/resolv.conf` make sure your DNS Resolver config file is writable (?)
 
 nginx.conf:  
 ```
