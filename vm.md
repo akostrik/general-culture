@@ -1,29 +1,10 @@
-### Backup
+## Backup
    + сжать большие файлы
    + сохранить файлы где хочешь
    + на школьном маке: создать папку с таким же названием и по тому же пути в goinfre, скачать туда файлы, распаковать, запустить virtualbox (не менять конфигурацию в virtualbox)
    + на другом компе: скачать и разархивировать конфигурацию, virtualbox - Инструменты - зелёный плюсик "Добавить", указав папку с файлом Debian.vbox и прочими файлами
 
-### Error
-```
-"Could not open the medium '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi'.
-VDI: error reading pre-header in '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi' (VERR_IS_A_DIRECTORY).
-VD: error VERR_VD_VDI_INVALID_HEADER opening image file '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi' (VERR_VD_VDI_INVALID_HEADER).
-Result Code: 
-NS_ERROR_FAILURE (0x80004005)
-Component: 
-MediumWrap
-Interface: 
-IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}" 
-```
-* Install HxD Hex Editor to open .vdi file as streams of bytes (http://download.cnet.com/HxD-Hex-Editor ... tag=button)
-* pre-header = the first 72 bytes (http://forums.virtualbox.org/viewtopic.php?t=52)
-* create a new vm `test.vdi` with all default options
-* Open `test.vdi` and copy its first 72 bytes
-* overwrite them in the invalid vdi file that you want to fix
-* reboot your vm using the modified vdi
-
-### Настроить интернет на отдельной виртуальной машине или локальную сеть между несколькими виртуальными устройствами 
+## Настроить выход в интернет или локальную сеть между виртуальными устройствами 
 * инструменты:
   + NAT
   + сетевой мост
@@ -33,10 +14,26 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
   + сеть NAT
   + Cloud Network
 * для одной гостевой ОС можно использовать до 4 сетевых адаптеров, но обычно достаточно 1
-* для каждого адаптера можно выбрать любой тип подключения => комбинировать настройки и выбирать разные варианты работы сети
 
-### Получить доступ к какому-либо сервису хостовой машины
-* по умолчанию
+### Подключить VirtualBox к интернету
+* При создании каждая виртуальная машина автоматически получает доступ в интернет при помощи NAT
+  + самый простой способ подключения к интернету
+  + не требует дополнительных настроек
+  + нет доступа к другим гостевым ОС
+  + NAT изолирует виртуальную машину от соединений извне
+  + проводником в интернет выступает хост-система, через неё проходят все входящие и исходящие запросы
+  + если вам нужен только доступ в интернет, используйте NAT-подключение
+
+### Настроить сеть между хостом и VirtualBox
+* тип подключения Сетевой мост
+  + виртуальная машина подключается напрямую к основной сети как полноценное устройство
+  + для подключения используется сетевая карта хост-системы
+
+### Настройка сети между виртуальными машинами в VirtualBox
+...
+
+### Доступ к какому-либо сервису хостовой машины
+* без настроек 
   + сетевые интерфейсы VM и хостовой машины изолированы
   + нет возможности получить доступ к сервисам (веб-серверу, ssh, ...) гостевой системы из основной 
   + технология NAT
@@ -81,3 +78,22 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
   + без проброса портов
 
 `wget http://localhost/index.html` проверить без браузера
+
+## Error
+```
+"Could not open the medium '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi'.
+VDI: error reading pre-header in '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi' (VERR_IS_A_DIRECTORY).
+VD: error VERR_VD_VDI_INVALID_HEADER opening image file '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi' (VERR_VD_VDI_INVALID_HEADER).
+Result Code: 
+NS_ERROR_FAILURE (0x80004005)
+Component: 
+MediumWrap
+Interface: 
+IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}" 
+```
+* Install HxD Hex Editor to open .vdi file as streams of bytes (http://download.cnet.com/HxD-Hex-Editor ... tag=button)
+* pre-header = the first 72 bytes (http://forums.virtualbox.org/viewtopic.php?t=52)
+* create a new vm `test.vdi` with all default options
+* Open `test.vdi` and copy its first 72 bytes
+* overwrite them in the invalid vdi file that you want to fix
+* reboot your vm using the modified vdi
