@@ -9,6 +9,7 @@
 * LXC combines the kernel's cgroups and support for isolated namespaces to provide an isolated environment for applications.[4] Early versions of Docker used LXC as the container execution driver,[4] though LXC was made optional in v0.9 and support was dropped in Docker v1.10.[5][6]
 * != docker container
   + хоть используют те же технологии ядра Linux 
+* docker использует те же контейнеры, что и LXC, но интересен он не контейнерами
 
 ## UnionFS
 * вспомогательная файловая система для Linux и FreeBSD, производящая каскадно-объединённое монтирование других файловых систем
@@ -27,6 +28,18 @@
 ## Docker 
 * платформа виртуализации
 * a set of platform as a service (PaaS) products
+* инструмент объекто-ориентированного проектирования
+  + конфигурация nginx ≈ часть веб-приложения
+  + devops захотели вместо последовательно-процедурного вызова команд из bash думать привычным OOP
+  + docker дает инкапсуляцию, наследование и полиморфизм компонентам системы, таким как база данных и данные => можно провести декомпозицию всей информационной системы, выделить приложение, web-сервер, базу данных, системные библиотеки, рабочие данные в независимые компоненты, внедрять зависимости из конфигов, и заставить все это работать одной группой, одинаково на разных компьютерах
+  + снизить потери рабочего времени front-end разработчиков на настройку базы данных и Nginx
+  + уйти от vendor lock-in
+  + не обломаться когда openssl на сервере не поддерживает cipher, используемый в API госучреждения
+  + чтобы приложение работало независимо от версии PHP или Python на сервере заказчика
+  + создавать open source не только в виде кода, но и настройкой пакетов из нескольких приложений, написанных на разных языках, работающих на разных слоях OSI
+* != виртуализация
+* != chroot, их функционал частично совпадает
+* != система безопасности вроде AppArmor
 * **Docker objets** entities used to assemble an application (сети, хранилища, образы, контейнеры)
 
 ## Usage
@@ -121,7 +134,13 @@ exit
 * состоит из набора уровней, из слоёв-изменений
 * Docker переиспользует готовые шаблоны для создания новых образов, если шаблон не найден локально, то он скачиватеся из удалённого репозитория
 * в основе каждого образа находится базовый образ (ubuntu, fedora, можете использовать образы как базу для создания новых образов, ...)
+* содержит метаданные предустановленной программы или команду, которую следует выполнить при запуске контейнера
+* может содержать параметры, передаваемые предустановленной программе (как если бы вы запускали такую программу через терминал)
 * при запуске одного образа можно создать несколько контейнеров
+* image becomes container at runtime
+  + in the case of Docker container: image becomes container when they run on Docker Engine
+* **An index** manages user accounts, permissions, search, tagging, etc that's in the public web interface
+* **A registry** stores and serves up the actual image assets, delegates authentication to the index
 
 ### Container (object)
 ![Screenshot from 2024-04-06 01-14-25+](https://github.com/akostrik/general-culture/assets/22834202/c42f1635-8a66-4610-8b50-1162d741c4de)
@@ -174,21 +193,22 @@ exit
     - изменения на хосте сразу отражаются в контейнере
     - подходит для разработки и отладки приложения, для продакшна не годится
 * performs the command in ENTRYPOINT or CMD, this will add to the container startup time
-* технология для хранения слоев: Union File System (UnionFS)
-  + docker использует union file system для сочетания уровней в один образ
-  + UnionFS позволяет файлам и директориями из разных файловых систем (разным ветвям) прозрачно накладываться, создавая файловую систему
+* Union File System (UnionFS)
+  + файловая система, которая работает создавая уровни, делая ее очень легковесной и быстрой
+  + технология для хранения слоев
+  + для сочетания уровней в один образ
+  + UnionFS позволяет файлам и директориями из разных файловых систем (разным ветвям) накладываться, создавая файловую систему
   + одна из причин, по которой docker легковесен — использование таких уровней
     - когда вы изменяете образ, например, обновляете приложение, создается новый уровень
     - без замены всего образа или его пересборки, только уровень добавляется или обновляется
     - раздается только обновление, что позволяет распространять образы проще и быстрее
-  + UnionFS = файловая система, которая работает создавая уровни, делая ее очень легковесной и быстрой
   + docker использует UnionFS для создания блоков, из которых строится контейнер
   + docker может использовать несколько вариантов UnionFS (AUFS, btrfs, vfs, DeviceMapper, ...)
 * контейнерам можно назначать лимиты ресурсов
 * можно строить сети между контейнерами
 * communicate with each other through channels
-* docker клиент говорит, с помощью программы docker или с помощью REST API, демону запустить контейнер 
-  + `$ sudo docker run -i -t ubuntu /bin/bash` запускается клиент с помощью команды docker, с опцией run = будет запущен новый контейнер
+* docker клиент говорит (с помощью программы docker или с помощью REST API) демону запустить контейнер, после чего докер
+  + `$ sudo docker run -i -t ubuntu /bin/bash` запускается клиент с помощью команды docker (run = новый контейнер)
   + скачивает образ ubuntu (если есть, то с локальной машины)
   + создает контейнер
   + инициализирует файловую систему
@@ -197,7 +217,6 @@ exit
   + находит и задает IP адрес
   + запускает приложение
   + обрабатывает и выдает вывод приложения, логирует стандартный вход, вывод и поток ошибок
-* образ контейнера содержит метаданные предустановленной программы или команду, которую следует выполнить при запуске контейнера. Также он может содержать параметры, передаваемые предустановленной программе. Похоже на то, как если бы вы запускали такую программу через терминал.
 * запущенный контейнер выполняет прописанные в нём команды и программы
 * контейнер работает до тех пор, пока выполняется его главный процесс (команда или программа)
 * в контейнере обычно выполняется только один процесс, но от его имени можно запустить другие процессы, тогда в этом же в контейнере будет выполняться множество процессов
@@ -312,27 +331,28 @@ exit
   + to backup container data by mirroring /var/lib/docker/volumes to another location
   + share data between containers
   + write to remote filesystems 
-* альтернативы:
-  + bind mounts, связанные папки 
-    - связать папку на компьютере пользователя (то есть хосте, на котором установлен Docker Engine) и папку в контейнере
-    - работать в контейнере и на хосте с такой папкой можно одновременно, все изменения будут отображаться и там, и там
-  + драйверы
-  + резервные копии
-  + хранение в оперативной памяти
+* альтернатива: **bind mounts** = связанные папки 
+  + связать папку на компьютере пользователя (то есть хосте, на котором установлен Docker Engine) и папку в контейнере
+  + работать в контейнере и на хосте с такой папкой можно одновременно, все изменения будут отображаться и там, и там
+  + directly mount a host directory into your container
+  + any changes made to the directory will be reflected on both sides of the mount, whether the modification originates from the host or within the container
+  + are best used for ad-hoc storage on a short-term basis
+  + convenient in development workflows
+  + for example: bind mounting your working directory into a container automatically synchronizes your source code files, allowing you to immediately test changes without rebuilding your Docker image
+  + для добавления в контейнер имеющегося пути
+    - помогает для добавления конфигурационной информации
+    - помогает для добавления наборов данных и статики с сайтов
+* альтернатива: драйверы
+* альтернатива: резервные копии
+* альтернатива: хранение в оперативной памяти
     - бывает двух типов: tmpfs mounts и npipe mounts
+* альтернатива: **Tempfs Mount** выполняют функцию, обратную главной задаче Docker Volumes: отменяют сохранение информации после ликвидации контейнера
+  + это может понадобиться, если Вы ведёте обширное журналирование, т.к. постоянные одноразовые записи могут привести к падению производительности 
 * `docker volume ls`
 * Ex: `docker volume create` создание тома (Volume) 
 * Ex: `$ docker run -it -v demo_volume:/data ubuntu:22.04`
   + `it` attaches your terminal to the container
   +  a volume called demo_volume is mounted to /data inside the container
-* Помимо стандартных томов при помощи Docker Volumes можно также создавать тома следующих типов, предназначенные для решения специальных задач
-  + **Bind Mount**. Тома mount предназначены для добавления в контейнер имеющегося пути. Это помогает для добавления конфигурационной информации, а также наборов данных и статики с сайтов. Чтобы указать каталоги, предназначенные для монтирования в контейнер, нужно использовать инструкцию --mount совместно с <host path>:<container path>.
-    - directly mount a host directory into your container
-    - any changes made to the directory will be reflected on both sides of the mount, whether the modification originates from the host or within the container
-    - are best used for ad-hoc storage on a short-term basis
-    - convenient in development workflows
-    - for example: bind mounting your working directory into a container automatically synchronizes your source code files, allowing you to immediately test changes without rebuilding your Docker image
-  + **Tempfs Mount** выполняют функцию, обратную главной задаче Docker Volumes, то есть они отменяют сохранение информации после ликвидации контейнера. Это может понадобиться тем разработчикам, которые ведут достаточно обширное журналирование, т.к. постоянные одноразовые записи могут привести к падению производительности системы
 
 ### Docker Swarm (a tool)
 * provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
@@ -406,6 +426,8 @@ exit
 `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
 `docker image inspect` подробнее рассказывает о выбранном контейнере  
 `docker logs` выводит в консоль логи  
+`cat /var/lib/docker/repositories | python -mjson.tool` list of the repositories on your host
+`ls -al /var/lib/docker/graph`
 
 ### Commands docker daemon
 * `dockerd` запуск сервиса
@@ -597,3 +619,7 @@ server {
 
 сейчас проект доступен по `127.0.0.1`  
 нас редиректит на 42.fr, но школьный мак не знает такого сайта  
+
+##
+https://habr.com/ru/articles/267441/  
+https://blog.thoward37.me/articles/where-are-docker-images-stored/  
