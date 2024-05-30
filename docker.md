@@ -28,7 +28,7 @@
 ## Docker 
 * платформа виртуализации
 * a set of platform as a service (PaaS) products
-* инструмент объекто-ориентированного проектирования
+* инструмент объекто-ориентированного проектирования (объектно-ориентированного дизайна)
   + конфигурация nginx ≈ часть веб-приложения
   + devops захотели вместо последовательно-процедурного вызова команд из bash думать привычным OOP
   + docker дает инкапсуляцию, наследование и полиморфизм компонентам системы, таким как база данных и данные => можно провести декомпозицию всей информационной системы, выделить приложение, web-сервер, базу данных, системные библиотеки, рабочие данные в независимые компоненты, внедрять зависимости из конфигов, и заставить все это работать одной группой, одинаково на разных компьютерах
@@ -72,6 +72,7 @@
 * контейнер работает в операционной системе, в изолированной среде, не влияющей на основную операционную систему
   + виртуальная среда запускается из ядра основной ОС (в оличие от VM)
   + не создается виртуальное железо (в оличие от VM)
+  + containers share the services of a single OS kernel => fewer resources than virtual machines  
 * ещё один уровень абстракции => позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * docker сочетает компоненты в обертку, которую мы называем форматом контейнера
   + libcontainer - формат по умолчанию
@@ -127,7 +128,7 @@ exit
 
 ### image (object)
 * is not a runtime
-* Неизменяемый файл, из которого можно неограниченное количество раз развернуть контейнер
+* неизменяемый файл, из которого можно неограниченное количество раз развернуть контейнер
 * исполняемый пакет = код + среда выполнения + библиотеки + переменные окружения + конфигурационные файлы
 * образ = CD-диск, контейнер = запущенная копия образа
 * в его основе лежит родительский образ, как правило, содержащий ОС
@@ -141,9 +142,12 @@ exit
   + in the case of Docker container: image becomes container when they run on Docker Engine
 * Образ ≈ класс в коде, контейнер ≈ объект, созданный из класса
 * состоит из слоев
-  + слои — это папки, которые лежат в /var/lib/docker/aufs/diff/
-* обычно образы приложений наследуют какие-то готовые официальные системные образы
+  + слои = папки, которые лежат в /var/lib/docker/aufs/diff/
+* обычно образы приложений наследуют готовые официальные системные образы
 * когда Docker скачивает образ, ему нужны только те слои, которых у него нет
+* **используйте композицию вместо наследования**
+  + положу рядом контейнеры с разными сервисами, создам адаптер, data transfer object, и свяжу их через конфиг.
+  + наследование использую для расширения существующего функционала в рамках инкапсуляции с учетом принципа подстановки Лисков (например, для подключения к php нужных мне расширений и системных библиотек, которые эти расширения используют)
 * **An index** manages user accounts, permissions, search, tagging, etc that's in the public web interface
 * **A registry** stores and serves up the actual image assets, delegates authentication to the index
 
@@ -384,7 +388,9 @@ exit
 * `/etc/systemd/system/docker.service.d/override.conf`
 * `/etc/docker/daemon.json`
 * `/lib/systemd/system/docker.service` ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:
-* Never edit the docker service script (or any service script) directly, SystemD has a differential editing feature built in, Use systemctl edit docker.service
+* Never edit the docker service script (or any service script) directly
+  + SystemD has a differential editing feature built in
+  + use systemctl edit docker.service
 * if you open docker to listen on the network
   + the docker API ports are frequently scanned on the internet, and you will find malware installed on your host
   + you are running the equivalent of an open telnet server with root logins allowed without a password
@@ -392,13 +398,10 @@ exit
 
 ### Efficency
 * a single server or virtual machine runs several containers simultaneously
-* to avoid the situations when we say “it worked on my machine”, because Docker containers will give us the same environment on all machines
-* containers share the services of a single OS kernel => fewer resources than virtual machines  
 * Linux: Docker uses the resource isolation features of the Linux kernel (cgroups, kernel namespaces) and a union-capable file system to allow containers to run within a single Linux instance, avoiding the overhead of virtual machines
 * MacOS: Docker uses a Linux virtual machine to run the containers
 * the Linux kernel's support for namespaces mostly isolates an application's view of the operating environment, including process trees, network, user IDs and mounted file systems, while the kernel's cgroups provide resource limiting for memory and CPU 
 * легкая переносимость
-* создавать и тестировать приложения на локальной машине, не беспокоясь о программных зависимостях
 * автоматизация работы с контейнерами при помощи cron jobs, автоматизируются рутинные повторяемые задачи
 * мгновенное время запуска
 
@@ -418,11 +421,13 @@ exit
 `docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
 `docker rm` удалить выключенный контейнер  
 `docker pause`  
-`docker restart`  
+`docker restart`, `/etc/init.d/docker restart` перезапустить демон  
+`systemctl restart docker.service`  
 `docker pull image` загрузить образ из DockerHub   
 `docker commit` создание нового образа из изменений в контейнере   
 `docker system prune` cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers
 `docker image prune --all` remove unused images   
+`systemctl daemon-reload`  
 #### настройка контейнера
 разрешать/запрещать монтирование  
 доступ к сокетам  
@@ -446,6 +451,8 @@ exit
 `/var/lib/docker/aufs/diff/` все файлы контейнеров, если для работы с файловой системой Docker использует драйвер AUFS
 `/var/lib/docker/containers/` служебная информация, не сами файлы контейнеров
 `/var/lib/docker/aufs/diff/` образы
+`/etc/init.d/docker status`  
+`netstat -ntpl`  
 
 ### Commands docker daemon
 * `dockerd` запуск сервиса
