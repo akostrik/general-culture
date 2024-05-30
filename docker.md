@@ -270,7 +270,15 @@ exit
   + to persist the contents of any caches
   + to backup container data by mirroring /var/lib/docker/volumes to another location
   + share data between containers
-  + write to remote filesystems адра
+  + write to remote filesystems 
+* альтернативы:
+  + bind mounts, связанные папки 
+    - связать папку на компьютере пользователя (то есть хосте, на котором установлен Docker Engine) и папку в контейнере
+    - работать в контейнере и на хосте с такой папкой можно одновременно, все изменения будут отображаться и там, и там
+  + драйверы
+  + резервные копии
+  + хранение в оперативной памяти
+    - бывает двух типов: tmpfs mounts и npipe mounts
 * `docker volume ls`
 * Ex: `docker volume create` создание тома (Volume) 
 * Ex: `$ docker run -it -v demo_volume:/data ubuntu:22.04`
