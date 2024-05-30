@@ -1,44 +1,43 @@
 ![docker-php-16-638](https://github.com/akostrik/general-culture/assets/22834202/7305c712-59d9-44e5-b67d-6ea0283d8b06)
 
+## Docker host 
+* компьютер или виртуальный сервер, на котором установлен Docker
+
 ## Docker 
-* def: a set of platform as a service (PaaS) products 
-  + упаковать приложение и его зависимости в единый модуль
-  + для разработки, доставки и запуска контейнерных приложений
-* создавать контейнеры, автоматизировать их запуск и развертывание, управлять жизненным циклом и сетевым окружением контейнеров
+* a set of platform as a service (PaaS) products 
 * **Docker objets** entities used to assemble an application (сети, хранилища, образы, контейнеры)
 
 ## Usage
-* reproduces a run-time environments
-* запускать контейнер в облачной инфраструктуре и на любом локальном устройстве
+* packages an application and its dependencies in a container
+* автоматизировать их запуск и развертывание
+* управлять жизненным циклом и сетевым окружением контейнеров
+* запускать контейнер в облачной инфраструктуре
 * развертывание
+  + reproduces a run-time environments, OS-level virtualization: имитирует Linux дистрибутивы, окружения или установочные процессы
   + на уровне операционной системы
   + процесс развертывания хорошо интегрируется в CI/CD pipline
   + переносить приложение на другие операционные системы с поддержкой cgroups
-  + упростить настройку на уровне инфраструктуры
+  + упростить настройку
 * изолировать приложения, отделить приложение от инфраструктуры
   + приложение внутри контейнера не имеет доступа к основной ОС
   + не важно, в каком окружении оно будет работать, есть ли там нужные зависимости и настройки
-* перейти с монолита на микросервисную архитектуру
+* микросервисная архитектуря
   + изменения в одной компоненте не затронут остальную систему
-* отладка: для автотестов требуются дополнительные зависимости (СУБД, брокеры сообщений и др), при их установке есть вероятность ошибки и повреждения данных
+* для автотестов требуются дополнительные зависимости (СУБД, брокеры сообщений и др), при их установке есть вероятность ошибки и повреждения данных
   + с докером если тестирование завершится некорректно и повредит данные в контейнере, они удалятся вместе с контейнером
 
-## Как работает
+## Как устроен
 ![Screenshot from 2024-04-06 01-09-43+](https://github.com/akostrik/general-culture/assets/22834202/4b0ea467-2d6b-45a7-b1f6-c9e22093b2dc)
 ![Screenshot from 2024-03-30 00-55-26](https://github.com/akostrik/general-culture/assets/22834202/3ea7709f-8248-4980-ad54-2b242f9e9b2a)
-* OS-level virtualization: имитирует Linux дистрибутивы, окружения или установочные процессы вместо их запуска
-* packages an application and its dependencies in a virtual container that runs, in isolation, in a variety of locations
-  + разработчикам создают программу и упаковают зависимости и настройки в единый образ
 * контейнер работает в операционной системе, в изолированной среде, не влияющей на основную операционную систему
   + виртуальная среда запускается из ядра основной ОС
   + не создается виртуальное железо
 * VM:
-  + как отдельный компьютер со своей ОС и виртуальным оборудованием
   + работает поверх операционной системы
   + создается виртуальное железо
+* ещё один уровень абстракции => позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * libcontainer собственная библиотека, абстрагирующая виртуализационные возможности ядра Linux
   + to use virtualization facilities provided directly by the Linux kernel, in addition to using abstracted virtualization interfaces via libvirt, LXC and systemd-nspawn
-* ещё один уровень абстракции => позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * проверенные технологии ядра
 * минимум своих решений
 * a client-server application
@@ -54,14 +53,14 @@ systemctl start docker
 exit
 ```
 
+### Docker Desktop
+* GUI-клиент
+* отображает все сущности Docker
+
 ## API
-* served by Docker Engine
-* the Docker client uses it to communicate with the Engine
-  + everything the Docker client can do can be done with the API
 * REST API
 * HTTP API
 * specifies interfaces that programs can use to talk to and instruct the Docker daemon
-* most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
 
 ### server daemon `dockerd`= Docker Engine ?
 * фоновый процесс (демон)
@@ -72,12 +71,13 @@ exit
   + процессами докера: скачивание и создание образов, собирает образ, запуск и остановка контейнеров
   + коммуникацией между контейнерами
 * собственный драйвер `Docker runc`
-* commands
-  + `dockerd` запуск сервиса
 
 ### client `docker`
 * консольный (command-line) или графический
 * пользователи отправляют команды, создают контейнеры, управляют ими, создаёт/управляет/запускает контейнеризованные приложения
+* uses API to communicate with the Engine
+  + everything the Docker client can do can be done with the API
+  + most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
  
 ### image (object)
 * is not a runtime
@@ -94,6 +94,7 @@ exit
 ![Screenshot from 2024-04-06 01-14-25+](https://github.com/akostrik/general-culture/assets/22834202/c42f1635-8a66-4610-8b50-1162d741c4de)
 ![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 * runtime-сущность
+* runs, in isolation, in a variety of locations
 * one container = one service = одно развёрнутое и запущенное приложение = a process created from an image
 * runs applications - a database, a web server, a web framework, a test server, execute big data scripts, work on shell scripts, ...
 * контейнер = набор процессов
@@ -267,13 +268,6 @@ exit
 * собрать несколько узлов в единую виртуальную систему Docker и управлять ею
 * **swarm** a set of cooperating daemons that communicate through the Docker API
 
-### Docker Desktop
-* GUI-клиент
-* отображает все сущности Docker
-
-### Docker host 
-* компьютер или виртуальный сервер, на котором установлен Docker
-
 ### Efficency
 * a single server or virtual machine runs several containers simultaneously
 * to avoid the situations when we say “it worked on my machine”, because Docker containers will give us the same environment on all machines
@@ -286,7 +280,7 @@ exit
 * мгновенное время запуска
 
 ### Недостатки
-* медленнее, чем обычный запуск приложения на физическом сервере
+* медленнее, чем запуск приложения на физическом сервере
 * сложность использования
 * Docker работает непосредственно в ОС => возможно внедрение зловредного кода в контейнеры и проникновение в ОС
 
@@ -325,6 +319,9 @@ exit
 `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
 `docker image inspect` подробнее рассказывает о выбранном контейнере  
 `docker logs` выводит в консоль логи  
+
+### Commands docker daemon
+* `dockerd` запуск сервиса
 
 ### Commands Dockerfile
 `RUN`  
