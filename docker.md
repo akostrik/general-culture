@@ -301,6 +301,12 @@ exit
 * собрать несколько узлов в единую виртуальную систему Docker и управлять ею
 * **swarm** a set of cooperating daemons that communicate through the Docker API
 
+### Настройки
+* `/etc/default` DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
+* `/etc/init.d/docker`
+* `/etc/init/docker.conf` DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
+* `/lib/systemd/system/docker.service` ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:
+
 ### Efficency
 * a single server or virtual machine runs several containers simultaneously
 * to avoid the situations when we say “it worked on my machine”, because Docker containers will give us the same environment on all machines
@@ -346,7 +352,6 @@ exit
 `docker run -p` publish a container's port to the host
 `docker run -P` publish all exposed port to random ports
 `docker run -d -p 7000:80 test:latest`
- 
 #### инспектировать
 `docker images`, `docker image ls` просмотреть список доступных локально образов   
 `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
@@ -459,11 +464,12 @@ docker rm myContainer
 docker image prune --all
 docker system prune
 service docker stop
+systemctl daemon-reload
+systemctl restart docker.service
 service docker start
 docker-compose up -d --build           # build = first run
 # startx
 wget http://127.0.0.1/index.html --no-check-certificate
-
 ```
 
 ### Example 5: http://akostrik.42.fr на виртуальной
