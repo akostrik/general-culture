@@ -253,6 +253,15 @@ exit
 
 ### A docker-network (object)
 * establishes the connection between your containers
+* docker's networking subsystem is pluggable, using drivers
+* several drivers exist by default, provide networking functionality:
+  + bridge (by default): when an application in a container communicates with other containers on the same host
+  + host: remove network isolation between the container and the Docker host and use the host's networking directly
+  + overlay: connect multiple Docker daemons together and enable Swarm services and containers to communicate across nodes
+  + ipvlan: gives users total control over both IPv4 and IPv6 addressing
+  + macvlan: allows to assign a MAC address to a container, making it appear as a physical device on your network
+  + none: isolates a container from the host and other containers
+  + third-party network plugins
 
 ### хранилища (object)
  
