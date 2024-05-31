@@ -248,7 +248,6 @@ exit
 * контейнер не считается запущенным, если в нём не выполняется хотя бы один процесс, если главный процесс остановлен, значит и контейнер остановлен
 * когда работа контейнера заканчивается, он не удаляется, если это не указать специально
   + каждый запуск контейнера командой docker run image_name без параметров --name или --rm создает новый контейнер с уникальным идентификатором
-  + замусоривание
   + контейнеры, в которых не нужно сохранять данные, создавайте с параметром --rm
 
 ### A docker-network (object)
@@ -263,6 +262,15 @@ exit
   + none: isolates a container from the host and other containers
   + third-party network plugins
 
+#### Networking using the host network
+A standalone containers binds directly to port 80 to the Docker host's network
+* no network isolation, network isolation as if the nginx were running directly on the host
+* in all other ways (storage, process namespace, user namespace): the nginx process is isolated from the host
+* port 80 should be available on the host
+* the host networking driver
+* `ip addr show` examine network interfaces, a new one was not created
+
+ 
 ### хранилища (object)
  
 ### Dockerfile (object)
