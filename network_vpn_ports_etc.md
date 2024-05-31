@@ -104,7 +104,16 @@
   + защита транзакций (TSIG)
   + поддержка различных типов информации
 * в браузере `8.8.8.8`
-* `resolv.conf` to configure the system's DNS resolver
+* **DNS resolver** translates human-friendly domain names into the numeric IP addresses
+  + **`etc/resolv.conf`** = its config
+```
+                              # when no domain suffix is supplied -> the given query name + search domains = a fully qualified domain 
+search example.com local.test # tries additionally somehost.example.com and somehost.local.test
+                              # a list of IP addresses of nameservers for resolution:
+nameserver 10.0.0.17          # the resolver to query for the name server with IP 10.0.0.17
+nameserver 10.1.0.12          # is only used when the first or last used server is unavailable
+nameserver 10.16.0.7
+```
 
 ## Ports
 * `telnet loclhost 80` verify
