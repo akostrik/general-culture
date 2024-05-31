@@ -251,7 +251,8 @@ exit
   + замусоривание
   + контейнеры, в которых не нужно сохранять данные, создавайте с параметром --rm
 
-### сети (object)
+### A docker-network (object)
+* establishes the connection between your containers
 
 ### хранилища (object)
  
