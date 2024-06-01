@@ -111,12 +111,11 @@
   + поддержка различных типов информации
 * в браузере `8.8.8.8`
 * **/etc/hosts**
-  + текстовый документ
   + информация о домене и IP-адресе, который ему соответствует
-  + появился во времена зарождения Интернета и до DNS служил маршрутизатором
-  + обладает приоритетом перед обращением к DNS-серверам
-* **DNS resolver** translates human-friendly domain names into the numeric IP addresses
-  + **`etc/resolv.conf`** = its config
+  + до появления DNS служил маршрутизатором
+  + обладает приоритетом перед DNS-серверами
+* **etc/resolv.conf** config of the **DNS resolver**
+  + translates human-friendly domain names into the numeric IP addresses
 ```
                               # when no domain suffix is supplied -> the given query name + search domains = a fully qualified domain 
 search example.com local.test # tries additionally somehost.example.com and somehost.local.test
