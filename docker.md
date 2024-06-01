@@ -429,6 +429,3 @@ server {
 
 ### Example 8: https://akostrik.42.fr:1443 на хостовой
 школьный мак не знает 42.fr  
-
-##
-https://blog.thoward37.me/articles/where-are-docker-images-stored/  
