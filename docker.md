@@ -42,17 +42,15 @@
 ## Как устроен
 ![Screenshot from 2024-04-06 01-09-43+](https://github.com/akostrik/general-culture/assets/22834202/4b0ea467-2d6b-45a7-b1f6-c9e22093b2dc)
 ![Screenshot from 2024-03-30 00-55-26](https://github.com/akostrik/general-culture/assets/22834202/3ea7709f-8248-4980-ad54-2b242f9e9b2a)
+* the resource isolation features of the Linux kernel (cgroups, kernel namespaces) + a union-capable file system => to allow containers to run within a single Linux instance, avoiding the overhead of virtual machines
 * микросервисная архитектуря
   + изменения в одной компоненте не затронут остальную систему
-* контейнер работает в операционной системе, в изолированной среде, не влияющей на основную операционную систему
+* контейнер работает в изолированной среде, не влияющей на основную операционную систему
   + виртуальная среда запускается из ядра основной ОС (в оличие от VM)
   + не создается виртуальное железо (в оличие от VM)
   + containers share the services of a single OS kernel => fewer resources than virtual machines  
 * ещё один уровень абстракции => позволяет использовать на одном хосте различные версии языков, библиотек, etc
-* docker сочетает компоненты в обертку, которую мы называем форматом контейнера
-  + libcontainer - формат по умолчанию
-  + docker поддерживает традиционный формат контейнеров в Linux c помощью LXC
-* libcontainer собственная библиотека, абстрагирующая виртуализационные возможности ядра Linux
+* libcontainer библиотека, абстрагирующая виртуализационные возможности ядра Linux
   + to use virtualization facilities provided directly by the Linux kernel, in addition to using abstracted virtualization interfaces via libvirt, LXC and systemd-nspawn
 * проверенные технологии ядра
 * минимум своих решений
@@ -60,17 +58,7 @@
 * `/var/lib/docker/overlay2` writable layers, the various filesystem layers for images and containers
   + `/var/lib/docker/overlay2/eceb7b667587c3cc2a08d7c970eae723fdd8981b7a7580db19587434123a2681`
 * `/var/lib/docker` your images, containers, local named volumes
-* Linux: Docker uses the resource isolation features of the Linux kernel (cgroups, kernel namespaces) and a union-capable file system to allow containers to run within a single Linux instance, avoiding the overhead of virtual machines
-* MacOS: Docker uses a Linux virtual machine to run the containers
-* написан на Go
-* Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
-```
-sudo -s
-systemctl stop docker
-rm -rf /var/lib/docker
-systemctl start docker
-exit
-```
+* MacOS: Docker uses a Linux virtual machine
 
 ### Docker Desktop
 * GUI-клиент
@@ -467,6 +455,15 @@ A standalone containers binds directly to port 80 to the Docker host's network
 `make rmi` to remove all images created by docker-compose   
 `make re` to remove, build and run all containers in docker-compose   
 `docker-compose down` остановить контейнер  
+
+### Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
+```
+sudo -s
+systemctl stop docker
+rm -rf /var/lib/docker
+systemctl start docker
+exit
+```
 
 ### Example 1
 `docker run -i -t ubuntu /bin/bash`  
