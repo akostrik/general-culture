@@ -48,6 +48,5 @@
     + `git pull origin master`
 * un truc comme la mlx tu utilises un gestionnaire de paquet (vcpkg, conan)
 * if conflicts with my collegue:
-  + Да, если ошибку выдаст при твоем пуше, то git pull --rebase 
-  + двойное тире перед rebase
-  + так ты обновишь ветку remote до текущей и можно после этого свои правки пушить
+  + если ошибку выдаст при твоем пуше, то git pull --rebase 
+  + этим обновляешь ветку remote до текущей и можно после этого свои правки пушить
