@@ -156,19 +156,18 @@
 * для управления несколькими контейнерами, managing the whole lifecycle of your application:
   + start, stop, rebuild, configures services, networks, volumes, building images, ...
 * `docker-compose.yml`
-* пример: веб-сайт, для авторизации пользователей необходимо подключение к базе данных
+* пример: веб-сайт
   + первый сервис (контейнер) отвечает за функционирование сайта
-  + второй сервис (контейнер) отвечает за базу данных
+  + второй сервис (контейнер) отвечает за базу данных для авторизации пользователей
 * пример: веб-проект, состоящий из двух сайтов
   + первый позволяет создать интернет-магазин
   + второй для поддержки клиентов
   + оба сайта подключены к общей базе данных
-  + сайты легко переносятся на новый сервер
   
 ### A docker-network (object, an entitie used to assemble an application)
-* connection between your containers
-* docker's networking subsystem is pluggable, using drivers
-* several drivers exist by default:
+* connection between the containers
+* networking subsystem is pluggable, using drivers
+* several drivers by default:
   + bridge (by default): an application in a container communicates with other containers on the same host
   + host: remove network isolation between the container and the Docker host, use the host's networking directly
   + overlay: connect multiple Docker daemons together
@@ -176,10 +175,9 @@
   + macvlan: allows to assign a MAC address to a container, making it appear as a physical device on your network
   + none: isolates a container from the host and other containers
   + third-party network plugins
-* Networking using the host network
+* using the host network
   + a standalone containers binds directly to port 80 to the Docker host's network
-  + no network isolation
-  + as if the nginx were running directly on the host, the host networking driver
+  + as if the nginx were running directly on the host, by the host networking driver
 * https://docs.docker.com/network/network-tutorial-standalone/
 * `docker network list`
 * `brctl show`
