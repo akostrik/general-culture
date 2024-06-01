@@ -254,3 +254,6 @@ nameserver 10.16.0.7
     
 ## IP
 `ip addr show | grep inet| awk '{print $2; }'` my IP  
+
+## *
+* **Wireshark** инструмент для захвата и анализа сетевого трафика
