@@ -77,9 +77,10 @@
 * фоновый процесс (демон)
 * следует инструкциям из Dockerfile и Docker-compose.yaml
 * управляет:
-  + Docker-объектами
+  + docker-объектами
   + процессами докера: скачивание и создание образов, собирает образ, запуск, остановка контейнеров
   + коммуникацией между контейнерами
+* `dockerd` запуск 
 
 ### client `docker`
 * интерфейс к Docker
@@ -133,6 +134,15 @@
   + инициализирует сеть/мост: создает сетевой интерфейс, который позволяет docker-у общаться хост машиной
   + находит и задает IP адрес
   + запускает приложение
+* `docker run -i -t ubuntu /bin/bash`  
+  + `docker` запускается клиент   
+  + скачивает образ ubuntu
+  + запускает новый контейнер
+  + инициализирует файловую систему и монтирует read-only уровень
+  + инициализирует сеть/мост: создает сетевой интерфейс, который позволяет docker-у общаться хост машиной
+  + находит и задает IP адрес
+  + запускает приложение
+  + запускает команду `/bin/bash`  
 * запускается без гипервизора
 * контейнерам можно назначать лимиты ресурсов
 * communicate with each other through channels
@@ -149,8 +159,9 @@
 * каждая команда создаёт новый слой образа с результатом вызванной команды ≈ система снапшотов сохраняет изменения в виртуальной машине
 * финальный Docker-образ = объединение всех слоев в один
 * CMD или ENTRYPOINT, финальная инструкция, запускает что-либо, но НЕ записывают изменения в образ
-* RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают, невозможно запустить приложение напрямую
-* Write a dockerfile:  https://github.com/dnaprawa/dockerfile-best-practices  
+* CMD = the default program that is run once you start the container  
+* RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают
+* write a dockerfile: https://github.com/dnaprawa/dockerfile-best-practices
 
 ### Docker Compose CLI (a tool)
 * для управления несколькими контейнерами, managing the whole lifecycle of your application:
@@ -178,6 +189,10 @@
 * using the host network
   + a standalone containers binds directly to port 80 to the Docker host's network
   + as if the nginx were running directly on the host, by the host networking driver
+* if you open docker to listen on the network
+  + the docker API ports are frequently scanned on the internet, and you will find malware installed
+  + ≈ a telnet server with root logins allowed without a password
+  + configure mutual TLS between client and server
 * https://docs.docker.com/network/network-tutorial-standalone/
 * `docker network list`
 * `brctl show`
@@ -186,7 +201,7 @@
 * `docker network inspect app_net`
 * `curl 172.200.0.2:8080`
 * `ip addr show` examine network interfaces, a new one was not created
-* прокинуть порт и переназначить его снаружи `docker run -p 80:80 --name test_cont -d`
+* `docker run -p 80:80 --name test_cont -d` прокинуть порт и переназначить его снаружи 
  
 ### Docker Volume (a tool, an object?)
 * папка хоста (usually in /var/lib/docker/volumes), примонтированная к файловой системе контейнера
@@ -215,24 +230,15 @@
 * `/etc/init.d/docker`
 * `/etc/init/docker.conf` DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
 * `/etc/systemd/system/docker.service.d`
-* `/etc/systemd/system/docker.service.d/override.conf`
 * `/etc/docker/daemon.json`
 * `/lib/systemd/system/docker.service` ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:
-* Never edit the docker service script (or any service script) directly
-  + SystemD has a differential editing feature built in
-  + use systemctl edit docker.service
-* if you open docker to listen on the network
-  + the docker API ports are frequently scanned on the internet, and you will find malware installed on your host
-  + you are running the equivalent of an open telnet server with root logins allowed without a password
-  + you should configure mutual TLS between client and server
+* never edit the service script directly, use systemctl edit docker.service
 
 ### docker commands via client
 #### создать, запустить, остановить контейнер, скачать образ 
-`systemctl status docker` установлена и работает служба docker   
 `docker create` создание контейнера   
 `docker start` активирует существующий контейнер  
 `docker build` считывает dockerfile, создаёт образ   
-`docker run` создает контейнер, включает его  
 `docker stop` пытается остановить контейнер отправив SIGTERM, если долго нет ответа SIGKILL   
 `docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
 `docker rm` удалить выключенный контейнер  
@@ -249,7 +255,6 @@
 доступ к сокетам  
 выполнение части операций с файловой системой  
 изменение атрибутов файлов или владельца   
-`docker tag` переименовать образ   
 `docker volume create --name myVolume` создать том при запуске контейнера   
 `docker volume ls` список томов   
 `docker volume inspect myVolume`   
@@ -258,6 +263,7 @@
 `docker run -P` publish all exposed port to random ports
 `docker run -d -p 7000:80 test:latest`
 #### инспектировать
+`systemctl status docker` служба docker   
 `docker images`, `docker image ls` просмотреть список доступных локально образов   
 `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
 `docker image inspect` подробнее рассказывает о выбранном контейнере  
@@ -271,17 +277,6 @@
 `/etc/init.d/docker status`  
 `/etc/resolv.conf`
 
-### Commands docker daemon
-* `dockerd` запуск сервиса
-
-### Commands Dockerfile
-`RUN`  
-`CMD`  
-`EXPOSE`  
-`FROM` defines a base for your image. exemple : FROM debian  
-`WORKDIR` sets the working directory for any RUN, CMD, ENTRYPOINT, COPY, and ADD instructions that follow it in the Dockerfile. (You go directly in the directory you choose)  
-`COPY` copies new files or directories from and adds them to the filesystem of the container at the path  
-`CMD` lets you define the default program that is run once you start the container based on this image. Each Dockerfile only has one CMD, and only the last CMD instance is respected when multiple ones exist  
 
 ### Commands docker-compose
 `make` in the root of the directory to build and start all container  
@@ -296,7 +291,8 @@
 `make re` to remove, build and run all containers in docker-compose   
 `docker-compose down` остановить контейнер  
 
-### Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
+### Начать новую жизнь
+Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
 ```
 sudo -s
 systemctl stop docker
@@ -304,17 +300,20 @@ rm -rf /var/lib/docker
 systemctl start docker
 exit
 ```
-
-### Example 1
-`docker run -i -t ubuntu /bin/bash`  
-1. `docker` запускается клиент   
-2. скачивает образ ubuntu
-3. `run` запускает новый контейнер
-4. инициализирует файловую систему и монтирует read-only уровень
-5. инициализирует сеть/мост: создает сетевой интерфейс, который позволяет docker-у общаться хост машиной
-6. находит и задает IP адрес
-7. запускает приложение
-8. запускает команду `/bin/bash`  
+```
+#!/bin/bash
+docker stop myContainer
+docker rm myContainer
+docker image prune --all
+docker system prune
+service docker stop
+systemctl daemon-reload
+systemctl restart docker.service
+service docker start
+docker-compose up -d --build           # build = first run
+# startx
+wget http://127.0.0.1/index.html --no-check-certificate
+```
 
 ### Example 2
 `$ docker run -it -v public:/var/www/public ubuntu:22.04` 
@@ -377,21 +376,6 @@ services:
     ports:
       - "80:80"
     container_name: myContainer
-```
-~/ex4/**test.sh**:  
-```
-#!/bin/bash
-docker stop myContainer
-docker rm myContainer
-docker image prune --all
-docker system prune
-service docker stop
-systemctl daemon-reload
-systemctl restart docker.service
-service docker start
-docker-compose up -d --build           # build = first run
-# startx
-wget http://127.0.0.1/index.html --no-check-certificate
 ```
 
 ### Example 5: http://akostrik.42.fr на виртуальной
