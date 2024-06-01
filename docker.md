@@ -194,15 +194,15 @@
   + ≈ a telnet server with root logins allowed without a password
   + configure mutual TLS between client and server
 * https://docs.docker.com/network/network-tutorial-standalone/
+* VM имеет внешний сетевой интерфейс, подключенный к виртуальному коммутатору внутри хостовой системы, по этому адресу и стучитесь
 * `netstat -ntpl`  
 * `docker network list`
+* `docker network inspect myNetwork`
 * `brctl show`
-* `sudo iptables -t nat --list`
+* `iptables -t nat --list`
 * `ifconfig`
-* `docker network inspect app_net`
-* `curl 172.200.0.2:8080`
-* `ip addr show` examine network interfaces, a new one was not created
-* `docker run -p 80:80 --name test_cont -d` прокинуть порт и переназначить его снаружи 
+* `ip addr show` network interfaces
+* `docker run -p 80:80 --name myCont -d` прокинуть порт и переназначить его снаружи 
  
 ### Docker Volume (a tool, an object?)
 * папка хоста (usually in /var/lib/docker/volumes), примонтированная к файловой системе контейнера
