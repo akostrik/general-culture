@@ -194,6 +194,7 @@
   + ≈ a telnet server with root logins allowed without a password
   + configure mutual TLS between client and server
 * https://docs.docker.com/network/network-tutorial-standalone/
+* `netstat -ntpl`  
 * `docker network list`
 * `brctl show`
 * `sudo iptables -t nat --list`
@@ -214,7 +215,7 @@
   + **bind mounts** = связать папку на хосте, где docker engine и папку в контейнере, изменения будут отображаться и там, и там
   + драйверы
   + хранение в оперативной памяти (tmpfs mounts или npipe mounts)
-  + **Tempfs Mount** выполняют функцию, обратную главной задаче Docker Volumes: отменяют сохранение информации после ликвидации контейнера
+  + **Tempfs Mount** отменяют сохранение информации после ликвидации контейнера
 * `docker volume ls`
 * `docker volume create` создание тома 
 * `docker run -it -v demo_volume:/data ubuntu:22.04`
@@ -234,62 +235,25 @@
 * `/lib/systemd/system/docker.service` ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:
 * never edit the service script directly, use systemctl edit docker.service
 
-### docker commands via client
-#### создать, запустить, остановить контейнер, скачать образ 
-`docker create` создание контейнера   
-`docker start` активирует существующий контейнер  
-`docker build` считывает dockerfile, создаёт образ   
-`docker stop` пытается остановить контейнер отправив SIGTERM, если долго нет ответа SIGKILL   
-`docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
-`docker rm` удалить выключенный контейнер  
-`docker pause`  
-`docker restart`, `/etc/init.d/docker restart` перезапустить демон  
-`systemctl restart docker.service`  
-`docker pull image` загрузить образ из DockerHub   
-`docker commit` создание нового образа из изменений в контейнере   
-`docker system prune` cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers
-`docker image prune --all` remove unused images   
-`systemctl daemon-reload`  
-#### настройка контейнера
-разрешать/запрещать монтирование  
-доступ к сокетам  
-выполнение части операций с файловой системой  
-изменение атрибутов файлов или владельца   
-`docker volume create --name myVolume` создать том при запуске контейнера   
-`docker volume ls` список томов   
-`docker volume inspect myVolume`   
-`docker volume rm myVolume` удалить том   
-`docker run -p` publish a container's port to the host
-`docker run -P` publish all exposed port to random ports
-`docker run -d -p 7000:80 test:latest`
-#### инспектировать
+### Инспектировать
 `systemctl status docker` служба docker   
-`docker images`, `docker image ls` просмотреть список доступных локально образов   
 `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
+`docker images`, `docker image ls` просмотреть список доступных локально образов   
 `docker image inspect` подробнее рассказывает о выбранном контейнере  
-`docker logs` выводит в консоль логи  
-`cat /var/lib/docker/repositories | python -mjson.tool` list of the repositories on your host
-`ls -al /var/lib/docker/graph`
-`netstat -ntpl`  
-`/var/lib/docker/aufs/diff/` все файлы контейнеров, если для работы с файловой системой Docker использует драйвер AUFS
-`/var/lib/docker/containers/` служебная информация, не сами файлы контейнеров
-`/var/lib/docker/aufs/diff/` образы
-`/etc/init.d/docker status`  
-`/etc/resolv.conf`
-
-
-### Commands docker-compose
-`make` in the root of the directory to build and start all container  
-`make` to build all images in docker-compose  
-`make up` to start all containers in docker-compose  
-`make down` to remove all containers in the docker-compose   
-`make start` to start all containers in the docker-compose   
-`make stop` to stop all containers in the docker-compose  
-`make status` to see the running containers  
-`make logs` to see the logs of the containers   
-`make rmi` to remove all images created by docker-compose   
-`make re` to remove, build and run all containers in docker-compose   
-`docker-compose down` остановить контейнер  
+`docker volume ls` список томов   
+`docker volume inspect myVolume`    
+`docker logs` логи в консоль  
+`cat /var/lib/docker/repositories | python -mjson.tool` list of the repositories on your host  
+`ls -al /var/lib/docker/graph`  
+`/var/lib/docker/aufs/diff/` файлы контейнеров (если использует драйвер AUFS)  
+`/var/lib/docker/containers/` служебная информация  
+`/var/lib/docker/aufs/diff/` образы  
+`/etc/init.d/docker status`   
+`/etc/resolv.conf`  
+`ls /var/www/public` the contents of the container’s /var/www/public   
+`echo "foobar" > /var/www/public/foo` add a test file with some arbitrary content   
+`make status` to see the running containers в docker-compose  
+`make logs` to see the logs of the containers  в docker-compose    
 
 ### Начать новую жизнь
 Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
@@ -314,6 +278,21 @@ docker-compose up -d --build           # build = first run
 # startx
 wget http://127.0.0.1/index.html --no-check-certificate
 ```
+`docker create` создание контейнера   
+`docker start` активирует существующий контейнер  
+`docker build` считывает dockerfile, создаёт образ   
+`docker stop` пытается остановить контейнер отправив SIGTERM, если долго нет ответа SIGKILL   
+`docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
+`docker rm` удалить выключенный контейнер  
+`docker pause`  
+`docker restart`, `/etc/init.d/docker restart` перезапустить демон  
+`systemctl restart docker.service`  
+`docker pull image` загрузить образ из DockerHub   
+`docker commit` создание нового образа из изменений в контейнере   
+`docker system prune` cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers
+`docker image prune --all` remove unused images   
+`systemctl daemon-reload`  
+`exit` detach from your container, the container stops  
 
 ### Example 2
 `$ docker run -it -v public:/var/www/public ubuntu:22.04` 
@@ -321,11 +300,6 @@ wget http://127.0.0.1/index.html --no-check-certificate
 * attaches your terminal to it (-it)
 * a volume `public` is mounted to /var/www/public inside the container
   
-`ls /var/www/public` the contents of the container’s /var/www/public   
-`echo "foobar" > /var/www/public/foo` add a test file with some arbitrary content   
-`exit` detach from your container, the container stops  
-`docker run -it -v public://var/www/public2 alpine:latest` start a new container that attaches the same volume   
-
 ### Example 3: http://127.0.0.1:8080/ на виртуальной + Dockerfile
 ~/ex3/**index.html**:  
 ```
