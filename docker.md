@@ -107,7 +107,6 @@
 * **A registry** stores and serves up the actual image assets, delegates authentication to the index
 
 ### Container (object, an entitie used to assemble an application)
-![Screenshot from 2024-04-06 01-14-25+](https://github.com/akostrik/general-culture/assets/22834202/c42f1635-8a66-4610-8b50-1162d741c4de)
 ![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 * 1 container = 1 service = 1 развёрнутое и запущенное приложение (database, web server, web framework, test server, execute big data scripts)
 * содержит все для работы приложения (системные программы, библиотеки, код, среды исполнения, настройки)
@@ -139,32 +138,28 @@
 * communicate with each other through channels
 
 ### A docker-network (object, an entitie used to assemble an application)
-* establishes the connection between your containers
+* connection between your containers
 * docker's networking subsystem is pluggable, using drivers
-* several drivers exist by default, provide networking functionality:
-  + bridge (by default): when an application in a container communicates with other containers on the same host
-  + host: remove network isolation between the container and the Docker host and use the host's networking directly
-  + overlay: connect multiple Docker daemons together and enable Swarm services and containers to communicate across nodes
+* several drivers exist by default:
+  + bridge (by default): an application in a container communicates with other containers on the same host
+  + host: remove network isolation between the container and the Docker host, use the host's networking directly
+  + overlay: connect multiple Docker daemons together
   + ipvlan: gives users total control over both IPv4 and IPv6 addressing
   + macvlan: allows to assign a MAC address to a container, making it appear as a physical device on your network
   + none: isolates a container from the host and other containers
   + third-party network plugins
+* Networking using the host network
+  + a standalone containers binds directly to port 80 to the Docker host's network
+  + no network isolation
+  + as if the nginx were running directly on the host, the host networking driver
 * https://docs.docker.com/network/network-tutorial-standalone/
 * `docker network list`
 * `brctl show`
 * `sudo iptables -t nat --list`
 * `ifconfig`
-* `docke network inspect app_net`
-* `curl 172.200.0.2`
+* `docker network inspect app_net`
 * `curl 172.200.0.2:8080`
 * `ip addr show` examine network interfaces, a new one was not created
-
-#### Networking using the host network
-A standalone containers binds directly to port 80 to the Docker host's network
-* no network isolation, network isolation as if the nginx were running directly on the host
-* in all other ways (storage, process namespace, user namespace): the nginx process is isolated from the host
-* port 80 should be available on the host
-* the host networking driver
  
 ### Dockerfile (object, an entitie used to assemble an application)
 ![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
