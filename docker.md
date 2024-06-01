@@ -295,8 +295,7 @@ wget http://127.0.0.1/index.html --no-check-certificate
 `exit` detach from your container, the container stops  
 
 ### Example 2
-`$ docker run -it -v public:/var/www/public ubuntu:22.04` 
-* starts a new container
+`docker run -it -v public:/var/www/public ubuntu:22.04` 
 * attaches your terminal to it (-it)
 * a volume `public` is mounted to /var/www/public inside the container
   
@@ -331,15 +330,14 @@ server {
   root    /var/www/public/html;
   location / {                     # all locations
     try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it   
-                                   # if fails, serves `/index.html` (the fall back option)     
-                                   # if fails, serves the 404 error page   
+                                   # if fails, serves `/index.html` (fall back option)     
+                                   # if fails, serves the 404 error   
     }
 }
 ```
 ~/ex4/**docker-compose.yml**:  
 ```
 version: '3'
-
 services:
   nginx:
     image: nginx:stable-alpine
