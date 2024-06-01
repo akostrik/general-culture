@@ -137,6 +137,34 @@
 * контейнерам можно назначать лимиты ресурсов
 * communicate with each other through channels
 
+### Dockerfile (object, an entitie used to assemble an application)
+![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
+* docker считывает инструкции, собирает и возвращает образ
+  + набор софта, который мы хотим развернуть
+  + настройки контейнера (порты, переменные окружения, ...)
+  + запуск команды
+  + добавление файла или директории
+  + создание переменной окружения
+  + указания, что запускать, когда запускается контейнер этого образа
+* каждая команда создаёт новый слой образа с результатом вызванной команды ≈ система снапшотов сохраняет изменения в виртуальной машине
+* финальный Docker-образ = объединение всех слоев в один
+* CMD или ENTRYPOINT, финальная инструкция, запускает что-либо, но НЕ записывают изменения в образ
+* RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают, невозможно запустить приложение напрямую
+* Write a dockerfile:  https://github.com/dnaprawa/dockerfile-best-practices  
+
+### Docker Compose CLI (a tool)
+* для управления несколькими контейнерами, managing the whole lifecycle of your application:
+  + start, stop, rebuild, configures services, networks, volumes, building images, ...
+* `docker-compose.yml`
+* пример: веб-сайт, для авторизации пользователей необходимо подключение к базе данных
+  + первый сервис (контейнер) отвечает за функционирование сайта
+  + второй сервис (контейнер) отвечает за базу данных
+* пример: веб-проект, состоящий из двух сайтов
+  + первый позволяет создать интернет-магазин
+  + второй для поддержки клиентов
+  + оба сайта подключены к общей базе данных
+  + сайты легко переносятся на новый сервер
+  
 ### A docker-network (object, an entitie used to assemble an application)
 * connection between your containers
 * docker's networking subsystem is pluggable, using drivers
@@ -160,77 +188,8 @@
 * `docker network inspect app_net`
 * `curl 172.200.0.2:8080`
 * `ip addr show` examine network interfaces, a new one was not created
- 
-### Dockerfile (object, an entitie used to assemble an application)
-![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
-* инструкции = шаги описания для создания образов мы называем
-* docker считывает Dockerfile, когда вы собираете образ, выполняет эти инструкции, и возвращает образ
-* инструкция для сборки образа
-  + набор софта, который мы хотим развернуть
-  + настройки контейнера (порты, переменные окружения, ...)
-* каждая инструкция создает новый образ или уровень
-* примеры инструкци:
-  + запуск команды
-  + добавление файла или директории
-  + создание переменной окружения
-  + указания, что запускать, когда запускается контейнер этого образа
-* каждая команда создаёт новый слой образа с результатом вызванной команды, подобно тому, как система снапшотов сохраняет изменения в виртуальной машине
-  + финальный Docker-образ = объединение всех слоев в один
-* Финальной инструкцией является CMD или ENTRYPOINT
-  + The default command to run when the container is started
-  + CMD может быть только одна
-  + CMD может быть переопределена при старте командой docker run
-  + CMD наследует условия, установленные инструкцией WORKDIR
-  + `CMD` и `ENTRYPOINT` запускают что-либо, но НЕ ЗАПИСЫВАЮТ изменений в образ
-    - не стоит выполнять ими скрипты, результат которых нужно "положить" в конечный образ или раздел (для этого есть ``RUN``)
-    - The command needs to be performed every time the container starts, rather than being stored in the immutable image
-* RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают, невозможно запустить приложение напрямую
-* пробросить порт наружу контейнера: `EXPOSE 80`
 * прокинуть порт и переназначить его снаружи `docker run -p 80:80 --name test_cont -d`
-* Write a dockerfile
-  + https://github.com/dnaprawa/dockerfile-best-practices  
-  + limit image layers amount, цепочки команд через && `RUN comand_1 && comand_2`, `RUN apt-get update && apt-get install` 
-  + run as a non-root user
-  + use a static UID and GID
-  + the latest is an evil, choose specific image tag
-  + store arguments in CMD
-  + use COPY instead of ADD
-  + Делаем это одним RUN мы потому, что каждая директива RUN создаёт новый слой в docker-образе
-
-### Docker Compose (a tool)
-* docker-compose CLI
-* надстройка для управления несколькими контейнерами, создавать контейнеры, задавать конфигурацию, запуск множества контейнеров одной командой, to manage services, networks, volumes
-* `docker-compose.yml`
-   + creates and starts all the services (containers?) from the configuration file
-   + builds the Docker images
-   + runs the commands on multiple containers at once (building images, scaling containers, running containers that were stopped)
-   + commands related to image manipulation, or user-interactive options, are not relevant in Docker Compose because they address one container
-   + configures the application's services
-   + defines configuration options
-   + `build` defines configuration options
-   + `command` override default Docker commands
-   + the network line
-* commands for managing the whole lifecycle of your application:
-   + Start, stop, rebuild services
-   + View the status of running services
-   + Stream the log output of running services
-   + Run a one-off command on a service
-* usage:
-   + streamline the development, deployment, management of containerized applications
-   + to define and manage multi-container applications in a single YAML file
-   + configuration files are easy to share, facilitating collaboration
-   + caches the configuration used to create a container. When you restart a service that has not changed, Compose re-uses the existing containers. Re-using containers means that you can make changes to your environment very quickly
-   + supports variables in the Compose file, you can use these variables to customize your composition for different environments, or different users
-* пример: веб-сайт
-   + для авторизации пользователей необходимо подключение к базе данных
-   + первый сервис (контейнер) отвечает за функционирование сайта
-   + второй сервис (контейнер) отвечает за базу данных
-* пример: веб-проект, состоящий из двух сайтов
-   + первый позволяет создать интернет-магазин
-   + второй для поддержки клиентов
-   + оба сайта подключены к общей базе данных
-   + по мере развития проекта мощностей текущего сервера недостаточно => легко переносят сайты на новый сервер при помощи docker compose
-  
+ 
 ### Docker Volume (a tool, an object?)
 * storing data outside containers, файловая система, которая расположена на хост-машине за пределами контейнеров
 * папка хоста, примонтированная к файловой системе контейнера Т
