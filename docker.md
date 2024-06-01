@@ -428,8 +428,7 @@ server {
 `--no-check-certificate`
 
 ### Example 8: https://akostrik.42.fr:1443 на хостовой
-но школьный мак не знает 42.fr  
+школьный мак не знает 42.fr  
 
 ##
-https://habr.com/ru/articles/267441/  
 https://blog.thoward37.me/articles/where-are-docker-images-stored/  
