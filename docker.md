@@ -14,9 +14,6 @@
 * каталоги, которые имеют тот же путь в объединённых ветвях, будут совместно отображать содержимое в объединённом каталоге
 * есть приоритет одной ветви над другой, на случай, когда обе ветви содержат файл с идентичным именем
 
-## Docker host 
-* компьютер или виртуальный сервер, на котором установлен Docker
-
 ## Docker 
 * a set of platform as a service (PaaS) products
 * инструмент объекто-ориентированного проектирования (дизайна) (вместо последовательно-процедурного вызова команд)
@@ -34,8 +31,7 @@
   + на уровне операционной системы
   + запускать в облачной инфраструктуре
   + упростить
-* мгновенное время запуска
-* медленнее, чем запуск приложения на физическом сервере
+* быстрый, но медленнее, чем запуск приложения на физическом сервере
 * сложный
 * работает непосредственно в ОС => возможно внедрение зловредного кода в контейнеры и проникновение в ОС
 
@@ -45,46 +41,38 @@
 * the resource isolation features of the Linux kernel (cgroups, kernel namespaces) + a union-capable file system => to allow containers to run within a single Linux instance, avoiding the overhead of virtual machines
 * микросервисная архитектуря
   + изменения в одной компоненте не затронут остальную систему
-* контейнер работает в изолированной среде, не влияющей на основную операционную систему
+* контейнер в изолированной среде, не влияющей на основную операционную систему
   + виртуальная среда запускается из ядра основной ОС (в оличие от VM)
   + не создается виртуальное железо (в оличие от VM)
   + containers share the services of a single OS kernel => fewer resources than virtual machines  
-* ещё один уровень абстракции => позволяет использовать на одном хосте различные версии языков, библиотек, etc
+* позволяет использовать на одном хосте различные версии языков, библиотек, etc
 * libcontainer библиотека, абстрагирующая виртуализационные возможности ядра Linux
   + to use virtualization facilities provided directly by the Linux kernel, in addition to using abstracted virtualization interfaces via libvirt, LXC and systemd-nspawn
-* проверенные технологии ядра
-* минимум своих решений
+* проверенные технологии ядра, минимум своих решений
 * a client-server application
 * `/var/lib/docker/overlay2` writable layers, the various filesystem layers for images and containers
   + `/var/lib/docker/overlay2/eceb7b667587c3cc2a08d7c970eae723fdd8981b7a7580db19587434123a2681`
 * `/var/lib/docker` your images, containers, local named volumes
-* MacOS: Docker uses a Linux virtual machine
-
-### Docker Desktop
-* GUI-клиент
-* отображает сущности Docker
 
 ## API
 * REST API
 * HTTP API
-* specifies interfaces that programs can use to talk to and instruct the Docker daemon
-* сервер ожидает запросов через API от Клиента и выполняет заданную команду
+* specifies interfaces that programs can use to talk to the Docker daemon
+* сервер ожидает запросов через API от Клиента и выполняет команду
 * client uses API to communicate with the Engine
   + everything the Docker client can do can be done with the API
   + most of the client's commands map directly to API endpoints (e.g. `docker ps` is `GET /containers/json`)
 * клиент и сервер могут:
-  + работать на одной системе
-  + или можно подключить клиент к удаленному демону docker
-* клиент и сервер общаются через сокет или через RESTful API
+  + работать на одной системе (общаются через REST API)
+  + можно подключить клиент к удаленному демону docker (общаются через сокет)
 
 ### server daemon `dockerd`= Docker Engine ?
 * фоновый процесс (демон)
 * следует инструкциям из Dockerfile и Docker-compose.yaml
 * управляет:
   + Docker-объектами
-  + процессами докера: скачивание и создание образов, собирает образ, запуск и остановка контейнеров
+  + процессами докера: скачивание и создание образов, собирает образ, запуск, остановка контейнеров
   + коммуникацией между контейнерами
-* собственный драйвер `Docker runc`
 
 ### client `docker`
 * интерфейс к Docker
