@@ -189,27 +189,17 @@
 * прокинуть порт и переназначить его снаружи `docker run -p 80:80 --name test_cont -d`
  
 ### Docker Volume (a tool, an object?)
-* storing data outside containers
-* файловая система, расположенная за пределами контейнеров
 * папка хоста (usually in /var/lib/docker/volumes), примонтированная к файловой системе контейнера
-* отделены от контейнеров, отключает привязку данных к жизненному циклу контейнера
+* отделены от контейнеров
 * контейнеры могут совместно пользоваться одним volume
 * можно размещать в облаке 
 * можно шифровать
 * different drivers (local storage on your docker host by default, NFS volumes, CIFS/Samba shares, device-level block storage adapters)
-* volumes are a better solution than bind mounts, when you’re providing permanent storage to operational containers
-  + you don’t need to manually maintain directories on your host
-  + there’s less chance of data being accidentally modified
-  + no dependency on a particular folder structure
-  + increased performance
-  + the possibility of writing changes
-* альтернатива: **bind mounts** = связанные папки 
-  + связать папку на компьютере пользователя (то есть хосте, где docker engine) и папку в контейнере
-  + одновременно работать с папкой в контейнере и на хосте, все изменения будут отображаться и там, и там
-* альтернатива: драйверы
-* альтернатива: хранение в оперативной памяти (tmpfs mounts или npipe mounts)
-* альтернатива: **Tempfs Mount** выполняют функцию, обратную главной задаче Docker Volumes: отменяют сохранение информации после ликвидации контейнера
-  + это может понадобиться, если Вы ведёте обширное журналирование, т.к. постоянные одноразовые записи могут привести к падению производительности 
+* альтернативы
+  + **bind mounts** = связать папку на хосте, где docker engine и папку в контейнере, изменения будут отображаться и там, и там
+  + драйверы
+  + хранение в оперативной памяти (tmpfs mounts или npipe mounts)
+  + **Tempfs Mount** выполняют функцию, обратную главной задаче Docker Volumes: отменяют сохранение информации после ликвидации контейнера
 * `docker volume ls`
 * `docker volume create` создание тома 
 * `docker run -it -v demo_volume:/data ubuntu:22.04`
@@ -217,12 +207,8 @@
   +  a volume called demo_volume is mounted to /data inside the container
 
 ### Docker Swarm (a tool)
-* provides native clustering functionality for containers, which turns a group of Docker engines into a single virtual Docker engine
-* in Docker 1.12 and higher, Swarm mode is integrated with Docker Engine
-* _The docker swarm CLI utility_ allows users to run Swarm containers, create discovery tokens, list nodes in the cluster, and more.[37] The docker node CLI utility allows users to run various commands to manage nodes in a swarm, for example, listing the nodes in a swarm, updating nodes, and removing nodes from the swarm.[38] Docker manages swarms using the Raft consensus algorithm. According to Raft, for an update to be performed, the majority of Swarm nodes need to agree on the update.
-* для организации кластеризации и планирования контейнеров
-* собрать несколько узлов в единую виртуальную систему Docker и управлять ею
-* **swarm** a set of cooperating daemons that communicate through the Docker API
+* a set of cooperating daemons that communicate through the Docker API
+* turns a group of Docker engines into a single virtual Docker engine, собрать несколько узлов в единую виртуальную систему Docker и управлять ею
 
 ### Настройки
 * `/etc/default` DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
