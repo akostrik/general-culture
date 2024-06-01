@@ -261,6 +261,7 @@ exit
   + macvlan: allows to assign a MAC address to a container, making it appear as a physical device on your network
   + none: isolates a container from the host and other containers
   + third-party network plugins
+* https://docs.docker.com/network/network-tutorial-standalone/
 
 #### Networking using the host network
 A standalone containers binds directly to port 80 to the Docker host's network
