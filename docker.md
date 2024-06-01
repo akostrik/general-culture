@@ -3,24 +3,16 @@
 ## Linux Containers (LXC) 
 * method for running multiple isolated Linux systems (containers) on a control host using a single Linux kernel
 * OS-level virtualization 
-* the Linux kernel provides 
-  + the cgroups functionality that allows limitation and prioritization of resources (CPU, memory, block I/O, network, etc.) without the need for starting any virtual machines
-  + the namespace isolation functionality that allows isolation of an application's view of the operating environment, including process trees, networking, user IDs and mounted file systems
-* LXC combines the kernel's cgroups and support for isolated namespaces to provide an isolated environment for applications.[4] Early versions of Docker used LXC as the container execution driver,[4] though LXC was made optional in v0.9 and support was dropped in Docker v1.10.[5][6]
-* != docker container
-  + хоть используют те же технологии ядра Linux 
-* docker использует те же контейнеры, что и LXC, но интересен он не контейнерами
+* the cgroups functionality of Linux kernel: limitation and prioritization of resources (CPU, memory, block I/O, network, etc.) without virtual machines
+* the namespace isolation functionality of Linux kernel: isolation of an application's view of the operating environment (process trees, networking, user IDs, mounted file systems)
+* provides an isolated environment for applications
+* docker container != LXC (хоть используют те же технологии ядра Linux)
 
 ## UnionFS
-* вспомогательная файловая система для Linux и FreeBSD, производящая каскадно-объединённое монтирование других файловых систем
-* это позволяет файлам и каталогам изолированных файловых систем, известных как ветви, прозрачно перекрываться, формируя единую связанную файловую систему
-* каталоги, которые имеют тот же путь в объединённых ветвях, будут совместно отображать содержимое в объединённом каталоге новой виртуальной файловой системы
-* когда ветви монтируются, то указывается приоритет одной ветви над другой =>  когда обе ветви содержат файл с идентичным именем, одна ветвь будет иметь больший приоритет
-* различные ветви могут одновременно находиться в режиме «только чтение» и «чтение-запись»
-  + запись в объединённую виртуальную файловую систему будет направлена на определённую реальную файловую систему
-  + это позволяет файловой системе выглядеть изменяемой, но в действительности, не позволяющей производить запись изменений в файловую систему
-  + этот процесс также известен как копирование при записи
-  + это может потребоваться, когда носитель информации физически допускет только считывание, как в случае с Live CD-дисками
+* вспомогательная файловая система, производящая каскадно-объединённое монтирование других файловых систем
+* файлы и каталоги изолированных файловых систем прозрачно перекрываются, формируя единую связанную файловую систему
+* каталоги, которые имеют тот же путь в объединённых ветвях, будут совместно отображать содержимое в объединённом каталоге
+* указывается приоритет одной ветви над другой, на случай, когда обе ветви содержат файл с идентичным именем
 
 ## Docker host 
 * компьютер или виртуальный сервер, на котором установлен Docker
@@ -28,7 +20,7 @@
 ## Docker 
 * платформа виртуализации
 * a set of platform as a service (PaaS) products
-* инструмент объекто-ориентированного проектирования (объектно-ориентированного дизайна)
+* инструмент объекто-ориентированного проектирования (дизайна)
   + конфигурация nginx ≈ часть веб-приложения
   + devops захотели вместо последовательно-процедурного вызова команд из bash думать привычным OOP
   + docker дает инкапсуляцию, наследование и полиморфизм компонентам системы, таким как база данных и данные => можно провести декомпозицию всей информационной системы, выделить приложение, web-сервер, базу данных, системные библиотеки, рабочие данные в независимые компоненты, внедрять зависимости из конфигов, и заставить все это работать одной группой, одинаково на разных компьютерах
@@ -40,7 +32,6 @@
 * != виртуализация
 * != chroot, их функционал частично совпадает
 * != система безопасности вроде AppArmor
-* **Docker objets** entities used to assemble an application (сети, хранилища, образы, контейнеры)
 
 ## Usage
 * packages an application and its dependencies in a container
@@ -135,7 +126,7 @@ exit
 * command-line или графический
 * получает команды от пользователя (создают контейнеры, управляют ими, создаёт/управляет/запускает контейнеризованные приложения)
 
-### image (object)
+### image (object, an entitie used to assemble an application)
 * is not a runtime
 * неизменяемый файл, из которого можно неограниченное количество раз развернуть контейнер
 * исполняемый пакет = код + среда выполнения + библиотеки + переменные окружения + конфигурационные файлы
@@ -160,7 +151,7 @@ exit
 * **An index** manages user accounts, permissions, search, tagging, etc that's in the public web interface
 * **A registry** stores and serves up the actual image assets, delegates authentication to the index
 
-### Container (object)
+### Container (object, an entitie used to assemble an application)
 ![Screenshot from 2024-04-06 01-14-25+](https://github.com/akostrik/general-culture/assets/22834202/c42f1635-8a66-4610-8b50-1162d741c4de)
 ![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 * runtime-сущность
@@ -250,7 +241,7 @@ exit
   + каждый запуск контейнера командой docker run image_name без параметров --name или --rm создает новый контейнер с уникальным идентификатором
   + контейнеры, в которых не нужно сохранять данные, создавайте с параметром --rm
 
-### A docker-network (object)
+### A docker-network (object, an entitie used to assemble an application)
 * establishes the connection between your containers
 * docker's networking subsystem is pluggable, using drivers
 * several drivers exist by default, provide networking functionality:
@@ -262,6 +253,14 @@ exit
   + none: isolates a container from the host and other containers
   + third-party network plugins
 * https://docs.docker.com/network/network-tutorial-standalone/
+* `docker network list`
+* `brctl show`
+* `sudo iptables -t nat --list`
+* `ifconfig`
+* `docke network inspect app_net`
+* `curl 172.200.0.2`
+* `curl 172.200.0.2:8080`
+* `ip addr show` examine network interfaces, a new one was not created
 
 #### Networking using the host network
 A standalone containers binds directly to port 80 to the Docker host's network
@@ -269,12 +268,8 @@ A standalone containers binds directly to port 80 to the Docker host's network
 * in all other ways (storage, process namespace, user namespace): the nginx process is isolated from the host
 * port 80 should be available on the host
 * the host networking driver
-* `ip addr show` examine network interfaces, a new one was not created
-
  
-### хранилища (object)
- 
-### Dockerfile (object)
+### Dockerfile (object, an entitie used to assemble an application)
 ![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
 * инструкции = шаги описания для создания образов мы называем
 * docker считывает Dockerfile, когда вы собираете образ, выполняет эти инструкции, и возвращает образ
@@ -344,7 +339,7 @@ A standalone containers binds directly to port 80 to the Docker host's network
    + оба сайта подключены к общей базе данных
    + по мере развития проекта мощностей текущего сервера недостаточно => легко переносят сайты на новый сервер при помощи docker compose
   
-### Docker Volume (a tool)
+### Docker Volume (a tool, an object?)
 * storing data outside containers, файловая система, которая расположена на хост-машине за пределами контейнеров
 * папка хоста, примонтированная к файловой системе контейнера Т
 * **на сервере** создается каталог, который затем монтируется в один или несколько контейнеров
