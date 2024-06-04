@@ -31,6 +31,10 @@
 * тип подключения Сетевой мост
   + виртуальная машина подключается напрямую к основной сети как полноценное устройство
   + для подключения используется сетевая карта хост-системы
+* set your networking to Bridged
+  + you should be able to access your host machine by its hostname
+  + if your hostname is “inception” and you want to open http://localhost:3000/, you will be able to view that page at http://inception:3000/
+ + to find your hostname, open a terminal/console and then run the command hostname
 
 ### Настройка сети между виртуальными машинами в VirtualBox
 ...
