@@ -39,15 +39,14 @@
     - перехватывает и пересылает ответные пакеты VM
 * нет доступа к другим гостевым ОС
 
-### Сеть между хостом и VirtualBox
+### Доступ из VM к хостовой
 * set your networking to Bridged
-  + виртуальная машина подключается напрямую к основной сети как полноценное устройство
-  + используется сетевая карта хост-системы
-  + to access your host machine by its hostname
-  + if your hostname is “myHost”, then `http://localhost:3000/` and `http://myHost:3000/` will work
- + to find your hostname, open a terminal/console and then run the command hostname
+  + VM подключается к основной сети как полноценное устройство
+  + используется сетевая карта хоста
+  + `http://localhost:3000/` = `http://myHostname:3000/`
+ + `hostname` to know your hostname
 
-### Доступ к какому-либо сервису хостовой машины
+### Доступ из хостовой к VM
 * 1 способ: пробросить пробросить порт сервиса в хостовую систему через Port Forwardign Rules, port forwarding Virtualbox via NAT
   + у вас должен быть внешний белый ip
   + опция NAT
@@ -96,7 +95,7 @@
   + выдать виртуальной машине отдельный IP адрес
   + можно обращаться к любым ее портам и использовать любые сетевые возможности
 
-`wget http://localhost/index.html` проверить без браузера
+`wget http://localhost/index.html --no-check-certificat` проверить без браузера
 
 ## Error
 ```
