@@ -138,6 +138,10 @@ nameserver 10.16.0.7
 * гибкий и надежный фаервол 
 * интерфейс управления работой межсетевого экрана (брандмауэра) netfilter 
 * второе значение: сам межсетевой экран
+* защищает от угроз сети и уязвимостей программного обеспечения, установленного на компьютере
+  + для домашних компьютеров это не актуально, они подключены к сети через роутеры и NAT, которые скрывают их от внешней сети
+  + для серверов актуально 
+  + защита системы от внешних вторжений, перенаправление портов, действий с трафиком
 * подсистема iptables и Netfilter встроена в ядро
 * сетевые пакеты, проходящие через компьютер, отправляются им или предназначены ему, ядро направляет через фильтр iptables
   + проверка + если проверка пройдена, действие
@@ -172,18 +176,19 @@ nameserver 10.16.0.7
     - могут быть завершающими (как встроенные) или незавершающими (как пользовательские цепочки), подробнее см. iptables-extensions(8)
   + может быть переходом на пользовательскую цепочку - пакет проходит через неё, возвращается в исходную цепочку и продолжает со следующего после перехода правила
     - можете добавить собственные цепочки для большей эффективности или удобства, пример создания цепочек можно найти в статье Настройка межсетевого экрана
-* `iptables -L` правила брандмауэра iptables - понять, какие порты закрыты с его помощью
+* вы не можетеотключить iptables остановив сервис обновления правил iptables, подсистема работает на уровне ядра
+* `iptables -L` правила брандмауэра iptables
+  + понять, какие порты закрыты с его помощью
   + цепочка INPUT отвечает за открытые порты
     - через нее проходят все входящие пакеты
-    - политика по умолчанию - ACCEPT, подключение ко всем портам разрешено
+    - политика по умолчанию - ACCEPT = подключение ко всем портам разрешено
   + цепочка OUTPUT
   + цепочка FORWARD
 * `iptables -t nat --list`
-* защищает от угроз сети и уязвимостей программного обеспечения, установленного на компьютере
-  + для домашних компьютеров это не актуально, они подключены к сети через роутеры и NAT, которые скрывают их от внешней сети
-  + для серверов актуально 
-  + защита системы от внешних вторжений, перенаправление портов, действий с трафиком
-
+* `sudo iptables -F` очистить правила, если сделаете что-то не так
+* `sudo iptables -I INPUT -p tcp --dport 1924 -j ACCEPT` открыть порты
+* https://losst.pro/nastrojka-iptables-dlya-chajnikov
+  
 ```
                                XXXXXXXXXXXXXXXXXX
                              XXX      Сеть      XXX
@@ -218,12 +223,6 @@ nameserver 10.16.0.7
                              XXX      Сеть      XXX
                                XXXXXXXXXXXXXXXXXX
 ```
-
-Telnet (terminal network ou telecommunication network, ou encore teletype network) est un protocole utilisé sur tout réseau TCP/IP, permettant de communiquer avec un serveur distant en échangeant des lignes de texte et en recevant des réponses également sous forme de texte.
-
-Créé en 1969, telnet est un moyen de communication très généraliste et bi-directionnel. Il appartient à la couche application du modèle OSI et du modèle ARPA. Il est normalisé par l'IETF (RFC 15, 854 et 855).
-
-Il était notamment utilisé pour administrer des serveurs Unix distant ou de l'équipement réseau, avant de tomber en désuétude par défaut de sécurisation (le texte étant échangé en clair) et l'adoption de SSH.
 
 ## telnet = terminal network = telecommunication network =teletype network
 * un protocole utilisé sur tout réseau TCP/IP
