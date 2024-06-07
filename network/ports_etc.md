@@ -6,7 +6,7 @@
   + если порт открыт, то программное обеспечение целевого оборудования прослушивает его соединения и пакеты
 * `telnet loclhost 80` verify
 * `sudo netstat -ltupan` (именно c sudo)
-  + l прослушивающиеся сокеты (сочетания IP-адреса и номера порта)
+  + l прослушивающиеся сокеты
   + n номера портов вместо названий служб
   + t показать TCP-соединения
   + u показать UDP-соединения
@@ -43,6 +43,8 @@
 * 443 HTTPS  
 * 3306 MySQL  
 
+## Socket
+* IP + номер порта
 ## NAT = Network Address Translation = IP Masquerading = Network Masquerading = Native Address Translation = трансляция сетевых адресов
 ![Screenshot from 2024-06-07 16-11-34](https://github.com/privet100/general-culture/assets/22834202/27cd8dc7-fee4-4c40-90e5-6dbcc5f8899c)
 * механизм в сетях TCP/IP
