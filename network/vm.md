@@ -52,10 +52,10 @@
 * виртаулку видно всем из сети
 * на виртуалке нет инета
 * VM подключается к основной сети (к физической сети TCP/IP) как полноценное устройство, отдельный комп
-* VM has its own identity on a bridged network
-  + for example, on a TCP/IP network, VM needs its own IP address
+* VM has its own identity on a bridged network,
+  + its own IP address on a TCP/IP network
   + VM acquires an IP address and other network details from a DHCP server
-    - but you might need to set the IP address and other details manually in VM
+    - you might need to set them manually
 * Virtualbox использует драйвер устройства (физический сетевой адаптер, физический интерфейс хоста, маршрутизатор, шлюз между гостевой и вашей физической сетью, net filter, сетевую карту) хост системы, который
   + обрабатывает данные проходящие через физический сетевой интерфейс
   + перехватывает VirtualBox пакеты из физической сети и изменяет данные в них
