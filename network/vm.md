@@ -2,7 +2,7 @@
 * **A virtual network adapter** a software-emulated physical device
   
 ### NAT = Network Address Translation = трансляция сетевых адресов = IP Masquerading = Network Masquerading = Native Address Translation
-![Screenshot from 2024-06-07 17-35-34](https://github.com/privet100/general-culture/assets/22834202/60179e36-9f13-4c24-828e-78f78ad235fd)
+![Screenshot from 2024-06-07 17-22-13](https://github.com/privet100/general-culture/assets/22834202/1a99dea0-1916-47f8-900e-f95af4beaab7)
 * [NAT](https://github.com/privet100/general-culture/blob/main/network/network_vpn_ports_etc.md#nat--network-address-translation--ip-masquerading--network-masquerading--native-address-translation--%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D1%8F-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D1%85-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%BE%D0%B2)
 * par default
 * только доступ в интернет с VM
@@ -45,7 +45,6 @@
 
 ### Bridged
 ![GUID-8AB8E6E2-E16F-4E60-8421-669C96E6BF38-high](https://github.com/privet100/general-culture/assets/22834202/b7641c59-0d4d-454b-b6e8-b2b33116b86a)
-![Screenshot from 2024-06-07 17-22-13](https://github.com/privet100/general-culture/assets/22834202/1a99dea0-1916-47f8-900e-f95af4beaab7)
 
 * Доступ к VM из хостовой и из инета по http, https
 * to give your virtual machine access to the network
