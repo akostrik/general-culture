@@ -46,9 +46,9 @@
 ### Bridged
 ![Screenshot from 2024-06-07 17-41-26](https://github.com/privet100/general-culture/assets/22834202/af298eb5-4c1c-4eb8-b238-2166624791f5)
 * Доступ к VM из хостовой и из инета по http, https
-* to give your virtual machine access to the network
+* to give your virtual machine access to the network ?
+* на виртуалке нет инета ?
 * виртаулку видно всем из сети
-* на виртуалке нет инета
 * VM подключается к основной сети (к физической сети TCP/IP) как полноценное устройство, отдельный комп
   + VM communicates with other computer on the network, as if it is a physical computer on the network
 * VM has its own identity on a bridged network
