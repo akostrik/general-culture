@@ -1,26 +1,19 @@
 ## Verifications
-* netstat = network statistic
-  + `netstat -ntlp | grep LISTEN` список прослушиваемых портов (network statistic)
-  + `sudo netstat -ltupan` (l прослушивающиеся сокеты, n номера портов вместо названий служб, t TCP-соединения, u UDP-соединения, a только активные соединения)
-* ss = современная альтернатива для netstat (socket statistics)
-  + `ss -lntu` (l все прослушивающиеся сокеты, n  номера портов вместо названий служб, t TCP-соединения, u UDP-соединения)
-* `nmap localhost`
-  + проверка открытых портов на удаленных хостах
-  + проверка нашей системы
-* `sudo nmap -sT -sU -sV 159.89.108.187`
-  + sT показать TCP-соединения
-  + sU показать UDP-соединения
-  + sV обнаружение версий программного обеспечения
+* `netstat -ntlp | grep LISTEN` список прослушиваемых портов (netstat = network statistic)
+* `sudo netstat -ltupan` (l прослушивающиеся сокеты, n номера портов вместо названий служб, t TCP-соединения, u UDP-соединения, a только активные соединения)
+* `ss -ltupn` (l все прослушивающиеся сокеты, n  номера портов вместо названий служб, t TCP-соединения, u UDP-соединения) (ss = socket statistics, современная альтернатива для netstat)
+* `nmap localhost` открытые порты на удаленных хостах, проверка системы
+* `sudo nmap -sT -sU -sV 159.89.108.187` (sT TCP-соединения, sU UDP-соединения, sV обнаружение версий программного обеспечения)
 * `lsof -i` открытые соединения (list of open files)
-* `lsof -nP -i` доступные соединения
 * `lsof -i :80` процессы, работающих с портом 80
+* `lsof -nP -i` доступные соединения
 * `lsof -nP -i | grep LISTEN` список прослушиваемых портов
-* `ss -ltupn` почти как netstat
 * `ip addr show` network interfaces
 * `ip addr` узнать IP
-  + `ipconfig` depreciated 
 * `telnet loclhost 80` verify
-
+* `ifconfig`
+* `ipconfig` depreciated 
+  
 ## IP
 `ip addr show | grep inet| awk '{print $2; }'` my IP  
 
