@@ -47,8 +47,10 @@
 ### Bridged
 ![Screenshot from 2024-06-07 17-41-26](https://github.com/privet100/general-culture/assets/22834202/af298eb5-4c1c-4eb8-b238-2166624791f5)
 * Доступ к VM из хостовой и из инета по http, https
-* to give your virtual machine access to the network ?
-* на виртуалке нет инета ?
+* la machine hôte sert de relai entre la VM et le réseau auquel elle est connectée. Une sorte de pont
+* VM sera connectée à ce dernier comme les autres machines ou objets connectés (ordi, smartphones, tablettes, TV, etc.)
+* VM pourra récupérer, depuis ce réseau (via DHCP), une configuration réseau lui permettant d’y accéder
+* to give your virtual machine access to the network
 * you can access a host machine, hosts of the physical network and external networks, including internet from a VM
 * VM can be accessed from the host machine and from other hosts (and VMs) connected to the physical network
 * виртаулку видно всем из сети
@@ -77,7 +79,6 @@
 * `netstat -tulpn 5000` кто слушает порт 5000
 * `wget https://localhost/index.html --no-check-certificat` проверить без браузера
 * `http://localhost:3000/` = `http://myHostname:3000/`
-  + `hostname` to know your hostname
 * диагностика
   + cбросить правила для iptables iptables -F и iptables -X
   + `ss -tunap|grep 5000` слушает ли костыль нужный порт и нужный адрес
