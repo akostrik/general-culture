@@ -47,21 +47,192 @@ tcp      LISTEN         0              128                      [::1]:631       
 tcp      LISTEN         0              4096                      [::]:443                             [::]:*
 ```
 * `nmap localhost` открытые порты на удаленных хостах, проверка системы
+```
+Starting Nmap 7.93 ( https://nmap.org ) at 2024-06-07 19:00 EDT
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000094s latency).
+Other addresses for localhost (not scanned): ::1
+rDNS record for 127.0.0.1: akostrik.42.fr
+Not shown: 998 closed tcp ports (conn-refused)
+PORT    STATE SERVICE
+443/tcp open  https
+631/tcp open  ipp
+Nmap done: 1 IP address (1 host up) scanned in 0.04 seconds
+```
 * `sudo nmap -sT -sU -sV 159.89.108.187` (sT TCP-соединения, sU UDP-соединения, sV обнаружение версий программного обеспечения)
 * `lsof -i` открытые соединения (list of open files)
+```
+COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+firefox-e 2608 akostrik  119u  IPv4  26195      0t0  TCP inception:52602->93.243.107.34.bc.googleusercontent.com:https (ESTABLISHED)
+```
 * `lsof -i :80` процессы, работающих с портом 80
 * `lsof -nP -i` доступные соединения
+```
+COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+firefox-e 2608 akostrik   76u  IPv4  69898      0t0  TCP 10.0.2.15:50542->34.149.100.209:443 (ESTABLISHED)
+firefox-e 2608 akostrik   81u  IPv4  69902      0t0  TCP 10.0.2.15:32860->34.160.144.191:443 (ESTABLISHED)
+firefox-e 2608 akostrik  119u  IPv4  26195      0t0  TCP 10.0.2.15:52602->34.107.243.93:443 (ESTABLISHED)
+```
 * `lsof -nP -i | grep LISTEN` список прослушиваемых портов
+* `hostname -I`
+```
+10.0.2.15 172.17.0.1 172.20.0.1 
+```
+* `ip addr show | grep inet| awk '{print $2; }'` my IP
+```
+127.0.0.1/8
+::1/128
+10.0.2.15/24
+fe80::a00:27ff:fe0b:adde/64
+172.17.0.1/16
+fe80::42:f1ff:fe49:18ae/64
+172.20.0.1/16
+fe80::42:54ff:fe0e:2712/64
+fe80::18ca:d6ff:feb2:1a18/64
+```
 * `ip addr show` network interfaces
-* `ip addr show | grep inet| awk '{print $2; }'` my IP  
+```
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:0b:ad:de brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 84370sec preferred_lft 84370sec
+    inet6 fe80::a00:27ff:fe0b:adde/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:f1:49:18:ae brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:f1ff:fe49:18ae/64 scope link 
+       valid_lft forever preferred_lft forever
+10: br-4b3d69138e4a: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:54:0e:27:12 brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-4b3d69138e4a
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:54ff:fe0e:2712/64 scope link 
+       valid_lft forever preferred_lft forever
+14: veth245a34d@if13: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-4b3d69138e4a state UP group default 
+    link/ether 1a:ca:d6:b2:1a:18 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::18ca:d6ff:feb2:1a18/64 scope link 
+       valid_lft forever preferred_lft forever
+```
 * `ip addr` my IP
+```
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:0b:ad:de brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 84346sec preferred_lft 84346sec
+    inet6 fe80::a00:27ff:fe0b:adde/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:f1:49:18:ae brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:f1ff:fe49:18ae/64 scope link 
+       valid_lft forever preferred_lft forever
+10: br-4b3d69138e4a: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:54:0e:27:12 brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-4b3d69138e4a
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:54ff:fe0e:2712/64 scope link 
+       valid_lft forever preferred_lft forever
+14: veth245a34d@if13: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-4b3d69138e4a state UP group default 
+    link/ether 1a:ca:d6:b2:1a:18 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::18ca:d6ff:feb2:1a18/64 scope link 
+       valid_lft forever preferred_lft forever
+```
 * `ip a`
-* `telnet loclhost 80` verify
+```
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:0b:ad:de brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 84312sec preferred_lft 84312sec
+    inet6 fe80::a00:27ff:fe0b:adde/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:f1:49:18:ae brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:f1ff:fe49:18ae/64 scope link 
+       valid_lft forever preferred_lft forever
+10: br-4b3d69138e4a: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:54:0e:27:12 brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-4b3d69138e4a
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:54ff:fe0e:2712/64 scope link 
+       valid_lft forever preferred_lft forever
+14: veth245a34d@if13: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-4b3d69138e4a state UP group default 
+    link/ether 1a:ca:d6:b2:1a:18 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::18ca:d6ff:feb2:1a18/64 scope link 
+       valid_lft forever preferred_lft forever
+```
 * `ifconfig`
-* `ipconfig` depreciated
+```
+br-4b3d69138e4a: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.20.0.1  netmask 255.255.0.0  broadcast 172.20.255.255
+        inet6 fe80::42:54ff:fe0e:2712  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:54:0e:27:12  txqueuelen 0  (Ethernet)
+        RX packets 55  bytes 11730 (11.4 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 110  bytes 13525 (13.2 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        inet6 fe80::42:f1ff:fe49:18ae  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:f1:49:18:ae  txqueuelen 0  (Ethernet)
+        RX packets 1218  bytes 52139 (50.9 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1379  bytes 6277876 (5.9 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::a00:27ff:fe0b:adde  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:0b:ad:de  txqueuelen 1000  (Ethernet)
+        RX packets 36605  bytes 45015842 (42.9 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 11008  bytes 1143330 (1.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 8395  bytes 471920 (460.8 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 8395  bytes 471920 (460.8 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth245a34d: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::18ca:d6ff:feb2:1a18  prefixlen 64  scopeid 0x20<link>
+        ether 1a:ca:d6:b2:1a:18  txqueuelen 0  (Ethernet)
+        RX packets 55  bytes 12500 (12.2 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 142  bytes 17295 (16.8 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
 * `service ssh status`
 * `ufw status`
-* `hostname -I`
+* `telnet loclhost 80` verify
+* `ipconfig` depreciated
 
 ## Ports
 * порт = логический объект
