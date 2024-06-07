@@ -63,6 +63,7 @@
   + RJ-45 с кабелем витой пар
 
 ## NAT = Network Address Translation = IP Masquerading = Network Masquerading = Native Address Translation = трансляция сетевых адресов
+![Screenshot from 2024-06-07 16-11-34](https://github.com/privet100/general-culture/assets/22834202/27cd8dc7-fee4-4c40-90e5-6dbcc5f8899c)
 * механизм в сетях TCP/IP
 * une fonctionnalité réseau utilisée sur les routeurs (par exemple, une Box Internet) pour faire communiquer deux réseaux différents (le réseau local et Internet)
 * используется для подключения устройств в локальной сети к Интернет
