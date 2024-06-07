@@ -1,7 +1,7 @@
 ## Network
-### По умолчанию 
-* **NAT** = Network Address Translation = трансляция сетевых адресов = IP Masquerading = Network Masquerading = Native Address Translation
-  + https://github.com/privet100/general-culture/blob/main/network/network_vpn_ports_etc.md#nat--network-address-translation--ip-masquerading--network-masquerading--native-address-translation--%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D1%8F-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D1%85-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%BE%D0%B2 
+### NAT = Network Address Translation = трансляция сетевых адресов = IP Masquerading = Network Masquerading = Native Address Translation
+* [NAT](https://github.com/privet100/general-culture/blob/main/network/network_vpn_ports_etc.md#nat--network-address-translation--ip-masquerading--network-masquerading--native-address-translation--%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D1%8F-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D1%85-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%BE%D0%B2)
+* par default
 * только доступ в интернет с VM
 * VirtualBox Host-Only Enthernet Adapter
 * VM автоматически получает доступ в интернет при помощи NAT
@@ -26,37 +26,19 @@
     - перехватывает и пересылает ответные пакеты VM
 * нет доступа к другим гостевым ОС
 
-### Доступ к VM из хостовой по ssh
-* NAT
-* Port Forwardign Rules:
-  + внешний белый ip
-  + протокол, по которому работает сервис (например tcp)
-  + адрес на хостовой машине, подключения к которому будут направляться на виртуальную машину
-    - можно написать ip в локальной сети
-    - нельзя указывать 127.0.0.1, на этом адресе вы сможете получать и передавать пакеты только на него же, даже на виртуалку не сможете, потому что на виртуалке свой 127.0.0.1
-    - `ifconfig` узнать адрес хоста в локальной сети
-  + порт хоста - подключения к которому нужно перенаправлять на VM
-  + адрес VM - куда направлять подключенияЖ: оставьте пустым
-    - а то весь интернет сможет подключиться к вашему виртуальному серверу 
-  + порт гостя - на который будут перенаправлены подключения с этого порта
-    - с 80 на 80 работать не будет (порт с которого вы перенаправляете и на который перенаправляете не должны совпадать)
-    - с 8080 на 80 ок
-    - то же самое можно сделать командой `VBoxManage modifyvm "Имя машины" --natpf1 "rulename,tcp,127.0.0.1,8080,,80"` (вместо Port Forwardign Rules)
-* `ufw status` открыть порты на VM
-* `service ssh start`
-
-### Доступ к VM из хостовой и из инета по http, https
+### Bridged
 ![GUID-8AB8E6E2-E16F-4E60-8421-669C96E6BF38-high](https://github.com/privet100/general-culture/assets/22834202/b7641c59-0d4d-454b-b6e8-b2b33116b86a)
-* **Bridged** (вместо NAT)
-* нет внешнего белого ip
+* Доступ к VM из хостовой и из инета по http, https
+* to give your virtual machine access to the network
 * виртаулку видно всем из сети
 * на виртуалке нет инета
 * VM подключается к основной сети (к физической сети TCP/IP) как полноценное устройство, отдельный комп
-* VM has its own identity on a bridged network,
-  + its own IP address on a TCP/IP network
+  + VM communicates with other computer on the network, as if it is a physical computer on the network
+* VM has its own identity on a bridged network
+  + its own IP on a TCP/IP network
   + VM acquires an IP address and other network details from a DHCP server
-    - you might need to set them manually
 * Virtualbox использует драйвер устройства (физический сетевой адаптер, физический интерфейс хоста, маршрутизатор, шлюз между гостевой и вашей физической сетью, net filter, сетевую карту) хост системы, который
+  + VM is connected to a network using the network adapter on the host system
   + обрабатывает данные проходящие через физический сетевой интерфейс
   + перехватывает VirtualBox пакеты из физической сети и изменяет данные в них
   + создаёт новые программные сетевые интерфейсы
@@ -78,7 +60,27 @@
 * можно выдать VM отдельный IP
 * можно обращаться к VM по IP
 
+### Доступ к VM из хостовой по ssh
+* NAT
+* Port Forwardign Rules:
+  + внешний белый ip
+  + протокол, по которому работает сервис (например tcp)
+  + адрес на хостовой машине, подключения к которому будут направляться на виртуальную машину
+    - можно написать ip в локальной сети
+    - нельзя указывать 127.0.0.1, на этом адресе вы сможете получать и передавать пакеты только на него же, даже на виртуалку не сможете, потому что на виртуалке свой 127.0.0.1
+    - `ifconfig` узнать адрес хоста в локальной сети
+  + порт хоста - подключения к которому нужно перенаправлять на VM
+  + адрес VM - куда направлять подключенияЖ: оставьте пустым
+    - а то весь интернет сможет подключиться к вашему виртуальному серверу 
+  + порт гостя - на который будут перенаправлены подключения с этого порта
+    - с 80 на 80 работать не будет (порт с которого вы перенаправляете и на который перенаправляете не должны совпадать)
+    - с 8080 на 80 ок
+    - то же самое можно сделать командой `VBoxManage modifyvm "Имя машины" --natpf1 "rulename,tcp,127.0.0.1,8080,,80"` (вместо Port Forwardign Rules)
+* `ufw status` открыть порты на VM
+* `service ssh start`
+
 ## Error
+
 ```
 "Could not open the medium '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi'.
 VDI: error reading pre-header in '/mnt/nfs/homes/akostrik/sgoinfre/Inception/Inception.vdi' (VERR_IS_A_DIRECTORY).
