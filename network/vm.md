@@ -7,7 +7,7 @@
 ## Выход в интернет или локальную сеть  
 
 ### По умолчанию 
-![Uploading Screenshot from 2024-06-07 16-11-34.png…]()
+![Screenshot from 2024-06-07 16-11-34](https://github.com/privet100/general-culture/assets/22834202/27cd8dc7-fee4-4c40-90e5-6dbcc5f8899c)
 
 * **NAT** = Network Address Translation = трансляция сетевых адресов
   + une fonctionnalité réseau utilisée sur les routeurs (par exemple, une Box Internet) pour faire communiquer deux réseaux différents (le réseau local et Internet)
