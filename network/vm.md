@@ -48,35 +48,34 @@
 * Доступ к VM из хостовой и из инета по http, https
 * to give your virtual machine access to the network ?
 * на виртуалке нет инета ?
+* you can access a host machine, hosts of the physical network and external networks, including internet from a VM
+* VM can be accessed from the host machine and from other hosts (and VMs) connected to the physical network
 * виртаулку видно всем из сети
 * VM подключается к основной сети (к физической сети TCP/IP) как полноценное устройство, отдельный комп
   + VM communicates with other computer on the network, as if it is a physical computer on the network
-* VM has its own identity on a bridged network
-  + its own IP on a TCP/IP network
+* VM has its own IP on a bridged network, on a TCP/IP network
   + VM acquires an IP address and other network details from a DHCP server
-* Virtualbox использует драйвер устройства (физический сетевой адаптер, физический интерфейс хоста, маршрутизатор, шлюз между гостевой и вашей физической сетью, net filter, сетевую карту) хост системы, который
-  + VM is connected to a network using the network adapter on the host system
+* network packets are sent and received directly from/to the virtual network adapter without additional routing
+  + a net filter driver is used by VirtualBox for a bridged network mode in order to filter data from the physical network adapter of the host
+* to run servers on VM
+* VM must be fully accessible from a physical local area network
+* VM virtual network adapter is connected to a physical network to which a physical network adapter of the host is connected
+* VM virtual network adapter uses the host network interface for a network connection
+* VM is connected to a network using the network adapter on the host system, драйвер и физическое устройство хоста (сетевой адаптер, интерфейс хоста, маршрутизатор, шлюз между гостевой и физической сетью, net filter, сетевую карту)
+* драйвер
   + обрабатывает данные проходящие через физический сетевой интерфейс
   + перехватывает VirtualBox пакеты из физической сети и изменяет данные в них
-  + создаёт новые программные сетевые интерфейсы
-* netstat -tulpn в консоли и смотреть кто слушает порт 5000
+* `netstat -tulpn 5000` кто слушает порт 5000
 * `wget https://localhost/index.html --no-check-certificat` проверить без браузера
 * `http://localhost:3000/` = `http://myHostname:3000/`
   + `hostname` to know your hostname
 * диагностика
-  + Сбросить правила для iptables iptables -F и iptables -X
+  + cбросить правила для iptables iptables -F и iptables -X
   + `ss -tunap|grep 5000` слушает ли костыль нужный порт и нужный адрес
   + `tcpdump -ni any port 5000` снять дамп на VM, будет видно, доходят ли запросы и что с ними происходит
   + установить strace 
   + `strace flask/bin/python run.py` будет видно, что происходит в системе при вызове костыля, разумеется, если вызов до него доходит
   + дальше по ситуации
-* for connecting the VM virtual network adapter to a physical network to which a physical network adapter of the host is connected
-* VM virtual network adapter uses the host network interface for a network connection
-* network packets are sent and received directly from/to the virtual network adapter without additional routing
-  +.a special net filter driver is used by VirtualBox for a bridged network mode in order to filter data from the physical network adapter of the host
-* to run servers on VMs that must be fully accessible from a physical local area network
-  + you can access a host machine, hosts of the physical network and external networks, including internet from a VM
-  + VM can be accessed from the host machine and from other hosts (and VMs) connected to the physical network
 
 ### Доступ к VM только из хостовой по http, https
 * **Виртуальный адаптер хоста** (вместо NAT)
