@@ -62,6 +62,14 @@
 * VM virtual network adapter is connected to a physical network to which a physical network adapter of the host is connected
 * VM virtual network adapter uses the host network interface for a network connection
 * VM is connected to a network using the network adapter on the host system, драйвер и физическое устройство хоста (сетевой адаптер, интерфейс хоста, маршрутизатор, шлюз между гостевой и физической сетью, net filter, сетевую карту)
+* IP of a VM virtual network adapter can belong to the same network as the IP address of the physical network adapter of the host
+  + if there is a DHCP server in your physical network, the virtual network adapter of the VM will obtain the IP address automatically (if obtaining an IP address automatically is set in the network interface settings in a guest OS)
+  + thus, the default gateway for a virtual network adapter operating in the bridged mode is the same as for your host machine, for ex:
+    - IP of the physical network: 10.10.10.0/24
+    - IP of the default gateway in the physical network: 10.10.10.1
+    - IP of the DHCP server in the physical network: 10.10.10.1
+    - IP configuration of the host: IP = 10.10.10.72; netmask = 255.255.255.0; default gateway = 10.10.10.1
+    - IP configuration of VM: IP = 10.10.10.91; netmask = 255.255.255.0; default gateway = 10.10.10.1
 * драйвер
   + обрабатывает данные проходящие через физический сетевой интерфейс
   + перехватывает VirtualBox пакеты из физической сети и изменяет данные в них
