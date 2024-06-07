@@ -13,8 +13,8 @@
 * `ip addr` my IP
 * `telnet loclhost 80` verify
 * `ifconfig`
-* `ipconfig` depreciated 
-  
+* `ipconfig` depreciated
+* `ufw status`
 
 ## Ports
 * порт = логический объект
@@ -88,6 +88,7 @@
   + обладает приоритетом перед DNS-серверами
     - можно зайти на сайт, не дожидаясь делегирования домена
   + можное заблокировать на локальном компьютере доступ к определённому сайту, указав соответствующую запись
+  + un fichier très visé par les hackers, il permettrait de rediriger google.fr -> un faux google
 ### /etc/resolv.conf
   * config of **DNS resolver**
   * translates human-friendly domain names into the numeric IP addresses
