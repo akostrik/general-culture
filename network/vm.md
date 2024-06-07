@@ -44,8 +44,7 @@
 * in VirtualBox IP addresses are not changed
 
 ### Bridged
-![GUID-8AB8E6E2-E16F-4E60-8421-669C96E6BF38-high](https://github.com/privet100/general-culture/assets/22834202/b7641c59-0d4d-454b-b6e8-b2b33116b86a)
-
+![Screenshot from 2024-06-07 17-41-26](https://github.com/privet100/general-culture/assets/22834202/af298eb5-4c1c-4eb8-b238-2166624791f5)
 * Доступ к VM из хостовой и из инета по http, https
 * to give your virtual machine access to the network
 * виртаулку видно всем из сети
@@ -71,6 +70,13 @@
   + установить strace 
   + `strace flask/bin/python run.py` будет видно, что происходит в системе при вызове костыля, разумеется, если вызов до него доходит
   + дальше по ситуации
+* for connecting the VM virtual network adapter to a physical network to which a physical network adapter of the host is connected
+* VM virtual network adapter uses the host network interface for a network connection
+* network packets are sent and received directly from/to the virtual network adapter without additional routing
+  +.a special net filter driver is used by VirtualBox for a bridged network mode in order to filter data from the physical network adapter of the host
+* to run servers on VMs that must be fully accessible from a physical local area network
+  + you can access a host machine, hosts of the physical network and external networks, including internet from a VM
+  + VM can be accessed from the host machine and from other hosts (and VMs) connected to the physical network
 
 ### Доступ к VM только из хостовой по http, https
 * **Виртуальный адаптер хоста** (вместо NAT)
