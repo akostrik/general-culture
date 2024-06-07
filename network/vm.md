@@ -48,6 +48,8 @@
 * `service ssh start`
 
 ### Доступ к VM из хостовой и из инета по http, https
+![GUID-8AB8E6E2-E16F-4E60-8421-669C96E6BF38-high](https://github.com/privet100/general-culture/assets/22834202/b7641c59-0d4d-454b-b6e8-b2b33116b86a)
+
 * **Bridged** (вместо NAT)
 * нет внешнего белого ip
 * виртаулку видно всем из сети
