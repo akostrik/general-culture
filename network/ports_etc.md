@@ -231,9 +231,9 @@ veth245a34d: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 ```
 * `brctl show` bridge-utils
 ```
-bridge name	        bridge id           STP enabled	 interfaces
-br-4b3d69138e4a	    8000.0242540e2712	no           veth245a34d
-docker0	            8000.0242f14918ae	no
+bridge name       bridge id         STP enabled  interfaces
+br-4b3d69138e4a   8000.0242540e2712 no            veth245a34d
+docker0           8000.0242f14918ae no
 ```
 * `service ssh status`
 * `ufw status`
