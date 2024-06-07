@@ -6,8 +6,6 @@
 * VirtualBox Host-Only Enthernet Adapter
 * VM автоматически получает доступ в интернет при помощи NAT
 * первая сетевая карта NAT принадлежит локальной сети 10.0.2.0
-* `ip addr` узнать IP
-  + `ifconfig` depreciated 
 * VM и основная ОС совместно используют одно подключение к физической сети TCP/IP
 * un réseau local différent et isolé de celui de la machine hôte
   + gardant la possibilité d’accéder à Internet grâce à du routage et une translation d’adresse (NAT)
