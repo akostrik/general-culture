@@ -206,6 +206,13 @@ Créé en 1969, telnet est un moyen de communication très généraliste et bi-d
 
 Il était notamment utilisé pour administrer des serveurs Unix distant ou de l'équipement réseau, avant de tomber en désuétude par défaut de sécurisation (le texte étant échangé en clair) et l'adoption de SSH.
 
+## telnet = terminal network = telecommunication network =teletype network
+* un protocole utilisé sur tout réseau TCP/IP
+* permet de communiquer avec un serveur distant en échangeant des lignes de texte et en recevant des réponses également sous forme de texte
+* un moyen de communication très généraliste et bi-directionnel
+* appartient à la couche application du modèle OSI et du modèle ARPA
+* il était utilisé pour administrer des serveurs Unix distant ou de l'équipement réseau, avant de tomber en désuétude par défaut de sécurisation (le texte étant échangé en clair) et l'adoption de SSH
+
 ## NIC = Network Interface Controller = сетевой адаптер = сетевая карта = сетевая плата = Ethernet-адаптер
 * соединяет компьютер с сетью (локальной, интернетом, интранетом) и обмен данными между устройствами
 * функция:
