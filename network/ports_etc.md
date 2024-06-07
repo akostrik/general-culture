@@ -1,6 +1,31 @@
 ## Verifications
 * `netstat -ntlp | grep LISTEN` список прослушиваемых портов (netstat = network statistic)
+  + tcp        0      0 127.0.0.1:32801         0.0.0.0:*               LISTEN      -                   
+  + tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      -                   
+  + tcp        0      0 0.0.0.0:4244            0.0.0.0:*               LISTEN      -                   
+  + tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      -                   
+  + tcp6       0      0 :::4244                 :::*                    LISTEN      -                   
+  + tcp6       0      0 ::1:631                 :::*                    LISTEN      -                   
+  + tcp6       0      0 :::443                  :::*                    LISTEN      -     
 * `sudo netstat -ltupan` (l прослушивающиеся сокеты, n номера портов вместо названий служб, t TCP-соединения, u UDP-соединения, a только активные соединения)
+  + Active Internet connections (servers and established)
+  + Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+  + tcp        0      0 127.0.0.1:32801         0.0.0.0:*               LISTEN      601/containerd      
+  + tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      591/cupsd           
+  + tcp        0      0 0.0.0.0:4244            0.0.0.0:*               LISTEN      614/sshd: /usr/sbin 
+  + tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      4326/docker-proxy   
+  + tcp        0      0 10.0.2.15:52602         34.107.243.93:443       ESTABLISHED 2608/firefox-esr    
+  + tcp        0      0 10.0.2.15:58494         95.100.133.139:80       ESTABLISHED 2608/firefox-esr    
+  + tcp        0    304 10.0.2.15:4244          10.0.2.2:41560          ESTABLISHED 1226/sshd: root@pts 
+  + tcp6       0      0 :::4244                 :::*                    LISTEN      614/sshd: /usr/sbin 
+  + tcp6       0      0 ::1:631                 :::*                    LISTEN      591/cupsd           
+  + tcp6       0      0 :::443                  :::*                    LISTEN      4331/docker-proxy   
+  + udp        0      0 10.0.2.15:68            10.0.2.2:67             ESTABLISHED 557/NetworkManager  
+  + udp        0      0 0.0.0.0:631             0.0.0.0:*                           653/cups-browsed    
+  + udp        0      0 0.0.0.0:5353            0.0.0.0:*                           534/avahi-daemon: r 
+  + udp        0      0 0.0.0.0:39666           0.0.0.0:*                           534/avahi-daemon: r 
+  + udp6       0      0 :::39221                :::*                                534/avahi-daemon: r 
+  + udp6       0      0 :::5353                 :::*                                534/avahi-daemon: r 
 * `ss -ltupn` (l все прослушивающиеся сокеты, n  номера портов вместо названий служб, t TCP-соединения, u UDP-соединения) (ss = socket statistics, современная альтернатива для netstat)
 * `ss -tunlp` display socket information
 * `nmap localhost` открытые порты на удаленных хостах, проверка системы
