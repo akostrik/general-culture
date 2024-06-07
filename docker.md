@@ -243,6 +243,7 @@
 `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
 `docker images`, `docker image ls` просмотреть список доступных локально образов   
 `docker image inspect` подробнее рассказывает о выбранном контейнере  
+`docker container list`   
 `docker volume ls` список томов   
 `docker volume inspect myVolume`    
 `docker network inspect myNetwork`  
