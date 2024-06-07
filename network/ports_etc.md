@@ -14,6 +14,7 @@
 * `telnet loclhost 80` verify
 * `ifconfig`
 * `ipconfig` depreciated
+* `service ssh status`
 * `ufw status`
 
 ## Ports
