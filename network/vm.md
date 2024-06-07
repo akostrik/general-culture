@@ -1,5 +1,8 @@
 ## Network
+* **A virtual network adapter** a software-emulated physical device
+  
 ### NAT = Network Address Translation = трансляция сетевых адресов = IP Masquerading = Network Masquerading = Native Address Translation
+![Screenshot from 2024-06-07 17-34-56](https://github.com/privet100/general-culture/assets/22834202/30fcbfe3-cc44-44fb-8486-2e51ea95acb1)
 * [NAT](https://github.com/privet100/general-culture/blob/main/network/network_vpn_ports_etc.md#nat--network-address-translation--ip-masquerading--network-masquerading--native-address-translation--%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D1%8F-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D1%85-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%BE%D0%B2)
 * par default
 * только доступ в интернет с VM
@@ -25,6 +28,20 @@
     - определяет, какие данные посылать приложениям хоста, а какие другим компьютерам той же сети, что и хост, используя сетевой интерфейс хоста
     - перехватывает и пересылает ответные пакеты VM
 * нет доступа к другим гостевым ОС
+* VM access hosts in a physical local area network (LAN) by using a virtual NAT device
+* external networks, including the internet, are accessible VM
+* VM is not accessible from a host machine, or from other machines in the network
+* The IP of the VM network adapter is obtained via DHCP
+* The IP addresses of the network cannot be changed in the GUI
+* VirtualBox has a built-in DHCP server
+* VirtualBox has a built-in DHCP NAT engine
+* A virtual NAT device uses the physical network adapter of the VirtualBox host as an external network interface
+* the default IP of the virtual DHCP server is 10.0.2.2 (= IP of the default gateway for a VM)
+* the network mask is 255.255.255.0
+* if you configure the network adapters of two VMs 
+  + each VM will obtain the 10.0.2.15 IP address in its own isolated network behind a private virtual NAT device
+  + the default gateway for each VM is 10.0.2.2
+* in VirtualBox IP addresses are not changed
 
 ### Bridged
 ![GUID-8AB8E6E2-E16F-4E60-8421-669C96E6BF38-high](https://github.com/privet100/general-culture/assets/22834202/b7641c59-0d4d-454b-b6e8-b2b33116b86a)
