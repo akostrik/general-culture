@@ -235,6 +235,31 @@ bridge name       bridge id         STP enabled  interfaces
 br-4b3d69138e4a   8000.0242540e2712 no            veth245a34d
 docker0           8000.0242f14918ae no
 ```
+* iptables -t nat --list
+```
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination         
+DOCKER     all  --  anywhere             anywhere             ADDRTYPE match dst-type LOCAL
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+DOCKER     all  --  anywhere            !localhost/8          ADDRTYPE match dst-type LOCAL
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination         
+MASQUERADE  all  --  172.20.0.0/16        anywhere            
+MASQUERADE  all  --  172.17.0.0/16        anywhere            
+MASQUERADE  tcp  --  172.20.0.2           172.20.0.2           tcp dpt:https
+
+Chain DOCKER (2 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere            
+RETURN     all  --  anywhere             anywhere            
+DNAT       tcp  --  anywhere             anywhere             tcp dpt:https to:172.20.0.2:443
+```
 * `service ssh status`
 * `ufw status`
 * `telnet loclhost 80` verify
