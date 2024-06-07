@@ -1,11 +1,4 @@
-## Backup
-   + сжать большие файлы
-   + сохранить файлы где хочешь
-   + на школьном маке: создать папку с таким же названием и по тому же пути в goinfre, скачать туда файлы, распаковать, запустить virtualbox (не менять конфигурацию в virtualbox)
-   + на другом компе: скачать и разархивировать конфигурацию, virtualbox - Инструменты - зелёный плюсик "Добавить", указав папку с файлом Debian.vbox и прочими файлами
-
-## Выход в интернет или локальную сеть  
-
+## Network
 ### По умолчанию 
 * **NAT** = Network Address Translation = трансляция сетевых адресов = IP Masquerading = Network Masquerading = Native Address Translation
   + https://github.com/privet100/general-culture/blob/main/network/network_vpn_ports_etc.md#nat--network-address-translation--ip-masquerading--network-masquerading--native-address-translation--%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D1%8F-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D1%85-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%BE%D0%B2 
@@ -104,3 +97,9 @@ IMedium {ad47ad09-787b-44ab-b343-a082a3f2dfb1}"
 * Open `test.vdi` and copy its first 72 bytes
 * overwrite them in the invalid vdi file that you want to fix
 * reboot your vm using the modified vdi
+
+## Backup
+   + сжать большие файлы
+   + сохранить файлы где хочешь
+   + на школьном маке: создать папку с таким же названием и по тому же пути в goinfre, скачать туда файлы, распаковать, запустить virtualbox (не менять конфигурацию в virtualbox)
+   + на другом компе: скачать и разархивировать конфигурацию, virtualbox - Инструменты - зелёный плюсик "Добавить", указав папку с файлом Debian.vbox и прочими файлами
