@@ -9,13 +9,12 @@
 * `lsof -nP -i` доступные соединения
 * `lsof -nP -i | grep LISTEN` список прослушиваемых портов
 * `ip addr show` network interfaces
-* `ip addr` узнать IP
+* `ip addr show | grep inet| awk '{print $2; }'` my IP  
+* `ip addr` my IP
 * `telnet loclhost 80` verify
 * `ifconfig`
 * `ipconfig` depreciated 
   
-## IP
-`ip addr show | grep inet| awk '{print $2; }'` my IP  
 
 ## Ports
 * порт = логический объект
