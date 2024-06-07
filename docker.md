@@ -245,7 +245,8 @@
 `docker image inspect` подробнее рассказывает о выбранном контейнере  
 `docker volume ls` список томов   
 `docker volume inspect myVolume`    
-`docker logs` логи в консоль  
+`docker network inspect myNetwork`  
+`docker logs` логи в консоль   
 `cat /var/lib/docker/repositories | python -mjson.tool` list of the repositories on your host  
 `ls -al /var/lib/docker/graph`  
 `/var/lib/docker/aufs/diff/` файлы контейнеров (если использует драйвер AUFS)  
