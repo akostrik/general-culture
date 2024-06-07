@@ -26,8 +26,7 @@
   + udp        0      0 0.0.0.0:39666           0.0.0.0:*                           534/avahi-daemon: r 
   + udp6       0      0 :::39221                :::*                                534/avahi-daemon: r 
   + udp6       0      0 :::5353                 :::*                                534/avahi-daemon: r 
-* `ss -ltupn` (l все прослушивающиеся сокеты, n  номера портов вместо названий служб, t TCP-соединения, u UDP-соединения) (ss = socket statistics, современная альтернатива для netstat)
-* `ss -tunlp` display socket information
+* `ss -ltupn` (l все прослушивающиеся сокеты, n  номера портов вместо названий служб, t TCP-соединения, u UDP-соединения) (ss = socket statistics, современная альтернатива для netstat) display socket information
 * `nmap localhost` открытые порты на удаленных хостах, проверка системы
 * `sudo nmap -sT -sU -sV 159.89.108.187` (sT TCP-соединения, sU UDP-соединения, sV обнаружение версий программного обеспечения)
 * `lsof -i` открытые соединения (list of open files)
