@@ -62,9 +62,13 @@
   + BNC с тонким коаксиальным кабелем
   + RJ-45 с кабелем витой пар
 
-## NAT = Network Address Translation = IP Masquerading, Network Masquerading и Native Address Translation.
+## NAT = Network Address Translation = IP Masquerading = Network Masquerading = Native Address Translation = трансляция сетевых адресов
 * механизм в сетях TCP/IP
+* une fonctionnalité réseau utilisée sur les routeurs (par exemple, une Box Internet) pour faire communiquer deux réseaux différents (le réseau local et Internet)
+* используется для подключения устройств в локальной сети к Интернет
+* изменение IP-адреса во время передачи пакетов Ethernet через маршрутизатор
 * преобразовывает IP-адреса транзитных пакетов
+* преобразовывает скрытые локальные IP-адреса сети во внешние
 * преобразование адреса может производиться маршрутизирующим устройством (маршрутизатором, сервером доступа, межсетевым экраном)
 * **SNAT** наиболее популярный
   + замена адреса источника при прохождении пакета в одну сторону и обратной замене адреса назначения в ответном пакете
