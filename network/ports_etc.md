@@ -109,9 +109,8 @@ nameserver 10.16.0.7
 ```
 ## DHCP Dynamic Host Configuration Protocol 
 * un protocole client/serveur
-* fournit automatiquement une adresse IP et d’autres informations (masque de sous-réseau, passerelle par défaut) de configuration pertinentes à un hôte IP
-* permet aux hôtes d’obtenir les informations de configuration TCP/IP requises
-* les RFC 2131 et 2132 définissent DHCP comme une norme **IETF** (Internet Engineering Task Force) basée sur bootstrap Protocol (**BOOTP**), un protocole avec lequel DHCP partage de nombreux détails d’implémentation
+* fournit IP et d’autres informations (masque de sous-réseau, passerelle par défaut) de configuration à un hôte
+* permet aux hôtes d’obtenir les informations de configuration TCP/IP
 
 ## CGI = Common Gateway Interface
 * спецификация интерфейса
