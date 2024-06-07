@@ -1,4 +1,4 @@
-## Verifications
+## Inspect
 * `netstat -ntlp | grep LISTEN` список прослушиваемых портов (netstat = network statistic)
 ```
 tcp        0      0 127.0.0.1:32801         0.0.0.0:*               LISTEN      -                   
@@ -198,6 +198,14 @@ RETURN     all  --  anywhere             anywhere
 RETURN     all  --  anywhere             anywhere            
 DNAT       tcp  --  anywhere             anywhere             tcp dpt:https to:172.20.0.2:443
 ```
+* `wget`
+  + only offers plain HTTP POST support
+  + command line only, there's no lib or anything
+  + downloads recursively
+* `curl`
+  + supports FTP, FTPS, GOPHER, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP. wget supports HTTP, HTTPS, FTP
+  + curl's features are powered by libcurl
+  + upload and sending capabilities
 * `service ssh status`
 * `ufw status`
 * `telnet loclhost 80` verify
