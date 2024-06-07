@@ -50,11 +50,8 @@
 * **Bridged** (вместо NAT)
 * нет внешнего белого ip
 * виртаулку видно всем из сети
-* хост система посылает и принимает данные от гостевой
 * на виртуалке нет инета
-* VM подключается к основной сети как полноценное устройство
-* подключение VM к физической сети TCP/IP в качестве отдельного компа
-  + как будто VM подключается к физической сети
+* VM подключается к основной сети (к физической сети TCP/IP) как полноценное устройство, отдельный комп
 * VM has its own identity on a bridged network
   + for example, on a TCP/IP network, VM needs its own IP address
   + VM acquires an IP address and other network details from a DHCP server
