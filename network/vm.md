@@ -9,11 +9,12 @@
 ### По умолчанию 
 ![Screenshot from 2024-06-07 16-11-34](https://github.com/privet100/general-culture/assets/22834202/27cd8dc7-fee4-4c40-90e5-6dbcc5f8899c)
 
-* **NAT** = Network Address Translation = трансляция сетевых адресов
+* **NAT** = Network Address Translation = трансляция сетевых адресов = IP Masquerading = Network Masquerading = Native Address Translation
   + une fonctionnalité réseau utilisée sur les routeurs (par exemple, une Box Internet) pour faire communiquer deux réseaux différents (le réseau local et Internet)
   + изменение IP-адреса во время передачи пакетов Ethernet через маршрутизатор
   + преобразовывает скрытые локальные IP-адреса сети во внешние
   + используется для подключения устройств в локальной сети к Интернет
+  + механизм в сетях TCP/IP, позволяющий преобразовывать IP-адреса транзитных пакетов
 * только доступ в интернет с VM
 * VirtualBox Host-Only Enthernet Adapter
 * VM автоматически получает доступ в интернет при помощи NAT
