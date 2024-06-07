@@ -8,7 +8,9 @@
 
 ### По умолчанию 
 * **NAT** = Network Address Translation = трансляция сетевых адресов
-  + NAT — функция для изменения IP-адреса во время передачи пакетов Ethernet через маршрутизатор
+  + une fonctionnalité réseau utilisée sur les routeurs (par exemple, une Box Internet) pour faire communiquer deux réseaux différents (le réseau local et Internet)
+  + изменение IP-адреса во время передачи пакетов Ethernet через маршрутизатор
+  + преобразовывает скрытые локальные IP-адреса сети во внешние
   + используется для подключения устройств в локальной сети к Интернет
 * только доступ в интернет с VM
 * VirtualBox Host-Only Enthernet Adapter
@@ -17,6 +19,8 @@
 * `ip addr` узнать IP
   + `ifconfig` depreciated 
 * VM и основная ОС совместно используют одно подключение к физической сети TCP/IP
+* un réseau local différent et isolé de celui de la machine hôte
+  + gardant la possibilité d’accéder à Internet grâce à du routage et une translation d’adresse (NAT)
 * сетевые интерфейсы VM и хостовой машины изолированы
   + NAT изолирует виртуальную машину от соединений извне
   + у VM виртуальная сеть, в которой она одна
@@ -36,7 +40,6 @@
 
 ### Доступ к VM из хостовой по ssh
 * NAT
-  + преобразовывает скрытые локальные IP-адреса сети во внешние
 * Port Forwardign Rules:
   + внешний белый ip
   + протокол, по которому работает сервис (например tcp)
