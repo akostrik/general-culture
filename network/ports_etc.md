@@ -90,7 +90,7 @@ fe80::42:f1ff:fe49:18ae/64
 fe80::42:54ff:fe0e:2712/64
 fe80::18ca:d6ff:feb2:1a18/64
 ```
-* `ip addr show` network interfaces
+* `ip addr show` = `ip addr` = `ip a` my IP, network interfaces
 ```
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -102,37 +102,6 @@ fe80::18ca:d6ff:feb2:1a18/64
     link/ether 08:00:27:0b:ad:de brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
        valid_lft 84370sec preferred_lft 84370sec
-    inet6 fe80::a00:27ff:fe0b:adde/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
-    link/ether 02:42:f1:49:18:ae brd ff:ff:ff:ff:ff:ff
-    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
-       valid_lft forever preferred_lft forever
-    inet6 fe80::42:f1ff:fe49:18ae/64 scope link 
-       valid_lft forever preferred_lft forever
-10: br-4b3d69138e4a: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
-    link/ether 02:42:54:0e:27:12 brd ff:ff:ff:ff:ff:ff
-    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-4b3d69138e4a
-       valid_lft forever preferred_lft forever
-    inet6 fe80::42:54ff:fe0e:2712/64 scope link 
-       valid_lft forever preferred_lft forever
-14: veth245a34d@if13: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-4b3d69138e4a state UP group default 
-    link/ether 1a:ca:d6:b2:1a:18 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-    inet6 fe80::18ca:d6ff:feb2:1a18/64 scope link 
-       valid_lft forever preferred_lft forever
-```
-* `ip addr` = `ip a` my IP
-```
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host noprefixroute 
-       valid_lft forever preferred_lft forever
-2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-    link/ether 08:00:27:0b:ad:de brd ff:ff:ff:ff:ff:ff
-    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
-       valid_lft 84346sec preferred_lft 84346sec
     inet6 fe80::a00:27ff:fe0b:adde/64 scope link noprefixroute 
        valid_lft forever preferred_lft forever
 3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
