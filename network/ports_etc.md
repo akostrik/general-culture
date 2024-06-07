@@ -34,6 +34,7 @@
 * `lsof -nP -i | grep LISTEN` список прослушиваемых портов
 * `ss -ltupn` почти как netstat
 * `iptables -L` правила брандмауэра iptables - понять, какие порты закрыты с его помощью
+* `iptables -t nat --list`
 * `ip addr show` network interfaces
 * `ip addr` узнать IP
   + `ipconfig` depreciated 
