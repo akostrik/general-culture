@@ -74,7 +74,7 @@
   + дальше по ситуации
 * диагностика
   + netstat -tulpn в консоли и смотреть кто слушает порт 5000
-`wget https://localhost/index.html --no-check-certificat` проверить без браузера
+* `wget https://localhost/index.html --no-check-certificat` проверить без браузера
 
 ### Доступ к VM только из хостовой по http, https
 * **Виртуальный адаптер хоста** (вместо NAT)
