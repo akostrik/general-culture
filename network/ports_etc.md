@@ -1,3 +1,6 @@
+## IP
+`ip addr show | grep inet| awk '{print $2; }'` my IP  
+
 ## Ports
 * порт = логический объект
   + конечная точкой связи в сетевых соединениях
@@ -33,7 +36,7 @@
 * `iptables -L` правила брандмауэра iptables - понять, какие порты закрыты с его помощью
 * `ip addr show` network interfaces
 * `ip addr` узнать IP
-  + `ifconfig` depreciated 
+  + `ipconfig` depreciated 
 * открытый порт не представляет опасности
   + может быть угрозой безопасности ОС, если его использует какая-то программа
 * 21 ftp
@@ -45,6 +48,7 @@
 
 ## Socket
 * IP + номер порта
+
 ## NAT = Network Address Translation = IP Masquerading = Network Masquerading = Native Address Translation = трансляция сетевых адресов
 ![Screenshot from 2024-06-07 16-11-34](https://github.com/privet100/general-culture/assets/22834202/27cd8dc7-fee4-4c40-90e5-6dbcc5f8899c)
 * механизм в сетях TCP/IP
@@ -196,11 +200,11 @@ nameserver 10.16.0.7
                                XXXXXXXXXXXXXXXXXX
 ```
 
-## IP
-`ip addr show | grep inet| awk '{print $2; }'` my IP  
+Telnet (terminal network ou telecommunication network, ou encore teletype network) est un protocole utilisé sur tout réseau TCP/IP, permettant de communiquer avec un serveur distant en échangeant des lignes de texte et en recevant des réponses également sous forme de texte.
 
-## *
-* **Wireshark** инструмент для захвата и анализа сетевого трафика
+Créé en 1969, telnet est un moyen de communication très généraliste et bi-directionnel. Il appartient à la couche application du modèle OSI et du modèle ARPA. Il est normalisé par l'IETF (RFC 15, 854 et 855).
+
+Il était notamment utilisé pour administrer des serveurs Unix distant ou de l'équipement réseau, avant de tomber en désuétude par défaut de sécurisation (le texte étant échangé en clair) et l'adoption de SSH.
 
 ## NIC = Network Interface Controller = сетевой адаптер = сетевая карта = сетевая плата = Ethernet-адаптер
 * соединяет компьютер с сетью (локальной, интернетом, интранетом) и обмен данными между устройствами
@@ -234,3 +238,6 @@ nameserver 10.16.0.7
   + AUI с толстым коаксиальным кабелем
   + BNC с тонким коаксиальным кабелем
   + RJ-45 с кабелем витой пар
+
+## *
+* **Wireshark** инструмент для захвата и анализа сетевого трафика
