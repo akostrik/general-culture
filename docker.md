@@ -45,6 +45,8 @@
 ## Как устроен
 ![Screenshot from 2024-04-06 01-09-43+](https://github.com/akostrik/general-culture/assets/22834202/4b0ea467-2d6b-45a7-b1f6-c9e22093b2dc)
 ![Screenshot from 2024-03-30 00-55-26](https://github.com/akostrik/general-culture/assets/22834202/3ea7709f-8248-4980-ad54-2b242f9e9b2a)
+![Screenshot from 2024-06-08 03-12-20](https://github.com/privet100/general-culture/assets/22834202/9c28a3dd-b67d-4244-9044-478d598fc69f)
+
 * the resource isolation features of the Linux kernel (cgroups, kernel namespaces) + a union-capable file system => to allow containers to run within a single Linux instance, avoiding the overhead of virtual machines
 * микросервисная архитектуря
   + изменения в одной компоненте не затронут остальную систему
