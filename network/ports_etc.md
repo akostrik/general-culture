@@ -198,6 +198,7 @@ RETURN     all  --  anywhere             anywhere
 RETURN     all  --  anywhere             anywhere            
 DNAT       tcp  --  anywhere             anywhere             tcp dpt:https to:172.20.0.2:443
 ```
+* ` iptables -nvL`
 * `wget`
   + only offers plain HTTP POST support
   + command line only, there's no lib or anything
