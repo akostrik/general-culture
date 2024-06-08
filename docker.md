@@ -229,6 +229,14 @@
 * a set of cooperating daemons that communicate through the Docker API
 * turns a group of Docker engines into a single virtual Docker engine, собрать несколько узлов в единую виртуальную систему Docker и управлять ею
 
+### Kubernetes = K8s
+* программное обеспечение для оркестровки контейнеризированных приложений
+  +автоматизации их развёртывания, масштабирования и координации в условиях кластера
+* поддерживает основные технологии контейнеризации, включая Docker, rkt
+* возможна поддержка технологий аппаратной виртуализации
+* un système qui vise à fournir une plate-forme permettant d'automatiser le déploiement, la montée en charge et la mise en œuvre de conteneurs d'application sur des grappes de serveurs
+* fonctionne avec toute une série de technologies de conteneurisation, et est souvent utilisé avec Docker.
+
 ### Настройки
 * `/etc/default` DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
 * `/etc/init.d/docker`
