@@ -413,34 +413,6 @@ services:
     container_name: myContainer
 ```
 Браузер: Advanced / Принять риск и продолжить 
-* браузер доверяет самоподписному сертификату  
 * сайт загружается по ssl  
+* браузер доверяет самоподписному сертификату  
 * соединение не считается безопасным  
-
-### Example 7: https://127.0.0.1:1443 на хостовой
-`chmod o+r /etc/resolv.conf` make sure your DNS Resolver config file is writable (кажется не нужно?)
-
-nginx.conf:  
-```
-server {
-  listen              80;   # ?
-  listen              443 ssl;
-  server_name         akostrik.42.fr www.akostrik.42.fr;  
-  root                /var/www/public/html;
-  if ($scheme = 'http') {                                 # NEW перенаправление с http на https
-    return 301 https://akostrik.42.fr$request_uri;
-  }
-  ssl_certificate     /etc/nginx/ssl/akostrik.42.fr.crt;
-  ssl_certificate_key /etc/nginx/ssl/akostrik.42.fr.key;
-  ssl_protocols       TLSv1.2 TLSv1.3;
-  ssl_session_timeout 10m;  
-  keepalive_timeout   70;
-  location / { 
-    try_files $uri /index.html;
-  }
-}
-```
-`--no-check-certificate`
-
-### Example 8: https://akostrik.42.fr:1443 на хостовой
-школьный мак не знает 42.fr  
