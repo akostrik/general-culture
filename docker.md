@@ -166,9 +166,11 @@
 * write a dockerfile: https://github.com/dnaprawa/dockerfile-best-practices
 
 ### Docker Compose CLI (a tool)
+* to define and run multiple Docker containers as a single application
 * для управления несколькими контейнерами, managing the whole lifecycle of your application:
   + start, stop, rebuild, configures services, networks, volumes, building images, ...
 * `docker-compose.yml`
+* is written in YAML
 * пример: веб-сайт
   + первый сервис (контейнер) отвечает за функционирование сайта
   + второй сервис (контейнер) отвечает за базу данных для авторизации пользователей
