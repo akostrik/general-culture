@@ -178,7 +178,9 @@
   + оба сайта подключены к общей базе данных
   
 ### A docker-network (object, an entitie used to assemble an application)
-* connection between the containers
+* a virtual software defined network that connects Docker containers
+* allows containers to communicate with each other and the outside world
+* provides an additional layer of abstraction over the underlying network infrastructure
 * networking subsystem is pluggable, using drivers
 * several drivers by default:
   + bridge (by default): an application in a container communicates with other containers on the same host
@@ -188,6 +190,11 @@
   + macvlan: allows to assign a MAC address to a container, making it appear as a physical device on your network
   + none: isolates a container from the host and other containers
   + third-party network plugins
+* several types of networks:
+  + Bridge: A bridge network is the default network type when you install Docker. It allows containers to communicate with each other and the host machine, but provides no access to the outside world.
+  + Host: A host network uses the host machine's network stack and provides no isolation between the host and the container.
+  + Overlay: An overlay network allows containers running on different Docker hosts to communicate with each other.
+  + Macvlan: A Macvlan network allows a container to have its own IP address on the same subnet as the host machine.
 * using the host network
   + a standalone containers binds directly to port 80 to the Docker host's network
   + as if the nginx were running directly on the host, by the host networking driver
@@ -195,8 +202,7 @@
   + the docker API ports are frequently scanned on the internet, and you will find malware installed
   + ≈ a telnet server with root logins allowed without a password
   + configure mutual TLS between client and server
-* https://docs.docker.com/network/network-tutorial-standalone/
-* Окрыть с хостовой машины сайт, который на VM
+* окрыть с хостовой машины сайт, который на VM
   + VM имеет внешний сетевой интерфейс, подключенный к виртуальному коммутатору внутри хостовой системы, по этому адресу и стучитесь
   + пробросить еще один интерфейс как бридж и разрешить ему форвардить пакеты из сети 10.0.2.0 в вашу подсеть, после чего прописать маршруты на обеих сторонах
   + удалить стандартный NAT интерфейс в virtualbox и добавить вместо него bridge, чтоб ловил адрес в вашей сети, перенастроить nginx и апач на новый ip полученый из вашей сети
@@ -208,6 +214,7 @@
 * `ifconfig`
 * `ip addr show` network interfaces
 * `docker run -p 80:80 --name myCont -d` прокинуть порт и переназначить его снаружи 
+* https://docs.docker.com/network/network-tutorial-standalone/
  
 ### Docker Volume (a tool, an object?)
 * папка хоста (usually in /var/lib/docker/volumes), примонтированная к файловой системе контейнера
