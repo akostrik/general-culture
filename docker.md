@@ -374,10 +374,10 @@ services:
 ~/nginx/conf.d/**nginx.conf**:  
 ```
 server {
-  listen             80;
-  listen             443 ssl;
-  server_name        akostrik.42.fr www.akostrik.42.fr; 
-  root               /var/www/public/html;
+  listen              80;
+  listen              443 ssl;
+  server_name         akostrik.42.fr www.akostrik.42.fr; 
+  root                /var/www/public/html;
   ssl_certificate     akostrik.42.fr.crt;
   ssl_certificate_key akostrik.42.fr.key;
   ssl_protocols       TLSv1.2 TLSv1.3; 
@@ -397,11 +397,11 @@ services:
     volumes:
       - ./public:/var/www/public/
       - ./nginx/conf.d:/etc/nginx/conf.d/
-      - /home/${USER}/project/srcs/requirements/tools:/etc/nginx/ssl/ # ключи, сертификаты
+      - /home/${USER}/project/srcs/requirements/tools:. # ключи, сертификаты NEW
     restart: unless-stopped
     ports:
       - "80:80"
-      - "443:443"
+      - "443:443"                                                     # NEW
     container_name: myContainer
 ```
 Браузер: Advanced / Принять риск и продолжить -> сайт загружается по ssl, теперь браузер доверяет самоподписному сертификату, но соединение не считается безопасным  
