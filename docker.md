@@ -337,7 +337,7 @@ FROM nginx
 <html><body>Hello</body></html>
 ```  
 `docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx`  
-`docker run -p 8080:80 -d mynginx # 80 контейнера -> 8080 хоста, -d в фоновом режиме без привязки к текущей консоли`  
+`docker run -p 8080:80 -d mynginx # 80 контейнер -> 8080 хост, -d фоновый режим без привязки к текущей консоли`  
 
 ### Example 3: то же самое, но с docker-compose
 ~/**docker-compose.yml**:  
@@ -347,7 +347,7 @@ services:
   nginx:
     image: nginx:stable-alpine
     volumes:
-      - ./public:/var/www/public   # /var/www/public in container refers to /public in VM 
+      - ./public:/var/www/public          # /public VM = /var/www/public container 
       - ./nginx/conf.d:/etc/nginx/conf.d/
     restart: unless-stopped
     ports:
@@ -358,7 +358,7 @@ services:
 ```
 server {
   root    /var/www/public/html;
-  location / {                     # all locations, искать файл в корне
+  location / {                     # искать файл в корне
     try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it -> if fails `/index.html` (fall back) -> if fails 404 error   
     }
 }
