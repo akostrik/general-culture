@@ -318,55 +318,54 @@ wget http://127.0.0.1/index.html --no-check-certificate
 `systemctl daemon-reload`  
 `exit` detach from your container, the container stops  
 
-### Example 2
+### Example 1
 `docker run -it -v public:/var/www/public ubuntu:22.04` 
-* attaches your terminal to it (-it)
+* `-it` attaches your terminal to it
 * a volume `public` is mounted to /var/www/public inside the container
   
-### Example 3: http://127.0.0.1:8080/ на виртуальной + Dockerfile
-~/ex3/**index.html**:  
+### Example 2: http://127.0.0.1 на VM и http://127.0.0.1:8080 на хостовой
+~/ex2/**index.html**:  
 ```
 <html>
   <body>Example 3</body>
 </html>
 ```
-~/ex3/**Dockerfile**:  
+~/ex2/**Dockerfile**:  
 ```
-FROM nginx                    # соберем image из готового образа docker hub  
+FROM nginx
 COPY index.html /usr/share/nginx/html
 ```
 `docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx, выполняет dockerfile`  
-`docker run -p 8080:80 -d mynginx # -p порт 80 контейнера -> порт host машины 8080`  
-`                                 # -d в фоновом режиме без привязки к текущей консоли`  
+`docker run -p 8080:80 -d mynginx # 80 контейнера -> 8080 хоста, -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
-`wget http://127.0.0.1/index.html --no-check-certificate` проверить без браузера
+`wget http://127.0.0.1/index.html` проверить без браузера
 
-### Example 4: http://127.0.0.1 на виртуальной + docker-compose
-~/ex4/public/html/**index.html**:  
+### Example 3: то же самое, но с docker-compose
+~/ex3/public/html/**index.html**:  
 ```
 <html>
   <body>Example 4</body>
 </html>
 ```
-~/ex4/nginx/conf.d/**nginx.conf**:  
+~/ex3/nginx/conf.d/**nginx.conf**:  
 ```
 server {
   root    /var/www/public/html;
   location / {                     # all locations
     try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it   
-                                   # if fails, serves `/index.html` (fall back option)     
-                                   # if fails, serves the 404 error   
+                                   # if fails, serves `/index.html` (fall back)     
+                                   # if fails, 404 error   
     }
 }
 ```
-~/ex4/**docker-compose.yml**:  
+~/ex3/**docker-compose.yml**:  
 ```
 version: '3'
 services:
   nginx:
     image: nginx:stable-alpine
     volumes:
-      - ./public:/var/www/public       # "/var/www/public" inside the container refers to the host folder "/public" 
+      - ./public:/var/www/public       # /var/www/public in container refers to /public in VM 
       - ./nginx/conf.d:/etc/nginx/conf.d/
     restart: unless-stopped
     ports:
@@ -374,26 +373,26 @@ services:
     container_name: myContainer
 ```
 
-### Example 5: http://akostrik.42.fr на виртуальной
+### Example 4: http://akostrik.42.fr на виртуальной
 `/etc/hosts`: добавляем алиас локального домена `akostrik.42.fr`   
 
-### Example 6: https://akostrik.42.fr на виртуальной
+### Example 5: https://akostrik.42.fr на VM и https://127.0.0.1:4343 на хостовой 
 `cd ~/project/srcs/requirements/tools/`  
 `mkcert akostrik.42.fr` сгенерируем самоподписный сертификат  
 `mv akostrik.42.fr-key.pem akostrik.42.fr.key` поменять расширения файлов, чтобы nginx их правильно читал  
 `mv akostrik.42.fr.pem akostrik.42.fr.crt`   
-~/ex6/public/html/**index.html**:  
+~/ex5/public/html/**index.html**:  
 ```
 <html>
   <body>Example 6</body>
 </html>
 ```
-~/ex6/nginx/conf.d/**nginx.conf**:  
+~/ex5/nginx/conf.d/**nginx.conf**:  
 ```
 server {
   listen             80;
   listen             443 ssl;
-  server_name        akostrik.42.fr www.akostrik.42.fr;   # домен, на котором мы будем работать
+  server_name        akostrik.42.fr www.akostrik.42.fr; 
   root               /var/www/public/html;
   ssl_certificate     /etc/nginx/ssl/akostrik.42.fr.crt;
   ssl_certificate_key /etc/nginx/ssl/akostrik.42.fr.key;
@@ -405,7 +404,7 @@ server {
   }
 }
 ```
-~/ex6/**docker-compose.yml**:   
+~/ex5/**docker-compose.yml**:   
 ```
 version: '3'
 services:
@@ -421,8 +420,5 @@ services:
       - "443:443"
     container_name: myContainer
 ```
-Браузер: Advanced / Принять риск и продолжить 
-* сайт загружается по ssl  
-* браузер доверяет самоподписному сертификату  
-* соединение не считается безопасным
-  
+Браузер: Advanced / Принять риск и продолжить -> сайт загружается по ssl, теперь браузер доверяет самоподписному сертификату, но соединение не считается безопасным
+`wget https://127.0.0.1/index.html --no-check-certificate` проверить без браузера
