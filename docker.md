@@ -332,7 +332,7 @@ wget http://127.0.0.1/index.html --no-check-certificate
 FROM nginx
 COPY index.html /usr/share/nginx/html
 ```
-`docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx, выполняет dockerfile`  
+`docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx`  
 `docker run -p 8080:80 -d mynginx # 80 контейнера -> 8080 хоста, -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 или `wget http://127.0.0.1/index.html` проверить без браузера  
