@@ -380,9 +380,9 @@ server {
   root               /var/www/public/html;
   ssl_certificate     akostrik.42.fr.crt;
   ssl_certificate_key akostrik.42.fr.key;
-  ssl_protocols       TLSv1.2 TLSv1.3;                    # поддерживаемые протоколы tls
-  ssl_session_timeout 10m;                                # опции кэширования  
-  keepalive_timeout   70;                                 # таймауты
+  ssl_protocols       TLSv1.2 TLSv1.3; 
+  ssl_session_timeout 10m; 
+  keepalive_timeout   70;
   location / {                                             
     try_files $uri /index.html;
   }
