@@ -364,10 +364,7 @@ services:
     container_name: myContainer
 ```
 
-### Example 4: http://akostrik.42.fr на виртуальной
-`/etc/hosts`: добавляем алиас локального домена `akostrik.42.fr`   
-
-### Example 5: https://akostrik.42.fr на VM и https://127.0.0.1:4343 на хостовой 
+### Example 4: https://127.0.0.1 на VM и https://127.0.0.1:4343 на хостовой 
 `mkcert akostrik.42.fr` сгенерируем самоподписный сертификат  
 `mv akostrik.42.fr.pem akostrik.42.fr.crt` поменять расширения файлов, чтобы nginx их правильно читал   
 `mv akostrik.42.fr-key.pem akostrik.42.fr.key`   
@@ -407,3 +404,6 @@ services:
 ```
 Браузер: Advanced / Принять риск и продолжить -> сайт загружается по ssl, теперь браузер доверяет самоподписному сертификату, но соединение не считается безопасным  
 `wget https://127.0.0.1/index.html --no-check-certificate` проверить без браузера
+
+### Example 5: http://akostrik.42.fr и https://akostrik.42.fr на VM
+`/etc/hosts`: добавляем алиас локального домена `akostrik.42.fr`   
