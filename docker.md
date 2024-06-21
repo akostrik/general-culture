@@ -326,8 +326,7 @@ wget http://127.0.0.1/index.html --no-check-certificate
 * a volume `public` is mounted to /var/www/public inside the container
   
 ### Example 2: http://127.0.0.1 на VM и http://127.0.0.1:8080 на хостовой
-~/**index.html**:  
-`<html><body>Hello</body></html>`
+~/**index.html**:  `<html><body>Hello</body></html>`  
 ~/**Dockerfile**:  
 ```
 FROM nginx
