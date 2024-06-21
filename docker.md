@@ -369,7 +369,6 @@ server {
 `mkcert akostrik.42.fr` сгенерируем самоподписный сертификат  
 `mv akostrik.42.fr.pem akostrik.42.fr.crt` поменять расширения файлов, чтобы nginx их правильно читал   
 `mv akostrik.42.fr-key.pem akostrik.42.fr.key`   
-```
 ~/**docker-compose.yml**:   
 ```
 version: '3'
@@ -402,6 +401,7 @@ server {
     try_files $uri /index.html;
   }
 }
+```
 ~/public/html/**index.html**: тот же  
 Браузер: Advanced / Принять риск и продолжить -> сайт загружается по ssl, теперь браузер доверяет самоподписному сертификату, но соединение не считается безопасным  
 `wget https://127.0.0.1/index.html --no-check-certificate` проверить без браузера
