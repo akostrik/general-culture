@@ -322,17 +322,14 @@ wget http://127.0.0.1/index.html --no-check-certificate
 [Настроить VM](https://github.com/privet100/inception/blob/main/README.md)
 
 ### Example 1
-`docker run -it -v public:/var/www/public ubuntu:22.04` 
-* `-it` attaches your terminal to it
-* a volume `public` is mounted to /var/www/public inside the container
+`docker run -it -v public:/var/www/public ubuntu:22.04   # attaches your terminal to it, public is mounted to /var/www/public in the container`
   
 ### Example 2: http://127.0.0.1 на VM и http://127.0.0.1:8080 на хостовой
 ~/**Dockerfile**:  
 ```
 FROM nginx
-COPY index.html /usr/share/nginx/html
 ```
-~/**index.html**:  `<html><body>Hello</body></html>`  
+~/usr/share/nginx/html/**index.html**:  `<html><body>Hello</body></html>`  
 `docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx`  
 `docker run -p 8080:80 -d mynginx # 80 контейнера -> 8080 хоста, -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
