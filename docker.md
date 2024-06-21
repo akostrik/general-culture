@@ -242,11 +242,11 @@
 
 ## Kubernetes = K8s
 * программное обеспечение для оркестровки контейнеризированных приложений
-  +автоматизации их развёртывания, масштабирования и координации в условиях кластера
-* поддерживает основные технологии контейнеризации, включая Docker, rkt
+  + автоматизации их развёртывания, масштабирования и координации в условиях кластера
 * возможна поддержка технологий аппаратной виртуализации
-* un système qui vise à fournir une plate-forme permettant d'automatiser le déploiement, la montée en charge et la mise en œuvre de conteneurs d'application sur des grappes de serveurs
-* fonctionne avec toute une série de technologies de conteneurisation, et est souvent utilisé avec Docker.
+* automatiser le déploiement, la montée en charge et la mise en œuvre de conteneurs d'application sur des grappes de serveurs
+* fonctionne avec toute une série de technologies de conteneurisation, поддерживает основные технологии контейнеризации (Docker, rkt, ...)
+* est souvent utilisé avec Docker.
 
 ## Настройки
 * `/etc/default` DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
@@ -257,7 +257,7 @@
 * `/lib/systemd/system/docker.service` ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:
 * never edit the service script directly, use systemctl edit docker.service
 
-## Инспектировать
+## Команды, чтобы инспектировать
 `systemctl status docker` служба docker   
 `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
 `docker images`, `docker image ls` просмотреть список доступных локально образов   
@@ -279,7 +279,7 @@
 `make status` to see the running containers в docker-compose  
 `make logs` to see the logs of the containers  в docker-compose    
 
-## Начать новую жизнь
+## Команды, чтобы начать новую жизнь
 Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
 ```
 sudo -s
