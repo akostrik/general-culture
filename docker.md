@@ -327,28 +327,18 @@ wget http://127.0.0.1/index.html --no-check-certificate
 * a volume `public` is mounted to /var/www/public inside the container
   
 ### Example 2: http://127.0.0.1 на VM и http://127.0.0.1:8080 на хостовой
-~/**index.html**:  `<html><body>Hello</body></html>`  
 ~/**Dockerfile**:  
 ```
 FROM nginx
 COPY index.html /usr/share/nginx/html
 ```
+~/**index.html**:  `<html><body>Hello</body></html>`  
 `docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx`  
 `docker run -p 8080:80 -d mynginx # 80 контейнера -> 8080 хоста, -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
 или `wget http://127.0.0.1/index.html` проверить без браузера  
 
 ### Example 3: то же самое, но с docker-compose
-~/public/html/**index.html**:  тот же  
-~/nginx/conf.d/**nginx.conf**:  
-```
-server {
-  root    /var/www/public/html;
-  location / {                     # all locations, искать файл в корне
-    try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it -> if fails `/index.html` (fall back) -> if fails 404 error   
-    }
-}
-```
 ~/**docker-compose.yml**:  
 ```
 version: '3'
@@ -363,28 +353,21 @@ services:
       - "80:80"
     container_name: myContainer
 ```
+~/nginx/conf.d/**nginx.conf**:  
+```
+server {
+  root    /var/www/public/html;
+  location / {                     # all locations, искать файл в корне
+    try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it -> if fails `/index.html` (fall back) -> if fails 404 error   
+    }
+}
+```
+~/public/html/**index.html**:  тот же  
 
 ### Example 4: https://127.0.0.1 на VM и https://127.0.0.1:4343 на хостовой 
 `mkcert akostrik.42.fr` сгенерируем самоподписный сертификат  
 `mv akostrik.42.fr.pem akostrik.42.fr.crt` поменять расширения файлов, чтобы nginx их правильно читал   
 `mv akostrik.42.fr-key.pem akostrik.42.fr.key`   
-~/public/html/**index.html**: тот же  
-~/nginx/conf.d/**nginx.conf**:  
-```
-server {
-  listen              80;
-  listen              443 ssl;
-  server_name         akostrik.42.fr www.akostrik.42.fr; 
-  root                /var/www/public/html;
-  ssl_certificate     akostrik.42.fr.crt;
-  ssl_certificate_key akostrik.42.fr.key;
-  ssl_protocols       TLSv1.2 TLSv1.3; 
-  ssl_session_timeout 10m; 
-  keepalive_timeout   70;
-  location / {                                             
-    try_files $uri /index.html;
-  }
-}
 ```
 ~/**docker-compose.yml**:   
 ```
@@ -402,6 +385,23 @@ services:
       - "443:443"                                                     # NEW
     container_name: myContainer
 ```
+~/nginx/conf.d/**nginx.conf**:  
+```
+server {
+  listen              80;
+  listen              443 ssl;
+  server_name         akostrik.42.fr www.akostrik.42.fr; 
+  root                /var/www/public/html;
+  ssl_certificate     akostrik.42.fr.crt;
+  ssl_certificate_key akostrik.42.fr.key;
+  ssl_protocols       TLSv1.2 TLSv1.3; 
+  ssl_session_timeout 10m; 
+  keepalive_timeout   70;
+  location / {                                             
+    try_files $uri /index.html;
+  }
+}
+~/public/html/**index.html**: тот же  
 Браузер: Advanced / Принять риск и продолжить -> сайт загружается по ssl, теперь браузер доверяет самоподписному сертификату, но соединение не считается безопасным  
 `wget https://127.0.0.1/index.html --no-check-certificate` проверить без браузера
 
