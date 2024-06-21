@@ -318,19 +318,17 @@ wget http://127.0.0.1/index.html --no-check-certificate
 `systemctl daemon-reload`  
 `exit` detach from your container, the container stops  
 
+### Запустить несколько примеров
+
 ### Example 1
 `docker run -it -v public:/var/www/public ubuntu:22.04` 
 * `-it` attaches your terminal to it
 * a volume `public` is mounted to /var/www/public inside the container
   
 ### Example 2: http://127.0.0.1 на VM и http://127.0.0.1:8080 на хостовой
-~/ex2/**index.html**:  
-```
-<html>
-  <body>Example 3</body>
-</html>
-```
-~/ex2/**Dockerfile**:  
+~/**index.html**:  
+`<html><body>Hello</body></html>`
+~/**Dockerfile**:  
 ```
 FROM nginx
 COPY index.html /usr/share/nginx/html
@@ -338,34 +336,29 @@ COPY index.html /usr/share/nginx/html
 `docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx, выполняет dockerfile`  
 `docker run -p 8080:80 -d mynginx # 80 контейнера -> 8080 хоста, -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
-`wget http://127.0.0.1/index.html` проверить без браузера
+или `wget http://127.0.0.1/index.html` проверить без браузера  
 
 ### Example 3: то же самое, но с docker-compose
-~/ex3/public/html/**index.html**:  
-```
-<html>
-  <body>Example 4</body>
-</html>
-```
-~/ex3/nginx/conf.d/**nginx.conf**:  
+~/public/html/**index.html**:  тот же  
+~/nginx/conf.d/**nginx.conf**:  
 ```
 server {
   root    /var/www/public/html;
-  location / {                     # all locations
+  location / {                     # all locations, искать файл в корне
     try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it   
                                    # if fails, serves `/index.html` (fall back)     
                                    # if fails, 404 error   
     }
 }
 ```
-~/ex3/**docker-compose.yml**:  
+~/**docker-compose.yml**:  
 ```
 version: '3'
 services:
   nginx:
     image: nginx:stable-alpine
     volumes:
-      - ./public:/var/www/public       # /var/www/public in container refers to /public in VM 
+      - ./public:/var/www/public   # /var/www/public in container refers to /public in VM 
       - ./nginx/conf.d:/etc/nginx/conf.d/
     restart: unless-stopped
     ports:
@@ -377,34 +370,28 @@ services:
 `/etc/hosts`: добавляем алиас локального домена `akostrik.42.fr`   
 
 ### Example 5: https://akostrik.42.fr на VM и https://127.0.0.1:4343 на хостовой 
-`cd ~/project/srcs/requirements/tools/`  
 `mkcert akostrik.42.fr` сгенерируем самоподписный сертификат  
-`mv akostrik.42.fr-key.pem akostrik.42.fr.key` поменять расширения файлов, чтобы nginx их правильно читал  
-`mv akostrik.42.fr.pem akostrik.42.fr.crt`   
-~/ex5/public/html/**index.html**:  
-```
-<html>
-  <body>Example 6</body>
-</html>
-```
-~/ex5/nginx/conf.d/**nginx.conf**:  
+`mv akostrik.42.fr.pem akostrik.42.fr.crt` поменять расширения файлов, чтобы nginx их правильно читал   
+`mv akostrik.42.fr-key.pem akostrik.42.fr.key`   
+~/public/html/**index.html**: тот же  
+~/nginx/conf.d/**nginx.conf**:  
 ```
 server {
   listen             80;
   listen             443 ssl;
   server_name        akostrik.42.fr www.akostrik.42.fr; 
   root               /var/www/public/html;
-  ssl_certificate     /etc/nginx/ssl/akostrik.42.fr.crt;
-  ssl_certificate_key /etc/nginx/ssl/akostrik.42.fr.key;
+  ssl_certificate     akostrik.42.fr.crt;
+  ssl_certificate_key akostrik.42.fr.key;
   ssl_protocols       TLSv1.2 TLSv1.3;                    # поддерживаемые протоколы tls
   ssl_session_timeout 10m;                                # опции кэширования  
   keepalive_timeout   70;                                 # таймауты
-  location / {                                            # искать файл в корне 
+  location / {                                             
     try_files $uri /index.html;
   }
 }
 ```
-~/ex5/**docker-compose.yml**:   
+~/**docker-compose.yml**:   
 ```
 version: '3'
 services:
