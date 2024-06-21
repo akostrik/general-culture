@@ -329,7 +329,10 @@ wget http://127.0.0.1/index.html --no-check-certificate
 ```
 FROM nginx
 ```
-~/usr/share/nginx/html/**index.html**:  `<html><body>Hello</body></html>`  
+~/usr/share/nginx/html/**index.html**:  
+```
+<html><body>Hello</body></html>
+```  
 `docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx`  
 `docker run -p 8080:80 -d mynginx # 80 контейнера -> 8080 хоста, -d в фоновом режиме без привязки к текущей консоли`  
 `startx                           # x-server для отрисовки графического окружения (GUI)`  
