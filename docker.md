@@ -320,6 +320,9 @@ wget http://127.0.0.1/index.html --no-check-certificate
 
 ## Запустить несколько примеров
 [Настроить VM](https://github.com/privet100/inception/blob/main/README.md)
+Проверять:  
+`startx                           # x-server для отрисовки графического окружения (GUI)`   
+`wget http://127.0.0.1/index.html` проверить без браузера   
 
 ### Example 1
 `docker run -it -v public:/var/www/public ubuntu:22.04   # attaches your terminal to it, public is mounted to /var/www/public in the container`
@@ -335,8 +338,6 @@ FROM nginx
 ```  
 `docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx`  
 `docker run -p 8080:80 -d mynginx # 80 контейнера -> 8080 хоста, -d в фоновом режиме без привязки к текущей консоли`  
-`startx                           # x-server для отрисовки графического окружения (GUI)`  
-или `wget http://127.0.0.1/index.html` проверить без браузера  
 
 ### Example 3: то же самое, но с docker-compose
 ~/**docker-compose.yml**:  
