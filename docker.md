@@ -75,7 +75,7 @@
   + работать на одной системе (общаются через REST API)
   + можно подключить клиент к удаленному демону docker (общаются через сокет)
 
-### server daemon `dockerd`= Docker Engine ?
+## server daemon `dockerd`= Docker Engine ?
 * фоновый процесс (демон)
 * следует инструкциям из Dockerfile и Docker-compose.yaml
 * управляет:
@@ -84,12 +84,12 @@
   + коммуникацией между контейнерами
 * `dockerd` запуск 
 
-### client `docker`
+## client `docker`
 * интерфейс к Docker
 * command-line или графический
 * получает команды от пользователя (создают контейнеры, управляют ими, создаёт/управляет/запускает контейнеризованные приложения)
 
-### image (object, an entitie used to assemble an application)
+## image (object, an entitie used to assemble an application)
 * неизменяемый файл, из которого можно неограниченное количество раз развернуть контейнер
 * исполняемый пакет = код + среда выполнения + библиотеки + переменные окружения + конфигурационные файлы
 * говорит docker-у, что находится в контейнере, какой процесс запустить, когда запускается контейнер, другие конфигурационные данные
@@ -109,7 +109,7 @@
 * **An index** manages user accounts, permissions, search, tagging, etc that's in the public web interface
 * **A registry** stores and serves up the actual image assets, delegates authentication to the index
 
-### Container (object, an entitie used to assemble an application)
+## Container (object, an entitie used to assemble an application)
 ![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 * 1 container = 1 service = 1 развёрнутое и запущенное приложение (database, web server, web framework, test server, execute big data scripts)
 * содержит все для работы приложения (системные программы, библиотеки, код, среды исполнения, настройки)
@@ -149,7 +149,7 @@
 * контейнерам можно назначать лимиты ресурсов
 * communicate with each other through channels
 
-### Dockerfile (object, an entitie used to assemble an application)
+## Dockerfile (object, an entitie used to assemble an application)
 ![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
 * docker считывает инструкции, собирает и возвращает образ
   + набор софта, который мы хотим развернуть
@@ -165,7 +165,7 @@
 * RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают
 * write a dockerfile: https://github.com/dnaprawa/dockerfile-best-practices
 
-### Docker Compose CLI (a tool)
+## Docker Compose CLI (a tool)
 * to define and run multiple Docker containers as a single application
 * для управления несколькими контейнерами, managing the whole lifecycle of your application:
   + start, stop, rebuild, configures services, networks, volumes, building images, ...
@@ -179,7 +179,7 @@
   + второй для поддержки клиентов
   + оба сайта подключены к общей базе данных
   
-### A docker-network (object, an entitie used to assemble an application)
+## A docker-network (object, an entitie used to assemble an application)
 * a virtual software defined network that connects Docker containers
 * allows containers to communicate with each other and the outside world
 * provides an additional layer of abstraction over the underlying network infrastructure
@@ -218,7 +218,7 @@
 * `docker run -p 80:80 --name myCont -d` прокинуть порт и переназначить его снаружи 
 * https://docs.docker.com/network/network-tutorial-standalone/
  
-### Docker Volume (a tool, an object?)
+## Docker Volume (a tool, an object?)
 * папка хоста (usually in /var/lib/docker/volumes), примонтированная к файловой системе контейнера
 * отделены от контейнеров
 * контейнеры могут совместно пользоваться одним volume
@@ -236,11 +236,11 @@
   + `it` attaches your terminal to the container
   +  a volume called demo_volume is mounted to /data inside the container
 
-### Docker Swarm (a tool)
+## Docker Swarm (a tool)
 * a set of cooperating daemons that communicate through the Docker API
 * turns a group of Docker engines into a single virtual Docker engine, собрать несколько узлов в единую виртуальную систему Docker и управлять ею
 
-### Kubernetes = K8s
+## Kubernetes = K8s
 * программное обеспечение для оркестровки контейнеризированных приложений
   +автоматизации их развёртывания, масштабирования и координации в условиях кластера
 * поддерживает основные технологии контейнеризации, включая Docker, rkt
@@ -248,7 +248,7 @@
 * un système qui vise à fournir une plate-forme permettant d'automatiser le déploiement, la montée en charge et la mise en œuvre de conteneurs d'application sur des grappes de serveurs
 * fonctionne avec toute une série de technologies de conteneurisation, et est souvent utilisé avec Docker.
 
-### Настройки
+## Настройки
 * `/etc/default` DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
 * `/etc/init.d/docker`
 * `/etc/init/docker.conf` DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
@@ -257,7 +257,7 @@
 * `/lib/systemd/system/docker.service` ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:
 * never edit the service script directly, use systemctl edit docker.service
 
-### Инспектировать
+## Инспектировать
 `systemctl status docker` служба docker   
 `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
 `docker images`, `docker image ls` просмотреть список доступных локально образов   
@@ -279,7 +279,7 @@
 `make status` to see the running containers в docker-compose  
 `make logs` to see the logs of the containers  в docker-compose    
 
-### Начать новую жизнь
+## Начать новую жизнь
 Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
 ```
 sudo -s
@@ -318,7 +318,7 @@ wget http://127.0.0.1/index.html --no-check-certificate
 `systemctl daemon-reload`  
 `exit` detach from your container, the container stops  
 
-### Запустить несколько примеров
+## Запустить несколько примеров
 [Настроить VM](https://github.com/privet100/inception/blob/main/README.md)
 
 ### Example 1
