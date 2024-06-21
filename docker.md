@@ -344,9 +344,7 @@ COPY index.html /usr/share/nginx/html
 server {
   root    /var/www/public/html;
   location / {                     # all locations, искать файл в корне
-    try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it   
-                                   # if fails, serves `/index.html` (fall back)     
-                                   # if fails, 404 error   
+    try_files $uri /index.html;    # if the received URI matches $uri, nginx serves it -> if fails `/index.html` (fall back) -> if fails 404 error   
     }
 }
 ```
