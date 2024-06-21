@@ -319,10 +319,10 @@ wget http://127.0.0.1/index.html --no-check-certificate
 `exit` detach from your container, the container stops  
 
 ## Запустить несколько примеров
-[Настроить VM](https://github.com/privet100/inception/blob/main/README.md)
-Проверять:  
-`startx                           # x-server для отрисовки графического окружения (GUI)`   
-`wget http://127.0.0.1/index.html` проверить без браузера   
+[Настроить VM](https://github.com/privet100/inception/blob/main/README.md)  
+Проверять сайт:  
+`startx                 # x-server для отрисовки графического окружения (GUI)`   
+`wget http://127.0.0.1  # проверить без браузера`   
 
 ### Example 1
 `docker run -it -v public:/var/www/public ubuntu:22.04   # attaches your terminal to it, public is mounted to /var/www/public in the container`
