@@ -366,8 +366,9 @@ server {
 ~/public/html/**index.html**:  тот же  
 
 ### Example 4: https://127.0.0.1 на VM и https://127.0.0.1:4343 на хостовой 
-`mkcert akostrik.42.fr` сгенерируем самоподписный сертификат  
-`mv akostrik.42.fr.pem akostrik.42.fr.crt` поменять расширения файлов, чтобы nginx их правильно читал   
+`cd ~/project/srcs/requirements/tools/`  
+`mkcert akostrik.42.fr` генерируем самоподписный сертификат  
+`mv akostrik.42.fr.pem akostrik.42.fr.crt` поменять расширения, чтобы nginx их правильно читал   
 `mv akostrik.42.fr-key.pem akostrik.42.fr.key`   
 ~/**docker-compose.yml**:   
 ```
