@@ -405,8 +405,9 @@ server {
 }
 ```
 ~/public/html/**index.html**: тот же  
+`docker-compose down`  
 `docker-compose up -d`  
-Браузер: Advanced / Принять риск и продолжить -> сайт загружается по ssl и доверяет самоподписному сертификату, но соединение не считается безопасным  
+В браузере: Advanced / Принять риск продолжить -> сайт загружается по ssl и доверяет самоподписному сертификату, соединение не считается безопасным  
 `wget https://127.0.0.1/index.html --no-check-certificate` проверить без браузера
 
 ### Example 5: http://akostrik.42.fr и https://akostrik.42.fr на VM
