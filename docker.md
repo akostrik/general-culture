@@ -178,6 +178,8 @@
   + первый позволяет создать интернет-магазин
   + второй для поддержки клиентов
   + оба сайта подключены к общей базе данных
+* docker-compose va juste simplifier tes commandes docker pour tout mettre en place comme tu veux
+* fait attention à l'ordre des services que tu vas deploy
   
 ## A docker-network (object, an entitie used to assemble an application)
 * a virtual software defined network that connects Docker containers
@@ -246,7 +248,8 @@
 * возможна поддержка технологий аппаратной виртуализации
 * automatiser le déploiement, la montée en charge et la mise en œuvre de conteneurs d'application sur des grappes de serveurs
 * fonctionne avec toute une série de technologies de conteneurisation, поддерживает основные технологии контейнеризации (Docker, rkt, ...)
-* est souvent utilisé avec Docker.
+* est souvent utilisé avec Docker
+* très compliqué
 
 ## Настройки
 * `/etc/default` DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
