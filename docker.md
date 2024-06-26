@@ -364,6 +364,7 @@ server {
 }
 ```
 ~/public/html/**index.html**:  тот же  
+`wget http://127.0.0.1/index.html` проверить без браузера
 
 ### Example 4: https://127.0.0.1 на VM и https://127.0.0.1:4343 на хостовой 
 `cd ~/project/srcs/requirements/tools/`  
@@ -379,11 +380,11 @@ services:
     volumes:
       - ./public:/var/www/public/
       - ./nginx/conf.d:/etc/nginx/conf.d/
-      - /home/${USER}/project/srcs/requirements/tools:. # ключи, сертификаты NEW
+      - /home/${USER}/project/srcs/requirements/tools:/etc/nginx/ssl # ключи, сертификаты # NEW
     restart: unless-stopped
     ports:
       - "80:80"
-      - "443:443"                                                     # NEW
+      - "443:443"                                                                         # NEW
     container_name: myContainer
 ```
 ~/nginx/conf.d/**nginx.conf**:  
@@ -404,6 +405,7 @@ server {
 }
 ```
 ~/public/html/**index.html**: тот же  
+`docker-compose up -d`
 Браузер: Advanced / Принять риск и продолжить -> сайт загружается по ssl, теперь браузер доверяет самоподписному сертификату, но соединение не считается безопасным  
 `wget https://127.0.0.1/index.html --no-check-certificate` проверить без браузера
 
