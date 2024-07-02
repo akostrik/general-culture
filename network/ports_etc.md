@@ -14,8 +14,8 @@
 * `ip addr show` = `ip addr` = `ip a` my IP, network interfaces
 * `ifconfig`
 * `brctl show` bridge-utils
-* iptables -t nat --list
-* ` iptables -nvL`
+* `iptables -t nat --list`
+* `iptables -nvL`
 * `wget`
   + only offers plain HTTP POST support
   + command line only, no lib or anything
