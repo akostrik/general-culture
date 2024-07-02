@@ -1,9 +1,9 @@
 ## Inspect
 * `netstat -ntlp | grep LISTEN` список прослушиваемых портов (netstat = network statistic)
-* `sudo netstat -ltupan` (l прослушивающиеся сокеты, n номера портов вместо названий служб, t TCP-соединения, u UDP-соединения, a только активные соединения)
+* `netstat -ltupan` (l прослушивающиеся сокеты, n номера портов вместо названий служб, t TCP-соединения, u UDP-соединения, a только активные соединения)
 * `ss -ltupn` (l все прослушивающиеся сокеты, n  номера портов вместо названий служб, t TCP-соединения, u UDP-соединения) (ss = socket statistics, современная альтернатива для netstat) display socket information
 * `nmap localhost` открытые порты на удаленных хостах, проверка системы
-* `sudo nmap -sT -sU -sV 159.89.108.187` (sT TCP-соединения, sU UDP-соединения, sV обнаружение версий программного обеспечения)
+* `nmap -sT -sU -sV 159.89.108.187` (sT TCP-соединения, sU UDP-соединения, sV обнаружение версий программного обеспечения)
 * `lsof -i` открытые соединения (list of open files)
 * `lsof -i :80` процессы, работающих с портом 80
 * `lsof -nP -i` доступные соединения
@@ -186,8 +186,8 @@ nameserver 10.16.0.7
   + цепочка OUTPUT
   + цепочка FORWARD
 * `iptables -t nat --list`
-* `sudo iptables -F` очистить правила, если сделаете что-то не так
-* `sudo iptables -I INPUT -p tcp --dport 1924 -j ACCEPT` открыть порты
+* `iptables -F` очистить правила, если сделаете что-то не так
+* `iptables -I INPUT -p tcp --dport 1924 -j ACCEPT` открыть порт
 * https://losst.pro/nastrojka-iptables-dlya-chajnikov
   
 ```
