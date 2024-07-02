@@ -1,215 +1,31 @@
 ## Inspect
 * `netstat -ntlp | grep LISTEN` список прослушиваемых портов (netstat = network statistic)
-```
-tcp        0      0 127.0.0.1:32801         0.0.0.0:*               LISTEN      -                   
-tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:4244            0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      -                   
-tcp6       0      0 :::4244                 :::*                    LISTEN      -                   
-tcp6       0      0 ::1:631                 :::*                    LISTEN      -                   
-tcp6       0      0 :::443                  :::*                    LISTEN      -     
-```
 * `sudo netstat -ltupan` (l прослушивающиеся сокеты, n номера портов вместо названий служб, t TCP-соединения, u UDP-соединения, a только активные соединения)
-```
-Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
-tcp        0      0 127.0.0.1:32801         0.0.0.0:*               LISTEN      601/containerd      
-tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      591/cupsd           
-tcp        0      0 0.0.0.0:4244            0.0.0.0:*               LISTEN      614/sshd: /usr/sbin 
-tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      4326/docker-proxy   
-tcp        0      0 10.0.2.15:52602         34.107.243.93:443       ESTABLISHED 2608/firefox-esr    
-tcp        0      0 10.0.2.15:58494         95.100.133.139:80       ESTABLISHED 2608/firefox-esr    
-tcp        0    304 10.0.2.15:4244          10.0.2.2:41560          ESTABLISHED 1226/sshd: root@pts 
-tcp6       0      0 :::4244                 :::*                    LISTEN      614/sshd: /usr/sbin 
-tcp6       0      0 ::1:631                 :::*                    LISTEN      591/cupsd           
-tcp6       0      0 :::443                  :::*                    LISTEN      4331/docker-proxy   
-udp        0      0 10.0.2.15:68            10.0.2.2:67             ESTABLISHED 557/NetworkManager  
-udp        0      0 0.0.0.0:631             0.0.0.0:*                           653/cups-browsed    
-udp        0      0 0.0.0.0:5353            0.0.0.0:*                           534/avahi-daemon: r 
-udp        0      0 0.0.0.0:39666           0.0.0.0:*                           534/avahi-daemon: r 
-udp6       0      0 :::39221                :::*                                534/avahi-daemon: r 
-udp6       0      0 :::5353                 :::*                                534/avahi-daemon: r 
-```
 * `ss -ltupn` (l все прослушивающиеся сокеты, n  номера портов вместо названий служб, t TCP-соединения, u UDP-соединения) (ss = socket statistics, современная альтернатива для netstat) display socket information
-```
-etid     State          Recv-Q         Send-Q             Local Address:Port                    Peer Address:Port         Process         
-udp      UNCONN         0              0                      0.0.0.0:631                          0.0.0.0:*                            
-udp      UNCONN         0              0                      0.0.0.0:5353                         0.0.0.0:*                            
-udp      UNCONN         0              0                      0.0.0.0:39666                        0.0.0.0:*                            
-udp      UNCONN         0              0                         [::]:39221                           [::]:*                            
-udp      UNCONN         0              0                         [::]:5353                            [::]:*                            
-tcp      LISTEN         0              4096                 127.0.0.1:32801                        0.0.0.0:*                            
-tcp      LISTEN         0              128                  127.0.0.1:631                          0.0.0.0:*                            
-tcp      LISTEN         0              128                    0.0.0.0:4244                         0.0.0.0:*                            
-tcp      LISTEN         0              4096                   0.0.0.0:443                          0.0.0.0:*                            
-tcp      LISTEN         0              128                       [::]:4244                            [::]:*                            
-tcp      LISTEN         0              128                      [::1]:631                             [::]:*                            
-tcp      LISTEN         0              4096                      [::]:443                             [::]:*
-```
 * `nmap localhost` открытые порты на удаленных хостах, проверка системы
-```
-Starting Nmap 7.93 ( https://nmap.org ) at 2024-06-07 19:00 EDT
-Nmap scan report for localhost (127.0.0.1)
-Host is up (0.000094s latency).
-Other addresses for localhost (not scanned): ::1
-rDNS record for 127.0.0.1: akostrik.42.fr
-Not shown: 998 closed tcp ports (conn-refused)
-PORT    STATE SERVICE
-443/tcp open  https
-631/tcp open  ipp
-Nmap done: 1 IP address (1 host up) scanned in 0.04 seconds
-```
 * `sudo nmap -sT -sU -sV 159.89.108.187` (sT TCP-соединения, sU UDP-соединения, sV обнаружение версий программного обеспечения)
 * `lsof -i` открытые соединения (list of open files)
-```
-COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
-firefox-e 2608 akostrik  119u  IPv4  26195      0t0  TCP inception:52602->93.243.107.34.bc.googleusercontent.com:https (ESTABLISHED)
-```
 * `lsof -i :80` процессы, работающих с портом 80
 * `lsof -nP -i` доступные соединения
-```
-COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
-firefox-e 2608 akostrik   76u  IPv4  69898      0t0  TCP 10.0.2.15:50542->34.149.100.209:443 (ESTABLISHED)
-firefox-e 2608 akostrik   81u  IPv4  69902      0t0  TCP 10.0.2.15:32860->34.160.144.191:443 (ESTABLISHED)
-firefox-e 2608 akostrik  119u  IPv4  26195      0t0  TCP 10.0.2.15:52602->34.107.243.93:443 (ESTABLISHED)
-```
 * `lsof -nP -i | grep LISTEN` список прослушиваемых портов
+* `nmap localhost -p 80` проверьте, открыт ли порт
 * `hostname -I`
-```
-10.0.2.15 172.17.0.1 172.20.0.1 
-```
 * `ip addr show | grep inet| awk '{print $2; }'` my IP
-```
-127.0.0.1/8
-::1/128
-10.0.2.15/24
-fe80::a00:27ff:fe0b:adde/64
-172.17.0.1/16
-fe80::42:f1ff:fe49:18ae/64
-172.20.0.1/16
-fe80::42:54ff:fe0e:2712/64
-fe80::18ca:d6ff:feb2:1a18/64
-```
 * `ip addr show` = `ip addr` = `ip a` my IP, network interfaces
-```
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host noprefixroute 
-       valid_lft forever preferred_lft forever
-2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-    link/ether 08:00:27:0b:ad:de brd ff:ff:ff:ff:ff:ff
-    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
-       valid_lft 84370sec preferred_lft 84370sec
-    inet6 fe80::a00:27ff:fe0b:adde/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
-    link/ether 02:42:f1:49:18:ae brd ff:ff:ff:ff:ff:ff
-    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
-       valid_lft forever preferred_lft forever
-    inet6 fe80::42:f1ff:fe49:18ae/64 scope link 
-       valid_lft forever preferred_lft forever
-10: br-4b3d69138e4a: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
-    link/ether 02:42:54:0e:27:12 brd ff:ff:ff:ff:ff:ff
-    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-4b3d69138e4a
-       valid_lft forever preferred_lft forever
-    inet6 fe80::42:54ff:fe0e:2712/64 scope link 
-       valid_lft forever preferred_lft forever
-14: veth245a34d@if13: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-4b3d69138e4a state UP group default 
-    link/ether 1a:ca:d6:b2:1a:18 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-    inet6 fe80::18ca:d6ff:feb2:1a18/64 scope link 
-       valid_lft forever preferred_lft forever
-```
 * `ifconfig`
-```
-br-4b3d69138e4a: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 172.20.0.1  netmask 255.255.0.0  broadcast 172.20.255.255
-        inet6 fe80::42:54ff:fe0e:2712  prefixlen 64  scopeid 0x20<link>
-        ether 02:42:54:0e:27:12  txqueuelen 0  (Ethernet)
-        RX packets 55  bytes 11730 (11.4 KiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 110  bytes 13525 (13.2 KiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-
-docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
-        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
-        inet6 fe80::42:f1ff:fe49:18ae  prefixlen 64  scopeid 0x20<link>
-        ether 02:42:f1:49:18:ae  txqueuelen 0  (Ethernet)
-        RX packets 1218  bytes 52139 (50.9 KiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 1379  bytes 6277876 (5.9 MiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-
-enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
-        inet6 fe80::a00:27ff:fe0b:adde  prefixlen 64  scopeid 0x20<link>
-        ether 08:00:27:0b:ad:de  txqueuelen 1000  (Ethernet)
-        RX packets 36605  bytes 45015842 (42.9 MiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 11008  bytes 1143330 (1.0 MiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-
-lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
-        inet 127.0.0.1  netmask 255.0.0.0
-        inet6 ::1  prefixlen 128  scopeid 0x10<host>
-        loop  txqueuelen 1000  (Local Loopback)
-        RX packets 8395  bytes 471920 (460.8 KiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 8395  bytes 471920 (460.8 KiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-
-veth245a34d: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet6 fe80::18ca:d6ff:feb2:1a18  prefixlen 64  scopeid 0x20<link>
-        ether 1a:ca:d6:b2:1a:18  txqueuelen 0  (Ethernet)
-        RX packets 55  bytes 12500 (12.2 KiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 142  bytes 17295 (16.8 KiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-```
 * `brctl show` bridge-utils
-```
-bridge name       bridge id         STP enabled  interfaces
-br-4b3d69138e4a   8000.0242540e2712 no            veth245a34d
-docker0           8000.0242f14918ae no
-```
 * iptables -t nat --list
-```
-Chain PREROUTING (policy ACCEPT)
-target     prot opt source               destination         
-DOCKER     all  --  anywhere             anywhere             ADDRTYPE match dst-type LOCAL
-
-Chain INPUT (policy ACCEPT)
-target     prot opt source               destination         
-
-Chain OUTPUT (policy ACCEPT)
-target     prot opt source               destination         
-DOCKER     all  --  anywhere            !localhost/8          ADDRTYPE match dst-type LOCAL
-
-Chain POSTROUTING (policy ACCEPT)
-target     prot opt source               destination         
-MASQUERADE  all  --  172.20.0.0/16        anywhere            
-MASQUERADE  all  --  172.17.0.0/16        anywhere            
-MASQUERADE  tcp  --  172.20.0.2           172.20.0.2           tcp dpt:https
-
-Chain DOCKER (2 references)
-target     prot opt source               destination         
-RETURN     all  --  anywhere             anywhere            
-RETURN     all  --  anywhere             anywhere            
-DNAT       tcp  --  anywhere             anywhere             tcp dpt:https to:172.20.0.2:443
-```
 * ` iptables -nvL`
 * `wget`
   + only offers plain HTTP POST support
-  + command line only, there's no lib or anything
-  + downloads recursively
+  + command line only, no lib or anything
 * `curl`
   + supports FTP, FTPS, GOPHER, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP. wget supports HTTP, HTTPS, FTP
   + curl's features are powered by libcurl
   + upload and sending capabilities
 * `service ssh status`
 * `ufw status`
-* `telnet loclhost 80` verify
+* `telnet localhost 80`
 * `ipconfig` depreciated
 
 ## Ports
@@ -278,6 +94,7 @@ DNAT       tcp  --  anywhere             anywhere             tcp dpt:https to:1
   + защита транзакций (TSIG)
   + поддержка различных типов информации
 * в браузере `8.8.8.8`
+* The **DNS cache** stores data from websites you visit, so these web pages will load quicker the next time you access them. However, if the DNS contains too many records, it might fail to function.
 ### /etc/hosts
   + сменить алиас локального домена 127.0.0.1 на akostrk.42.fr
   + до появления DNS служил маршрутизатором: преобразование между доменными и IP-адресами производилось с использованием текстового файла hosts, который составлялся централизованно и автоматически рассылался на каждую из машин в своей локальной сети
@@ -326,6 +143,7 @@ nameserver 10.16.0.7
     - они подключены к сети через роутеры и NAT, которые скрывают их от внешней сети
   + для серверов актуально 
 * подсистема iptables и Netfilter встроена в ядро
+* ufw это упрощённый интерфейс iptables
 * сетевые пакеты, проходящие через компьютер, отправляются им или предназначены ему, ядро направляет через фильтр iptables
   + если проверка пройдена, действие
 * пакеты: входящие / исходящие / проходящие => в фильтре iptables пакеты делятся на три цепочки:
