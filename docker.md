@@ -301,7 +301,7 @@ service docker stop
 systemctl daemon-reload
 systemctl restart docker.service
 service docker start
-docker-compose up -d --build           # build = first run
+docker-compose up -d --build
 # startx
 wget http://127.0.0.1/index.html --no-check-certificate
 ```
@@ -339,7 +339,7 @@ FROM nginx
 ```
 <html><body>Hello</body></html>
 ```  
-`docker build . --tag mynginx     # BUILD image (first run), скачает образ nginx`  
+`docker build . --tag mynginx     # BUILD image = first run, скачает образ nginx`  
 `docker run -p 8080:80 -d mynginx # 80 контейнер -> 8080 хост, -d фоновый режим без привязки к текущей консоли`  
 
 ### Example 3: то же самое, но с docker-compose
