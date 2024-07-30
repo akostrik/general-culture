@@ -288,39 +288,46 @@
 * `make logs` to see the logs of the containers  в docker-compose    
 
 ## Начать новую жизнь
-Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, ...:
-```
-systemctl stop docker
-rm -rf /var/lib/docker
-systemctl start docker
-```
-```
-docker stop myContainer
-docker rm myContainer
-docker image prune --all
-docker system prune
-service docker stop
-systemctl daemon-reload
-systemctl restart docker.service
-service docker start
-docker-compose up -d --build
-wget http://127.0.0.1/index.html --no-check-certificate
-```
-`docker create` создание контейнера   
-`docker start` активирует существующий контейнер  
-`docker build` считывает dockerfile, создаёт образ   
-`docker stop` пытается остановить контейнер отправив SIGTERM, если долго нет ответа SIGKILL   
-`docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
-`docker rm` удалить выключенный контейнер  
-`docker pause`  
-`docker restart`, `/etc/init.d/docker restart` перезапустить демон  
-`systemctl restart docker.service`  
-`docker pull image` загрузить образ из DockerHub   
-`docker commit` создание нового образа из изменений в контейнере   
-`docker system prune` cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers
-`docker image prune --all` remove unused images   
-`systemctl daemon-reload`  
-`exit` detach from your container, the container stops  
+* ```
+  docker stop $(docker ps -qa)
+  docker rm $(docker ps -qa)
+  docker rmi -f $(docker images -qa)
+  docker volume rm $(docker volume ls -q)
+  docker network rm $(docker network ls -q) 2>/dev/null
+  ```
+* Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, ...:
+  ```
+  systemctl stop docker
+  rm -rf /var/lib/docker
+  systemctl start docker
+  ```
+* ```
+  docker stop myContainer
+  docker rm myContainer
+  docker image prune --all
+  docker system prune
+  service docker stop
+  systemctl daemon-reload
+  systemctl restart docker.service
+  service docker start
+  docker-compose up -d --build
+  wget http://127.0.0.1/index.html --no-check-certificate
+  ```
+* `docker create` создание контейнера   
+* `docker start` активирует существующий контейнер  
+* `docker build` считывает dockerfile, создаёт образ   
+* `docker stop` пытается остановить контейнер, отправив SIGTERM, если долго нет ответа SIGKILL   
+* `docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
+* `docker rm` удалить выключенный контейнер  
+* `docker pause`  
+* `docker restart`, `/etc/init.d/docker restart` перезапустить демон  
+* `systemctl restart docker.service`  
+* `docker pull image` загрузить образ из DockerHub   
+* `docker commit` создание нового образа из изменений в контейнере   
+* `docker system prune` cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers
+* `docker image prune --all` remove unused images   
+* `systemctl daemon-reload`  
+* `exit` detach from your container, the container stops  
 
 ## Запустить несколько примеров
 [Настроить VM](https://github.com/privet100/inception/blob/main/README.md)  
