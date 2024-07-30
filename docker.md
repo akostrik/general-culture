@@ -297,6 +297,10 @@
   docker volume rm $(docker volume ls -q)
   docker network rm $(docker network ls -q) 2>/dev/null
   ```
+* reboot the VM and launch compose again
+  + everything is functional
+  + both WordPress and MariaDB are configured
+  + the changes you made previously to the WordPress website should still be here
 * ```
   systemctl stop docker
   rm -rf /var/lib/docker  # Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, ...
