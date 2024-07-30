@@ -260,7 +260,7 @@
 * `/lib/systemd/system/docker.service` ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:
 * never edit the service script directly, use systemctl edit docker.service
 
-## Команды, чтобы инспектировать
+## Инспектировать
 `systemctl status docker` служба docker   
 `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
 `docker images`, `docker image ls` просмотреть список доступных локально образов   
@@ -282,17 +282,14 @@
 `make status` to see the running containers в docker-compose  
 `make logs` to see the logs of the containers  в docker-compose    
 
-## Команды, чтобы начать новую жизнь
-Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, swarm state:
+## Начать новую жизнь
+Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, ...:
 ```
-sudo -s
 systemctl stop docker
 rm -rf /var/lib/docker
 systemctl start docker
-exit
 ```
 ```
-#!/bin/bash
 docker stop myContainer
 docker rm myContainer
 docker image prune --all
@@ -302,7 +299,6 @@ systemctl daemon-reload
 systemctl restart docker.service
 service docker start
 docker-compose up -d --build
-# startx
 wget http://127.0.0.1/index.html --no-check-certificate
 ```
 `docker create` создание контейнера   
