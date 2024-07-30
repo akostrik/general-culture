@@ -241,6 +241,7 @@
 ## Docker Swarm (a tool)
 * a set of cooperating daemons that communicate through the Docker API
 * turns a group of Docker engines into a single virtual Docker engine, собрать несколько узлов в единую виртуальную систему Docker и управлять ею
+* va être deprecated
 
 ## Kubernetes = K8s
 * программное обеспечение для оркестровки контейнеризированных приложений
