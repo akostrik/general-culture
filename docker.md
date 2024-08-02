@@ -295,7 +295,7 @@
   docker rm $(docker ps -qa)               # удалить выключенный контейнер  
   docker rmi -f $(docker images -qa)
   docker volume rm $(docker volume ls -q)
-  docker network rm $(docker network ls -q) 2>/dev/null
+  docker network rm $(docker network ls -q)
   ```
 * reboot the VM and launch compose again
   + everything is functional
