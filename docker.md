@@ -292,11 +292,20 @@
 ## Начать новую жизнь
 * ```
   docker stop $(docker ps -qa)
-  docker rm $(docker ps -qa)               # удалить выключенный контейнер  
+  docker rm $(docker ps -qa)                # удалить выключенный контейнер  
   docker rmi -f $(docker images -qa)
   docker volume rm $(docker volume ls -q)
   docker network rm $(docker network ls -q)
-  ```
+  docker image prune --all                  # remove unused images   
+  docker system prune                       # cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers     
+  service docker stop
+  systemctl daemon-reload
+  systemctl restart docker.service
+  docker restart                            # перезапустить демон
+  /etc/init.d/docker restart                # перезапустить демон  
+  service docker start
+  docker-compose up -d --build
+```
 * reboot the VM and launch compose again
   + everything is functional
   + both WordPress and MariaDB are configured
@@ -306,28 +315,12 @@
   rm -rf /var/lib/docker  # Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, ...
   systemctl start docker
   ```
-* ```
-  docker stop myContainer
-  docker rm myContainer
-  docker image prune --all                  # remove unused images   
-  docker system prune                       # cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers     
-  service docker stop
-  systemctl daemon-reload
-  systemctl restart docker.service
-  service docker start
-  docker-compose up -d --build
-  ```
 * `docker pause`  
 * `docker create` создание контейнера   
-* `docker pull image` загрузить образ из DockerHub   
-* `docker start` активирует существующий контейнер  
+* `docker start` активирует контейнер  
 * `docker build` считывает dockerfile, создаёт образ   
 * `docker stop` пытается остановить контейнер, отправив SIGTERM, если долго нет ответа SIGKILL   
 * `docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
-* `docker restart`, `/etc/init.d/docker restart` перезапустить демон  
-* `systemctl restart docker.service`  
-* `docker commit` создание нового образа из изменений в контейнере   
-* `exit` the container stops  
 
 ## Запустить несколько примеров
 [Настроить VM](https://github.com/privet100/inception/blob/main/README.md)  
