@@ -297,11 +297,10 @@
   docker volume rm $(docker volume ls -q)
   docker network rm $(docker network ls -q)
   docker image prune --all                  # remove unused images   
-  docker system prune                       # cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers     
+  docker system prune                       # cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers
   service docker stop
   systemctl daemon-reload
   systemctl restart docker.service
-  docker restart                            # перезапустить демон
   /etc/init.d/docker restart                # перезапустить демон  
   service docker start
   docker-compose up -d --build
