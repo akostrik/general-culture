@@ -291,7 +291,8 @@
 
 ## Начать новую жизнь
 * ```
-  docker stop $(docker ps -qa)
+  docker stop $(docker ps -qa)              # пытается остановить контейнер, отправив SIGTERM, если долго нет ответа SIGKILL   
+  docker kill stop $(docker ps -qa)         # посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
   docker rm $(docker ps -qa)                # удалить выключенный контейнер  
   docker rmi -f $(docker images -qa)
   docker volume rm $(docker volume ls -q)
@@ -303,7 +304,7 @@
   systemctl restart docker.service
   /etc/init.d/docker restart                # перезапустить демон  
   service docker start
-  docker-compose up -d --build
+  docker-compose up -d --build              # считывает dockerfile, создаёт образ   
 ```
 * reboot the VM and launch compose again
   + everything is functional
@@ -314,12 +315,6 @@
   rm -rf /var/lib/docker  # Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, ...
   systemctl start docker
   ```
-* `docker pause`  
-* `docker create` создание контейнера   
-* `docker start` активирует контейнер  
-* `docker build` считывает dockerfile, создаёт образ   
-* `docker stop` пытается остановить контейнер, отправив SIGTERM, если долго нет ответа SIGKILL   
-* `docker kill` посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
 
 ## Запустить несколько примеров
 [Настроить VM](https://github.com/privet100/inception/blob/main/README.md)  
