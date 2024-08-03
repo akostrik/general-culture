@@ -152,6 +152,7 @@
 ## Dockerfile (object, an entitie used to assemble an application)
 ![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
 * docker считывает инструкции, собирает и возвращает образ
+  + Builds a Docker image  
   + набор софта, который мы хотим развернуть
   + настройки контейнера (порты, переменные окружения, ...)
   + запуск команды
