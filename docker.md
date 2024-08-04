@@ -293,14 +293,14 @@
 ## Начать новую жизнь
 * ```
   docker stop $(docker ps -qa)              # пытается остановить контейнер, отправив SIGTERM, если долго нет ответа SIGKILL   
-  docker kill stop $(docker ps -qa)         # посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
+  docker kill $(docker ps -qa)         # посылает SIGKILL, выключает контейнер, игнорируя сохранение данных  
   docker rm $(docker ps -qa)                # удалить выключенный контейнер  
   docker rmi -f $(docker images -qa)
   docker volume rm $(docker volume ls -q)
   docker network rm $(docker network ls -q)
+  docker system prune                       # cleanup unused containers and images, doesn't deletes running containers et thiers logs and filesystem
   docker image prune --all                  # remove unused images   
-  docker system prune                       # cleanup unused containers and images, doesn't deletes running containers, logs on those containers, filesystem changes made by those containers
-  service docker stop
+  /usr/sbin/service docker stop
   systemctl daemon-reload
   systemctl restart docker.service
   /etc/init.d/docker restart                # перезапустить демон  
