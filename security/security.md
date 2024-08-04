@@ -1,4 +1,4 @@
-## Transport Layer Security (TLS) 
+### Transport Layer Security (TLS) 
 * a cryptographic protocol
 * encrypts data sent over the Internet
 * to ensure that eavesdroppers and hackers are unable to see what you transmit
@@ -34,3 +34,7 @@
 * как только клиент и сервер договорились об использовании TLS, им необходимо установить защищённое соединение
   + с помощью процедуры подтверждения связи
   + клиент и сервер принимают соглашение относительно различных параметров
+
+### Firewall, etc
+* **ufw** надстройка над файерволом iptables 
+* `shutdown now` выключить виртуальную машину 
