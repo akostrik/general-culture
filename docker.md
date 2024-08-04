@@ -298,7 +298,9 @@
   docker rmi -f $(docker images -qa)
   docker volume rm $(docker volume ls -q)
   docker network rm $(docker network ls -q)
-  docker system prune         # cleanup unused containers, images (doesn't deletes running containers, thiers logs, filesystem)
+  docker system prune --all --force --volumes # cleanup unused containers, images (doesn't delete running containers)
+	docker network prune --force
+	docker volume prune --force
   docker image prune --all                  # remove unused images   
   /usr/sbin/service docker stop
   /usr/sbin/service docker start
