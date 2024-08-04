@@ -298,14 +298,13 @@
   docker rmi -f $(docker images -qa)
   docker volume rm $(docker volume ls -q)
   docker network rm $(docker network ls -q)
-  docker system prune                       # cleanup unused containers and images, doesn't deletes running containers et thiers logs and filesystem
+  docker system prune         # cleanup unused containers, images (doesn't deletes running containers, thiers logs, filesystem)
   docker image prune --all                  # remove unused images   
   /usr/sbin/service docker stop
-  systemctl daemon-reload
-  systemctl restart docker.service
+  /usr/sbin/service docker start
   /etc/init.d/docker restart                # перезапустить демон  
-  service docker start
-  docker-compose up -d --build              # считывает dockerfile, создаёт образ   
+  systemctl restart docker.service
+  systemctl daemon-reload
 ```
 * reboot the VM and launch compose again
   + everything is functional
