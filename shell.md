@@ -12,10 +12,6 @@
 ##
 * https://ohmybash.nntoan.com/
 
-# Firewall, etc
-* **ufw** надстройка над файерволом iptables 
-* `shutdown now` выключить виртуальную машину 
-
 ## hot keys
 * `Ctrl-c` = сигнал SIGINT попросить приложение прервать свою работу
 * `Ctrl-d` = EOF говорит терминалу, что поток ввода окончен
