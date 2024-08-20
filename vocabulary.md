@@ -95,3 +95,6 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 * Practice the exam just like you would in the real exam https://github.com/JCluzet/42_EXAM
 * `./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "`` start a programm with random arguments
 
+**GNOME**
+GNU Network Object Model Environment, графическая оболочка или интерфейс для пользователей операционных систем на базе Linux и других Unix-подобных систем, рабочий стол, где вы видите значки, окна, панели, ...
+
