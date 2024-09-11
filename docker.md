@@ -77,7 +77,7 @@
 
 ## server daemon `dockerd`= Docker Engine ?
 * фоновый процесс (демон)
-* следует инструкциям из Dockerfile и Docker-compose.yaml
+* следует инструкциям из Dockerfile и Docker-compose.yml
 * управляет:
   + docker-объектами
   + процессами докера: скачивание и создание образов, собирает образ, запуск, остановка контейнеров
@@ -166,12 +166,9 @@
 * RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают
 * write a dockerfile: https://github.com/dnaprawa/dockerfile-best-practices
 
-## Docker Compose CLI (a tool)
-* to define and run multiple Docker containers as a single application
-* для управления несколькими контейнерами, managing the whole lifecycle of your application:
+## Docker Compose CLI `docker-compose.yml` (a tool)
+* to define and run multiple Docker containers as a single application, manage the whole lifecycle of your application:
   + start, stop, rebuild, configures services, networks, volumes, building images, ...
-* `docker-compose.yml`
-* is written in YAML
 * пример: веб-сайт
   + первый сервис (контейнер) отвечает за функционирование сайта
   + второй сервис (контейнер) отвечает за базу данных для авторизации пользователей
@@ -179,9 +176,12 @@
   + первый позволяет создать интернет-магазин
   + второй для поддержки клиентов
   + оба сайта подключены к общей базе данных
-* docker-compose va juste simplifier tes commandes docker pour tout mettre en place comme tu veux
-* fait attention à l'ordre des services que tu vas deploy
-  
+* simplifie tes commandes docker
+* В большинстве случаев лучше открывать порты в docker-compose.yml, а не в Dockerfile:
+  + В docker-compose.yml можно легко изменить порты или создать несколько конфигураций для разных сред (разработка, тестирование, продакшн), не трогая образ Docker
+  + Открытие портов в Dockerfile (EXPOSE) не делает их доступными извне контейнера, оно лишь указывает, какие порты внутри контейнера используются
+  + В docker-compose.yml легко настраиваются сети и связываются контейнеры между собой
+
 ## A docker-network (object, an entitie used to assemble an application)
 * a virtual software defined network that connects Docker containers
 * allows containers to communicate with each other and the outside world
