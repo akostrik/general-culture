@@ -81,7 +81,6 @@
 
 ### Примеры
 * укажем максимальный срок хранения картинок и шрифтов в кэше, отключим для них логирование
-  +
   ```
   location ~* ^.+.(js|css|png|jpg|jpeg|gif|ico|woff|woff2|swf|ttf|svg)$ {
     access_log off;
@@ -89,14 +88,12 @@
   }
   ```
 * закроем доступ к директории .git на сайте
-  +
   ```
   location ~ /.git {
     return 404;
   }
   ```
 * запретим исполнение скриптов в перечисленных директориях
-  +
   ```
   location ~* /(images|cache|media|logs|tmp)/.*.(php|pl|py|jsp|asp|sh|cgi)$ {
     return 404;
