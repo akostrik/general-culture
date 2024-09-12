@@ -244,31 +244,26 @@
 * отделены от контейнеров
 * можно размещать в облаке 
 * можно шифровать
-* контейнеры могут совместно пользоваться одним volume
-* different drivers (local storage on your docker host by default, NFS volumes, CIFS/Samba shares, device-level block storage adapters)
-* `docker run -it -v demo_volume:/data ubuntu:22.04`
-  + `it` attaches your terminal to the container
-  +  a volume called demo_volume is mounted to /data inside the container
-* монтирование директорий и файлов между хостовой машиной (где запущен Docker) и контейнером
-* управлять, какие данные и файлы хранятся вне контейнера и каким образом они взаимодействуют с контейнером
-* альтернативы
-  + **bind mounts** = связать папку на хосте, где docker engine и папку в контейнере, изменения будут отображаться и там, и там
-  + драйверы
-  + хранение в оперативной памяти (tmpfs mounts или npipe mounts)
-  + **Tempfs Mount** отменяют сохранение информации после ликвидации контейнера
+* могут использоваться разными котейнерами совместно
+* different drivers: local storage on your docker host by default, NFS volumes, CIFS/Samba shares, device-level block storage adapters
 * Named Volumes
-  + `volumes: mydata:/usr/share/nginx/html`: именованный том `mydata` создается и монтируется в контейнере по /usr/share/nginx/html
-  + `volumes: mydata:`: Docker создаст их автоматически
+  + `volumes: mydata:/usr/share/nginx/html`: том `mydata` монтируется в контейнере по /usr/share/nginx/html
+  + `volumes: mydata:`: создаётся автоматически
   + хранятся в /var/lib/docker/volumes на хосте вне контейнера
-  + храянтся даже если контейнер удален или между перезапусками контейнеров
-  + могут использоваться повторно разными контейнерами (для хранения базы данных, файлов, ...)
+  + хранятся, даже если контейнер удален или остановлен
+  + могут использоваться разными контейнерами
 * Bind Mounts
   + `volumes: - ./myapp:/usr/share/nginx/html`
-  + директория или файл на хостовой машине напрямую монтируются в контейнер
+  + директория или файл на хостовой машине напрямую монтируются в контейнер, изменения отображаются и там, и там
   + изменения в ./myapp на хосте будут сразу же отображаться внутри контейнера по пути /usr/share/nginx/html
 * Anonymous Volumes
-  + `volumes: - /usr/share/nginx/html` (контейнерный путь без хостовой директории)
-  + временный том, хранит данные  до удаления контейнера
+  + `volumes: - /usr/share/nginx/html` (контейнерный путь)
+  + том хранит данные до удаления контейнера
+* хранение в оперативной памяти (tmpfs mounts или npipe mounts)
+  + Tempfs Mount отменяют сохранение информации после ликвидации контейнера
+* `docker run -it -v demo_volume:/data ubuntu:22.04`
+  + `it` attaches your terminal to the container
+  +  a volume `demo_volume` is mounted to `/data` inside the container
 
 ## Docker Swarm (a tool)
 * a set of cooperating daemons that communicate through the Docker API
