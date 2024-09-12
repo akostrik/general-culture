@@ -239,12 +239,10 @@
 * https://docs.docker.com/network/network-tutorial-standalone/
  
 ## Docker Volume (a tool, an object?)
-* `хостовая_директория_или_файл:контейнерная_директория_или_файл`
-* папка хоста (usually in /var/lib/docker/volumes), примонтированная к файловой системе контейнера
+* папка хоста, примонтированная к файловой системе контейнера
 * отделены от контейнеров
 * можно размещать в облаке 
 * можно шифровать
-* могут использоваться разными котейнерами совместно
 * different drivers: local storage on your docker host by default, NFS volumes, CIFS/Samba shares, device-level block storage adapters
 * Named Volumes
   + когда нужно долговременное хранение данных и их использование между разными контейнерами или после перезапусков, типичный выбор для хранения бд или логов
