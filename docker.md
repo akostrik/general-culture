@@ -89,7 +89,8 @@
 * command-line или графический
 * получает команды от пользователя (создают контейнеры, управляют ими, создаёт/управляет/запускает контейнеризованные приложения)
 
-## image (object, an entitie used to assemble an application)
+## image (object)
+* an entitie used to assemble an application
 * неизменяемый файл, из которого можно неограниченное количество раз развернуть контейнер
 * исполняемый пакет = код + среда выполнения + библиотеки + переменные окружения + конфигурационные файлы
 * говорит docker-у, что находится в контейнере, какой процесс запустить, когда запускается контейнер, другие конфигурационные данные
@@ -109,7 +110,7 @@
 * **An index** manages user accounts, permissions, search, tagging, etc that's in the public web interface
 * **A registry** stores and serves up the actual image assets, delegates authentication to the index
 
-## Container (object, an entitie used to assemble an application)
+## Container (object)
 ![Screenshot from 2024-05-13 14-33-01](https://github.com/privet100/general-culture/assets/22834202/028daefa-01ba-4f47-b948-fcbece2bce91)
 * 1 container = 1 service = 1 развёрнутое и запущенное приложение (database, web server, web framework, test server, execute big data scripts)
 * содержит все для работы приложения (системные программы, библиотеки, код, среды исполнения, настройки)
@@ -151,20 +152,40 @@
 
 ## Dockerfile (object, an entitie used to assemble an application)
 ![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
-* docker считывает инструкции, собирает и возвращает образ
-  + Builds a Docker image  
+* docker
+  + считывает инструкции
+  + собирает и возвращает образ, builds a Docker image  
   + набор софта, который мы хотим развернуть
   + настройки контейнера (порты, переменные окружения, ...)
-  + запуск команды
   + добавление файла или директории
   + создание переменной окружения
-  + указания, что запускать, когда запускается контейнер этого образа
-* каждая команда создаёт новый слой образа с результатом вызванной команды ≈ система снапшотов сохраняет изменения в виртуальной машине
+  + запуск команды, что запускать, когда запускается контейнер этого образа
+* каждая команда создаёт новый слой образа ≈ система снапшотов сохраняет изменения в виртуальной машине
+* RUN создаёт статичный слой, изменения внутри которого записываются в образ, ничего не вызывают
 * финальный Docker-образ = объединение всех слоев в один
 * CMD или ENTRYPOINT, финальная инструкция, запускает что-либо, но НЕ записывают изменения в образ
 * CMD = the default program that is run once you start the container  
-* RUN создаёт статичный слой, изменения внутри которого записываются в образ, но ничего не вызывают
-* write a dockerfile: https://github.com/dnaprawa/dockerfile-best-practices
+* https://github.com/dnaprawa/dockerfile-best-practices
+* 4 способа передамть контейнеру переменные окружения из .env   
+  + 0) напрямую в Dockerfile не получится, так как Docker не поддерживает нативную загрузку .env файлов при сборке
+  + 1) на этапе запуска контейнера: `docker run --env-file .env my_image` (рекомендуется)
+  + 2) во время его выполнения контейнера через docker-compose (рекомендуется): 
+    ```
+    services:
+      app:
+        image: your_image
+        environment:
+          - ENV_VAR1=${ENV_VAR1}
+          - ENV_VAR2=${ENV_VAR2}
+    ```
+    запустите контейнер через docker-compose up
+  + 3) вручную перенести значения в Dockerfile `ENV ENV_VAR1=value1`
+  + 4) на этапе сборки образа с помощью docker build через Dockerfile:
+    ```
+    ARG ENV_VAR1
+    ENV ENV_VAR1=${ENV_VAR1}
+    `
+    Команда для сборки: `export $(cat .env | xargs) && docker build --build-arg ENV_VAR1=$ENV_VAR1 --build-arg ENV_VAR2=$ENV_VAR2 -t your_image .`
 
 ## Docker Compose CLI `docker-compose.yml` (a tool)
 * to define and run multiple Docker containers as a single application, manage the whole lifecycle of your application:
