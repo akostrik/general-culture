@@ -308,8 +308,8 @@
   + автоматизации их развёртывания, масштабирования и координации в условиях кластера
 * возможна поддержка технологий аппаратной виртуализации
 * automatiser le déploiement, la montée en charge et la mise en œuvre de conteneurs d'application sur des grappes de serveurs
-* fonctionne avec toute une série de technologies de conteneurisation, поддерживает основные технологии контейнеризации (Docker, rkt, ...)
-* est souvent utilisé avec Docker
+* fonctionne avec toute une série de technologies de conteneurisation (Docker, rkt, ...)
+* souvent utilisé avec Docker
 * très compliqué
 
 ## Настройки
@@ -320,6 +320,11 @@
 * `/etc/docker/daemon.json`
 * `/lib/systemd/system/docker.service` ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:
 * never edit the service script directly, use systemctl edit docker.service
+
+## Посмореть папку внутри конейнера
+`docker exec` для выполнения команд внутри контейнера
+`docker exec -it <container_id_or_name> /bin/bash` (большинствео контейнеров на базе Debian или Ubuntu)
+`docker exec -it <container_id_or_name> /bin/sh` (в контейнерах на базе Alpine или других легковесных дистрибутивов может)
 
 ## Инспектировать
 * 'docker network ls' (!)
