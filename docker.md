@@ -169,7 +169,7 @@
 * 4 способа передамть контейнеру переменные окружения из .env   
   + 0) напрямую в Dockerfile не получится, так как Docker не поддерживает нативную загрузку .env файлов при сборке
   + 1) на этапе запуска контейнера: `docker run --env-file .env my_image` (рекомендуется)
-  + 2) во время его выполнения контейнера через docker-compose (рекомендуется): 
+  + 2) во время выполнения контейнера через docker-compose (рекомендуется): 
     ```
     services:
       app:
@@ -186,14 +186,14 @@
     ENV ENV_VAR1=${ENV_VAR1}
     ```
     Команда для сборки: `export $(cat .env | xargs) && docker build --build-arg ENV_VAR1=$ENV_VAR1 --build-arg ENV_VAR2=$ENV_VAR2 -t my_image .`  
-    `export $(cat .env | xargs)` загружает переменные из файла .env в окружение оболочки  
+    `export $(cat .env | xargs)` загружает переменные из файла .env в окружение оболочки, теперь ENV_VAR доступна в текущей оболочке, как если бы вы прописали их вручную  
     `cat .env` читает .env  
-    `xargs` преобразует вывод команды cat в строку аргументов (ENV_VAR1=value1 ENV_VAR2=value2), чтобы передать её в команду export  
-    `export $(...)` устанавливает переменные окружения в текущей сессии терминала, `$()` позволяет взять результат выполнения команды внутри скобок и передать его как аргументы для export, теперь ENV_VAR1 и ENV_VAR2 доступны в текущей оболочке, как если бы вы прописали их вручную  
-    `docker build --build-arg ...` передаёт эти переменные на этапе сборки Docker-образа, чтобы Docker мог их использовать  
-    `docker build --build-arg ENV_VAR1=$ENV_VAR1 --build-arg ENV_VAR2=$ENV_VAR2 -t your_image .`  
+    `xargs` преобразует вывод cat в строку аргументов (ENV_VAR1=value1 ENV_VAR2=value2), чтобы передать её в export  
+    `export $(...)` устанавливает переменные окружения в текущей сессии терминала
+    `$()` позволяет взять результат выполнения команды внутри скобок и передать его как аргументы для export
+    `docker build --build-arg ENV_VAR1=$ENV_VAR1 --build-arg ENV_VAR2=$ENV_VAR2 -t your_image .` передаёт переменные на этапе сборки Docker-образа, чтобы Docker мог их использовать
     `docker build` инициирует сборку Docker-образа  
-    `--build-arg ENV_VAR1=$ENV_VAR1` и `--build-arg ENV_VAR2=$ENV_VAR2` передают значения переменных окружения, установленыe через export, на этапе сборки Docker-образа, а Docker использует эти аргументы внутри Dockerfile при помощи инструкции ARG  
+    `--build-arg ENV_VAR=$ENV_VAR` передает значения переменной окружения, установленной через export, на этапе сборки Docker-образа, а Docker использует эти аргументы внутри Dockerfile при помощи ARG  
     `-t` задаёт тег для создаваемого Docker-образа, в данном случае образ будет называться my_image  
 
 ## Docker Compose CLI `docker-compose.yml` (a tool)
