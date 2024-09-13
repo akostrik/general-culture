@@ -184,7 +184,7 @@
     ```
     ARG ENV_VAR1
     ENV ENV_VAR1=${ENV_VAR1}
-    `
+    ```
     Команда для сборки: `export $(cat .env | xargs) && docker build --build-arg ENV_VAR1=$ENV_VAR1 --build-arg ENV_VAR2=$ENV_VAR2 -t your_image .`
 
 ## Docker Compose CLI `docker-compose.yml` (a tool)
