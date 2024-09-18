@@ -37,3 +37,4 @@
   + мы оставляем порт 80 для браузеров, которые часто ведут себя некорректно
   + aujourd'hui c'est juste obligatoire pour le SEO
   + il faut garder le port 80 ouvert parce que ça permet de rediriger les gens vers l'https, y'a des services des fois qui au clic d'un lien envoient vers du http, du coup c'est mieux d'avoir une redirection qu'une erreur
+  + Best Practice - Keep Port 80 Open https://letsencrypt.org/docs/allow-port-80/
