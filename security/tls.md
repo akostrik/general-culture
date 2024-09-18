@@ -35,4 +35,5 @@
   + клиент и сервер принимают соглашение относительно различных параметров
 * un site sans TLS c'est pas "normal" en 2021, qu'il soit statique ou pas ça change rien du tout
   + мы оставляем порт 80 для браузеров, которые часто ведут себя некорректно
-  + aujourd'hui c'est juste obligatoire pour le SEO 
+  + aujourd'hui c'est juste obligatoire pour le SEO
+  + il faut garder le port 80 ouvert parce que ça permet de rediriger les gens vers l'https, y'a des services des fois qui au clic d'un lien envoient vers du http, du coup c'est mieux d'avoir une redirection qu'une erreur
