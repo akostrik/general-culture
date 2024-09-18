@@ -23,6 +23,7 @@
 
 ## Docker 
 * a set of platform as a service (PaaS) products
+* a software that can package your application, its dependencies, system tools, system libraries, settings in a single virtual container
 * инструмент объекто-ориентированного проектирования (дизайна) (вместо последовательно-процедурного вызова команд)
   + инкапсуляция, наследование, полиморфизм компонент => независимые компоненты: приложение + web-сервер + БД + сист библиотеки
   + конфигурация nginx ≈ часть веб-приложения
@@ -91,6 +92,9 @@
 
 ## image (object)
 * an entitie used to assemble an application
+* a combined package, which contains everything that’s needed to run your application
+* a standalone, executable software package which runs reliably on any server — Linux, Windows, macOS, public cloud or private cloud
+* can be used to run the application as an isolated process
 * неизменяемый файл, из которого можно неограниченное количество раз развернуть контейнер
 * исполняемый пакет = код + среда выполнения + библиотеки + переменные окружения + конфигурационные файлы
 * говорит docker-у, что находится в контейнере, какой процесс запустить, когда запускается контейнер, другие конфигурационные данные
