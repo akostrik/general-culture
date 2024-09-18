@@ -1,8 +1,7 @@
 ### Transport Layer Security (TLS) 
 * a cryptographic protocol
-* encrypts data sent over the Internet
+* provides end-to-end security of data sent between applications over the Internet, encrypts data sent over the Internet
 * to ensure that eavesdroppers and hackers are unable to see what you transmit
-* provides end-to-end security of data sent between applications over the Internet
 * used
   + secure web browsing
     - the padlock icon that appears in web browsers when a secure session is established
