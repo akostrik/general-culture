@@ -35,3 +35,4 @@
   + клиент и сервер принимают соглашение относительно различных параметров
 * un site sans TLS c'est pas "normal" en 2021, qu'il soit statique ou pas ça change rien du tout
   + мы оставляем порт 80 для браузеров, которые часто ведут себя некорректно
+  + aujourd'hui c'est juste obligatoire pour le SEO 
