@@ -340,7 +340,7 @@
 * automatiser le déploiement, la montée en charge et la mise en œuvre de conteneurs d'application sur des grappes de serveurs
 * fonctionne avec toute une série de technologies de conteneurisation (Docker, rkt, ...)
 * souvent utilisé avec Docker
-* très compliqué
+* compliqué
 
 ## Настройки
 * `/etc/default` DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"
@@ -350,11 +350,6 @@
 * `/etc/docker/daemon.json`
 * `/lib/systemd/system/docker.service` ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:
 * never edit the service script directly, use systemctl edit docker.service
-
-## Посмореть папку внутри конейнера
-`docker exec` для выполнения команд внутри контейнера
-`docker exec -it <container_id_or_name> /bin/bash` (большинствео контейнеров на базе Debian или Ubuntu)
-`docker exec -it <container_id_or_name> /bin/sh` (в контейнерах на базе Alpine или других легковесных дистрибутивов может)
 
 ## Инспектировать
 * 'docker network ls' (!)
@@ -382,6 +377,9 @@
 * `echo "foobar" > /var/www/public/foo` add a test file with some arbitrary content   
 * `make status` to see the running containers в docker-compose  
 * `make logs` to see the logs of the containers  в docker-compose    
+* `docker exec` для выполнения команд внутри контейнера 
+* `docker exec -it <container_id_or_name> /bin/bash` посмореть папку внутри конейнера для большинства контейнеров Debian или Ubuntu
+* `docker exec -it <container_id_or_name> /bin/sh` посмореть папку внутри конейнера в контейнерах Alpine или др легковесных дистрибутивов
 
 ## Начать новую жизнь
 * ```
