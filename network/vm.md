@@ -2,8 +2,6 @@
 * **A virtual network adapter** a software-emulated physical device
 * ![Screenshot from 2024-06-07 18-24-32](https://github.com/privet100/general-culture/assets/22834202/e46ccee3-a398-4e4b-a92a-c59fb3c93a9d)
 
-
-
 ### NAT = Network Address Translation = трансляция сетевых адресов = IP Masquerading = Network Masquerading = Native Address Translation
 ![Screenshot from 2024-06-07 17-22-13](https://github.com/privet100/general-culture/assets/22834202/1a99dea0-1916-47f8-900e-f95af4beaab7)
 * [NAT](https://github.com/privet100/general-culture/blob/main/network/network_vpn_ports_etc.md#nat--network-address-translation--ip-masquerading--network-masquerading--native-address-translation--%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D1%8F-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D1%85-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%BE%D0%B2)
