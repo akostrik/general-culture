@@ -42,6 +42,32 @@
 * быстрый, но медленнее, чем запуск приложения на физическом сервере
 * сложный
 * работает непосредственно в ОС => возможно внедрение зловредного кода в контейнеры и проникновение в ОС
+* VM vs docker
+  | VM                                               | Docker                                                           |
+  | ------------------------------------------------ | ---------------------------------------------------------------- |
+  | a lot of memory space                            | a lot less memory space                                          |
+  | long time to boot up                             | quick boot up because it uses the running kernel that you using  |
+  | difficult to scale up                            | super easy to scale                                              |
+  | low efficiency                                   | high efficiency                                                  |
+  | volumes storage cannot be shared across the VM’s | volumes storage can be shared across the host and the containers |
+* PID 1
+  + PID 1 = systemd, mais dans un container c’est différent, il ne peux pas y avoir de systemd
+  + первый процесс, который запускается в контейнере
+  + отвечает за запуск и управление процессами внутри контейнера
+  + другие процессы внутри контейнера получают PID от PID 1
+  + если PID 1 завершится, контейнер остановится
+  + обрабатывает системные сигналы (SIGTERM, ...)
+    - если ваш основной процесс (например, веб-сервер) работает под PID 1, он должен корректно обрабатывать такие сигналы для правильного завершения работы
+  + очищает дочерние процессы, чтобы избежать зомби-процессов
+  + остальные настроены так, чтобы PID 1 их родитель
+  + CMD в Dockerfile => Docker назначит PID 1 вашему основному процессу
+  + не используйте скрипты оболочки в качестве PID 1
+    - могут быть проблемы с управлением процессами
+    - можно использовать, если только tini или dumb-init служит в качестве PID 1 и обрабатывает системные сигналы
+  + `daemon off` для сервисов, которые по умолчанию запускаются в фоновом режиме
+    - чтобы процесс оставался основным процессом с PID 1 и не запускался в фоне
+  + si le service exit de facon anormale, le container doit pouvoir se restart (d'ou l'interet du PID 1)
+    - `top || ps` vérifier que notre service à l'intérieur de notre container tourne bien en tant que PID 1 
 
 ## Как устроен
 ![Screenshot from 2024-04-06 01-09-43+](https://github.com/akostrik/general-culture/assets/22834202/4b0ea467-2d6b-45a7-b1f6-c9e22093b2dc)
