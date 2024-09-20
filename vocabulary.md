@@ -81,7 +81,8 @@
 * changes the umask to 0 to allow open(), creat(), and other operating system calls to provide their own permission masks and not to depend on the umask of the caller
 * redirects stdin, stdout, stderr to /dev/null or a logfile
 * closes all the other file descriptors inherited from the parent process
-  
+
+** --- **
 * не запускается chrome или brave
 `
 rm -rf ~/.config/google-chrome/Singleton*
@@ -97,4 +98,3 @@ rm -rf ~/.config/BraveSoftware/Brave-Browser/SingletonLock
 
 **GNOME**
 GNU Network Object Model Environment, графическая оболочка или интерфейс для пользователей операционных систем на базе Linux и других Unix-подобных систем, рабочий стол, где вы видите значки, окна, панели, ...
-
