@@ -12,3 +12,10 @@
   + PHP выполняет процессы FastCGI с помощью php-fpm
   + PHP взаимодействует с бд, получает/обновляет данные
   + бд хранит контент сайта (посты, страницы, настройки, ...)
+
+### WP-CLI
+* the command line interface for WordPress
+* allows to interact with your WordPress site from the command line
+* is used for automating tasks, debugging problems, installing/removing plugins along side with themes, managing users and roles, exporting/importing data, run databses queries, ...
+* can save time that will take you to installing a pluging/theme manually, moderate users and their roles, deploy a new WordPress website to a production server, ...
+* helps you react with your WordPress website
