@@ -38,3 +38,4 @@
   + il faut garder le port 80 ouvert parce que ça permet de rediriger les gens vers l'https, y'a des services des fois qui au clic d'un lien envoient vers du http, du coup c'est mieux d'avoir une redirection qu'une erreur
   + Best Practice - Keep Port 80 Open https://letsencrypt.org/docs/allow-port-80/
   + tant que les services autorisent encore le port 80, mieux vaut l'ouvrir et rediriger sur le 443 (si possible avec une 301, pas un rewrite)
+* TLS change vos URL de http en https
