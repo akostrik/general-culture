@@ -1,3 +1,5 @@
+l’authentification, et le chiffrement des données qui transitent entre des serveurs.
+
 ### Transport Layer Security (TLS) 
 * a cryptographic protocol
 * provides end-to-end security of data sent between applications over the Internet, encrypts data sent over the Internet
