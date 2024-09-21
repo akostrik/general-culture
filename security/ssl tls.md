@@ -1,6 +1,16 @@
-l’authentification, et le chiffrement des données qui transitent entre des serveurs.
+## SSL
+* l’authentification le chiffrement des données qui transitent entre des serveurs
+* initialement développé par Netscape 
+* Secure Socket Layers (SSL) предшественник TSL, TLS = SSL moderne
+  + SSL 1.0 was never publicly released
+  + SSL 2.0, SSLv2
+    - 1995
+    - la découverte de plusieurs vulnérabilités en 1996
+  + SSL 3.0, SSLv3
+    - insecure
 
 ### Transport Layer Security (TLS) 
+* 1999
 * a cryptographic protocol
 * provides end-to-end security of data sent between applications over the Internet, encrypts data sent over the Internet
 * to ensure that eavesdroppers and hackers are unable to see what you transmit
@@ -18,7 +28,8 @@ l’authentification, et le chiffrement des données qui transitent entre des se
   + l'intégrité des données échangées
   + de manière optionnelle, l'authentification du client (mais dans la réalité celle-ci est souvent assurée par la couche applicative)
   + клиент-серверные приложения осуществлять связь: нельзя производить прослушивание пакетов и осуществить несанкционированный доступ
-* Secure Socket Layers (SSL) его предшественник 
+* SSL предшественник TSL
+  + au fil du temps, de nouvelles versions de ces protocoles ont vu le jour pour faire face aux vulnérabilités et prendre en charge des suites et des algorithmes de chiffrement toujours plus forts, toujours plus sécurisés 
 * does not secure data on end systems
   + ensures the secure delivery of data over the Internet
   + avoides eavesdropping and/or alteration of the content
@@ -41,3 +52,32 @@ l’authentification, et le chiffrement des données qui transitent entre des se
   + Best Practice - Keep Port 80 Open https://letsencrypt.org/docs/allow-port-80/
   + tant que les services autorisent encore le port 80, mieux vaut l'ouvrir et rediriger sur le 443 (si possible avec une 301, pas un rewrite)
 * TLS change vos URL de http en https
+
+## цифровой сертификат
+* электронный или печатный документ, подтверждающий принадлежность владельцу открытого ключа или каких-либо атрибутов
+* выпущен удостоверяющим центром
+* самозаверенный сертификат
+  + подписан самим его субъектом
+  + технически не отличается от сертификата, заверенного центром
+  + пользователь создаёт свою собственную сигнатуру
+  + все корневые сертификаты доверенных УЦ являются самозаверенными
+  + невозможно отозвать
+  + позволяет атаку посредника: злоумышленник перехватывает сертификат узла-инициатора шифрованного соединения и вместо него отправляет узлу назначения свой поддельный, с помощью которого передаваемые данные можно дешифровать
+* SSL certificat
+  + для безопасной передачи информации в Интернете и интранете
+  + https соединение между Вашим сайтом и браузером пользователя шифрует передаваемую информацию
+  + самозаверенный SSL сертификат
+    - сертификат открытого ключа
+    - для своего домена или IP-адреса создали 
+    - для внутреннего пользования: частными лицами или в малых фирмах, люди добавляют сами сертификат в списки браузера
+    - внешний посетитель при подколючении к каналу видит «Сертификат безопасности не является доверенным»
+    - бесплатный
+  + официально заверенный SSL сертификат
+    - в зависимости от типа SSL сертификата проверка разных уровней – от одного домена и до полной проверки документации юридического лица
+    - центр сертификации гарантирует уровень доверия к серверу, информация о домене была проверена независимым доверительным источником
+    - печать защиты (Trust logo или Site Seal)
+    - отображается в браузере и в самом SSL сертификате: при расширенной проверке, соединением через https, зеленая адресная строка
+    - SSL rajoute un cadenas vert quand vous accédez à un site sécurisé
+    - если пользователь попал на фишинговый сайт с действительным SSL сертификатом (сертификат был ошибочно выдан по вине удостоверяющего центра) и понес убытки, центр сертификации гарантирует компенсацию от 10 000 до 1 500 000 долларов
+    - Ex: PositiveSSL от Comodo
+
