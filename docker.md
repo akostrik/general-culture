@@ -352,33 +352,30 @@
 * never edit the service script directly, use systemctl edit docker.service
 
 ## Инспектировать
-* 'docker network ls' (!)
-* 'docker volume ls' (!)
-* 'docker volume inspect wordpress', 'docker volume inspect mariadb' (!)
-  + the result contains '/home/akostrik/data/'
-  + your volumes are available in `/home/akostrik/data` folder of the host machine
-`systemctl status docker` служба docker   
-* `docker ps`, `docker ps -a`, `docker ls` список доступных контейнеров с их состоянием на сервере    
-* `docker images`, `docker image ls` просмотреть список доступных локально образов   
-* `docker image inspect` подробнее рассказывает о выбранном контейнере  
-* `docker container list`   
-* `docker volume ls` список томов   
-* `docker volume inspect myVolume`    
-* `docker network inspect myNetwork`  
-* `docker logs` логи в консоль   
+* контейнеры и images
+  + `docker ps`, `docker ps -a`, `docker ls`, * `docker-compose ps` список контейнеров
+  + `docker container list`   
+  + `docker logs` логи в консоль   
+  + `docker images`, `docker image ls` просмотреть список доступных локально образов   
+  + `docker image inspect` подробнее рассказывает о выбранном контейнере  
+  + `/var/lib/docker/aufs/diff/` файлы контейнеров (если использует драйвер AUFS)  
+  + `/var/lib/docker/aufs/diff/` образы  
+  + `ls /var/www/public` the contents of the container’s /var/www/public   
+* тома и сети
+  + 'docker network ls' (!)
+  + `docker network inspect myNetwork`  
+  + 'docker volume ls' (!)
+  + 'docker volume inspect wordpress', 'docker volume inspect mariadb' (!)
+    - the result contains '/home/akostrik/data/'
+    - your volumes are available in `/home/akostrik/data` folder of the host machine
+* `systemctl status docker` служба docker   
 * `cat /var/lib/docker/repositories | python -mjson.tool` list of the repositories on your host  
 * `ls -al /var/lib/docker/graph`  
-* `/var/lib/docker/aufs/diff/` файлы контейнеров (если использует драйвер AUFS)  
 * `/var/lib/docker/containers/` служебная информация  
-* `/var/lib/docker/aufs/diff/` образы  
 * `/etc/init.d/docker status`   
 * `/etc/resolv.conf`  
-* `ls /var/www/public` the contents of the container’s /var/www/public   
-* `echo "foobar" > /var/www/public/foo` add a test file with some arbitrary content   
-* `make status` to see the running containers в docker-compose  
-* `make logs` to see the logs of the containers  в docker-compose    
 * `docker exec` для выполнения команд внутри контейнера 
-* `docker exec -it <container_id_or_name> /bin/bash` посмореть папку внутри конейнера для большинства контейнеров Debian или Ubuntu
+* `docker exec -it <container_id_or_name> /bin/bash` посмореть папку внутри конейнера для контейнеров Debian или Ubuntu
 * `docker exec -it <container_id_or_name> /bin/sh` посмореть папку внутри конейнера в контейнерах Alpine или др легковесных дистрибутивов
 
 ## Начать новую жизнь
