@@ -355,7 +355,7 @@
 * контейнеры и images
   + `docker ps`, `docker ps -a`, `docker ls`, * `docker-compose ps` список контейнеров
   + `docker container list`   
-  + `docker logs` логи в консоль   
+  + `docker-compose logs`, `docker logs nginx`, `docker logs` логи контейнеров  
   + `docker images`, `docker image ls` просмотреть список доступных локально образов   
   + `docker image inspect` подробнее рассказывает о выбранном контейнере  
   + `/var/lib/docker/aufs/diff/` файлы контейнеров (если использует драйвер AUFS)  
