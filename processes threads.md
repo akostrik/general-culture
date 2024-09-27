@@ -4,13 +4,13 @@
 * На 1 ядре одновременно может находиться только 1 процесс или поток. Процессы на ядре постоянно подменяют друг друга, из-за чего страдает производительность, когда процессов много. Это камень преткновения для web-приложений, которые открывают на каждое соединение свой поток
 
 ## PID 1 process
-* in a Docker container
+* in a Docker container:
   + behaves differently from the init process in a normal Unix-based system (they are NOT the same)
   + the init process = the first process that is started when the system boots up (that the kernel starts)
   + is responsible for starting and stoping all of the other processes on the system
   + is responsible for starting and stoping the application that is running in the container
-* in a Docker container
-* 
+* in the system:
+  
 ## daemon process
 * a background process that runs continuosuly on a system and performs a specific task
 * запускается автоматически при старте системы или вручную администратором системы
