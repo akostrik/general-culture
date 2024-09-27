@@ -11,3 +11,10 @@
   + is responsible for starting and stoping all of the other processes on the system
   + is responsible for starting and stoping the application that is running in the container
 * PID 1 in a Docker container behaves differently from the init process in a normal Unix-based system (they are NOT the same)
+
+## демон
+* запускается при старте системы
+* фоновый процесс, автоматически реагирует на события
+* работает без прямого взаимодействия с пользователем
+* может быть перезапущен, если система завершает его работу (например, перезапуск NGINX в случае сбоя)
+* Примеры: веб-серверы (Apache, NGINX), системные мониторы, службы резервного копирования
