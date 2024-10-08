@@ -180,7 +180,7 @@
 * контейнерам можно назначать лимиты ресурсов
 * communicate with each other through channels
 
-## Dockerfile (object, an entitie used to assemble an application)
+## Dockerfile (object, an entity used to assemble an application)
 ![Screenshot from 2024-03-29 23-08-11](https://github.com/akostrik/general-culture/assets/22834202/d92caf9d-11c3-4446-88aa-1eed25bd76f3)
 * docker
   + считывает инструкции
@@ -423,6 +423,12 @@
   rm -rf /var/lib/docker  # Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, ...
   systemctl start docker
   ```
+## Прочее
+* `tail -f` для отслеживания логов контейнера
+  + нарушает правило - в контейнерах вывод журналов рекомендуется через стандартный stdout, логи доступны через `docker logs` 
+  + создаёт ненужную нагрузку на систему
+  + нарушает правило - логирование организуется через системы ELK Stack, Prometheus, Grafana, они собирают и обрабатывают логи централизованно
+  + позволяет просматривать файлы напрямую, что может быть запрещено политикой безопасности проекта
 
 ## Запустить несколько примеров
 [Настроить VM](https://github.com/privet100/inception/blob/main/README.md)  
