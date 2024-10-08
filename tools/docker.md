@@ -371,7 +371,7 @@
 
 ## Инспектировать
 * контейнеры и images
-  + `docker ps`, `docker ps -a`, `docker ls`, * `docker-compose ps` список контейнеров
+  + `docker ps`, `docker ps -a`, `docker ls`, * `docker-compose ps -p` список контейнеров
   + `docker container list`   
   + `docker-compose logs`, `docker logs nginx`, `docker logs` логи контейнеров  
   + `docker images`, `docker image ls` просмотреть список доступных локально образов   
