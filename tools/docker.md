@@ -193,9 +193,14 @@
 * каждая команда создаёт новый слой образа ≈ система снапшотов сохраняет изменения в виртуальной машине
 * RUN создаёт статичный слой, изменения внутри которого записываются в образ, ничего не вызывают
 * финальный Docker-образ = объединение всех слоев в один
-* ENTRYPOINT гарантирует, что основной процесс будет всегда запущен, независимо от переданных аргументов, что контейнер всегда запустит основное приложение (веб-сервер, базу данных и т.д.)
+* ENTRYPOINT 
+  + un process par défaut, point d'entrée, главный процесс контейнера
+  + не зависит от аргументов запуска контейнера
+  + l'on ne peut pas l'override
+  + гарантирует, что контейнер всегда запустит основное приложение (веб-сервер, базу данных и т.д.), независимо от переданных аргументов
   + НЕ записывает изменения в образ
-  + `ENTRYPOINT ["nginx", "-g", "daemon off;"]` nginx основной процесс, главный процесс контейнера, не зависит от аргументов запуска контейнера 
+  + faudrait que j’accède au bash du container pendant qu’il tourne et ça implique de demarrer le php-fpm et/ou le nginx soit même si je fait un CMD alors que si je fait un ENTRYPOINT je pense qu’il executera quand même et j’aurais pas à le faire enfin
+  + `ENTRYPOINT ["nginx", "-g", "daemon off;"]`  
   + MariaDB:
     ```
     ENTRYPOINT ["docker-entrypoint.sh"] // подготавливает бд и запускает mysqld
@@ -207,9 +212,13 @@
     ENTRYPOINT ["docker-entrypoint.sh"] // подготавливает среду для WordPress
     CMD ["apache2-foreground"]          // запускает основной процесс веб-сервера
     ```
-* CMD = the default program, is run once you start the container
+* CMD
+  + is run once you start the container
+  + définir la commande de démarrage par défaut du container
+  + une commande par défaut que l'on peut override
+  + à aucun moment durant le build la commande par défaut ne va être exécuté
   + НЕ записывает изменения в образ
-  + можно использовать для передачи аргументов по умолчанию 
+  + можно использовать для передачи аргументов по умолчанию
 * https://github.com/dnaprawa/dockerfile-best-practices
 * 4 способа передамть контейнеру переменные окружения из .env   
   + 0) напрямую в Dockerfile не получится, так как Docker не поддерживает нативную загрузку .env файлов при сборке
@@ -410,11 +419,7 @@
   /etc/init.d/docker restart                # перезапустить демон  
   systemctl restart docker.service
   systemctl daemon-reload
-```
-* reboot the VM and launch compose again
-  + everything is functional
-  + both WordPress and MariaDB are configured
-  + the changes you made previously to the WordPress website should still be here
+  ```
 * ```
   systemctl stop docker
   rm -rf /var/lib/docker  # Restart the engine in a completely empty state + lose all images, containers, named volumes, user created networks, ...
