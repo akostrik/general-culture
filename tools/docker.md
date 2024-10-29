@@ -39,17 +39,20 @@
   + на уровне операционной системы
   + запускать в облачной инфраструктуре
   + упростить
-* быстрый, но медленнее, чем запуск приложения на физическом сервере
-* сложный
+* медленнее, чем запуск приложения на физическом сервере
 * работает непосредственно в ОС => возможно внедрение зловредного кода в контейнеры и проникновение в ОС
-* VM vs docker
-  | VM                                               | Docker                                                           |
-  | ------------------------------------------------ | ---------------------------------------------------------------- |
-  | a lot of memory space                            | a lot less memory space                                          |
-  | long time to boot up                             | quick boot up because it uses the running kernel that you using  |
-  | difficult to scale up                            | super easy to scale                                              |
-  | low efficiency                                   | high efficiency                                                  |
-  | volumes storage cannot be shared across the VM’s | volumes storage can be shared across the host and the containers |
+* VM vs docker  
+  + "масштабирование" = увеличение числа экземпляров приложения, чтобы обрабатывать больше запросов
+    - Горизонтальное (scale out): добавляются новые экземпляры приложения/сервиса, например, запустить ещё несколько контейнеров/VM с тем же приложением
+    - Вертикальное (scale up): увеличиваются ресурсы одного экземпляра (оперативка, процессоры и т.д.)
+  +
+    | VM                                                                                                                       | container                                                                |
+    | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------|
+    | создают полноценную виртуальную среду с ОС, эмулируют аппаратные ресурсы (нужно много memory, space, процессорное время) | работают на одной ОС, делят ресурсы                                      |
+    | long time to boot up                                                                                                     | quick используют ядро основной системы, не требуют полной загрузки ОС    |
+    | difficult to scale up                                                                                                    | easy and quick to scale up                                               |
+    | -                                                                                                                        | масштабирование одной командой (docker-compose scale) или оркестраторами |
+    | volumes storage cannot be shared across the VM’s                                                                         | volumes storage can be shared across the host and the containers         |
 * PID 1
   + PID 1 = systemd, mais dans un container c’est différent, il ne peux pas y avoir de systemd
   + первый процесс, который запускается в контейнере
