@@ -6,12 +6,13 @@
   + процессы на ядре постоянно подменяют друг друга => страдает производительность, когда процессов много, это камень преткновения для web-приложений, которые открывают на каждое соединение свой поток
 
 ## PID 1 process
+Behaves differently in a Docker container and in a normal Unix-based system 
 * in a Docker container:
-  + behaves differently from the init process in a normal Unix-based system (they are NOT the same)
   + the init process = the first process that is started when the system boots up (that the kernel starts)
-  + is responsible for starting and stoping all of the other processes on the system
-  + is responsible for starting and stoping the application that is running in the container
-* in the system:
+  + starts and stops all of the other processes 
+  + starts and stops applications
+* in a normal Unix-based system:
+  + the init process = the first process that is started when the system boots up (that the kernel starts)
   
 ## daemon process
 * a background process that runs continuosuly on a system and performs a specific task
