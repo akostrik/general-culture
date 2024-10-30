@@ -48,11 +48,9 @@
   +
     | VM                                                                                                                       | container                                                                      |
     | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------| 
-    | создают полноценную виртуальную среду с ОС, эмулируют аппаратные ресурсы (нужно много memory, space, процессорное время) | используют одно ядро основной ОС, не требуют полной загрузки ОС, делят ресурсы |
-    | long time to boot up                                                                                                     | quick                                                                          |
-    | difficult to scale up                                                                                                    | easy and quick to scale up                                                     |
-    | -                                                                                                                        | масштабирование одной командой (docker-compose scale) или оркестраторами       |
+    | создают полноценную виртуальную среду с ОС, эмулируют аппаратные ресурсы (нужно много memory, space, процессорное время) | не требуют полной загрузки ОС, используют одно ядро основной ОС, делят ресурсы |
     | volumes storage cannot be shared across the VM’s                                                                         | volumes storage can be shared across the host and the containers               |
+    | difficult to scale up                                                                                                    | quick and easy, одной командой (docker-compose scale) или оркестраторами       |
 * PID 1
   + PID 1 = systemd, mais dans un container c’est différent, il ne peux pas y avoir de systemd
   + первый процесс, который запускается в контейнере
