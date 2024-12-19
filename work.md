@@ -9,3 +9,4 @@
   + https://studiolaccordparfait.com/laccordparfait/
 * поиск работы https://t.co/VWeYAIKaCt
 * Upwork (до 2015 Elance-oDesk) — компания, предлагающая глобальную площадку по поиску работы и ряд программных продуктов для работодателей, которые хотят нанять и сотрудничать с удаленными специалистами
+* stages.paris.fr
