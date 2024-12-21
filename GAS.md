@@ -1,5 +1,5 @@
 ### google apps script GAS 
-* https://api.telegram.org/bot<YOUR_TELEGRAM_BOT_TOKEN>/setWebhook?url=https://script.google.com/macros/s/<DEPLOYMENT_ID>/exec
+* https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=https://script.google.com/macros/s/<DEPLOYMENT_ID>/exec
 
 ### WebStorm + GAS
 * подготорвка
