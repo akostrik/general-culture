@@ -9,4 +9,8 @@
 * https://github.com/shuygena/intra42_ru_guides?tab=readme-ov-file#irc
 * Власти США требуют от разработчиков отказаться от C/C++ к 2026 году
   - https://devby.io/news/vlasti-ssha-trebuut-ot-razrabotchikov-otkazatsya-ot-cc-k-2026-godu
+* Cairo
+  + initiation https://github.com/shramee/starklings-cairo1
+  + https://book.cairo-lang.org/    
+
 
