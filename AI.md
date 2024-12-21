@@ -36,6 +36,7 @@
     - В « 42 packet manager » скачай
     - там есть почти все джетбрейновские кроме idea
 * copilot 10€ в месяц, 1 месяц бесплатно, связан с github
+  + через студенческую почту можно оформить бесплатную подписку на гитхаб копайлот, там есть и гпт и клод
   + Access to GitHub Copilot is now included with your GitHub account
   + Your GitHub account now includes free use of GitHub Copilot in VS Code and on GitHub, powered by your choice of AI models from OpenAI and Anthropic. This is now part of your personal GitHub account, and accessible via VS Code and on GitHub.
 * tabnine 3 месяца бесплатно, не связан с github
