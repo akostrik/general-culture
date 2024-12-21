@@ -3,32 +3,42 @@
 
 ### Coding
 * студенческая лицензия JetBrains
-  + бесплатный доступ ко всем продуктам JetBrains
-  + бесплатный доступ ко всем обновлениям
-  + расширенные функции автодополнения, анализа, рефакторинга
-  + IntelliJ IDEA (Java, Kotlin и др) среда разработки (IDE) 
-  + PyCharm (Python) среда разработки
-  + WebStorm (js, TypeScript) среда разработки
-  + PhpStorm (PHP) среда разработки
-  + CLion (C, C++) среда разработки
+  + Aqua
+  + CLion среда разработки C, C++
   + DataGrip для работы с SQL и БД
-  + YouTrack командная работа, управлять проектами и автоматизировать сборку/тестирование кода
-  + TeamCity командная работа, управлять проектами и автоматизировать сборку/тестирование кода
-  + YouTrack система управления задачами 
+  + DataSpell
+  + dotCover
+  + dotMemory
+  + dotTrace
+  + GoLand
+  + IntelliJ IDEA среда разработки (IDE) Java, Kotlin и др  
+  + Ultimate
+  + PhpStorm среда разработки PHP
+  + PyCharm среда разработки Python
+  + ReSharper
+  + ReSharper C++
+  + Rider
+  + RubyMine
+  + RustRover
+  + WebStorm среда разработки js, TypeScript
+  + YouTrack система управления задачами, командная работа, управлять проектами и автоматизировать сборку/тестирование кода - нет в студенческой версии
+  + TeamCity командная работа, управлять проектами и автоматизировать сборку/тестирование кода - нет в студенческой версии
+  + бесплатный доступ к обновлениям
+  + расширенные функции автодополнения, анализа, рефакторинга
   + интеграция с системами контроля версий (Git)
   + как пользоваться
     - активировать
     - скачайте нужный продукт JetBrains
-    - войдите в свою учетную запись JetBrains   
+    - войдите в свою учетную запись   
     - после установки IDE или другого инструмента откройте его
     - "Log in with JetBrains Account", используя ту же учетную запись, где активирована студенческая лицензия
+  + Кто-нибудь скачивал на школьный комп продукты jetbrains? У меня не открывается почему-то vs code, хочу поставить идею
+    - В « 42 packet manager » скачай
+    - там есть почти все джетбрейновские кроме idea
 * copilot 10€ в месяц, 1 месяц бесплатно, связан с github
-* Access to GitHub Copilot is now included with your GitHub account
+  + Access to GitHub Copilot is now included with your GitHub account
   + Your GitHub account now includes free use of GitHub Copilot in VS Code and on GitHub, powered by your choice of AI models from OpenAI and Anthropic. This is now part of your personal GitHub account, and accessible via VS Code and on GitHub.
 * tabnine 3 месяца бесплатно, не связан с github
-* Кто-нибудь скачивал на школьный комп продукты jetbrains? У меня не открывается почему-то vs code, хочу поставить идею
-  + В « 42 packet manager » скачай
-  + там есть почти все джетбрейновские кроме idea
 * надстройка над VS code https://www.cursor.com/
   + есть чатик, можно вопросики писать
   + можно подтягивать документации и в их контексте писать
@@ -37,11 +47,3 @@
   + суть больше не в чате, а в агенте, который сам создает все файлы и редактирует. Это на самом деле вещь
 * Replit
   + агент все сам создает вплоть до деплоя
-
-
-
-
-
-
-
-
