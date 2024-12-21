@@ -1,6 +1,7 @@
-google apps script GAS 
+### google apps script GAS 
+* https://api.telegram.org/bot<YOUR_TELEGRAM_BOT_TOKEN>/setWebhook?url=https://script.google.com/macros/s/<DEPLOYMENT_ID>/exec
 
-### WebStorm
+### WebStorm + GAS
 * подготорвка
   + установить Node.js и npm
   + в WebStorm создайте новый проект или откройте существующийн
