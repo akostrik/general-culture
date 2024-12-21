@@ -6,6 +6,7 @@ google apps script GAS
 * `npm install -g @google/clasp` Google Apps Script CLI 
 * `clasp login` авторизуйтесь в clasp 
 * `clasp clone 1EQdGt_uGXQHsq-BYPQ90QPv7gx3d6Wt6nyxL_mYIdg-HjZiHnnqln1l9`
+* включите опцию Apps Script API в аккаунте https://script.google.com/home/usersettings
 * `clasp push` после внесения изменений 
 * https://script.google.com/macros/s/1EQdGt_uGXQHsq-BYPQ90QPv7gx3d6Wt6nyxL_mYIdg-HjZiHnnqln1l9/exec настройте Telegram-бот с использованием setWebhook
   + Telegram-боты требуют внешнего вебхука
