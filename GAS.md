@@ -1,5 +1,6 @@
 ### google apps script GAS 
-* https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=https://script.google.com/macros/s/AKfycbx4Ss3cRjh-BMwk7j9DUwC4aFWjQRxrwBwTlQCPgEfEhqM7MSUGplA9uwwB3Bcjz0b1HQ/exec
+* https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=https://script.google.com/macros/s/AKfycbx4Ss3cRjh-BMwk7j9DUwC4aFWjQRxrwBwTlQCPgEfEhqM7MSUGplA9uwwB3Bcjz0b1HQ/exec установить вебхук (альтернативный способ)
+* https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getMe данные о боте
 
 ### WebStorm + GAS
 * подготорвка
@@ -7,8 +8,8 @@
   + в WebStorm создайте новый проект или откройте существующийн
   + `npm install -g @google/clasp` Google Apps Script CLI 
   + `clasp login` авторизуйтесь в clasp 
-  + `clasp clone 1cvve2R0SWLlSWHePRXn0nDCGD6f-dpU83J9pj65JA09lIF5qyh3x3A_-`
-  + включите опцию Apps Script API в аккаунте https://script.google.com/home/usersettings
+  + `clasp clone 7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0`
+  + включите Apps Script API в аккаунте https://script.google.com/home/usersettings
 * после внесения изменений
   + `clasp push`
     - иногда изменения не видны из-за кэширования, очистите кэш clasp `clasp logout`, `clasp login`
