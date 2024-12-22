@@ -10,8 +10,14 @@
 * проверить вебхук 2 способа
   + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo 
   + curl -X GET "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo"
-* приложение (подставить правильный номер deployment)
-  https://script.google.com/macros/s/AKfycbyV_F4H-xea87KQIS8FzPCU8BdARvdJuPVB9GdvUyfHreilTZKvKmraO77bfSGcBoyezg/exec
+* приложение (подставить свой номер deployment)
+  https://script.google.com/macros/s/AKfycbwCFXWVO3Omx_uW5MQzjDZf3hEJZK19InYm_nmveJy_uvCDndKkeP5FdWeU6uCfD-L8zg/exec
+* проверить развернутое веб-приложение
+  + Telegram отправляет запросы POST к приложению
+  + код обрабатывает события через `doPost` в GAS
+  + Вкладка `Журналы выполнения` в редакторе GAS (или используйте `Logger.log` в коде), чтобы посмотреть, доходят ли запросы до функции `doPost`
+  + логи ошибок на стороне сервера. Telegram может не получать ответа из-за ошибок сервера. Убедитесь, что приложение отвечает на запросы.
+  + `curl -X POST -H "Content-Type: application/json" -d '{"message": {"chat": {"id": "123456789"}}}' "[<YOUR_WEB_APP_URL>](https://script.google.com/macros/s/AKfycbwCFXWVO3Omx_uW5MQzjDZf3hEJZK19InYm_nmveJy_uvCDndKkeP5FdWeU6uCfD-L8zg/exec)"` POST-запрос к приложению, проверить, что сервер обрабатывает запросы
 * данные о боте
   + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getMe 
 
