@@ -5,7 +5,7 @@
   + если не открывается
     - удалить `script.google.com` chrome://settings/content/all?searchSubpage=script.google.com
     - при этом браузер выйдет из всех аккаунтов
-    - зайти в аккаунт крипта в первую очередь, потом уже в другие аккаунты
+    - зайти в аккаунт gmail скрипта в первую очередь, потом в другие аккаунты
 * установить вебхук 3 способа:
   + запустить функцию setWebhook
   + curl -X POST "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=<YOUR_WEB_APP_URL>"
