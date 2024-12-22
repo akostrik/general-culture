@@ -1,7 +1,8 @@
 ### google apps script GAS 
 * https://script.google.com/d/AKfycbyV_F4H-xea87KQIS8FzPCU8BdARvdJuPVB9GdvUyfHreilTZKvKmraO77bfSGcBoyezg/edit редактор кода
 * https://script.google.com/macros/s/AKfycbyV_F4H-xea87KQIS8FzPCU8BdARvdJuPVB9GdvUyfHreilTZKvKmraO77bfSGcBoyezg/exec открыть приложение
-
+* chrome://settings/content/all?searchSubpage=script.google.com если не открывается редактор скрипта в браузере, удалить тут script.google.com
+ 
 ### bot
 * https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=https://script.google.com/macros/s/AKfycbx4Ss3cRjh-BMwk7j9DUwC4aFWjQRxrwBwTlQCPgEfEhqM7MSUGplA9uwwB3Bcjz0b1HQ/exec альтернативный способ установить вебхук
 * https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo проверить вебхук
