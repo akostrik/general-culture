@@ -1,8 +1,11 @@
 ### GAS + bot
-* редактор кода
+* открыть проект
+  + https://script.google.com/home
   + https://script.google.com/home/projects/1cvve2R0SWLlSWHePRXn0nDCGD6f-dpU83J9pj65JA09lIF5qyh3x3A_-/edit 
-  + если не открывается, удалить `script.google.com` chrome://settings/content/all?searchSubpage=script.google.com
+  + если не открывается
+    - удалить `script.google.com` chrome://settings/content/all?searchSubpage=script.google.com
     - при этом браузер выйдет из всех аккаунтов
+    - зайти в аккаунт крипта в первую очередь, потом уже в другие аккаунты
 * установить вебхук 3 способа:
   + запустить функцию setWebhook
   + curl -X POST "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=<YOUR_WEB_APP_URL>"
