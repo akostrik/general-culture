@@ -1,4 +1,6 @@
 ### GAS + bot
+* данные о боте
+  + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getMe 
 * открыть проект
   + https://script.google.com
   + https://script.google.com/home/projects/1cvve2R0SWLlSWHePRXn0nDCGD6f-dpU83J9pj65JA09lIF5qyh3x3A_-/edit 
@@ -24,9 +26,16 @@
   + https://script.google.com/macros/s/AKfycbxzOMMj9U7v1S39gSAWheUAXza0Uur9Iq7frxyv72bu4bRbPaTJrfHHtjSKCPeKqLE4EQ/exec
     - подставить свой номер deployment
     - для этого способа нужна фрнкция doGet
-  + `curl -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.google.com/macros/s/AKfycbxzOMMj9U7v1S39gSAWheUAXza0Uur9Iq7frxyv72bu4bRbPaTJrfHHtjSKCPeKqLE4EQ/exec"` POST-запрос к приложению, проверить, что сервер обрабатывает запросы
-* данные о боте
-  + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getMe 
+  + `curl -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.google.com/macros/s/AKfycbzTXYBip6t-KTkbXS7pEIuzD5AeO-yfOxGeR0ZGY2GAjSrFxtVK6V9Ey93R6lMRU_tLbA/exec"` POST-запрос к приложению, проверить, что сервер обрабатывает запросы
+  + Веб-приложения GAS имеют два типа ссылок:
+    - на веб-приложение — ваша опубликованная URL (`https://script.google.com/macros/s/.../exec`)
+    -  gеренаправленная ссылка — автоматически сгенерированный защищённый URL вида `https://script.googleusercontent.com/macros/...`, куда перенаправляется ваш запрос после первого вызова
+  + Когда GAS получает запрос на "входной" URL, он перенаправляет вас на более защищённый URL, который нужно использовать для дальнейших взаимодействий.
+  + если проблема актуальна для запросов типа `curl`
+    - `curl` не следует за перенаправлением по умолчанию
+    - 1 способ решить эту проблему: ипользовать `curl` с указанием следовать за перенаправлениями, добавьте `-L` к `curl`, указывает `curl` следовать за HTTP-перенаправлениями
+`curl -L -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.google.com/macros/s/AKfycbxyo2QY35hBoqVcO2covVwL2hn0fwEJDjC4lhIisy4o2AMoIKKBVdl8JD1M3wj1YyElaA/exec"`
+    - 2 способ: вручную скопировать URL, на который перенаправлялся запрос (тот, что указан в строке `The document has moved <A HREF="...">here</A>`). Это будет ссылка вида `https://script.googleusercontent.com/macros/echo?user_content_key=...&lib=...` (не рекомендуется, тк пользовательский ключ (`user_content_key`) может изменяться, ссылка станет недействительной)
 
 ### WebStorm + GAS
 * подготорвка
