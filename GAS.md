@@ -7,20 +7,24 @@
     - при этом браузер выйдет из всех аккаунтов
     - зайти в аккаунт gmail скрипта в первую очередь, потом в другие аккаунты
 * установить вебхук 3 способа:
-  + запустить функцию setWebhook
-  + curl -X POST "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=<YOUR_WEB_APP_URL>"
+  + запустить setWebhook()
   + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=https://script.google.com/macros/s/AKfycbx4Ss3cRjh-BMwk7j9DUwC4aFWjQRxrwBwTlQCPgEfEhqM7MSUGplA9uwwB3Bcjz0b1HQ/exec
+  + curl -X POST "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=<YOUR_WEB_APP_URL>"
+  + вебхуки для Telegram-бота хранятся на серверах Telegram
 * проверить вебхук 2 способа
   + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo 
   + curl -X GET "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo"
-* приложение (подставить свой номер deployment)
-  https://script.google.com/macros/s/AKfycbwCFXWVO3Omx_uW5MQzjDZf3hEJZK19InYm_nmveJy_uvCDndKkeP5FdWeU6uCfD-L8zg/exec
-* проверить развернутое веб-приложение
-  + Telegram отправляет запросы POST к приложению
-  + код обрабатывает события через `doPost` в GAS
-  + Вкладка `Журналы выполнения` в редакторе GAS (или используйте `Logger.log` в коде), чтобы посмотреть, доходят ли запросы до функции `doPost`
-  + логи ошибок на стороне сервера. Telegram может не получать ответа из-за ошибок сервера. Убедитесь, что приложение отвечает на запросы.
-  + `curl -X POST -H "Content-Type: application/json" -d '{"message": {"chat": {"id": "123456789"}}}' "https://script.google.com/macros/s/AKfycbwCFXWVO3Omx_uW5MQzjDZf3hEJZK19InYm_nmveJy_uvCDndKkeP5FdWeU6uCfD-L8zg/exec"` POST-запрос к приложению, проверить, что сервер обрабатывает запросы
+* проверить веб-приложение
+  + как работает
+    - Telegram отправляет запросы POST к приложению
+    - код обрабатывает события через `doPost` в GAS
+    - Telegram получает ответ
+  + `Журналы выполнения` в GAS (или используйте `Logger.log` в коде) - доходят ли запросы до `doPost`
+  + логи ошибок на стороне сервера
+  + https://script.google.com/macros/s/AKfycbwCFXWVO3Omx_uW5MQzjDZf3hEJZK19InYm_nmveJy_uvCDndKkeP5FdWeU6uCfD-L8zg/exec
+    - подставить свой номер deployment
+    - для этого способа нужна фрнкция doGet
+  + `curl -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.google.com/macros/s/AKfycbwmH1fupgI8bZeb9PYgYPSQ0oJ10K2DWcreUHFXTNCDR-fT3EqUMSRg8aeRwYfJMXlhgw/exec"` POST-запрос к приложению, проверить, что сервер обрабатывает запросы
 * данные о боте
   + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getMe 
 
