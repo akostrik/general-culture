@@ -1,6 +1,6 @@
 ### google apps script GAS 
 * https://script.google.com/home/projects/1cvve2R0SWLlSWHePRXn0nDCGD6f-dpU83J9pj65JA09lIF5qyh3x3A_-/edit редактор кода
-  + если не открывается, удалить `script.google.com` тут chrome://settings/content/all?searchSubpage=script.google.com 
+  + если не открывается, удалить `script.google.com` chrome://settings/content/all?searchSubpage=script.google.com  
 * https://script.google.com/macros/s/AKfycbyV_F4H-xea87KQIS8FzPCU8BdARvdJuPVB9GdvUyfHreilTZKvKmraO77bfSGcBoyezg/exec приложение (подставить правильный номер deployment)
  
 ### bot
