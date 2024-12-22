@@ -1,6 +1,6 @@
 ### GAS + bot
 * открыть проект
-  + https://script.google.com/home
+  + https://script.google.com
   + https://script.google.com/home/projects/1cvve2R0SWLlSWHePRXn0nDCGD6f-dpU83J9pj65JA09lIF5qyh3x3A_-/edit 
   + если не открывается
     - удалить `script.google.com` chrome://settings/content/all?searchSubpage=script.google.com
