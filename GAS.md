@@ -37,6 +37,8 @@
 `curl -L -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.google.com/macros/s/AKfycbxyo2QY35hBoqVcO2covVwL2hn0fwEJDjC4lhIisy4o2AMoIKKBVdl8JD1M3wj1YyElaA/exec"`
     - 2 способ: вручную скопировать URL, на который перенаправлялся запрос (тот, что указан в строке `The document has moved <A HREF="...">here</A>`). Это будет ссылка вида `https://script.googleusercontent.com/macros/echo?user_content_key=...&lib=...` (не рекомендуется, тк пользовательский ключ (`user_content_key`) может изменяться, ссылка станет недействительной)
 
+curl -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "[https://script.google.com/macros/s/AKfycbzTXYBip6t-KTkbXS7pEIuzD5AeO-yfOxGeR0ZGY2GAjSrFxtVK6V9Ey93R6lMRU_tLbA/exec](https://script.googleusercontent.com/macros/echo?user_content_key=nM9VSALqZRaab9lvktmthZD2SL0lrKRHWXEK8eecVuQrKAZr53rbDbx2U2s0zRZh_dXUGNKr1iy-Cu2lh53jGjy_2lF9HcdKm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnAeNKeVMYg7RmTzN6269Br1F1__-25ENFyRwvHxg54i06eghjkFevHQo-Xj3QBTODYgvqABq-NwWaxa96bt2h6zguZJn6SkkOdz9Jw9Md8uu&amp;lib=MFNBI_7VgapKedRPJnmNJb7m4tjEUa1_m)"
+
 ### WebStorm + GAS
 * подготорвка
   + установить Node.js и npm
