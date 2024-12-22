@@ -1,14 +1,17 @@
 ### GAS + bot
 * редактор кода
   + https://script.google.com/home/projects/1cvve2R0SWLlSWHePRXn0nDCGD6f-dpU83J9pj65JA09lIF5qyh3x3A_-/edit 
-    - если не открывается, удалить `script.google.com` chrome://settings/content/all?searchSubpage=script.google.com (при этом браузер выйдет из всех аккаунтов)
-* проверить вебхук
+  + если не открывается, удалить `script.google.com` chrome://settings/content/all?searchSubpage=script.google.com
+    - при этом браузер выйдет из всех аккаунтов
+* установить вебхук 3 способа:
+  + запустить функцию setWebhook
+  + curl -X POST "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=<YOUR_WEB_APP_URL>"
+  + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=https://script.google.com/macros/s/AKfycbx4Ss3cRjh-BMwk7j9DUwC4aFWjQRxrwBwTlQCPgEfEhqM7MSUGplA9uwwB3Bcjz0b1HQ/exec
+* проверить вебхук 2 способа
   + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo 
   + curl -X GET "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo"
-* установить вебхук 2 способа:
-  + запустить функцию setWebhook
-  + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=https://script.google.com/macros/s/AKfycbx4Ss3cRjh-BMwk7j9DUwC4aFWjQRxrwBwTlQCPgEfEhqM7MSUGplA9uwwB3Bcjz0b1HQ/exec
-* https://script.google.com/macros/s/AKfycbyV_F4H-xea87KQIS8FzPCU8BdARvdJuPVB9GdvUyfHreilTZKvKmraO77bfSGcBoyezg/exec приложение (подставить правильный номер deployment)
+* приложение (подставить правильный номер deployment)
+  https://script.google.com/macros/s/AKfycbyV_F4H-xea87KQIS8FzPCU8BdARvdJuPVB9GdvUyfHreilTZKvKmraO77bfSGcBoyezg/exec
 * данные о боте
   + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getMe 
 
