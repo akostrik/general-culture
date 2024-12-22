@@ -17,14 +17,14 @@
 * проверить веб-приложение
   + как работает
     - Telegram отправляет запросы POST к приложению
-    - код обрабатывает события через `doPost` в GAS
+    - doPost() GAS обрабатывает события 
     - Telegram получает ответ
-  + `Журналы выполнения` в GAS (или используйте `Logger.log` в коде) - доходят ли запросы до `doPost`
-  + логи ошибок на стороне сервера
-  + https://script.google.com/macros/s/AKfycbwCFXWVO3Omx_uW5MQzjDZf3hEJZK19InYm_nmveJy_uvCDndKkeP5FdWeU6uCfD-L8zg/exec
+  + `Журналы выполнения` в GAS - запросы доходят до doPost()?
+  + `Logger.log` логи ошибок на стороне сервера
+  + https://script.google.com/macros/s/AKfycbxzOMMj9U7v1S39gSAWheUAXza0Uur9Iq7frxyv72bu4bRbPaTJrfHHtjSKCPeKqLE4EQ/exec
     - подставить свой номер deployment
     - для этого способа нужна фрнкция doGet
-  + `curl -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.google.com/macros/s/AKfycbwmH1fupgI8bZeb9PYgYPSQ0oJ10K2DWcreUHFXTNCDR-fT3EqUMSRg8aeRwYfJMXlhgw/exec"` POST-запрос к приложению, проверить, что сервер обрабатывает запросы
+  + `curl -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.google.com/macros/s/AKfycbxzOMMj9U7v1S39gSAWheUAXza0Uur9Iq7frxyv72bu4bRbPaTJrfHHtjSKCPeKqLE4EQ/exec"` POST-запрос к приложению, проверить, что сервер обрабатывает запросы
 * данные о боте
   + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getMe 
 
