@@ -1,6 +1,4 @@
 ### GAS + bot
-* данные о боте
-  + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getMe 
 * открыть проект
   + https://script.google.com
   + https://script.google.com/home/projects/1cvve2R0SWLlSWHePRXn0nDCGD6f-dpU83J9pj65JA09lIF5qyh3x3A_-/edit 
@@ -13,17 +11,19 @@
   + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=https://script.google.com/macros/s/AKfycbx4Ss3cRjh-BMwk7j9DUwC4aFWjQRxrwBwTlQCPgEfEhqM7MSUGplA9uwwB3Bcjz0b1HQ/exec
   + curl -X POST "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/setWebhook?url=<YOUR_WEB_APP_URL>"
   + вебхуки для Telegram-бота хранятся на серверах Telegram
-* проверить вебхук 2 способа
-  + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo 
-  + curl -X GET "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo"
+  + проверить вебхук 2 способа
+    - https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo 
+    - curl -X GET "https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getWebhookInfo"
 * проверить веб-приложение
+  + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/getMe данные о боте 
+  + https://api.telegram.org/bot7088040447:AAEXX5w49fwRe1GSLRYSHWNLXGmTsZEtrH0/sendMessage?chat_id=<CHAT_ID>&text=Hello отправить боту сообщение
   + `Logger.log` + Журналы выполнения в GAS
   + https://script.google.com/macros/s/AKfycbxzOMMj9U7v1S39gSAWheUAXza0Uur9Iq7frxyv72bu4bRbPaTJrfHHtjSKCPeKqLE4EQ/exec
     - подставить свой номер deployment
     - для этого способа нужна doGet
   + `curl -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.google.com/macros/s/AKfycbzTXYBip6t-KTkbXS7pEIuzD5AeO-yfOxGeR0ZGY2GAjSrFxtVK6V9Ey93R6lMRU_tLbA/exec"` POST-запрос к приложению, проверить, что сервер обрабатывает запросы
-  + 1. GAS получает запрос на опубликованный URL `https://script.google.com/macros/s/.../exec`
-  + 2. GAS перенаправляет вас на более защищённый автоматически сгенерированный URL `https://script.googleusercontent.com/macros/...`, который нужно использовать для дальнейших взаимодействий
+  + GAS получает запрос на опубликованный URL `https://script.google.com/macros/s/.../exec`
+    - потом перенаправляет вас на более защищённый автоматически сгенерированный URL `https://script.googleusercontent.com/macros/...`, который нужно использовать для дальнейших взаимодействий
     - `curl` не следует за перенаправлением по умолчанию
     - `-L` = следовать за HTTP-перенаправлениями
 `curl -L -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.google.com/macros/s/AKfycbxyo2QY35hBoqVcO2covVwL2hn0fwEJDjC4lhIisy4o2AMoIKKBVdl8JD1M3wj1YyElaA/exec"`
