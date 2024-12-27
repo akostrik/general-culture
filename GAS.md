@@ -29,6 +29,41 @@
 `curl -L -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.google.com/macros/s/AKfycbxyo2QY35hBoqVcO2covVwL2hn0fwEJDjC4lhIisy4o2AMoIKKBVdl8JD1M3wj1YyElaA/exec"`
     - 2 способ: вручную скопировать URL, на который перенаправлялся запрос (указан в строке `The document has moved <A HREF="...">here</A>`). Это будет ссылка вида `https://script.googleusercontent.com/macros/echo?user_content_key=...&lib=...` 
 curl -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "id": "123456789" }, "text": "/start" }}' "https://script.googleusercontent.com/macros/echo?user_content_key=nM9VSALqZRaab9lvktmthZD2SL0lrKRHWXEK8eecVuQrKAZr53rbDbx2U2s0zRZh_dXUGNKr1iy-Cu2lh53jGjy_2lF9HcdKm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnAeNKeVMYg7RmTzN6269Br1F1__-25ENFyRwvHxg54i06eghjkFevHQo-Xj3QBTODYgvqABq-NwWaxa96bt2h6zguZJn6SkkOdz9Jw9Md8uu&amp;lib=MFNBI_7VgapKedRPJnmNJb7m4tjEUa1_m"
+* GAS не предназначен для высокоскоростной работы, особенно в сценариях с частыми запросами и большими объемами данных
+  + `UrlFetchApp.fetch` медленный метод. Обработка каждого запроса может занимать сотни миллисекунд.
+  + скрипты GAS имеют ограничения на время выполнения (6 минут для обычных скриптов, 30 секунд для вызова Web App)
+  + Google обрабатывает запросы через свою инфраструктуру, что добавляет задержки
+  + используйте **сервисы с кешированием**: например, Redis, Memcached (это потребует дополнительной платформы)
+  + Кешируйте данные в `CacheService`.
+  + Используйте локальные массивы вместо частых вызовов таблицы.
+  + Перепишите бота на более производительной платформе: Node.js, Python (FastAPI), Golang
+* Telegram API имеет лимиты на количество запросов (до 30 запросов в секунду на бот)
+* Если бот делает запросы один за другим (синхронно), это увеличивает общее время отклика
+  + перейдите на **асинхронную обработку запросов**: например, с использованием Worker Threads или асинхронных функций (нужно переписать код)
+  + Группируйте запросы: например, отправляйте обновления через `sendMessage` в батчах или минимизируйте их количество
+* оптимизировать код для скорости:
+  + Вызовы `SpreadsheetApp.openById()` или `getDataRange()` могут быть медленными
+  + Сведите обращения к Google Sheets к минимуму, загружайте данные один раз в память и работайте с ними.
+  + Используйте кеширование. В GAS есть `CacheService` для временного хранения данных, чтобы не обращаться к таблице при каждом запросе.
+  ```javascript
+  const cache = CacheService.getScriptCache();
+  let menu = cache.get('menu');
+  if (!menu) {
+    menu = SpreadsheetApp.openById(SPREADSHEET).getSheetByName(MENU_SHEET).getDataRange().getValues();
+    cache.put('menu', JSON.stringify(menu), 3600); // Кешируем на час
+  } else {
+    menu = JSON.parse(menu);
+  }
+  ```
+  + Используйте `PropertiesService` для хранения настроек и небольших данных
+* Используйте мощные сервера и оптимизированные платформы
+  + серверы с низкой латентностью
+  + производительные языки (Python, Node.js, Go)
+  + развернуть на облачных сервисах (AWS, Google Cloud, Yandex Cloud) или бесплатный Heroku
+* GAS использует серверы Google, которые могут быть расположены далеко от серверов Telegram, что добавляет задержки
+  + Перейдите на платформу с географически близкими серверами или используйте серверы Telegram MTProto, находящиеся ближе к вашему региону
+* Убедитесь, что бот работает через webhook, а не через long polling. Webhook быстрее и эффективнее.
+* Тестируйте производительность: измерьте, какие части кода занимают больше всего времени (`Logger.log` или инструменты профилирования)
 
 ### WebStorm + GAS
 * подготорвка
@@ -42,10 +77,8 @@ curl -X POST -H "Content-Type: application/json" -d '{ "message": { "chat": { "i
   + `clasp push`
     - иногда изменения не видны из-за кэширования, очистите кэш clasp `clasp logout`, `clasp login`
   + https://script.google.com/macros/s/1cvve2R0SWLlSWHePRXn0nDCGD6f-dpU83J9pj65JA09lIF5qyh3x3A_-/exec настройте Telegram-бот с использованием setWebhook
-  + Telegram-боты требуют внешнего вебхука
   + у GAS есть встроенная поддержка вебхуков через doPost(e)
 * встроенный ИИ WebStorm: автозаполнение, анализа код, рефакторинг
-  + не "понимают" задания на естественном языке
 * обработка естественного языка = интегрировать OpenAI API или использовать сторонние плагины
   + плагин: WebStorm > File > Settings > Plugins > плагин ChatGPT или CodeGPT, установите плагин, перезапустите WebStorm
   + выделить участок кода, кликнуть правой кнопкой и выбрать "Generate Documentation", "Explain Code", "Complete Code"
