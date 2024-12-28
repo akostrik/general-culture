@@ -1,3 +1,6 @@
+* https://myaccount.google.com/security
+* https://wallet.google.com/wallet/u/0/home?utm_source=pgc&utm_medium=website&utm_campaign=redirect
+
 ### на акаунте X2 иметь полный доступ у почте аккаунта X1 
 * X2:
   + 2FA
