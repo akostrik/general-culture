@@ -1,4 +1,4 @@
-**UBUNTU  **
+**UBUNTU**  
 alt f1 программы слева  
 ctrl alt T терминал  
 alt пробел, alt f5, alt f10 размер окна  
@@ -16,28 +16,26 @@ ctrl + page up по вкладкам
 xrandr -o right повернуть экран  
 xrandr -o normal повернуть экран  
 
-GOOGLE DOCS
+**GOOGLE DOCS**  
+alt-f alt-shift-f меню файл  
+alt-e alt-shift-e меню правка  
+alt-v alt-shift-e меню правка  
+alt-i alt-shift-i меню вставка  
+alt-o alt-shift-o меню формат  
+alt-t alt-shift-t меню инструменты  
+alt-b alt-shift-b меню таблица  
+alt-h alt-shift-h меню справка  
+ctrl-alt-shift-k ctrl-shift-k для русского  
+shift-правая кнопка меню браузера  
 
-alt-f alt-shift-f меню файл•Home
-alt-e alt-shift-e меню правка•Work
-alt-v alt-shift-e меню правка•Other
-alt-i alt-shift-i меню вставка•Other
-alt-o alt-shift-o меню формат•Other
-alt-t alt-shift-t меню инструменты•Other
-alt-b alt-shift-b меню таблица•Other
-alt-h alt-shift-h меню справка•Other
-ctrl-alt-shift-k ctrl-shift-k для русского•Other
-shift-правая кнопка меню браузера•Other
+**GOOGLE календарь**
+Перейти к следующему диапазону дат j или n  
+Перейти к сегодняшнему дню t  
+Обновить r  
+Добавить календарь +  
+Перейти в поле поиска /  
+Открыть Настройки s  
 
-GOOGLE календарь
-Перейти к следующему диапазону дат j или n
-Перейти к сегодняшнему дню t
-Обновить r
-Добавить календарь +
-Перейти в поле поиска /
-Открыть Настройки s
-
-FIREFOX
-alt ->, alt <- назад вперёд•Home
-ctrl tab между вкладками•Work
-
+**FIREFOX**  
+alt ->, alt <- назад вперёд  
+ctrl tab между вкладками  
