@@ -13,6 +13,8 @@ ctrl fn 3 - по вкладкам
 ctrl alt % = lock screen  
 ctrl super стрелка вниз/вверх = размер окошка  
 ctrl + page up по вкладкам  
+xrandr -o right повернуть экран  
+xrandr -o normal повернуть экран  
 
 GOOGLE DOCS
 
