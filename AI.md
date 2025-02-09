@@ -1,5 +1,7 @@
 * **perplexity беспл для ежедневных задач, поисковик**
 * **claude программирование**
+* 09.02.2025 программирование: claude, copilot **у нас PRO**
+* vscode ctrl + A
 * генерация картинок https://t.me/Lama3_d3_bot
 * https://api-docs.deepseek.com/quick_start/pricing
 * DeepSeek 
